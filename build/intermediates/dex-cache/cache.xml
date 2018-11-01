@@ -8,16 +8,25 @@
         optimize="true"
         revision="25.0.2"
         sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/support-annotations-25.1.0_8166288c9d33d7eefc6fdf17c232f4dbebafd11d.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/support-annotations-25.1.0_8166288c9d33d7eefc6fdf17c232f4dbebafd11d.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-design-25.1.0_ce5c541954e7a71d577fe608dd43fe61f8203e06.jar" />
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.1.0_4b4543b0a8ea55770392a9d724d8234c7e8d145c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/me.priyesh/chroma/1.0.2/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="76043dab5454efc14b69cbd3de807dbdc4d62a7f">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/me.priyesh-chroma-1.0.2_73710017f51e6df0422fca059c375324f369b121.jar" />
     </item>
     <item
         is-multidex="false"
@@ -26,7 +35,16 @@
         optimize="true"
         revision="25.0.2"
         sha1="2db5ac6eb2746708e77e4c439625f9331c25e766">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/kotlin-stdlib-1.0.0_147daf8baec5dffc9e48e4621898e3407cb68bf9.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/kotlin-stdlib-1.0.0_147daf8baec5dffc9e48e4621898e3407cb68bf9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/jp.wasabeef/blurry/2.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="49050354bece84091394b0215286f3ed7293e33c">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/jp.wasabeef-blurry-2.1.0_bb7abbc255f2d4f4a4b5af6d07ec68877e0b9445.jar" />
     </item>
     <item
         is-multidex="false"
@@ -35,7 +53,34 @@
         optimize="true"
         revision="25.0.2"
         sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/library-2.4.0_457153a2d9d5d4c00f99b0605f0f9b0fb9c4f19e.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/library-2.4.0_457153a2d9d5d4c00f99b0605f0f9b0fb9c4f19e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.github.mmin18/realtimeblurview/1.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c65519e7e3b59fbfca4474c68de284691d0d075a">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.github.mmin18-realtimeblurview-1.1.0_2fb21e30c38abc23ee7e4558812b20f84c750764.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.1.0_0b45a2e067ed6835003099ca8022f404ef845f6f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics-core/2.3.14/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7ff77725723167163d69439e3fd077bd0899babf">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.crashlytics.sdk.android-crashlytics-core-2.3.14_21a28dd2e841b512ca0fbeae3a3c4a24190e9f35.jar" />
     </item>
     <item
         is-multidex="false"
@@ -44,70 +89,52 @@
         optimize="true"
         revision="25.0.2"
         sha1="f645ed69d595b24d4cf8b3fbb64cc505bede8829">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/gson-2.8.5_5ec974b3ea44311c97eceeb2e46964fb465f7eeb.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/gson-2.8.5_5ec974b3ea44311c97eceeb2e46964fb465f7eeb.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/bz.tsung.android/objectify/1.1.1/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.1.0_6d9cd68169b8d7b47ec944da1de98c313e31f594.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7f2420506110902f033406b25697cf97ee8c38b2">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-25.1.0_c9cb2cd81e868de74c121ce779ac7f5202203892.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.diogobernardino/williamchart/2.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5277f2d52578bcea0a8ad44069b61b9fe6d07b2a">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.diogobernardino-williamchart-2.3.0_158a9fa6a3be465f414743c5d48ee783dbfffd4c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/bz.tsung.android/objectify/1.1.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="db561f1ad4837ba83e42626a634be3a617bd4938">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/bz.tsung.android-objectify-1.1.1_c3d5e076b066b5f3c891d8094813abfd34d45293.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/bz.tsung.android-objectify-1.1.1_83d158d3d2101d4cedb95ab40d23382619d79a06.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/beta/1.2.2/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.github.amlcurran.showcaseview/library/5.4.3/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="b42cf2134829f715edfa2adaf0ee246631322dba">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.crashlytics.sdk.android-beta-1.2.2_ff610b64303cb03faba0c0f30b25eac0a54c59b4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/de.hdodenhof-circleimageview-2.1.0_13c3522da4c18ec3084c5c966b0f3e0b4ad7d9dd.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics-core/2.3.14/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="7ff77725723167163d69439e3fd077bd0899babf">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.crashlytics.sdk.android-crashlytics-core-2.3.14_b4e8630ab34b1c5678ee1ba85829744e58798c10.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/answers/1.3.10/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ed6b455e3dd7bbf1ff31f8df0b41e2f0d87f3ace">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.crashlytics.sdk.android-answers-1.3.10_78e2d2f4b0bdf67ae1b2339a006a3314f645c099.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.1.0_ffa7bf15c847fd7d6122a34fe5104e3d5d222c37.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/transition/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-transition-25.1.0_e49d623df3bfa4628be7f22cd18ccf133507c35d.jar" />
+        sha1="a06b0579dbe59192ef460e3de04657720925d05b">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.github.amlcurran.showcaseview-library-5.4.3_6f6a766628faaa2d4c5f51f3012f27101e0200e0.jar" />
     </item>
     <item
         is-multidex="false"
@@ -116,133 +143,70 @@
         optimize="true"
         revision="25.0.2"
         sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/okio-1.11.0_2347e0838d2f6cb5445cdd5c7ed20ec177513d21.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/okio-1.11.0_2347e0838d2f6cb5445cdd5c7ed20ec177513d21.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/jp.wasabeef/blurry/2.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="49050354bece84091394b0215286f3ed7293e33c">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/jp.wasabeef-blurry-2.1.0_9e90ac0f3755422dbb9781a9f8c1a7d74aeeecbf.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="aee64634871d88a419d59eb743c1258a60f19700">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.1.0_176fae7bf04458f92172345579bfebaa053d6030.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.github.QuadFlask/colorpicker/0.0.12/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="32ac1a4e9c4ad1a58f45f31fbce5485efb688546">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.github.QuadFlask-colorpicker-0.0.12_8f4d5cf10ec46cd29234328e67376e2d63955345.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.1.0_552c29551bc148d78421fb433f4ee04a2fff9b1f.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.1.0_80efdfa33e1df8a705112d40a40c35796da71374.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/beta/1.2.2/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.1.0_b779a9857aadec65091c8dd3d338f1e307f62477.jar" />
+        sha1="b42cf2134829f715edfa2adaf0ee246631322dba">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.crashlytics.sdk.android-beta-1.2.2_1c464d53169c787ea2ab5799eea508baa6e4b835.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/jp.wasabeef/recyclerview-animators/2.2.5/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="215abfa2b78865741d99f7b9c0afb79894986505">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/jp.wasabeef-recyclerview-animators-2.2.5_4bb635cd6e0be0247d45e20958005df5998fc3dd.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/palette-v7/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6f68018b5ddc2493f5e5cecc5601c05d0539281a">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-palette-v7-25.1.0_4d05de69a97356e38ba0267188e555b5539982a3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/cn.aigestudio.wheelpicker/WheelPicker/1.1.2/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="7c27aea45fb254d37cb280bdd770a358d9b0fd2e">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/cn.aigestudio.wheelpicker-WheelPicker-1.1.2_c43ad9bddb4fb5ec0b595fcf6cb314f600b43861.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.1.0_f459312a82ac2d73917e3d8d0bc8826bd7ef6520.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-25.1.0_12e9d97f5f9ff2a9b624e9f8cc45cfb39183ced9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.1.0_4ac12caf5161f2d427e2da02b145a2faa8456c4e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android-no-op/1.5/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d939e31defd45f8d1de11e3c10879e0973cefbdc">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.squareup.leakcanary-leakcanary-android-no-op-1.5_ef48137a353c08baab71fe757320ca4b58ddede1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/me.priyesh/chroma/1.0.2/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="76043dab5454efc14b69cbd3de807dbdc4d62a7f">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/me.priyesh-chroma-1.0.2_297ba129f53ab637377d13e54fca569142a6dffe.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics/2.6.5/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics/2.6.5/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="02cc9f2e5899415add52bc716602b6b38e7eeb99">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.crashlytics.sdk.android-crashlytics-2.6.5_f773aedee2fa4e159168635c423f1301ff22f3e6.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.crashlytics.sdk.android-crashlytics-2.6.5_b0f37b2f2da4e51e54745a14a47df4798543cbda.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android-no-op/1.5/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d939e31defd45f8d1de11e3c10879e0973cefbdc">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.squareup.leakcanary-leakcanary-android-no-op-1.5_61764983da9d2180bad3b1cfa3944d906d6eae33.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.lantouzi.wheelview/library/1.1.2/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ff938ea10be21ac55d38e3d5073b81cc6917841">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.lantouzi.wheelview-library-1.1.2_ecbcb45322d81362ff39ec348f86a6c3cdfd385c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/de.psdev.licensesdialog/licensesdialog/1.8.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="314eddf77281187272037224c55ba673aabee57c">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/de.psdev.licensesdialog-licensesdialog-1.8.1_f2edfc42ccaa10c5fd819a6c5d1bde6278ef35c9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.h6ah4i.android.widget.verticalseekbar/verticalseekbar/0.7.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="10ac843a8f6f59f3839ddc557ed1f97513874acb">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.h6ah4i.android.widget.verticalseekbar-verticalseekbar-0.7.0_3711eb8d2bf3b527c2e629abb0bd02323cf7d40c.jar" />
     </item>
     <item
         is-multidex="false"
@@ -251,16 +215,7 @@
         optimize="true"
         revision="25.0.2"
         sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/retrofit-2.1.0_2113bf639cd27b6e74fb73cc2bcd9ecca795f569.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.1.0_2e60cced78bd502f7d4d400f7879db6dafa8e0e0.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/retrofit-2.1.0_2113bf639cd27b6e74fb73cc2bcd9ecca795f569.jar" />
     </item>
     <item
         is-multidex="false"
@@ -269,7 +224,16 @@
         optimize="true"
         revision="25.0.2"
         sha1="8739b3cd3bf98584cf2d1cabf59b55dbd5f7349d">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/kotlin-runtime-1.0.0_b402732320f0f7c4effa0f17e1c898b793d0ca61.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/kotlin-runtime-1.0.0_b402732320f0f7c4effa0f17e1c898b793d0ca61.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-25.1.0_de3a2f51c7a40731c77cc6cb4b3c2e99c63ed3c5.jar" />
     </item>
     <item
         is-multidex="false"
@@ -278,7 +242,16 @@
         optimize="true"
         revision="25.0.2"
         sha1="65fd012581ded67bc20945d85c32b4598c3a9cf1">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/jsoup-1.8.3_2699604c3d3e196690041d4fa72e43b96814732a.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/jsoup-1.8.3_2699604c3d3e196690041d4fa72e43b96814732a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/transition/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-transition-25.1.0_8adb7f6fe3a40918c638262774d16820a58c8c0f.jar" />
     </item>
     <item
         is-multidex="false"
@@ -287,16 +260,34 @@
         optimize="true"
         revision="25.0.2"
         sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/converter-gson-2.1.0_4b1279bc31291bdcf1b3bfe518e3f540485ea831.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/converter-gson-2.1.0_4b1279bc31291bdcf1b3bfe518e3f540485ea831.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/tyrantgit/explosionfield/1.0.1/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.github.QuadFlask/colorpicker/0.0.12/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="f82998f0794dfe2b65edd561ac0b34b536e7ff9a">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/tyrantgit-explosionfield-1.0.1_ebaa440858e92e625a4c85279a2a44495e461abc.jar" />
+        sha1="32ac1a4e9c4ad1a58f45f31fbce5485efb688546">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.github.QuadFlask-colorpicker-0.0.12_a16e488ab882eec1d1f1c5eda66f5f0c9870beb0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/jp.wasabeef/recyclerview-animators/2.2.5/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="215abfa2b78865741d99f7b9c0afb79894986505">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/jp.wasabeef-recyclerview-animators-2.2.5_6915785309d57b17a83cf25963b915faafc22e02.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.1.0_5518c2cf87ffd797e42133b2971c4893818864b5.jar" />
     </item>
     <item
         is-multidex="false"
@@ -305,25 +296,16 @@
         optimize="true"
         revision="25.0.2"
         sha1="7a15a7db50f86c4b64aa3367424a60e3a325b8f1">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/okhttp-2.7.5_f71591104ad2edb478e0e3fb225cf114afb0d05e.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/okhttp-2.7.5_f71591104ad2edb478e0e3fb225cf114afb0d05e.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.wang.avi/library/2.1.3/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/io.fabric.sdk.android/fabric/1.3.14/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="e699699fae0092703de1d02b217f43803d0f7e0a">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.wang.avi-library-2.1.3_e5a2408616ad9a59c18a87c4895d31c0a836e59c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.github.amlcurran.showcaseview/library/5.4.3/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a06b0579dbe59192ef460e3de04657720925d05b">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.github.amlcurran.showcaseview-library-5.4.3_9d8014cec6cfee06d6070e11ed40225a72f91918.jar" />
+        sha1="a319fd4d548ba4cc9511561d37109ba922bfbf6a">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/io.fabric.sdk.android-fabric-1.3.14_bf8820d64caf6ebc5d2f4d14a5b5558ea2e629cb.jar" />
     </item>
     <item
         is-multidex="false"
@@ -332,16 +314,7 @@
         optimize="true"
         revision="25.0.2"
         sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/glide-3.7.0_d03b8e8549f5835ba72cad6284df0cb2460ecbf6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/de.psdev.licensesdialog/licensesdialog/1.8.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="314eddf77281187272037224c55ba673aabee57c">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/de.psdev.licensesdialog-licensesdialog-1.8.1_3748a8634a99ccafa7e40945f65ed96df38a5de2.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/glide-3.7.0_d03b8e8549f5835ba72cad6284df0cb2460ecbf6.jar" />
     </item>
     <item
         is-multidex="false"
@@ -350,16 +323,7 @@
         optimize="true"
         revision="25.0.2"
         sha1="05668b8cd6c7b07f152b6a5b4c6cff620817ba0f">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/renderscript-v8_3e357c594449491d5fe98356eed495bbcd429216.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.lantouzi.wheelview/library/1.1.2/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6ff938ea10be21ac55d38e3d5073b81cc6917841">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.lantouzi.wheelview-library-1.1.2_38dc5d813435aa6a2dfecdafaa0e03d2f616de20.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/renderscript-v8_3e357c594449491d5fe98356eed495bbcd429216.jar" />
     </item>
     <item
         is-multidex="false"
@@ -368,25 +332,16 @@
         optimize="true"
         revision="25.0.2"
         sha1="58d6a73f1dfc11010f2b5e8b53366f0adfffa6aa">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.5.0_ddf9f626c26f17133568a123f39746a1291659ed.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.5.0_ddf9f626c26f17133568a123f39746a1291659ed.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.1.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.1.0_400b8db68715ae8f293c01bdba5e35802c4a06d8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.github.mmin18/realtimeblurview/1.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c65519e7e3b59fbfca4474c68de284691d0d075a">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.github.mmin18-realtimeblurview-1.1.0_f80d34023c7b8bd985fd6220339931a356c78ad1.jar" />
+        sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/de.hdodenhof-circleimageview-2.1.0_50c405703e63f9717195665fa9eeab69b71c62f0.jar" />
     </item>
     <item
         is-multidex="false"
@@ -395,25 +350,34 @@
         optimize="true"
         revision="25.0.2"
         sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/picasso-2.5.2_a7006d7fc850f5e34f25a9e369622ebb543244ea.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/picasso-2.5.2_a7006d7fc850f5e34f25a9e369622ebb543244ea.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/io.fabric.sdk.android/fabric/1.3.14/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.wang.avi/library/2.1.3/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="a319fd4d548ba4cc9511561d37109ba922bfbf6a">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/io.fabric.sdk.android-fabric-1.3.14_7693b67f4101531a5373ff27f608a91922193106.jar" />
+        sha1="e699699fae0092703de1d02b217f43803d0f7e0a">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.wang.avi-library-2.1.3_f055382d2ff9bb3afca7395dd4a0972a2a8060f8.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/tyrantgit/explosionfield/1.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.1.0_0b515575faaebae5cdf830f20d5908cd232684d9.jar" />
+        sha1="f82998f0794dfe2b65edd561ac0b34b536e7ff9a">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/tyrantgit-explosionfield-1.0.1_4acbc21d81eb752158409a092a5dd4beda2ad2f0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.1.0_bdcf952557fbbd8176220dfe0ab5a1ab02d97d2b.jar" />
     </item>
     <item
         is-multidex="false"
@@ -422,25 +386,25 @@
         optimize="true"
         revision="25.0.2"
         sha1="4b0bb6bfbecbdd42b97ff400af342bfe7f32bc83">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/okhttp-3.5.0_f1154261c2f99f201cf494bfa6cc7f373a307d03.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/okhttp-3.5.0_f1154261c2f99f201cf494bfa6cc7f373a307d03.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.diogobernardino/williamchart/2.3.0/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/palette-v7/25.1.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="5277f2d52578bcea0a8ad44069b61b9fe6d07b2a">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.diogobernardino-williamchart-2.3.0_06a3b5cce81a8cec2bce2c9148273e7d47b9dd26.jar" />
+        sha1="6f68018b5ddc2493f5e5cecc5601c05d0539281a">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-palette-v7-25.1.0_d374d333064cde9f5d27403ad89359b2f034036f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.h6ah4i.android.widget.verticalseekbar/verticalseekbar/0.7.0/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="10ac843a8f6f59f3839ddc557ed1f97513874acb">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.h6ah4i.android.widget.verticalseekbar-verticalseekbar-0.7.0_1169c47f02b15f56a6aef0004bf466385e66356f.jar" />
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.1.0_1ff3f49cc8542830c0ae696de7c4e338be8c9fc7.jar" />
     </item>
     <item
         is-multidex="false"
@@ -449,16 +413,52 @@
         optimize="true"
         revision="25.0.2"
         sha1="f7be08ec23c21485b9b5a1cf1654c2ec8c58168d">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/jsr305-3.0.1_70680245591b86341aa98fc4a52a5cae6b05a55a.jar" />
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/jsr305-3.0.1_70680245591b86341aa98fc4a52a5cae6b05a55a.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/25.1.0/jars/classes.jar"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="7f2420506110902f033406b25697cf97ee8c38b2">
-        <dex dex="/Users/sjning/Downloads/MusicDNA-master/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-25.1.0_077162b700c7c3641c9614b46279e1a3f69e7f0a.jar" />
+        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-design-25.1.0_1b032e92fc4e1541964284a4f11fabefaec2613a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/answers/1.3.10/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ed6b455e3dd7bbf1ff31f8df0b41e2f0d87f3ace">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.crashlytics.sdk.android-answers-1.3.10_98c423f7341293bcf794277717116364a4b0f355.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/cn.aigestudio.wheelpicker/WheelPicker/1.1.2/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7c27aea45fb254d37cb280bdd770a358d9b0fd2e">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/cn.aigestudio.wheelpicker-WheelPicker-1.1.2_40580fe22bffae8588233e9fd66a99428b16433c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.1.0_61f8d786ba6ebcda6ccf047ec0272390043836cc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="/Users/sjning/Documents/Project/InterestingMusic/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.1.0_35834f2db9aa05a2aa3391a383a24b9962bfc84b.jar" />
     </item>
 
 </items>

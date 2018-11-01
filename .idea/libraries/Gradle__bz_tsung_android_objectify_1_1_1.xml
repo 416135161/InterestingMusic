@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: bz.tsung.android:objectify-1.1.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/bz.tsung.android/objectify/1.1.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/bz.tsung.android/objectify/1.1.1/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/bz.tsung.android/objectify/1.1.1/a303238b06de997c2c62f6dabf644db81cabc7/objectify-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
