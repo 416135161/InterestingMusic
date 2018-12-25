@@ -1,4 +1,4 @@
-package com.happy.interesting.music;
+package com.example.harjot.musicstreamer;
 
 import org.junit.Test;
 
