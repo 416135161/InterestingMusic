@@ -5,8 +5,6 @@
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/jp.wasabeef/blurry/2.1.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/jp.wasabeef/blurry/2.1.0/ded9bb896ffa714120f2ab76f75a43de424305b2/blurry-2.1.0-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>
