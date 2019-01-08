@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import com.github.mmin18.widget.RealtimeBlurView;
 import com.happy.interesting.music.models.UnifiedTrack;
 import com.happy.interesting.music.R;
-import com.happy.interesting.music.imageloader.ImageLoader;
+import com.happy.interesting.music.imageLoader.ImageLoader;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

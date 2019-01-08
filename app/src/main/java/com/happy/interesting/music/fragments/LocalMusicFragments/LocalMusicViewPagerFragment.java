@@ -23,7 +23,6 @@ import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.activities.SplashActivity;
 import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -165,20 +164,6 @@ public class LocalMusicViewPagerFragment extends Fragment {
             return mFragmentTitleList.get(position);
         }
 
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
     }
 
     public Fragment getFragmentByPosition(int position) {

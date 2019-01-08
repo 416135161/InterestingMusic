@@ -28,8 +28,8 @@ import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
 import com.happy.interesting.music.activities.SplashActivity;
 import com.happy.interesting.music.utilities.CommonUtils;
-import com.happy.interesting.music.imageloader.ImageLoader;
-import com.squareup.leakcanary.RefWatcher;
+import com.happy.interesting.music.imageLoader.ImageLoader;
+
 import com.squareup.picasso.Picasso;
 
 
@@ -246,20 +246,6 @@ public class ViewPlaylistFragment extends Fragment implements
                 playAll.animate().scaleX(1.0f).scaleY(1.0f).setDuration(300).setInterpolator(new OvershootInterpolator());
             }
         }, 500);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
     }
 
 }

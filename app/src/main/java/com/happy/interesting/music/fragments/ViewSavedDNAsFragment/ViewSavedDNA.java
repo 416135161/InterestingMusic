@@ -9,8 +9,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
@@ -29,18 +29,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
-import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
-import com.happy.interesting.music.activities.HomeActivity;
-import com.happy.interesting.music.models.SavedDNA;
-import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
+import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.activities.SplashActivity;
+import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
+import com.happy.interesting.music.models.SavedDNA;
 import com.happy.interesting.music.utilities.CommonUtils;
 import com.happy.interesting.music.utilities.FileUtils;
 import com.happy.interesting.music.visualizers.VisualizerView2;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 
@@ -59,8 +55,6 @@ public class ViewSavedDNA extends Fragment {
     ImageView shareIcon, saveToStorageIcon;
 
     LinearLayout noSavedContent;
-
-    ShowcaseView showCase;
 
     boolean addTextToImage = false;
 
@@ -249,50 +243,6 @@ public class ViewSavedDNA extends Fragment {
         Button mEndButton = new Button(getContext());
         mEndButton.setBackgroundColor(HomeActivity.themeColor);
         mEndButton.setTextColor(Color.WHITE);
-
-        if (HomeActivity.savedDNAs.getSavedDNAs().size() > 0) {
-            showCase = new ShowcaseView.Builder(getActivity())
-                    .blockAllTouches()
-                    .singleShot(5)
-                    .setStyle(R.style.CustomShowcaseTheme)
-                    .useDecorViewAsParent()
-                    .replaceEndButton(mEndButton)
-                    .setContentTitlePaint(HomeActivity.tp)
-                    .setTarget(new ViewTarget(R.id.visualizer_alt_showcase, getActivity()))
-                    .setContentTitle("Saved DNAs")
-                    .setContentText("View all your saved DNAs here")
-                    .build();
-            showCase.setButtonText("Next");
-            showCase.setButtonPosition(HomeActivity.lps);
-            showCase.overrideButtonClick(new View.OnClickListener() {
-                int count1 = 0;
-
-                @Override
-                public void onClick(View v) {
-                    count1++;
-                    switch (count1) {
-                        case 1:
-                            showCase.setTarget(new ViewTarget(shareIcon.getId(), getActivity()));
-                            showCase.setContentTitle("Share DNA");
-                            showCase.setContentText("Share the DNA as an image with your friends");
-                            showCase.setButtonPosition(HomeActivity.lps);
-                            showCase.setButtonText("Next");
-                            break;
-                        case 2:
-                            showCase.setTarget(new ViewTarget(saveToStorageIcon.getId(), getActivity()));
-                            showCase.setContentTitle("Save DNA");
-                            showCase.setContentText("Save the DNA as an image to your internal storage");
-                            showCase.setButtonPosition(HomeActivity.lps);
-                            showCase.setButtonText("Done");
-                            break;
-                        case 3:
-                            showCase.hide();
-                            break;
-                    }
-                }
-
-            });
-        }
     }
 
     @Override
@@ -397,27 +347,7 @@ public class ViewSavedDNA extends Fragment {
         }
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
-
-    public boolean isShowcaseVisible() {
-        return (showCase != null && showCase.isShowing());
-    }
-
-    public void hideShowcase() {
-        showCase.hide();
-    }
 
     public void setVisualizerVisibility(int visibility) {
         mVisualizerView2.setVisibility(visibility);

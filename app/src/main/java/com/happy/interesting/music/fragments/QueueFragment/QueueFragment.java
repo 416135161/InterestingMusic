@@ -19,15 +19,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
+import com.bumptech.glide.request.target.ViewTarget;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
 import com.happy.interesting.music.itemtouchhelpers.SimpleItemTouchHelperCallback;
 import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
 import com.happy.interesting.music.activities.SplashActivity;
-import com.squareup.leakcanary.RefWatcher;
+
 
 
 /**
@@ -49,7 +48,7 @@ public class QueueFragment extends Fragment implements QueueRecyclerAdapter.OnDr
 
     queueCallbackListener mCallback;
 
-    ShowcaseView showCase;
+
 
     public interface queueCallbackListener {
         void onQueueItemClicked(int position);
@@ -147,48 +146,6 @@ public class QueueFragment extends Fragment implements QueueRecyclerAdapter.OnDr
         Button mEndButton = new Button(getContext());
         mEndButton.setBackgroundColor(HomeActivity.themeColor);
         mEndButton.setTextColor(Color.WHITE);
-
-        showCase = new ShowcaseView.Builder(getActivity())
-                .blockAllTouches()
-                .singleShot(3)
-                .setStyle(R.style.CustomShowcaseTheme)
-                .useDecorViewAsParent()
-                .replaceEndButton(mEndButton)
-                .setContentTitlePaint(HomeActivity.tp)
-                .setTarget(new ViewTarget(R.id.queue_alt_showcase, getActivity()))
-                .setContentTitle("Queue")
-                .setContentText("Here all songs that are currently in queue are listed." +
-                        " Use handle to reorder the Queue and swipe the song to remove from queue")
-                .build();
-        showCase.setButtonText("Next");
-        showCase.setButtonPosition(HomeActivity.lps);
-        showCase.overrideButtonClick(new View.OnClickListener() {
-            int count1 = 0;
-
-            @Override
-            public void onClick(View v) {
-                count1++;
-                switch (count1) {
-                    case 1:
-                        RelativeLayout.LayoutParams lps = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                        lps.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-                        lps.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-                        int margin = ((Number) (getResources().getDisplayMetrics().density * 12)).intValue();
-                        lps.setMargins(margin, margin, margin, 5 + HomeActivity.navBarHeightSizeinDp);
-                        showCase.setButtonPosition(lps);
-                        showCase.setTarget(new ViewTarget(saveQueue.getId(), getActivity()));
-                        showCase.setContentTitle("Save Queue");
-                        showCase.setContentText("Save the queue as a playlist");
-                        showCase.setButtonText("Done");
-                        break;
-                    case 2:
-                        showCase.hide();
-                        break;
-                }
-            }
-
-        });
-
     }
 
     @Override
@@ -200,28 +157,6 @@ public class QueueFragment extends Fragment implements QueueRecyclerAdapter.OnDr
     @Override
     public void onDragStarted(RecyclerView.ViewHolder viewHolder) {
         mItemTouchHelper.startDrag(viewHolder);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
-
-    public boolean isShowcaseVisible() {
-        return (showCase != null && showCase.isShowing());
-    }
-
-    public void hideShowcase() {
-        showCase.hide();
     }
 
     public void updateQueueAdapter() {

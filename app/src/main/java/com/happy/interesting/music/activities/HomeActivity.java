@@ -68,9 +68,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.view.HapticFeedbackConstants;
 
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
+
 import com.google.gson.Gson;
+import com.happy.interesting.music.intercepter.QueryInterceptor;
 import com.lantouzi.wheelview.WheelView;
 import com.happy.interesting.music.adapters.playlistdialogadapter.AddToPlaylistAdapter;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
@@ -124,7 +124,6 @@ import com.happy.interesting.music.models.SavedDNA;
 import com.happy.interesting.music.models.Settings;
 import com.happy.interesting.music.models.Track;
 import com.happy.interesting.music.models.UnifiedTrack;
-import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.notificationmanager.Constants;
 import com.happy.interesting.music.notificationmanager.MediaPlayerService;
 import com.happy.interesting.music.fragments.PlayerFragment.PlayerFragment;
@@ -136,12 +135,13 @@ import com.happy.interesting.music.utilities.comparators.LocalMusicComparator;
 import com.happy.interesting.music.utilities.FileUtils;
 import com.happy.interesting.music.utilities.MediaCacheUtils;
 import com.happy.interesting.music.visualizers.VisualizerView;
-import com.happy.interesting.music.imageloader.ImageLoader;
-import com.squareup.leakcanary.RefWatcher;
+import com.happy.interesting.music.imageLoader.ImageLoader;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -149,6 +149,7 @@ import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 //import retrofit2.GsonConverterFactory;
@@ -340,8 +341,6 @@ public class HomeActivity extends AppCompatActivity
     public byte[] mBytes;
 
     public HeadSetReceiver headSetReceiver;
-
-    ShowcaseView showCase;
 
     View playerContainer;
 
@@ -744,52 +743,6 @@ public class HomeActivity extends AppCompatActivity
         progress.setContentView(R.layout.custom_progress_dialog);
         progress.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         progress.show();
-
-        showCase = new ShowcaseView.Builder(this)
-                .blockAllTouches()
-                .singleShot(0)
-                .setStyle(R.style.CustomShowcaseTheme)
-                .useDecorViewAsParent()
-                .replaceEndButton(mEndButton)
-                .setContentTitlePaint(tp)
-                .setTarget(new ViewTarget(R.id.recentsRecyclerLabel, this))
-                .setContentTitle("Recents and Playlists")
-                .setContentText("Here all you recent songs and playlists will be listed." +
-                        "Long press the cards or playlists for more options \n" +
-                        "\n" +
-                        "(Press Next to continue / Press back to Hide)")
-                .build();
-        showCase.setButtonText("Next");
-        showCase.setButtonPosition(lps);
-        showCase.overrideButtonClick(new View.OnClickListener() {
-            int count1 = 0;
-
-            @Override
-            public void onClick(View v) {
-                count1++;
-                switch (count1) {
-                    case 1:
-                        showCase.setTarget(new ViewTarget(R.id.local_banner_alt_showcase, (Activity) ctx));
-                        showCase.setContentTitle("Local Songs");
-                        showCase.setContentText("See all songs available locally, classified on basis of Artist and Album");
-                        showCase.setButtonPosition(lps);
-                        showCase.setButtonText("Next");
-                        break;
-                    case 2:
-                        showCase.setTarget(new ViewTarget(searchView.getId(), (Activity) ctx));
-                        showCase.setContentTitle("Search");
-                        showCase.setContentText("Search for songs from local library and SoundCloud™");
-                        showCase.setButtonPosition(lps);
-                        showCase.setButtonText("Done");
-                        break;
-                    case 3:
-                        showCase.hide();
-                        break;
-                }
-            }
-
-        });
-
         new loadSavedData().execute();
 
     }
@@ -1757,31 +1710,10 @@ public class HomeActivity extends AppCompatActivity
     public void onBackPressed() {
         PlayerFragment plFrag = playerFragment;
         LocalMusicViewPagerFragment flmFrag = (LocalMusicViewPagerFragment) fragMan.findFragmentByTag("local");
-        LocalMusicFragment lFrag = null;
-        if (flmFrag != null) {
-            lFrag = (LocalMusicFragment) flmFrag.getFragmentByPosition(0);
-        }
-        QueueFragment qFrag = (QueueFragment) fragMan.findFragmentByTag("queue");
-        EqualizerFragment eqFrag = (EqualizerFragment) fragMan.findFragmentByTag("equalizer");
-        ViewSavedDNA vsdFrag = (ViewSavedDNA) fragMan.findFragmentByTag("allSavedDNAs");
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else if (showCase != null && showCase.isShowing()) {
-            showCase.hide();
-        } else if (plFrag != null && plFrag.isShowcaseVisible()) {
-            plFrag.hideShowcase();
-        } else if (lFrag != null && lFrag.isShowcaseVisible()) {
-            lFrag.hideShowcase();
-        } else if (qFrag != null && qFrag.isShowcaseVisible()) {
-            qFrag.hideShowcase();
-        } else if (eqFrag != null && eqFrag.isShowcaseVisible()) {
-            eqFrag.hideShowcase();
-        } else if (vsdFrag != null && vsdFrag.isShowcaseVisible()) {
-            vsdFrag.hideShowcase();
-        } else if (isFullScreenEnabled) {
+        }  else if (isFullScreenEnabled) {
             isFullScreenEnabled = false;
             plFrag.bottomContainer.setVisibility(View.VISIBLE);
             plFrag.seekBarContainer.setVisibility(View.VISIBLE);
@@ -1988,8 +1920,6 @@ public class HomeActivity extends AppCompatActivity
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(headSetReceiver);
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(this);
-        refWatcher.watch(this);
         TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
         if (mgr != null) {
             mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_NONE);
@@ -2185,11 +2115,20 @@ public class HomeActivity extends AppCompatActivity
 
                     startLoadingIndicator();
                     Retrofit client = new Retrofit.Builder()
-                            .baseUrl(Config.API_URL)
+                            .baseUrl(Config.API_SERACH)
+                            .client(new OkHttpClient.Builder()
+                                    .addInterceptor(new QueryInterceptor()).
+                                            build())
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
                     StreamService ss = client.create(StreamService.class);
-                    call = ss.getTracks(0, 15, 3);
+                    String	encodeStr = "";
+                    try {
+                         encodeStr = URLEncoder.encode(query, "utf-8");
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    call = ss.searchSong(encodeStr);
                     call.enqueue(new Callback<Result<List<Track>>>() {
 
                         @Override

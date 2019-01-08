@@ -1,4 +1,4 @@
-package com.happy.interesting.music.imageloader;
+package com.happy.interesting.music.imageLoader;
 
 /**
  * Created by Harjot on 06-Apr-16.

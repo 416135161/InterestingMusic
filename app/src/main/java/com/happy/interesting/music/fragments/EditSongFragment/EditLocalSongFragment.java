@@ -22,7 +22,7 @@ import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.R;
 import com.happy.interesting.music.activities.SplashActivity;
 import com.happy.interesting.music.utilities.CommonUtils;
-import com.happy.interesting.music.imageloader.ImageLoader;
+import com.happy.interesting.music.imageLoader.ImageLoader;
 
 import org.entity.audio.AudioFileIO;
 import org.entity.audio.exceptions.CannotReadException;

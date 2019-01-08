@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
-import com.squareup.leakcanary.RefWatcher;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -97,20 +97,6 @@ public class ArtistFragment extends Fragment {
     public void onResume() {
         super.onResume();
         llManager.scrollToPositionWithOffset(0, 0);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
     }
 
     public void updateAdapter() {

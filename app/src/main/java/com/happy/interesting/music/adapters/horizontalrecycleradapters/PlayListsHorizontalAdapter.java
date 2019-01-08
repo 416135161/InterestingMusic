@@ -9,10 +9,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.happy.interesting.music.R;
+import com.happy.interesting.music.imageLoader.ImageLoader;
 import com.happy.interesting.music.models.Playlist;
 import com.happy.interesting.music.models.UnifiedTrack;
-import com.happy.interesting.music.R;
-import com.happy.interesting.music.imageloader.ImageLoader;
 
 import java.util.List;
 

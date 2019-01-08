@@ -20,8 +20,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
+
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
 import com.happy.interesting.music.custombottomsheets.CustomLocalBottomSheetDialog;
 import com.happy.interesting.music.activities.HomeActivity;
@@ -32,7 +31,7 @@ import com.happy.interesting.music.models.UnifiedTrack;
 import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
 import com.happy.interesting.music.utilities.CommonUtils;
-import com.squareup.leakcanary.RefWatcher;
+
 
 import java.util.Random;
 
@@ -45,8 +44,6 @@ public class RecentlyAddedSongsFragment extends Fragment {
     LocalTrackRecyclerAdapter adapter;
     OnLocalTrackSelectedListener mCallback;
     Context ctx;
-
-    ShowcaseView showCase;
 
     RecyclerView lv;
     LinearLayoutManager mLayoutManager2;
@@ -196,20 +193,6 @@ public class RecentlyAddedSongsFragment extends Fragment {
             }
         }
         return -1;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
     }
 
     public void hidePlayAllFab() {

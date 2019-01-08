@@ -29,15 +29,11 @@ import com.db.chart.model.LineSet;
 import com.db.chart.renderer.AxisRenderer;
 import com.db.chart.view.ChartView;
 import com.db.chart.view.LineChartView;
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
-import com.happy.interesting.music.customviews.AnalogController;
-import com.happy.interesting.music.activities.HomeActivity;
-import com.happy.interesting.music.MusicDNAApplication;
-import com.happy.interesting.music.fragments.PlayerFragment.PlayerFragment;
 import com.happy.interesting.music.R;
+import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.activities.SplashActivity;
-import com.squareup.leakcanary.RefWatcher;
+import com.happy.interesting.music.customviews.AnalogController;
+import com.happy.interesting.music.fragments.PlayerFragment.PlayerFragment;
 
 import java.util.ArrayList;
 
@@ -70,8 +66,6 @@ public class EqualizerFragment extends Fragment {
     Spinner presetSpinner;
 
     FrameLayout equalizerBlocker;
-
-    ShowcaseView showCase;
 
     Context ctx;
 
@@ -377,48 +371,6 @@ public class EqualizerFragment extends Fragment {
         mEndButton.setBackgroundColor(HomeActivity.themeColor);
         mEndButton.setTextColor(Color.WHITE);
 
-        showCase = new ShowcaseView.Builder(getActivity())
-                .blockAllTouches()
-                .singleShot(4)
-                .setStyle(R.style.CustomShowcaseTheme)
-                .useDecorViewAsParent()
-                .replaceEndButton(mEndButton)
-                .setContentTitlePaint(HomeActivity.tp)
-                .setTarget(new ViewTarget(R.id.showcase_view_equalizer, getActivity()))
-                .setContentTitle("Presets")
-                .setContentText("Use one of the available presets")
-                .build();
-        showCase.setButtonText("Next");
-        showCase.setButtonPosition(HomeActivity.lps);
-        showCase.overrideButtonClick(new View.OnClickListener() {
-            int count1 = 0;
-
-            @Override
-            public void onClick(View v) {
-                count1++;
-                switch (count1) {
-                    case 1:
-                        showCase.setTarget(new ViewTarget(R.id.equalizerContainer, getActivity()));
-                        showCase.setContentTitle("Equalizer Controls");
-                        showCase.setContentText("Use the seekbars to control the Individual frequencies");
-                        showCase.setButtonPosition(HomeActivity.lps);
-                        showCase.setButtonText("Next");
-                        break;
-                    case 2:
-                        showCase.setTarget(new ViewTarget(R.id.controllerBass, getActivity()));
-                        showCase.setContentTitle("Bass and Reverb");
-                        showCase.setContentText("Use these controls to control Bass and Reverb");
-                        showCase.setButtonPosition(HomeActivity.lps);
-                        showCase.setButtonText("Done");
-                        break;
-                    case 3:
-                        showCase.hide();
-                        break;
-                }
-            }
-
-        });
-
     }
 
     public void equalizeSound() {
@@ -471,28 +423,6 @@ public class EqualizerFragment extends Fragment {
 
             }
         });
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
-
-    public boolean isShowcaseVisible() {
-        return (showCase != null && showCase.isShowing());
-    }
-
-    public void hideShowcase() {
-        showCase.hide();
     }
 
     public void setBlockerVisibility(int visibility) {

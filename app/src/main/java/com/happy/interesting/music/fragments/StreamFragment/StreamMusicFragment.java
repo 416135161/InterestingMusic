@@ -19,7 +19,7 @@ import com.happy.interesting.music.models.UnifiedTrack;
 import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
 import com.happy.interesting.music.utilities.CommonUtils;
-import com.squareup.leakcanary.RefWatcher;
+
 
 
 /**
@@ -122,20 +122,6 @@ public class StreamMusicFragment extends Fragment {
             }
         });
 
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
     }
 
     public void dataChanged() {

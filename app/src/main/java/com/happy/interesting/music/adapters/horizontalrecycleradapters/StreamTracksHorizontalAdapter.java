@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.happy.interesting.music.models.Track;
 import com.happy.interesting.music.R;
-import com.happy.interesting.music.imageloader.ImageLoader;
+import com.happy.interesting.music.imageLoader.ImageLoader;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

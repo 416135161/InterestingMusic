@@ -20,5 +20,5 @@ public interface StreamService {
     Call<Result<List<Track>>> getTracks(@Query("start") int start, @Query("pageSize") int pageSize, @Query("type") int type);
 
     @GET("/song_search_v2?page=1&pagesize=20&iscorrection=7&clientver=2.6.6&area_code=1")
-    Callback<String> searchSong(@Query("keyword") String keyword);
+    Call<Result<List<Track>>> searchSong(@Query("keyword") String keyword);
 }

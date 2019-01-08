@@ -35,7 +35,7 @@ import com.happy.interesting.music.R;
 import com.happy.interesting.music.activities.SplashActivity;
 import com.happy.interesting.music.models.Settings;
 import com.happy.interesting.music.utilities.CommonUtils;
-import com.squareup.leakcanary.RefWatcher;
+
 
 
 /**
@@ -273,20 +273,6 @@ public class SettingsFragment extends Fragment {
                 mCallback.onAboutClicked();
             }
         });
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
     }
 
     public int getDarkColor(int color) {

@@ -27,8 +27,7 @@ import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
 import com.happy.interesting.music.activities.SplashActivity;
 import com.happy.interesting.music.utilities.CommonUtils;
-import com.happy.interesting.music.imageloader.ImageLoader;
-import com.squareup.leakcanary.RefWatcher;
+import com.happy.interesting.music.imageLoader.ImageLoader;
 
 
 /**
@@ -215,17 +214,4 @@ public class ViewArtistFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
 }

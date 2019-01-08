@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.happy.interesting.music.models.LocalTrack;
 import com.happy.interesting.music.models.MusicFolder;
 import com.happy.interesting.music.R;
-import com.happy.interesting.music.imageloader.ImageLoader;
+import com.happy.interesting.music.imageLoader.ImageLoader;
 
 import java.util.List;
 

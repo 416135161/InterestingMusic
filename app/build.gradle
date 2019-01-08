@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
 apply plugin: 'com.github.ben-manes.versions'
 
 android {
@@ -26,9 +25,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
-        transitive = true;
-    }
     api 'org.jsoup:jsoup:1.8.3'
     api 'com.squareup.okhttp:okhttp:2.+'
     api 'com.github.bumptech.glide:glide:3.7.0'
@@ -60,7 +56,4 @@ dependencies {
     api 'jp.wasabeef:blurry:2.1.0'
     api('de.psdev.licensesdialog:licensesdialog:1.8.1')
     testImplementation 'junit:junit:4.12'
-    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }

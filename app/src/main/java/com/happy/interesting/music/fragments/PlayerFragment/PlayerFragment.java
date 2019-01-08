@@ -1,12 +1,9 @@
 package com.happy.interesting.music.fragments.PlayerFragment;
 
 
-import android.content.res.ColorStateList;
-import android.graphics.Canvas;
-import android.net.ConnectivityManager;
-import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -16,14 +13,15 @@ import android.media.audiofx.BassBoost;
 import android.media.audiofx.Equalizer;
 import android.media.audiofx.PresetReverb;
 import android.media.audiofx.Visualizer;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Base64;
 import android.util.Log;
 import android.util.Pair;
@@ -39,26 +37,21 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
+import com.happy.interesting.music.R;
 import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
-import com.happy.interesting.music.Config;
-import com.happy.interesting.music.lyrics.Lyrics;
-import com.happy.interesting.music.snappyrecyclerview.CustomAdapter;
-import com.happy.interesting.music.snappyrecyclerview.SnappyRecyclerView;
 import com.happy.interesting.music.customviews.CustomProgressBar;
+import com.happy.interesting.music.imageLoader.ImageLoader;
+import com.happy.interesting.music.lyrics.Lyrics;
 import com.happy.interesting.music.models.LocalTrack;
 import com.happy.interesting.music.models.SavedDNA;
 import com.happy.interesting.music.models.Track;
 import com.happy.interesting.music.models.UnifiedTrack;
-import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.notificationmanager.AudioPlayerBroadcastReceiver;
-import com.happy.interesting.music.R;
+import com.happy.interesting.music.snappyrecyclerview.CustomAdapter;
+import com.happy.interesting.music.snappyrecyclerview.SnappyRecyclerView;
 import com.happy.interesting.music.utilities.DownloadThread;
 import com.happy.interesting.music.visualizers.VisualizerView;
-import com.happy.interesting.music.imageloader.ImageLoader;
-import com.squareup.leakcanary.RefWatcher;
 import com.squareup.picasso.Picasso;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -209,8 +202,6 @@ public class PlayerFragment extends Fragment implements
     public Lyrics currentLyrics = null;
 
     public boolean isStart = true;
-
-    ShowcaseView showCase;
 
     long startTrack;
     long endTrack;
@@ -1091,67 +1082,6 @@ public class PlayerFragment extends Fragment implements
         final Button mEndButton = new Button(getContext());
         mEndButton.setBackgroundColor(homeActivity.themeColor);
         mEndButton.setTextColor(Color.WHITE);
-
-        Handler handler = new Handler();
-        handler.postDelayed(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        showCase = new ShowcaseView.Builder(getActivity())
-                                .blockAllTouches()
-                                .singleShot(2)
-                                .setStyle(R.style.CustomShowcaseTheme)
-                                .useDecorViewAsParent()
-                                .replaceEndButton(mEndButton)
-                                .setContentTitlePaint(homeActivity.tp)
-                                .setTarget(new ViewTarget(mVisualizerView.getId(), getActivity()))
-                                .setContentTitle("The DNA")
-                                .setContentText("The DNA of the currently playing song.")
-                                .build();
-                        showCase.setButtonText("Next");
-                        showCase.setButtonPosition(homeActivity.lps);
-                        showCase.overrideButtonClick(new View.OnClickListener() {
-                            int count1 = -1;
-
-                            @Override
-                            public void onClick(View v) {
-                                count1++;
-                                switch (count1) {
-                                    case 0:
-                                        showCase.setTarget(new ViewTarget(mVisualizerView.getId(), getActivity()));
-                                        showCase.setContentTitle("The DNA");
-                                        showCase.setContentText("Swipe Left or Right to change Song." +
-                                                "Long Press for fullscreen");
-                                        showCase.setButtonPosition(homeActivity.lps);
-                                        showCase.setButtonText("Next");
-                                        break;
-                                    case 1:
-                                        showCase.setTarget(new ViewTarget(R.id.toggleContainer, getActivity()));
-                                        showCase.setContentTitle("The Controls");
-                                        showCase.setContentText("Equalizer \n" +
-                                                "Save LARK toggle\n" +
-                                                "Add to Favourites \n" +
-                                                "Queue");
-                                        showCase.setButtonPosition(homeActivity.lps);
-                                        showCase.setButtonText("Done");
-                                        break;
-                                    case 2:
-                                        showCase.setTarget(new ViewTarget(R.id.lyrics_icon, getActivity()));
-                                        showCase.setContentTitle("Lyrics");
-                                        showCase.setContentText("Get lyrics by tapping this icon");
-                                        showCase.setButtonPosition(homeActivity.lps);
-                                        showCase.setButtonText("Done");
-                                        break;
-                                    case 3:
-                                        showCase.hide();
-                                        break;
-                                }
-                            }
-
-                        });
-                    }
-                }, 500);
-
     }
 
     public void addToFavourite() {
@@ -1193,19 +1123,11 @@ public class PlayerFragment extends Fragment implements
         mCallback.onAddedtoFavfromPlayer();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
-    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         super.onDestroy();
-        RefWatcher refWatcher = MusicDNAApplication.getRefWatcher(getContext());
-        refWatcher.watch(this);
         if (mMediaPlayer != null) {
             if (mMediaPlayer.isPlaying()) {
                 mMediaPlayer.stop();
@@ -1507,14 +1429,6 @@ public class PlayerFragment extends Fragment implements
             mMediaPlayer.pause();
             mCallback.onComplete();
         }
-    }
-
-    public boolean isShowcaseVisible() {
-        return (showCase != null && showCase.isShowing());
-    }
-
-    public void hideShowcase() {
-        showCase.hide();
     }
 
     public void toggleAlbumArtBackground() {
