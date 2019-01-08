@@ -71,6 +71,7 @@ import android.view.HapticFeedbackConstants;
 
 import com.google.gson.Gson;
 import com.happy.interesting.music.intercepter.QueryInterceptor;
+import com.happy.interesting.music.models.SearchResponse.SearchResponseBean;
 import com.lantouzi.wheelview.WheelView;
 import com.happy.interesting.music.adapters.playlistdialogadapter.AddToPlaylistAdapter;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
@@ -287,7 +288,7 @@ public class HomeActivity extends AppCompatActivity
 
     NavigationView navigationView;
 
-    Call<Result<List<Track>>> call;
+    Call<SearchResponseBean> call;
 
     SearchView searchView;
     MenuItem searchItem;
@@ -472,7 +473,7 @@ public class HomeActivity extends AppCompatActivity
         });
 
         copyrightText = (TextView) findViewById(R.id.copyright_text);
-        copyrightText.setText("Music DNA v" + versionName);
+        copyrightText.setText("Music Lark v" + versionName);
 
         if (SplashActivity.tf4 != null) {
             try {
@@ -1757,51 +1758,51 @@ public class HomeActivity extends AppCompatActivity
             } else {
                 if (isLocalVisible) {
                     hideFragment("local");
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (isQueueVisible) {
                     hideFragment("queue");
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (isStreamVisible) {
                     hideFragment("stream");
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (isPlaylistVisible) {
                     hideFragment("playlist");
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (isNewPlaylistVisible) {
                     hideFragment("newPlaylist");
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (isEqualizerVisible) {
                     finalSelectedTracks.clear();
                     hideFragment("equalizer");
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (isFavouriteVisible) {
                     hideFragment("favourite");
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (isAllPlaylistVisible) {
                     hideFragment("allPlaylists");
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (isFolderContentVisible) {
                     hideFragment("folderContent");
                     setTitle("Folders");
                 } else if (isAllFolderVisible) {
                     hideFragment("allFolders");
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (isAllSavedDnaVisisble) {
                     hideFragment("allSavedDNAs");
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (isSavedDNAVisible) {
                     hideFragment("savedDNA");
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (isRecentVisible) {
                     hideFragment("recent");
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (isAboutVisible) {
                     hideFragment("About");
                     setTitle("Settings");
                 } else if (isSettingsVisible) {
                     hideFragment("settings");
                     new SaveSettings().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-                    setTitle("Music DNA");
+                    setTitle("Music Lark");
                 } else if (!isPlayerTransitioning) {
                     startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME));
                 }
@@ -2129,12 +2130,13 @@ public class HomeActivity extends AppCompatActivity
                         e.printStackTrace();
                     }
                     call = ss.searchSong(encodeStr);
-                    call.enqueue(new Callback<Result<List<Track>>>() {
+                    call.enqueue(new Callback<SearchResponseBean>() {
 
                         @Override
-                        public void onResponse(Call<Result<List<Track>>> call, Response<Result<List<Track>>> response) {
+                        public void onResponse(Call<SearchResponseBean> call, Response<SearchResponseBean> response) {
                             if (response.isSuccessful()) {
-                                streamingTrackList = response.body().result;
+
+//                                streamingTrackList = response.body().result;
                                 sAdapter = new StreamTracksHorizontalAdapter(streamingTrackList, ctx);
                                 LinearLayoutManager mLayoutManager = new LinearLayoutManager(ctx, LinearLayoutManager.HORIZONTAL, false);
                                 soundcloudRecyclerView.setLayoutManager(mLayoutManager);
@@ -2161,7 +2163,7 @@ public class HomeActivity extends AppCompatActivity
                         }
 
                         @Override
-                        public void onFailure(Call<Result<List<Track>>> call, Throwable t) {
+                        public void onFailure(Call<SearchResponseBean> call, Throwable t) {
                             Log.d("RETRO1", t.getMessage());
                         }
 
@@ -2937,7 +2939,7 @@ public class HomeActivity extends AppCompatActivity
     public void onPlaylistPlayAll() {
         onQueueItemClicked(0);
         hideFragment("playlist");
-        setTitle("Music DNA");
+        setTitle("Music Lark");
     }
 
     @Override
@@ -4180,7 +4182,7 @@ public class HomeActivity extends AppCompatActivity
     public void hideFragment(String type) {
         if (type.equals("local")) {
             isLocalVisible = false;
-            setTitle("Music DNA");
+            setTitle("Music Lark");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("local");
@@ -4201,7 +4203,7 @@ public class HomeActivity extends AppCompatActivity
             }
         } else if (type.equals("stream")) {
             isStreamVisible = false;
-            setTitle("Music DNA");
+            setTitle("Music Lark");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("stream");
@@ -4231,7 +4233,7 @@ public class HomeActivity extends AppCompatActivity
             }
         } else if (type.equals("favourite")) {
             isFavouriteVisible = false;
-            setTitle("Music DNA");
+            setTitle("Music Lark");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("favourite");
@@ -4252,7 +4254,7 @@ public class HomeActivity extends AppCompatActivity
             }
         } else if (type.equals("allPlaylists")) {
             isAllPlaylistVisible = false;
-            setTitle("Music DNA");
+            setTitle("Music Lark");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("allPlaylists");
@@ -4272,7 +4274,7 @@ public class HomeActivity extends AppCompatActivity
             }
         } else if (type.equals("allFolders")) {
             isAllFolderVisible = false;
-            setTitle("Music DNA");
+            setTitle("Music Lark");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("allFolders");
@@ -4283,7 +4285,7 @@ public class HomeActivity extends AppCompatActivity
             }
         } else if (type.equals("allSavedDNAs")) {
             isAllSavedDnaVisisble = false;
-            setTitle("Music DNA");
+            setTitle("Music Lark");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("allSavedDNAs");
@@ -4312,7 +4314,7 @@ public class HomeActivity extends AppCompatActivity
             }
         } else if (type.equals("recent")) {
             isRecentVisible = false;
-            setTitle("Music DNA");
+            setTitle("Music Lark");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("recent");
@@ -4323,7 +4325,7 @@ public class HomeActivity extends AppCompatActivity
             }
         } else if (type.equals("settings")) {
             isSettingsVisible = false;
-            setTitle("Music DNA");
+            setTitle("Music Lark");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("settings");
@@ -4373,7 +4375,7 @@ public class HomeActivity extends AppCompatActivity
 
         navigationView.setCheckedItem(R.id.nav_home);
 
-        setTitle("Music DNA");
+        setTitle("Music Lark");
 
     }
 
