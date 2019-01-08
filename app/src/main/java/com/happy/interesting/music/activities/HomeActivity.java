@@ -71,7 +71,7 @@ import android.view.HapticFeedbackConstants;
 
 import com.google.gson.Gson;
 import com.happy.interesting.music.intercepter.QueryInterceptor;
-import com.happy.interesting.music.models.SearchResponse.SearchResponseBean;
+import com.happy.interesting.music.models.searchResponse.SearchResponseBean;
 import com.lantouzi.wheelview.WheelView;
 import com.happy.interesting.music.adapters.playlistdialogadapter.AddToPlaylistAdapter;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
@@ -120,7 +120,6 @@ import com.happy.interesting.music.models.MusicFolder;
 import com.happy.interesting.music.models.Playlist;
 import com.happy.interesting.music.models.Queue;
 import com.happy.interesting.music.models.RecentlyPlayed;
-import com.happy.interesting.music.models.Result;
 import com.happy.interesting.music.models.SavedDNA;
 import com.happy.interesting.music.models.Settings;
 import com.happy.interesting.music.models.Track;

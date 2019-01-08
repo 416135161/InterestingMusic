@@ -1,7 +1,7 @@
 /**
   * Copyright 2019 bejson.com 
   */
-package com.happy.interesting.music.models.SearchResponse;
+package com.happy.interesting.music.models.searchResponse;
 import java.util.List;
 
 /**
