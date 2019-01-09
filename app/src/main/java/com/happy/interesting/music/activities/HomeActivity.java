@@ -47,6 +47,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextPaint;
 import android.util.Log;
 import android.view.Display;
+import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,28 +67,33 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.view.HapticFeedbackConstants;
-
 
 import com.google.gson.Gson;
-import com.happy.interesting.music.intercepter.QueryInterceptor;
-import com.happy.interesting.music.models.searchResponse.SearchResponseBean;
-import com.lantouzi.wheelview.WheelView;
+import com.happy.interesting.music.Config;
+import com.happy.interesting.music.R;
+import com.happy.interesting.music.adapters.horizontalrecycleradapters.LocalTracksHorizontalAdapter;
+import com.happy.interesting.music.adapters.horizontalrecycleradapters.PlayListsHorizontalAdapter;
+import com.happy.interesting.music.adapters.horizontalrecycleradapters.RecentsListHorizontalAdapter;
+import com.happy.interesting.music.adapters.horizontalrecycleradapters.StreamTracksHorizontalAdapter;
 import com.happy.interesting.music.adapters.playlistdialogadapter.AddToPlaylistAdapter;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
-import com.happy.interesting.music.Config;
 import com.happy.interesting.music.custombottomsheets.CustomGeneralBottomSheetDialog;
 import com.happy.interesting.music.custombottomsheets.CustomLocalBottomSheetDialog;
 import com.happy.interesting.music.customviews.CustomLinearGradient;
 import com.happy.interesting.music.fragments.AboutFragment.AboutFragment;
+import com.happy.interesting.music.fragments.AllFoldersFragment.FolderFragment;
 import com.happy.interesting.music.fragments.AllPlaylistsFragment.AllPlaylistsFragment;
 import com.happy.interesting.music.fragments.EditSongFragment.EditLocalSongFragment;
 import com.happy.interesting.music.fragments.EqualizerFragment.EqualizerFragment;
 import com.happy.interesting.music.fragments.FavouritesFragment.FavouritesFragment;
 import com.happy.interesting.music.fragments.FolderContentFragment.FolderContentFragment;
-import com.happy.interesting.music.fragments.AllFoldersFragment.FolderFragment;
+import com.happy.interesting.music.fragments.LocalMusicFragments.AlbumFragment;
+import com.happy.interesting.music.fragments.LocalMusicFragments.ArtistFragment;
+import com.happy.interesting.music.fragments.LocalMusicFragments.LocalMusicFragment;
+import com.happy.interesting.music.fragments.LocalMusicFragments.LocalMusicViewPagerFragment;
 import com.happy.interesting.music.fragments.LocalMusicFragments.RecentlyAddedSongsFragment;
 import com.happy.interesting.music.fragments.NewPlaylistFragment.NewPlaylistFragment;
+import com.happy.interesting.music.fragments.PlayerFragment.PlayerFragment;
 import com.happy.interesting.music.fragments.QueueFragment.QueueFragment;
 import com.happy.interesting.music.fragments.RecentsFragment.RecentsFragment;
 import com.happy.interesting.music.fragments.SettingsFragment.SettingsFragment;
@@ -97,17 +103,14 @@ import com.happy.interesting.music.fragments.ViewArtistFragment.ViewArtistFragme
 import com.happy.interesting.music.fragments.ViewPlaylistFragment.PlaylistTrackAdapter;
 import com.happy.interesting.music.fragments.ViewPlaylistFragment.ViewPlaylistFragment;
 import com.happy.interesting.music.fragments.ViewSavedDNAsFragment.ViewSavedDNA;
-import com.happy.interesting.music.fragments.LocalMusicFragments.LocalMusicViewPagerFragment;
 import com.happy.interesting.music.headsethandler.HeadSetReceiver;
-import com.happy.interesting.music.adapters.horizontalrecycleradapters.LocalTracksHorizontalAdapter;
-import com.happy.interesting.music.adapters.horizontalrecycleradapters.PlayListsHorizontalAdapter;
-import com.happy.interesting.music.adapters.horizontalrecycleradapters.RecentsListHorizontalAdapter;
-import com.happy.interesting.music.adapters.horizontalrecycleradapters.StreamTracksHorizontalAdapter;
+import com.happy.interesting.music.imageLoader.ImageLoader;
+import com.happy.interesting.music.intercepter.HttpUtil;
+import com.happy.interesting.music.intercepter.QueryInterceptor;
+import com.happy.interesting.music.intercepter.TransformUtil;
+import com.happy.interesting.music.interfaces.GetSongCallBack;
 import com.happy.interesting.music.interfaces.ServiceCallbacks;
 import com.happy.interesting.music.interfaces.StreamService;
-import com.happy.interesting.music.fragments.LocalMusicFragments.AlbumFragment;
-import com.happy.interesting.music.fragments.LocalMusicFragments.ArtistFragment;
-import com.happy.interesting.music.fragments.LocalMusicFragments.LocalMusicFragment;
 import com.happy.interesting.music.models.Album;
 import com.happy.interesting.music.models.AllMusicFolders;
 import com.happy.interesting.music.models.AllPlaylists;
@@ -124,18 +127,17 @@ import com.happy.interesting.music.models.SavedDNA;
 import com.happy.interesting.music.models.Settings;
 import com.happy.interesting.music.models.Track;
 import com.happy.interesting.music.models.UnifiedTrack;
+import com.happy.interesting.music.models.searchResponse.SearchResponseBean;
 import com.happy.interesting.music.notificationmanager.Constants;
 import com.happy.interesting.music.notificationmanager.MediaPlayerService;
-import com.happy.interesting.music.fragments.PlayerFragment.PlayerFragment;
-import com.happy.interesting.music.R;
 import com.happy.interesting.music.utilities.CommonUtils;
+import com.happy.interesting.music.utilities.FileUtils;
+import com.happy.interesting.music.utilities.MediaCacheUtils;
 import com.happy.interesting.music.utilities.comparators.AlbumComparator;
 import com.happy.interesting.music.utilities.comparators.ArtistComparator;
 import com.happy.interesting.music.utilities.comparators.LocalMusicComparator;
-import com.happy.interesting.music.utilities.FileUtils;
-import com.happy.interesting.music.utilities.MediaCacheUtils;
 import com.happy.interesting.music.visualizers.VisualizerView;
-import com.happy.interesting.music.imageLoader.ImageLoader;
+import com.lantouzi.wheelview.WheelView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -149,14 +151,9 @@ import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
-//import retrofit2.GsonConverterFactory;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
 import static android.view.View.GONE;
 
 public class HomeActivity extends AppCompatActivity
@@ -1340,10 +1337,9 @@ public class HomeActivity extends AppCompatActivity
                     });
 
                     soundcloudRecyclerView = (RecyclerView) findViewById(R.id.trackList_home);
-
                     soundcloudRecyclerView.addOnItemTouchListener(new ClickItemTouchListener(soundcloudRecyclerView) {
                         @Override
-                        public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                        public boolean onClick(RecyclerView parent, View view,final int position, long id) {
                             Track track = streamingTrackList.get(position);
                             if (queue.getQueue().size() == 0) {
                                 queueCurrentIndex = 0;
@@ -1363,7 +1359,18 @@ public class HomeActivity extends AppCompatActivity
                             localSelected = false;
                             queueCall = false;
                             isReloaded = false;
-                            onTrackSelected(position);
+                            HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
+                                @Override
+                                public void onSongGetOk() {
+                                    onTrackSelected(position);
+                                }
+
+                                @Override
+                                public void onSongGetFail() {
+                                    Toast.makeText(HomeActivity.this, "Can't get song player url!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
                             return true;
                         }
 
@@ -1713,7 +1720,7 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }  else if (isFullScreenEnabled) {
+        } else if (isFullScreenEnabled) {
             isFullScreenEnabled = false;
             plFrag.bottomContainer.setVisibility(View.VISIBLE);
             plFrag.seekBarContainer.setVisibility(View.VISIBLE);
@@ -1943,12 +1950,12 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        CommonUtils.hideKeyboard(this);
-        updateLocalList(query.trim());
-        updateStreamingList(query.trim());
-        updateAlbumList(query.trim());
-        updateArtistList(query.trim());
-        updateRecentlyAddedLocalList(query.trim());
+//        CommonUtils.hideKeyboard(this);
+//        updateLocalList(query.trim());
+//        updateStreamingList(query.trim());
+//        updateAlbumList(query.trim());
+//        updateArtistList(query.trim());
+//        updateRecentlyAddedLocalList(query.trim());
         return true;
     }
 
@@ -2106,25 +2113,14 @@ public class HomeActivity extends AppCompatActivity
             mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
             if ((settings.isStreamOnlyOnWifiEnabled() && mWifi.isConnected()) || (!settings.isStreamOnlyOnWifiEnabled())) {
                 new Thread(new CancelCall()).start();
-
-
                 /*Update the Streaming List*/
-
                 if (!query.equals("")) {
                     streamRecyclerContainer.setVisibility(View.VISIBLE);
-
                     startLoadingIndicator();
-                    Retrofit client = new Retrofit.Builder()
-                            .baseUrl(Config.API_SERACH)
-                            .client(new OkHttpClient.Builder()
-                                    .addInterceptor(new QueryInterceptor()).
-                                            build())
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
-                    StreamService ss = client.create(StreamService.class);
-                    String	encodeStr = "";
+                    StreamService ss = HttpUtil.getApiService(Config.API_SERACH, new QueryInterceptor());
+                    String encodeStr = "";
                     try {
-                         encodeStr = URLEncoder.encode(query, "utf-8");
+                        encodeStr = URLEncoder.encode(query, "utf-8");
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
@@ -2134,8 +2130,8 @@ public class HomeActivity extends AppCompatActivity
                         @Override
                         public void onResponse(Call<SearchResponseBean> call, Response<SearchResponseBean> response) {
                             if (response.isSuccessful()) {
-
-//                                streamingTrackList = response.body().result;
+                                stopLoadingIndicator();
+                                streamingTrackList = TransformUtil.searchResponse2Track(response.body());
                                 sAdapter = new StreamTracksHorizontalAdapter(streamingTrackList, ctx);
                                 LinearLayoutManager mLayoutManager = new LinearLayoutManager(ctx, LinearLayoutManager.HORIZONTAL, false);
                                 soundcloudRecyclerView.setLayoutManager(mLayoutManager);
@@ -2148,7 +2144,6 @@ public class HomeActivity extends AppCompatActivity
                                     streamRecyclerContainer.setVisibility(View.VISIBLE);
                                 }
 
-                                stopLoadingIndicator();
                                 (soundcloudRecyclerView.getAdapter()).notifyDataSetChanged();
 
                                 StreamMusicFragment sFrag = (StreamMusicFragment) fragMan.findFragmentByTag("stream");

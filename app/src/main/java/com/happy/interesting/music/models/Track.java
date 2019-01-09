@@ -21,6 +21,8 @@ public class Track {
     @SerializedName("imgUrl")
     private String mArtworkURL;
 
+    private String fileHash;
+
     public String getTitle() {
         return mTitle;
     }
@@ -41,4 +43,31 @@ public class Track {
         return mArtworkURL;
     }
 
+    public void setmTitle(String mTitle) {
+        this.mTitle = mTitle;
+    }
+
+    public void setmID(int mID) {
+        this.mID = mID;
+    }
+
+    public void setmDuration(int mDuration) {
+        this.mDuration = mDuration;
+    }
+
+    public void setmStreamURL(String mStreamURL) {
+        this.mStreamURL = mStreamURL;
+    }
+
+    public void setmArtworkURL(String mArtworkURL) {
+        this.mArtworkURL = mArtworkURL;
+    }
+
+    public String getFileHash() {
+        return fileHash;
+    }
+
+    public void setFileHash(String fileHash) {
+        this.fileHash = fileHash;
+    }
 }

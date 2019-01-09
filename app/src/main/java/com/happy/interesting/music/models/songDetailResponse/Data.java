@@ -13,7 +13,7 @@ import java.util.List;
 public class Data {
 
     private String hash;
-    private long timelength;
+    private int timelength;
     private long filesize;
     private String audio_name;
     private int have_album;
@@ -38,10 +38,10 @@ public class Data {
          return hash;
      }
 
-    public void setTimelength(long timelength) {
+    public void setTimelength(int timelength) {
          this.timelength = timelength;
      }
-     public long getTimelength() {
+     public int getTimelength() {
          return timelength;
      }
 
