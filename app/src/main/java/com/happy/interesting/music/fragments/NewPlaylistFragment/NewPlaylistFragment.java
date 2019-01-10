@@ -22,11 +22,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
 import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.models.LocalTrack;
 import com.happy.interesting.music.R;
-import com.happy.interesting.music.activities.SplashActivity;
+;
 import com.happy.interesting.music.utilities.CommonUtils;
 
 import java.util.ArrayList;
@@ -108,8 +109,8 @@ public class NewPlaylistFragment extends Fragment {
         });
 
         fragTitle = (TextView) view.findViewById(R.id.add_to_playlist_fragment_title);
-        if (SplashActivity.tf4 != null)
-            fragTitle.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            fragTitle.setTypeface(Config.tf4);
 
         savePlaylist = (FloatingActionButton) view.findViewById(R.id.save_playlist_fab);
         savePlaylist.setBackgroundTintList(ColorStateList.valueOf(HomeActivity.themeColor));

@@ -19,8 +19,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.activities.HomeActivity;
-import com.happy.interesting.music.activities.SplashActivity;
+;
 import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
 
@@ -72,8 +73,8 @@ public class LocalMusicViewPagerFragment extends Fragment {
         });
 
         fragTitle = (TextView) view.findViewById(R.id.local_fragment_title);
-        if (SplashActivity.tf4 != null)
-            fragTitle.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            fragTitle.setTypeface(Config.tf4);
 
         searchBox = (EditText) view.findViewById(R.id.local_fragment_search_box);
         searchBox.addTextChangedListener(new TextWatcher() {

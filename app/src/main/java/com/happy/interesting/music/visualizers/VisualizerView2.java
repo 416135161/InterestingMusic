@@ -10,8 +10,9 @@ import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.activities.HomeActivity;
-import com.happy.interesting.music.activities.SplashActivity;
+
 
 /**
  * Created by Harjot on 04-Jun-16.
@@ -51,8 +52,8 @@ public class VisualizerView2 extends View {
         mTextPaint.setColor(Color.WHITE);
         mTextPaint.setTextAlign(Paint.Align.CENTER);
         mTextPaint.setTextSize(40.0f * HomeActivity.ratio);
-        if (SplashActivity.tf3 != null)
-            mTextPaint.setTypeface(SplashActivity.tf3);
+        if (Config.tf3 != null)
+            mTextPaint.setTypeface(Config.tf3);
     }
 
     @Override

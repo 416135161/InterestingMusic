@@ -93,27 +93,27 @@ public class CustomLocalBottomSheetDialog extends BottomSheetDialogFragment impl
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.local_song_bottom_sheet_play_wrapper:
-                activity.bottomSheetListener(position, "Play", fragment, true);
-                break;
-            case R.id.local_song_bottom_sheet_play_next_wrapper:
-                activity.bottomSheetListener(position, "Play Next", fragment, true);
-                break;
-            case R.id.local_song_bottom_sheet_add_to_queue_wrapper:
-                activity.bottomSheetListener(position, "Add to Queue", fragment, true);
-                break;
-            case R.id.local_song_bottom_sheet_add_to_playlist_wrapper:
-                activity.bottomSheetListener(position, "Add to Playlist", fragment, true);
-                break;
-            case R.id.local_song_bottom_sheet_add_to_fav_wrapper:
-                activity.bottomSheetListener(position, "Add to Favourites", fragment, true);
-                break;
-            case R.id.local_song_bottom_sheet_share_wrapper:
-                activity.bottomSheetListener(position, "Share", fragment, true);
-                break;
-            case R.id.local_song_bottom_sheet_edit_wrapper:
-                activity.bottomSheetListener(position, "Edit", fragment, true);
-                break;
+//            case R.id.local_song_bottom_sheet_play_wrapper:
+//                activity.bottomSheetListener(position, "Play", fragment, true);
+//                break;
+//            case R.id.local_song_bottom_sheet_play_next_wrapper:
+//                activity.bottomSheetListener(position, "Play Next", fragment, true);
+//                break;
+//            case R.id.local_song_bottom_sheet_add_to_queue_wrapper:
+//                activity.bottomSheetListener(position, "Add to Queue", fragment, true);
+//                break;
+//            case R.id.local_song_bottom_sheet_add_to_playlist_wrapper:
+//                activity.bottomSheetListener(position, "Add to Playlist", fragment, true);
+//                break;
+//            case R.id.local_song_bottom_sheet_add_to_fav_wrapper:
+//                activity.bottomSheetListener(position, "Add to Favourites", fragment, true);
+//                break;
+//            case R.id.local_song_bottom_sheet_share_wrapper:
+//                activity.bottomSheetListener(position, "Share", fragment, true);
+//                break;
+//            case R.id.local_song_bottom_sheet_edit_wrapper:
+//                activity.bottomSheetListener(position, "Edit", fragment, true);
+//                break;
         }
         dismiss();
     }

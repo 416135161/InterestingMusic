@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,18 +18,16 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
-import com.happy.interesting.music.itemtouchhelpers.SimpleItemTouchHelperCallback;
+import com.happy.interesting.music.Config;
+import com.happy.interesting.music.R;
 import com.happy.interesting.music.activities.HomeActivity;
+import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
+import com.happy.interesting.music.imageLoader.ImageLoader;
+import com.happy.interesting.music.itemtouchhelpers.SimpleItemTouchHelperCallback;
 import com.happy.interesting.music.models.LocalTrack;
 import com.happy.interesting.music.models.Track;
 import com.happy.interesting.music.models.UnifiedTrack;
-import com.happy.interesting.music.MusicDNAApplication;
-import com.happy.interesting.music.R;
-import com.happy.interesting.music.activities.SplashActivity;
 import com.happy.interesting.music.utilities.CommonUtils;
-import com.happy.interesting.music.imageLoader.ImageLoader;
-
 import com.squareup.picasso.Picasso;
 
 
@@ -134,8 +132,8 @@ public class ViewPlaylistFragment extends Fragment implements
             bottomMarginLayout.getLayoutParams().height = CommonUtils.dpTopx(65, getContext());
 
         fragmentTitle = (TextView) view.findViewById(R.id.playlist_fragment_title);
-        if (SplashActivity.tf4 != null)
-            fragmentTitle.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            fragmentTitle.setTypeface(Config.tf4);
 
         title = (TextView) view.findViewById(R.id.playlist_title);
         title.setText(HomeActivity.tempPlaylist.getPlaylistName());

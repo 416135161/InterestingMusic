@@ -17,6 +17,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
 import com.happy.interesting.music.custombottomsheets.CustomGeneralBottomSheetDialog;
 import com.happy.interesting.music.fragments.LocalMusicFragments.LocalTrackRecyclerAdapter;
@@ -25,7 +26,7 @@ import com.happy.interesting.music.models.LocalTrack;
 import com.happy.interesting.music.models.UnifiedTrack;
 import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
-import com.happy.interesting.music.activities.SplashActivity;
+;
 import com.happy.interesting.music.utilities.CommonUtils;
 import com.happy.interesting.music.imageLoader.ImageLoader;
 
@@ -92,8 +93,8 @@ public class FolderContentFragment extends Fragment {
             bottomMarginLayout.getLayoutParams().height = CommonUtils.dpTopx(65, getContext());
 
         fragmentTitle = (TextView) view.findViewById(R.id.folder_fragment_title);
-        if (SplashActivity.tf4 != null)
-            fragmentTitle.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            fragmentTitle.setTypeface(Config.tf4);
 
         title = (TextView) view.findViewById(R.id.folder_title);
         title.setText(HomeActivity.tempMusicFolder.getFolderName());

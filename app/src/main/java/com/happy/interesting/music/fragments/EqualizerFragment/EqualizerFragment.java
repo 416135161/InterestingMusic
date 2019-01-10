@@ -29,9 +29,10 @@ import com.db.chart.model.LineSet;
 import com.db.chart.renderer.AxisRenderer;
 import com.db.chart.view.ChartView;
 import com.db.chart.view.LineChartView;
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.R;
 import com.happy.interesting.music.activities.HomeActivity;
-import com.happy.interesting.music.activities.SplashActivity;
+;
 import com.happy.interesting.music.customviews.AnalogController;
 import com.happy.interesting.music.fragments.PlayerFragment.PlayerFragment;
 
@@ -105,8 +106,8 @@ public class EqualizerFragment extends Fragment {
         });
 
         fragTitle = (TextView) view.findViewById(R.id.equalizer_fragment_title);
-        if (SplashActivity.tf4 != null)
-            fragTitle.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            fragTitle.setTypeface(Config.tf4);
 
         equalizerSwitch = (SwitchCompat) view.findViewById(R.id.equalizer_switch);
         equalizerSwitch.setChecked(HomeActivity.isEqualizerEnabled);

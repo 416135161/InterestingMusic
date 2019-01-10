@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
 import com.happy.interesting.music.itemtouchhelpers.SimpleItemTouchHelperCallback;
 import com.happy.interesting.music.activities.HomeActivity;
@@ -27,7 +28,7 @@ import com.happy.interesting.music.models.Track;
 import com.happy.interesting.music.models.UnifiedTrack;
 import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
-import com.happy.interesting.music.activities.SplashActivity;
+;
 import com.happy.interesting.music.utilities.CommonUtils;
 import com.happy.interesting.music.imageLoader.ImageLoader;
 
@@ -136,8 +137,8 @@ public class FavouritesFragment extends Fragment implements
         fragIcon.setImageTintList(ColorStateList.valueOf(HomeActivity.themeColor));
 
         fragTitle = (TextView) view.findViewById(R.id.fav_fragment_title);
-        if (SplashActivity.tf4 != null)
-            fragTitle.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            fragTitle.setTypeface(Config.tf4);
 
         addToQueueIcon = (ImageView) view.findViewById(R.id.add_fav_to_queue_icon);
         addToQueueIcon.setOnClickListener(new View.OnClickListener() {
@@ -173,8 +174,8 @@ public class FavouritesFragment extends Fragment implements
         favouriteRecycler = (RecyclerView) view.findViewById(R.id.favouriteRecycler);
         noFavouriteContent = (LinearLayout) view.findViewById(R.id.noFavouriteContent);
         playAll = (FloatingActionButton) view.findViewById(R.id.fav_play_all_fab);
-        if (SplashActivity.tf4 != null)
-            ((TextView) view.findViewById(R.id.favNoContentText)).setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            ((TextView) view.findViewById(R.id.favNoContentText)).setTypeface(Config.tf4);
 
         if (HomeActivity.favouriteTracks.getFavourite().size() == 0) {
             favouriteRecycler.setVisibility(View.INVISIBLE);

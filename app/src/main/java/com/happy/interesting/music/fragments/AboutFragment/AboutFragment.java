@@ -23,9 +23,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.R;
-import com.happy.interesting.music.activities.SplashActivity;
+;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,14 +90,14 @@ public class AboutFragment extends Fragment {
 
         versiontTextView.setText("Version " + versionName);
 
-        if (SplashActivity.tf4 != null) {
+        if (Config.tf4 != null) {
             backBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     getActivity().onBackPressed();
                 }
             });
-            fragTitle.setTypeface(com.happy.interesting.music.activities.SplashActivity.tf4);
+            fragTitle.setTypeface(Config.tf4);
         }
 
         if (HomeActivity.isReloaded) {

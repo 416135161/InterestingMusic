@@ -29,9 +29,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.R;
 import com.happy.interesting.music.activities.HomeActivity;
-import com.happy.interesting.music.activities.SplashActivity;
+;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
 import com.happy.interesting.music.models.SavedDNA;
 import com.happy.interesting.music.utilities.CommonUtils;
@@ -95,8 +96,8 @@ public class ViewSavedDNA extends Fragment {
         });
 
         fragmentTitle = (TextView) view.findViewById(R.id.view_saved_dna_fragment_title);
-        if (SplashActivity.tf4 != null)
-            fragmentTitle.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            fragmentTitle.setTypeface(Config.tf4);
 
         bottomMarginLayout = view.findViewById(R.id.bottom_margin_layout);
         if (HomeActivity.isReloaded)
@@ -109,8 +110,8 @@ public class ViewSavedDNA extends Fragment {
 
         noSavedContent = (LinearLayout) view.findViewById(R.id.no_saved_dnas);
 
-        if (SplashActivity.tf4 != null)
-            ((TextView) view.findViewById(R.id.no_saved_content_text)).setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            ((TextView) view.findViewById(R.id.no_saved_content_text)).setTypeface(Config.tf4);
 
         if (HomeActivity.savedDNAs == null || HomeActivity.savedDNAs.getSavedDNAs().size() == 0) {
             noSavedContent.setVisibility(View.VISIBLE);
@@ -259,8 +260,8 @@ public class ViewSavedDNA extends Fragment {
 
             TextView titleText = (TextView) dialog.findViewById(R.id.dialog_title);
             titleText.setText("Save as Image");
-            if (SplashActivity.tf4 != null)
-                titleText.setTypeface(SplashActivity.tf4);
+            if (Config.tf4 != null)
+                titleText.setTypeface(Config.tf4);
 
             // set the custom dialog components - text, image and button
             final EditText text = (EditText) dialog.findViewById(R.id.save_image_filename_text);
@@ -305,8 +306,8 @@ public class ViewSavedDNA extends Fragment {
 
             TextView titleText = (TextView) dialog.findViewById(R.id.dialog_title);
             titleText.setText("Share as Image");
-            if (SplashActivity.tf4 != null)
-                titleText.setTypeface(SplashActivity.tf4);
+            if (Config.tf4 != null)
+                titleText.setTypeface(Config.tf4);
 
             // set the custom dialog components - text, image and button
             final EditText text = (EditText) dialog.findViewById(R.id.save_image_filename_text);

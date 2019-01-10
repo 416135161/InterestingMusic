@@ -471,9 +471,9 @@ public class HomeActivity extends AppCompatActivity
         copyrightText = (TextView) findViewById(R.id.copyright_text);
         copyrightText.setText("Music Lark v" + versionName);
 
-        if (SplashActivity.tf4 != null) {
+        if (Config.tf4 != null) {
             try {
-                copyrightText.setTypeface(SplashActivity.tf4);
+                copyrightText.setTypeface(Config.tf4);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -523,9 +523,9 @@ public class HomeActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        if (SplashActivity.tf4 != null) {
-            collapsingToolbar.setCollapsedTitleTypeface(SplashActivity.tf4);
-            collapsingToolbar.setExpandedTitleTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null) {
+            collapsingToolbar.setCollapsedTitleTypeface(Config.tf4);
+            collapsingToolbar.setExpandedTitleTypeface(Config.tf4);
         }
 
         customLinearGradient = (CustomLinearGradient) findViewById(R.id.custom_linear_gradient);
@@ -705,10 +705,10 @@ public class HomeActivity extends AppCompatActivity
         streamRecyclerContainer = (RelativeLayout) findViewById(R.id.streamRecyclerContainer);
         playlistRecyclerContainer = (RelativeLayout) findViewById(R.id.playlistRecyclerContainer);
 
-        if (SplashActivity.tf4 != null) {
+        if (Config.tf4 != null) {
             try {
-                ((TextView) findViewById(R.id.playListRecyclerLabel)).setTypeface(SplashActivity.tf4);
-                ((TextView) findViewById(R.id.recentsRecyclerLabel)).setTypeface(SplashActivity.tf4);
+                ((TextView) findViewById(R.id.playListRecyclerLabel)).setTypeface(Config.tf4);
+                ((TextView) findViewById(R.id.recentsRecyclerLabel)).setTypeface(Config.tf4);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -3634,8 +3634,8 @@ public class HomeActivity extends AppCompatActivity
 
         TextView titleText = (TextView) dialog.findViewById(R.id.dialog_title);
         titleText.setText("Playlist Name");
-        if (SplashActivity.tf4 != null)
-            titleText.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            titleText.setTypeface(Config.tf4);
 
         Button btn = (Button) dialog.findViewById(R.id.save_image_btn);
         final EditText newName = (EditText) dialog.findViewById(R.id.save_image_filename_text);
@@ -3698,8 +3698,8 @@ public class HomeActivity extends AppCompatActivity
 
         TextView titleText = (TextView) dialog.findViewById(R.id.dialog_title);
         titleText.setText("Rename");
-        if (SplashActivity.tf4 != null)
-            titleText.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            titleText.setTypeface(Config.tf4);
 
         Button btn = (Button) dialog.findViewById(R.id.save_image_btn);
         final EditText newName = (EditText) dialog.findViewById(R.id.save_image_filename_text);
@@ -4779,8 +4779,8 @@ public class HomeActivity extends AppCompatActivity
         wheelPicker.setItems(minuteList);
 
         TextView title = (TextView) dialog.findViewById(R.id.sleep_dialog_title_text);
-        if (SplashActivity.tf4 != null)
-            title.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            title.setTypeface(Config.tf4);
 
         Button setBtn = (Button) dialog.findViewById(R.id.set_button);
         Button cancelBtn = (Button) dialog.findViewById(R.id.cancel_button);

@@ -29,10 +29,11 @@ import com.flask.colorpicker.ColorPickerView;
 import com.flask.colorpicker.OnColorSelectedListener;
 import com.flask.colorpicker.builder.ColorPickerClickListener;
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
-import com.happy.interesting.music.activities.SplashActivity;
+;
 import com.happy.interesting.music.models.Settings;
 import com.happy.interesting.music.utilities.CommonUtils;
 
@@ -103,8 +104,8 @@ public class SettingsFragment extends Fragment {
         });
 
         fragTitle = (TextView) view.findViewById(R.id.settings_fragment_title);
-        if (SplashActivity.tf4 != null)
-            fragTitle.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            fragTitle.setTypeface(Config.tf4);
 
         bottomMarginLayout = view.findViewById(R.id.bottom_margin_layout);
         if (HomeActivity.isReloaded)

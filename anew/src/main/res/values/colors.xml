@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 业务资源 -->
+    <color name="passport_dialog_title">#FF282828</color>
+    <color name="passport_dialog_divider">#FFE5E5E5</color>
+    <color name="passport_dialog_positive_normal">#FFE43C58</color>
+    <color name="passport_dialog_negative_normal">#FF585858</color>
+    <color name="passport_dialog_input_color">#282828</color>
+    <color name="passport_dialog_input_color_hint">#d5d2db</color>
+    <color name="passport_dialog_input_stroke">#d8d8d8</color>
+
+    <color name="passport_item_normal">#ffffff</color>
+    <color name="passport_item_pressed">#f6f6f8</color>
+    <color name="passport_divider">#e5e5e5</color>
+    <color name="passport_dash_line">#e5e5e5</color>
+    <color name="passport_item_color">#282828</color>
+    <color name="passport_tab_select_color">#282828</color>
+    <color name="passport_tab_unSelect_color">#888888</color>
+    <color name="passport_red">#E43C58</color>
+    <color name="passport_bottom_btn_press">#FFF6F6F8</color>
+
+    <color name="passport_white">#FFFFFF</color>
+    <!-- 50%透明度的白色 -->
+    <color name="passport_white_50">#7FFFFFFF</color>
+    <color name="passport_black">#000000</color>
+    <color name="passport_window_background">#F4F4F4</color>
+    <color name="passport_keyboard_item_text_color">#282828</color>
+    <color name="passport_keyboard_divider_color">#eceaee</color>
+    <drawable name="passport_keyboard_done_button_color">#433f57</drawable>
+    <drawable name="passport_keyboard_done_button_color_press">#cc433f57</drawable>
+
+    <color name="passport_keyboard_done_button_color">#433f57</color>
+    <color name="passport_keyboard_done_button_color_press">#cc433f57</color>
+
+    <color name="passport_top_search_text_color">#585858</color>
+    <color name="passport_top_search_text_hint_color">#a29eac</color>
+    <color name="passport_top_bg_start_color">#2E2B40</color>
+    <color name="passport_top_bg_end_color">#4D4962</color>
+    <color name="passport_bottom_btn_divider">#FFD8D8D8</color>
+    <color name="passport_bottom_btn_background">#FAFAFA</color>
+
+    <color name="passport_text_color_dark_gray">#585858</color>
+    <color name="passport_text_color_gray">#888888</color>
+
+    <color name="passport_timetimepicker_default_text_color">#999999</color>
+    <color name="passport_timepicker_toolbar_bg">#e60012</color>
+    <color name="passport_timepicker_dialog_bg">#80000000</color>
+    <color name="passport_timepicker_line">#e8e8e8</color>
+
+
+    <!-- AlertController START -->
+    <color name="passport_ac_bg_translucent">#01000000</color>
+    <color name="passport_ac_bg_content">#F9F9F9</color>
+
+    <color name="passport_ac_item_text_default">#e43c58</color>
+    <color name="passport_ac_item_text_destructive">#282828</color>
+    <color name="passport_ac_item_bg_pressed">#EBEBEB</color>
+    <color name="passport_ac_bg_line">@color/passport_divider</color>
+    <color name="passport_ac_action_sheet_title">#4d4d4d</color>
+    <color name="passport_ac_action_sheet_message">#8f8f8f</color>
+    <!-- AlertController END -->
+    <color name="passport_text_black">#333333</color>
+    <color name="passport_text_gray">#999999</color>
+    <color name="passport_keyboard_hd_item_text_color">#333333</color>
+    <color name="passport_keyboard_hd_divider_color">#eceaee</color>
+    <color name="passport_text_dark_green">#2CA89B</color>
+    <color name="passport_orange_color">#FF6633</color>
+    <color name="passport_orange_color_press">#80FF6E46</color>
+
+    <color name="passport_text_gray_unavailable">#9A9A9A</color>
+
+    <color name="passport_orange">#FF7833</color>
+    <color name="passport_orange_alpha_7F">#7FFF6E46</color>
+    <color name="passport_gray_db">#DBDBDB</color>
+    <color name="passport_gray_e3">#E3E3E3</color>
+    <color name="passport_ccc">#CCCCCC</color>
+    <color name="passport_999">#999999</color>
+    <color name="passport_333">#333333</color>
+    <color name="passport_333_trans">#A6333333</color>
+    <color name="passport_eee">#EEEEEE</color>
+    <color name="passport_divider_hd">@color/passport_eee</color>
+    <color name="passport_gray_9c">#9C9C9C</color>
+    <color name="passport_black_b3">#B3B3B3</color>
+
+</resources>

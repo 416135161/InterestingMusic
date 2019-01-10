@@ -30,4 +30,7 @@ public interface StreamService {
 //    这是获取排行榜数据的
 //    http://39.107.89.143/billBoard/list.do
 
+//    找图片用的
+//    https://www.iconfont.cn/
+
 }

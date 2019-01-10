@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'com.github.ben-manes.versions'
 
 android {
@@ -6,7 +6,6 @@ android {
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "com.interesting.music"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 100

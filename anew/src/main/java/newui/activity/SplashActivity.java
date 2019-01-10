@@ -1,4 +1,4 @@
-package com.happy.interesting.music.activities;
+package newui.activity;
 
 import android.Manifest;
 import android.content.Intent;
@@ -11,11 +11,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.R;
+import com.happy.interesting.music.activities.HomeActivity;
 
 public class SplashActivity extends AppCompatActivity {
-    public static Typeface tf3;
-    public static Typeface tf4;
+
 
     int PERMISSIONS_REQUEST_CODE = 1;
 
@@ -25,8 +26,8 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         try {
-            tf4 = Typeface.createFromAsset(getAssets(), "fonts/Intro_Cond_Light.otf");
-            tf3 = Typeface.createFromAsset(getAssets(), "fonts/Gidole-Regular.ttf");
+            Config.tf4 = Typeface.createFromAsset(getAssets(), "fonts/Intro_Cond_Light.otf");
+            Config.tf3 = Typeface.createFromAsset(getAssets(), "fonts/Gidole-Regular.ttf");
         } catch (Exception e) {
             e.printStackTrace();
         }

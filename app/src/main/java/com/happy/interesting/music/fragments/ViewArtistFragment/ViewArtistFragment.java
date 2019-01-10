@@ -17,17 +17,16 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.happy.interesting.music.Config;
+import com.happy.interesting.music.R;
+import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
 import com.happy.interesting.music.custombottomsheets.CustomLocalBottomSheetDialog;
 import com.happy.interesting.music.fragments.LocalMusicFragments.LocalTrackRecyclerAdapter;
-import com.happy.interesting.music.activities.HomeActivity;
+import com.happy.interesting.music.imageLoader.ImageLoader;
 import com.happy.interesting.music.models.LocalTrack;
 import com.happy.interesting.music.models.UnifiedTrack;
-import com.happy.interesting.music.MusicDNAApplication;
-import com.happy.interesting.music.R;
-import com.happy.interesting.music.activities.SplashActivity;
 import com.happy.interesting.music.utilities.CommonUtils;
-import com.happy.interesting.music.imageLoader.ImageLoader;
 
 
 /**
@@ -103,8 +102,8 @@ public class ViewArtistFragment extends Fragment {
         imgLoader.DisplayImage(HomeActivity.tempArtist.getArtistSongs().get(0).getPath(), backdrop);
 
         fragTitle = (TextView) view.findViewById(R.id.artist_fragment_title);
-        if (SplashActivity.tf4 != null)
-            fragTitle.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            fragTitle.setTypeface(Config.tf4);
 
         artistTitle = (TextView) view.findViewById(R.id.artist_title);
         artistTitle.setText(HomeActivity.tempArtist.getName());

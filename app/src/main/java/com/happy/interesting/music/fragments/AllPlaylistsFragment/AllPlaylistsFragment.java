@@ -19,13 +19,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
 import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.models.Playlist;
 import com.happy.interesting.music.models.UnifiedTrack;
 import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
-import com.happy.interesting.music.activities.SplashActivity;
+;
 import com.happy.interesting.music.utilities.CommonUtils;
 import com.happy.interesting.music.imageLoader.ImageLoader;
 
@@ -106,8 +107,8 @@ public class AllPlaylistsFragment extends Fragment {
         });
 
         allPlaylistFragmentTitle = (TextView) view.findViewById(R.id.all_playlist_fragment_title);
-        if (SplashActivity.tf4 != null)
-            allPlaylistFragmentTitle.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            allPlaylistFragmentTitle.setTypeface(Config.tf4);
 
 
         playlistFragIcon = (ImageView) view.findViewById(R.id.all_playlist_frag_icon);
@@ -134,8 +135,8 @@ public class AllPlaylistsFragment extends Fragment {
             }
         });
 
-        if (SplashActivity.tf4 != null)
-            ((TextView) view.findViewById(R.id.noPlaylistContentText)).setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            ((TextView) view.findViewById(R.id.noPlaylistContentText)).setTypeface(Config.tf4);
 
         if (HomeActivity.allPlaylists.getPlaylists().size() == 0) {
             allPlaylistRecycler.setVisibility(View.INVISIBLE);

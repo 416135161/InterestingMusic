@@ -18,9 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.R;
-import com.happy.interesting.music.activities.SplashActivity;
+;
 import com.happy.interesting.music.utilities.CommonUtils;
 import com.happy.interesting.music.imageLoader.ImageLoader;
 
@@ -116,8 +117,8 @@ public class EditLocalSongFragment extends Fragment {
         });
 
         fragTitle = (TextView) view.findViewById(R.id.edit_song_fragment_title);
-        if (SplashActivity.tf4 != null)
-            fragTitle.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            fragTitle.setTypeface(Config.tf4);
 
         backdrop = (ImageView) view.findViewById(R.id.edit_song_backdrop);
         imgLoader.DisplayImage(HomeActivity.editSong.getPath(), backdrop);

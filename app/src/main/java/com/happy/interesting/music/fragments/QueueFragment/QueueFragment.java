@@ -20,12 +20,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.request.target.ViewTarget;
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
 import com.happy.interesting.music.itemtouchhelpers.SimpleItemTouchHelperCallback;
 import com.happy.interesting.music.activities.HomeActivity;
 import com.happy.interesting.music.MusicDNAApplication;
 import com.happy.interesting.music.R;
-import com.happy.interesting.music.activities.SplashActivity;
+;
 
 
 
@@ -93,8 +94,8 @@ public class QueueFragment extends Fragment implements QueueRecyclerAdapter.OnDr
         });
 
         fragTitle = (TextView) view.findViewById(R.id.queue_fragment_title);
-        if (SplashActivity.tf4 != null)
-            fragTitle.setTypeface(SplashActivity.tf4);
+        if (Config.tf4 != null)
+            fragTitle.setTypeface(Config.tf4);
 
         clearText = (TextView) view.findViewById(R.id.queue_clear_text);
         clearText.setOnClickListener(new View.OnClickListener() {

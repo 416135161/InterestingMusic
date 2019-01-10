@@ -8,10 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.happy.interesting.music.Config;
 import com.happy.interesting.music.models.Playlist;
 import com.happy.interesting.music.models.UnifiedTrack;
 import com.happy.interesting.music.R;
-import com.happy.interesting.music.activities.SplashActivity;
+;
 import com.happy.interesting.music.imageLoader.ImageLoader;
 
 import java.util.List;
@@ -64,8 +65,8 @@ public class ViewAllPlaylistsRecyclerAdapter extends RecyclerView.Adapter<ViewAl
 
         Playlist p = playlists.get(position);
         List<UnifiedTrack> list = p.getSongList();
-        if (SplashActivity.tf3 != null)
-            holder.playListName.setTypeface(SplashActivity.tf3);
+        if (Config.tf3 != null)
+            holder.playListName.setTypeface(Config.tf3);
         holder.playListName.setText(p.getPlaylistName());
         if (list.size() >= 3) {
             String[] names = new String[3];
