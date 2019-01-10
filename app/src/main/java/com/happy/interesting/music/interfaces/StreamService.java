@@ -24,26 +24,10 @@ public interface StreamService {
     @GET("/yy/index.php?r=play/getdata")
     Call<SongDetailBean> getSongDetail(@Query("hash") String hash);
 
-//    private void sss(){
-//        HttpClient client = new DefaultHttpClient();
-//
-//        HttpGet httpGet = new HttpGet("http://www.kugou.com/yy/index.php?r=play/getdata&hash="+module.getHash());
-//
-//        HttpResponse response = client.execute(httpGet);
-//
-//        musicName = EntityUtils.toString(response.getEntity(), "UTF-8");
-//        Gson jGson = new Gson();
-//        Map allobj = jGson.fromJson(musicName, Map.class);
-//
-//        Map obj = (Map)allobj.get("data");
-//
-//        if(module.getImg() == null){
-//            module.setImg(obj.get("img").toString());
-//        }
-//
-//        if(obj.get("play_url") != null){
-//            module.setPlayUrl(obj.get("play_url").toString());
-//
-//        }
-//    }
+//    这是获取新歌的  size弄成240
+//    http://39.107.89.143/newSongs/list.do
+
+//    这是获取排行榜数据的
+//    http://39.107.89.143/billBoard/list.do
+
 }
