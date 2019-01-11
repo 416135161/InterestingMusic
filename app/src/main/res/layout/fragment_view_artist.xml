@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorDark"
     android:clickable="true"
-    tools:context="com.happy.interesting.music.fragments.ViewArtistFragment.ViewArtistFragment">
+    tools:context="com.old.interesting.music.fragments.ViewArtistFragment.ViewArtistFragment">
 
     <RelativeLayout
         android:id="@+id/artist_header"

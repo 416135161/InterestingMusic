@@ -5,7 +5,7 @@
     android:background="@color/colorDark"
     android:clickable="true"
     android:padding="5dp"
-    tools:context="com.happy.interesting.music.fragments.StreamFragment.StreamMusicFragment">
+    tools:context="com.old.interesting.music.fragments.StreamFragment.StreamMusicFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/trackList"

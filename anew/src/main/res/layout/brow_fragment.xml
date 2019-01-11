@@ -4,6 +4,8 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <include layout="@layout/title_view"/>
+
     <ImageView
         android:id="@+id/iv_banner"
         android:layout_width="match_parent"
@@ -52,11 +54,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:textColor="@color/passport_white"
             android:text="See all songs >"
+            android:textColor="@color/passport_white"
             />
     </LinearLayout>
-
 
 
 </LinearLayout>

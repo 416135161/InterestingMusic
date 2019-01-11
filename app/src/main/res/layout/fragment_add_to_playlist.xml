@@ -6,7 +6,7 @@
     android:background="@color/colorDark"
     android:clickable="true"
     android:clipToPadding="false"
-    tools:context="com.happy.interesting.music.fragments.NewPlaylistFragment.NewPlaylistFragment">
+    tools:context="com.old.interesting.music.fragments.NewPlaylistFragment.NewPlaylistFragment">
 
     <RelativeLayout
         android:id="@+id/add_to_playlist_action_container"

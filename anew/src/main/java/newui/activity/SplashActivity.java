@@ -11,9 +11,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.happy.interesting.music.Config;
-import com.happy.interesting.music.R;
-import com.happy.interesting.music.activities.HomeActivity;
+import com.newui.interesting.music.R;
+
+
+import com.old.interesting.music.Config;
+import com.old.interesting.music.activities.HomeActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

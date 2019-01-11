@@ -5,7 +5,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorDark"
                 android:clipToPadding="false"
-                tools:context="com.happy.interesting.music.fragments.AboutFragment.AboutFragment">
+                tools:context="com.old.interesting.music.fragments.AboutFragment.AboutFragment">
 
     <ScrollView
         android:layout_width="match_parent"

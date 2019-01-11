@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.happy.interesting.music.activities.HomeActivity">
+    tools:context="com.old.interesting.music.activities.HomeActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -119,7 +119,7 @@
 
                 </LinearLayout>
 
-                <com.happy.interesting.music.customviews.CustomLinearGradient
+                <com.old.interesting.music.customviews.CustomLinearGradient
                     android:id="@+id/custom_linear_gradient"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />

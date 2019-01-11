@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorDark"
     android:clickable="true"
-    tools:context="com.happy.interesting.music.fragments.FavouritesFragment.FavouritesFragment">
+    tools:context="com.old.interesting.music.fragments.FavouritesFragment.FavouritesFragment">
 
     <RelativeLayout
         android:id="@+id/fav_header"
@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
 
-        <com.happy.interesting.music.customviews.CustomLinearGradient
+        <com.old.interesting.music.customviews.CustomLinearGradient
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

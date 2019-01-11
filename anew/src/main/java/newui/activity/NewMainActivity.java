@@ -4,7 +4,7 @@ package newui.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.happy.interesting.music.R;
+import com.newui.interesting.music.R;
 
 import newui.base.BaseActivity;
 

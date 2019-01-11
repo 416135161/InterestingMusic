@@ -6,7 +6,7 @@
     android:background="@color/colorDark"
     android:clickable="true"
     android:clipToPadding="false"
-    tools:context="com.happy.interesting.music.fragments.SettingsFragment.SettingsFragment">
+    tools:context="com.old.interesting.music.fragments.SettingsFragment.SettingsFragment">
 
     <RelativeLayout
         android:id="@+id/settings_action_container"
