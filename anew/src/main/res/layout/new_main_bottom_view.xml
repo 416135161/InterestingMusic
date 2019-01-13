@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:background="@color/passport_gray_e3"
+              android:orientation="horizontal"
+    >
+
+    <newui.view.HomeBottomItemView
+        android:id="@+id/view_bottom_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+    </newui.view.HomeBottomItemView>
+
+    <newui.view.HomeBottomItemView
+        android:id="@+id/view_bottom_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+    </newui.view.HomeBottomItemView>
+
+    <newui.view.HomeBottomItemView
+        android:id="@+id/view_bottom_3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+    </newui.view.HomeBottomItemView>
+
+    <newui.view.HomeBottomItemView
+        android:id="@+id/view_bottom_4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+    </newui.view.HomeBottomItemView>
+</LinearLayout>

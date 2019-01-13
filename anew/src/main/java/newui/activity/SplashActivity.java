@@ -1,6 +1,7 @@
 package newui.activity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -66,7 +67,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void startHomeActivity() {
-        Intent i = new Intent(SplashActivity.this, HomeActivity.class);
+        Intent i = new Intent(SplashActivity.this, NewMainActivity.class);
         startActivity(i);
         finish();
     }

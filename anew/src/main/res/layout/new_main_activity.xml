@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"></FrameLayout>
-        <include layout="@layout/new_main_bottom_item_view"/>
+        <include layout="@layout/new_main_bottom_view"/>
     </LinearLayout>
 
 </FrameLayout>

@@ -14,14 +14,15 @@
         />
 
     <TextView
-        android:id="@+id/tv_today"
+        android:id="@+id/tv_play_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Today"
+        android:text="Play List"
+        android:drawableRight="@android:drawable/arrow_up_float"
         />
 
     <LinearLayout
-        android:id="@+id/ll_today"
+        android:id="@+id/ll_play_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

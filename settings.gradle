@@ -1,1 +1,1 @@
-include ':app', ':anew'
+include ':main', ':anew'
