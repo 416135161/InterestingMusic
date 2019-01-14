@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 public abstract class CommonRecycleAdapter<T> extends RecyclerView.Adapter<CommonViewHolder> {
-
+    protected Context mContext;
     protected LayoutInflater layoutInflater;
 
     protected List<T> dataList;
@@ -17,6 +17,7 @@ public abstract class CommonRecycleAdapter<T> extends RecyclerView.Adapter<Commo
     protected int layoutId;
 
     public CommonRecycleAdapter(Context context, List<T> dataList, int layoutId) {
+        mContext = context;
         this.layoutInflater = LayoutInflater.from(context);
         this.dataList = dataList;
         this.layoutId = layoutId;

@@ -1,4 +1,4 @@
-package newui.activity;
+package newui.activity.team;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import com.newui.interesting.music.R;
 import com.old.interesting.music.models.Track;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -18,6 +19,7 @@ import newui.adapter.PlayTeamAdapter;
 import newui.adapter.SearchListAdapter;
 import newui.base.BaseActivity;
 import newui.data.action.ActionBrowPlayTeam;
+import newui.data.action.ActionListPlayTeam;
 import newui.data.playTeamResponse.PlayTeamBean;
 import newui.data.playTeamResponse.PlayTeamResult;
 import newui.data.util.CloudDataUtil;
@@ -38,6 +40,7 @@ public class PlayTeamListActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_team_list_activity);
+//        EventBus.getDefault().register(this);
         mRecycleView = findViewById(R.id.rv_items);
         mRecycleView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new PlayTeamAdapter(this, new ArrayList<PlayTeamResult>(), new CommonViewHolder.onItemCommonClickListener() {
@@ -56,11 +59,17 @@ public class PlayTeamListActivity extends BaseActivity {
         CloudDataUtil.getPlayTeamList(mStartIndex, PAGE_SIZE, ActionBrowPlayTeam.TYPE_TEAM_LIST);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        EventBus.getDefault().unregister(this);
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEventPosting(ActionBrowPlayTeam event) {
+    public void onEventReceive(ActionListPlayTeam event) {
+
         PlayTeamBean playTeamBean = event.playTeamBean;
-        if (event.type == ActionBrowPlayTeam.TYPE_TEAM_LIST && playTeamBean.getResult() != null
-                && !playTeamBean.getResult().isEmpty()) {
+        if (playTeamBean.getResult() != null && !playTeamBean.getResult().isEmpty()) {
             mStartIndex += playTeamBean.getResult().size();
             mAdapter.addData(playTeamBean.getResult());
         }

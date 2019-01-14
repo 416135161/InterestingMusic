@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import newui.activity.PlayTeamListActivity;
+import newui.activity.team.PlayTeamListActivity;
 import newui.activity.SearchActivity;
 import newui.data.action.ActionBrowPlayTeam;
 import newui.base.BaseFragment;
@@ -89,7 +89,7 @@ public class BrowFragment extends BaseFragment implements View.OnClickListener {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventPosting(ActionBrowPlayTeam event) {
         PlayTeamBean playTeamBean = event.playTeamBean;
-        if (event.type == ActionBrowPlayTeam.TYPE_BROW && playTeamBean.getResult() != null && !playTeamBean.getResult().isEmpty()) {
+        if (playTeamBean.getResult() != null && !playTeamBean.getResult().isEmpty()) {
             int count = 0;
             for (PlayTeamResult item : playTeamBean.getResult()) {
                 LinearLayout viewItem = (LinearLayout) getLayoutInflater().inflate(R.layout.brow_paly_list_item, null);

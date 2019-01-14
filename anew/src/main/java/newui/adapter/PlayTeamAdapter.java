@@ -1,12 +1,14 @@
 package newui.adapter;
 
 import android.content.Context;
+import android.widget.TextView;
 
+import com.itheima.roundedimageview.RoundedImageView;
 import com.newui.interesting.music.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import newui.data.playTeamResponse.PlayTeamBean;
 import newui.data.playTeamResponse.PlayTeamResult;
 
 /**
@@ -30,6 +32,10 @@ public class PlayTeamAdapter extends CommonRecycleAdapter<PlayTeamResult> {
 
     @Override
     void bindData(CommonViewHolder holder, PlayTeamResult data) {
+        TextView tvName = holder.getView(R.id.tv_name);
+        tvName.setText(data.getSpecialname());
+        RoundedImageView imageView = holder.getView(R.id.iv_logo);
+        Picasso.with(mContext).load(data.getImgurl()).placeholder(R.drawable.ic_default).into(imageView);
         holder.setCommonClickListener(commonClickListener);
 
     }

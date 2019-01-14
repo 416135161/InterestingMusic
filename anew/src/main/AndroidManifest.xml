@@ -22,7 +22,11 @@
             />
 
         <activity
-            android:name="newui.activity.PlayTeamListActivity"
+            android:name="newui.activity.team.PlayTeamListActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name="newui.activity.team.PlayListAct"
             android:screenOrientation="portrait"
             />
     </application>
