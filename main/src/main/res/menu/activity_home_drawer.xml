@@ -26,15 +26,24 @@
         <item
             android:id="@+id/nav_folder"
             android:icon="@drawable/folder"
-            android:title="Folders" />
+            android:title="Folders"
+            android:visible="false"
+            />
         <item
             android:id="@+id/nav_view"
             android:icon="@drawable/ic_save_filled"
-            android:title="Saved DNA" />
+            android:title="Saved DNA"
+            android:visible="false"
+            />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/settings"
-            android:title="Settings" />
+            android:title="Settings"
+            android:visible="false"
+            />
+        <item
+            android:id="@+id/nav_about"
+            android:title="About Us" />
     </group>
 
 </menu>

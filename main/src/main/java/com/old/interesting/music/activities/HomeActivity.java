@@ -1834,10 +1834,10 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            showFragment("settings");
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            showFragment("settings");
+//            return true;
+//        }
         if (id == R.id.action_sleep) {
             showSleepDialog();
             return true;
@@ -1868,6 +1868,8 @@ public class HomeActivity extends AppCompatActivity
             showFragment("allSavedDNAs");
         } else if (id == R.id.nav_settings) {
             showFragment("settings");
+        }else if (id == R.id.nav_about) {
+            showFragment("About");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

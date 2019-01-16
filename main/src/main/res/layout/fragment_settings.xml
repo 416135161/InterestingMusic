@@ -54,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_ripple"
                 android:clickable="true"
+                android:visibility="gone"
                 android:padding="5dp">
 
                 <TextView
@@ -129,6 +130,7 @@
                 android:layout_below="@+id/theme_card"
                 android:background="@drawable/custom_ripple"
                 android:clickable="true"
+                android:visibility="gone"
                 android:padding="5dp">
 
                 <TextView
@@ -168,6 +170,7 @@
                 android:layout_below="@+id/album_art_card"
                 android:background="@drawable/custom_ripple"
                 android:clickable="true"
+                android:visibility="gone"
                 android:padding="5dp">
 
                 <TextView

@@ -51,6 +51,12 @@ public abstract class CommonRecycleAdapter<T> extends RecyclerView.Adapter<Commo
         return dataList.size();
     }
 
+    public List<T> getDataList() {
+        return dataList;
+    }
+
     abstract void bindData(CommonViewHolder holder, T data);
+
+
 
 }

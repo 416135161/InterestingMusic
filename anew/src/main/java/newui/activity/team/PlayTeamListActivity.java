@@ -1,14 +1,13 @@
 package newui.activity.team;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.newui.interesting.music.R;
-import com.old.interesting.music.models.Track;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 
 import newui.adapter.CommonViewHolder;
 import newui.adapter.PlayTeamAdapter;
-import newui.adapter.SearchListAdapter;
 import newui.base.BaseActivity;
 import newui.data.action.ActionBrowPlayTeam;
 import newui.data.action.ActionListPlayTeam;
@@ -40,13 +38,15 @@ public class PlayTeamListActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_team_list_activity);
-//        EventBus.getDefault().register(this);
         mRecycleView = findViewById(R.id.rv_items);
         mRecycleView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new PlayTeamAdapter(this, new ArrayList<PlayTeamResult>(), new CommonViewHolder.onItemCommonClickListener() {
             @Override
             public void onItemClickListener(int position) {
-
+                PlayListAct.musicBoardid = mAdapter.getDataList().get(position).getSpecialid();
+                Intent intent = new Intent();
+                intent.setClass(PlayTeamListActivity.this, PlayListAct.class);
+                PlayTeamListActivity.this.startActivity(intent);
             }
 
             @Override
@@ -57,12 +57,6 @@ public class PlayTeamListActivity extends BaseActivity {
         mRecycleView.setAdapter(mAdapter);
         startLoadingIndicator();
         CloudDataUtil.getPlayTeamList(mStartIndex, PAGE_SIZE, ActionBrowPlayTeam.TYPE_TEAM_LIST);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        EventBus.getDefault().unregister(this);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

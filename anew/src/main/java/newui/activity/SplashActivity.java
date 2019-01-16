@@ -28,19 +28,17 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        try {
-            Config.tf4 = Typeface.createFromAsset(getAssets(), "fonts/Intro_Cond_Light.otf");
-            Config.tf3 = Typeface.createFromAsset(getAssets(), "fonts/Gidole-Regular.ttf");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Config.tf4 = Typeface.createFromAsset(getAssets(), "fonts/Intro_Cond_Light.otf");
+//            Config.tf3 = Typeface.createFromAsset(getAssets(), "fonts/Gidole-Regular.ttf");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         if (Build.VERSION.SDK_INT >= 23) {
             requestPermissions();
         } else {
-            Intent i = new Intent(SplashActivity.this, HomeActivity.class);
-            startActivity(i);
-            finish();
+            startHomeActivity();
         }
     }
 
@@ -67,7 +65,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void startHomeActivity() {
-        Intent i = new Intent(SplashActivity.this, NewMainActivity.class);
+        Intent i = new Intent(SplashActivity.this, HomeActivity.class);
         startActivity(i);
         finish();
     }

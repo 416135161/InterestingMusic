@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:gravity="center_vertical"
-    android:background="@color/blue_btn_bg_color"
+    android:background="@color/passport_red"
     >
 
     <ImageView
