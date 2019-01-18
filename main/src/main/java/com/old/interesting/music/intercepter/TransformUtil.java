@@ -3,12 +3,10 @@ package com.old.interesting.music.intercepter;
 import android.text.TextUtils;
 
 import com.old.interesting.music.models.Track;
-import com.old.interesting.music.models.searchResponse.Data;
+import com.old.interesting.music.models.searchResponse.Info;
 import com.old.interesting.music.models.searchResponse.SearchResponseBean;
-import com.old.interesting.music.models.searchResponse.Song;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,15 +22,15 @@ public final class TransformUtil {
     public static List<Track> searchResponse2Track(SearchResponseBean searchResponseBean) {
         List<Track> trackList = new ArrayList<>();
         if (searchResponseBean != null && searchResponseBean.getData() != null &&
-                searchResponseBean.getData().getLists() != null) {
-            List<Song> songList = searchResponseBean.getData().getLists();
+                searchResponseBean.getData().getInfo() != null) {
+            List<Info> songList = searchResponseBean.getData().getInfo();
             if (songList.size() > 0) {
-                for (Song song : searchResponseBean.getData().getLists()) {
-                    if (!TextUtils.isEmpty(song.getFileHash())) {
+                for (Info song : songList) {
+                    if (!TextUtils.isEmpty(song.getHash())) {
                         Track track = new Track();
-                        track.setmTitle(song.getSongName());
-                        track.setFileHash(song.getFileHash());
-                        track.setSingerName(song.getSingerName());
+                        track.setmTitle(song.getSongname());
+                        track.setFileHash(song.getHash());
+                        track.setSingerName(song.getSingername());
                         trackList.add(track);
                     }
                 }

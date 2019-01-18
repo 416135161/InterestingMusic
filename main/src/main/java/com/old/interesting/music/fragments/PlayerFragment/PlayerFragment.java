@@ -37,6 +37,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lauzy.freedom.library.Lrc;
+import com.lauzy.freedom.library.LrcHelper;
+import com.lauzy.freedom.library.LrcView;
 import com.old.interesting.music.R;
 import com.old.interesting.music.activities.HomeActivity;
 import com.old.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
@@ -58,6 +61,8 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -118,6 +123,7 @@ public class PlayerFragment extends Fragment implements
     ImageView favControllerSp, nextControllerSp;
 
     ImageLoader imgLoader;
+    LrcView mLrcView;
 
     public SeekBar progressBar;
 
@@ -549,7 +555,13 @@ public class PlayerFragment extends Fragment implements
         imgLoader = new ImageLoader(getContext());
 
         smallPlayer = (RelativeLayout) view.findViewById(R.id.smallPlayer);
-
+        mLrcView = view.findViewById(R.id.lrc_view);
+        mLrcView.setOnPlayIndicatorLineListener(new LrcView.OnPlayIndicatorLineListener() {
+            @Override
+            public void onPlay(long time, String content) {
+                mMediaPlayer.seekTo((int) time);
+            }
+        });
         snappyRecyclerView = (SnappyRecyclerView) view.findViewById(R.id.visualizer_recycler);
 
         bufferingIndicator = (AVLoadingIndicatorView) view.findViewById(R.id.bufferingIndicator);
@@ -1121,6 +1133,12 @@ public class PlayerFragment extends Fragment implements
             }
         }
         mCallback.onAddedtoFavfromPlayer();
+    }
+
+    protected void initLrc(String lrc){
+        List<Lrc> lrcs = LrcHelper.parseLrcFromString(lrc);
+        mLrcView.setLrcData(lrcs);
+
     }
 
 

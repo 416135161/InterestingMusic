@@ -70,7 +70,7 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        Call<SearchResponseBean> call = ss.searchSong(encodeStr, 20);
+        Call<SearchResponseBean> call = ss.searchSong(query, 20);
         call.enqueue(new Callback<SearchResponseBean>() {
 
             @Override

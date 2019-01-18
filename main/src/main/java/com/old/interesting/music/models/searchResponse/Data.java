@@ -5,34 +5,29 @@ package com.old.interesting.music.models.searchResponse;
 import java.util.List;
 
 /**
- * Auto-generated: 2019-01-08 19:40:23
+ * Auto-generated: 2019-01-18 9:46:58
  *
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
  */
 public class Data {
 
-    private int page;
-    private String tab;
-    private List<Song> lists;
-    private int chinesecount;
-    private int searchfull;
-    private int correctiontype;
-    private int subjecttype;
     private List<Aggregation> aggregation;
+    private String tab;
+    private List<Info> info;
+    private int correctiontype;
+    private long timestamp;
     private int allowerr;
-    private String correctionsubject;
-    private int correctionforce;
     private int total;
-    private int istagresult;
     private int istag;
+    private int istagresult;
+    private int forcecorrection;
     private String correctiontip;
-    private int pagesize;
-    public void setPage(int page) {
-         this.page = page;
+    public void setAggregation(List<Aggregation> aggregation) {
+         this.aggregation = aggregation;
      }
-     public int getPage() {
-         return page;
+     public List<Aggregation> getAggregation() {
+         return aggregation;
      }
 
     public void setTab(String tab) {
@@ -42,25 +37,11 @@ public class Data {
          return tab;
      }
 
-    public void setLists(List<Song> lists) {
-         this.lists = lists;
+    public void setInfo(List<Info> info) {
+         this.info = info;
      }
-     public List<Song> getLists() {
-         return lists;
-     }
-
-    public void setChinesecount(int chinesecount) {
-         this.chinesecount = chinesecount;
-     }
-     public int getChinesecount() {
-         return chinesecount;
-     }
-
-    public void setSearchfull(int searchfull) {
-         this.searchfull = searchfull;
-     }
-     public int getSearchfull() {
-         return searchfull;
+     public List<Info> getInfo() {
+         return info;
      }
 
     public void setCorrectiontype(int correctiontype) {
@@ -70,18 +51,11 @@ public class Data {
          return correctiontype;
      }
 
-    public void setSubjecttype(int subjecttype) {
-         this.subjecttype = subjecttype;
+    public void setTimestamp(long timestamp) {
+         this.timestamp = timestamp;
      }
-     public int getSubjecttype() {
-         return subjecttype;
-     }
-
-    public void setAggregation(List<Aggregation> aggregation) {
-         this.aggregation = aggregation;
-     }
-     public List<Aggregation> getAggregation() {
-         return aggregation;
+     public long getTimestamp() {
+         return timestamp;
      }
 
     public void setAllowerr(int allowerr) {
@@ -91,32 +65,11 @@ public class Data {
          return allowerr;
      }
 
-    public void setCorrectionsubject(String correctionsubject) {
-         this.correctionsubject = correctionsubject;
-     }
-     public String getCorrectionsubject() {
-         return correctionsubject;
-     }
-
-    public void setCorrectionforce(int correctionforce) {
-         this.correctionforce = correctionforce;
-     }
-     public int getCorrectionforce() {
-         return correctionforce;
-     }
-
     public void setTotal(int total) {
          this.total = total;
      }
      public int getTotal() {
          return total;
-     }
-
-    public void setIstagresult(int istagresult) {
-         this.istagresult = istagresult;
-     }
-     public int getIstagresult() {
-         return istagresult;
      }
 
     public void setIstag(int istag) {
@@ -126,18 +79,25 @@ public class Data {
          return istag;
      }
 
+    public void setIstagresult(int istagresult) {
+         this.istagresult = istagresult;
+     }
+     public int getIstagresult() {
+         return istagresult;
+     }
+
+    public void setForcecorrection(int forcecorrection) {
+         this.forcecorrection = forcecorrection;
+     }
+     public int getForcecorrection() {
+         return forcecorrection;
+     }
+
     public void setCorrectiontip(String correctiontip) {
          this.correctiontip = correctiontip;
      }
      public String getCorrectiontip() {
          return correctiontip;
-     }
-
-    public void setPagesize(int pagesize) {
-         this.pagesize = pagesize;
-     }
-     public int getPagesize() {
-         return pagesize;
      }
 
 }

@@ -4,7 +4,7 @@
 package com.old.interesting.music.models.searchResponse;
 
 /**
- * Auto-generated: 2019-01-08 19:40:23
+ * Auto-generated: 2019-01-18 9:46:58
  *
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/

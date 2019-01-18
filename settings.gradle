@@ -1,1 +1,1 @@
-include ':main', ':anew'
+include ':main', ':anew', ':lrclibrary'

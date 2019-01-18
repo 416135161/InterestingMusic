@@ -6,6 +6,7 @@ import com.old.interesting.music.interfaces.StreamService;
 
 import org.greenrobot.eventbus.EventBus;
 
+import newui.data.LrcResponse.LrcResponseBean;
 import newui.data.action.ActionBase;
 import newui.data.action.ActionBrowPlayTeam;
 import newui.data.action.ActionListPlayTeam;
@@ -22,7 +23,7 @@ import retrofit2.Response;
  * description:
  */
 public final class CloudDataUtil {
-
+    //获取歌单
     public static void getPlayTeamList(int start, int pageSize, final int type) {
         StreamService ss = HttpUtil.getApiService(Config.API_LIN_HOST, null);
         Call<PlayTeamBean> call = ss.getPlayTeamList(start, pageSize);
@@ -32,9 +33,9 @@ public final class CloudDataUtil {
             public void onResponse(Call<PlayTeamBean> call, Response<PlayTeamBean> response) {
                 if (response.isSuccessful() && response.body() != null
                         && response.body().getResult() != null && !response.body().getResult().isEmpty()) {
-                    if (type ==ActionBrowPlayTeam.TYPE_TEAM_LIST) {
+                    if (type == ActionBrowPlayTeam.TYPE_TEAM_LIST) {
                         EventBus.getDefault().post(new ActionListPlayTeam(response.body()));
-                    } else if(type ==ActionBrowPlayTeam.TYPE_BROW) {
+                    } else if (type == ActionBrowPlayTeam.TYPE_BROW) {
                         EventBus.getDefault().post(new ActionBrowPlayTeam(response.body()));
 
                     }
@@ -52,6 +53,7 @@ public final class CloudDataUtil {
         });
     }
 
+    //获取歌单下的歌曲
     public static void getPlayList(String musicBoardid, int start, int pageSize) {
         StreamService ss = HttpUtil.getApiService(Config.API_LIN_HOST, null);
         Call<PlayListBean> call = ss.getPlayList(musicBoardid, start, pageSize);
@@ -73,6 +75,30 @@ public final class CloudDataUtil {
                 ActionPlayList action = new ActionPlayList(null);
                 action.isOK = false;
                 EventBus.getDefault().post(action);
+
+            }
+
+        });
+    }
+
+    public static void getSongLrc(String hash) {
+        StreamService ss = HttpUtil.getApiService(Config.API_GET_LRC, null);
+        Call<LrcResponseBean> call = ss.getSongLrc(hash);
+        call.enqueue(new Callback<LrcResponseBean>() {
+
+            @Override
+            public void onResponse(Call<LrcResponseBean> call, Response<LrcResponseBean> response) {
+                if (response.isSuccessful() && response.body() != null
+                        && response.body().getData() != null) {
+                } else {
+                    onFailure(null, new Exception("is nothing"));
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<LrcResponseBean> call, Throwable t) {
+
 
             }
 

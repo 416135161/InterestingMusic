@@ -12,27 +12,34 @@ package com.old.interesting.music.models.searchResponse;
 public class SearchResponseBean {
 
     private int status;
-    private int error_code;
+    private String error;
     private Data data;
+    private int errcode;
     public void setStatus(int status) {
-         this.status = status;
-     }
-     public int getStatus() {
-         return status;
-     }
+        this.status = status;
+    }
+    public int getStatus() {
+        return status;
+    }
 
-    public void setError_code(int error_code) {
-         this.error_code = error_code;
-     }
-     public int getError_code() {
-         return error_code;
-     }
+    public void setError(String error) {
+        this.error = error;
+    }
+    public String getError() {
+        return error;
+    }
 
     public void setData(Data data) {
-         this.data = data;
-     }
-     public Data getData() {
-         return data;
-     }
+        this.data = data;
+    }
+    public Data getData() {
+        return data;
+    }
 
+    public void setErrcode(int errcode) {
+        this.errcode = errcode;
+    }
+    public int getErrcode() {
+        return errcode;
+    }
 }

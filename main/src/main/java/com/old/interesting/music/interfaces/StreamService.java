@@ -8,6 +8,7 @@ import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 import java.util.List;
 
 
+import newui.data.LrcResponse.LrcResponseBean;
 import newui.data.playListResponse.PlayListBean;
 import newui.data.playTeamResponse.PlayTeamBean;
 import retrofit2.Call;
@@ -23,14 +24,16 @@ public interface StreamService {
 
     /**
      * 酷狗搜歌
+     *
      * @param keyword
      * @return
      */
-    @GET("/song_search_v2?page=1&iscorrection=7&clientver=2.6.6&area_code=1")
-    Call<SearchResponseBean> searchSong(@Query("keyword") String keyword, @Query("pagesize")int pagesize);
+    @GET("/api/v3/search/song?format=json&page=1&showtype=1")
+    Call<SearchResponseBean> searchSong(@Query("keyword") String keyword, @Query("pagesize") int pagesize);
 
     /**
      * 获取歌曲播放地址
+     *
      * @param hash
      * @return
      */
@@ -39,23 +42,27 @@ public interface StreamService {
 
     /**
      * 获取歌单
+     *
      * @param start
      * @param pageSize
      * @return
      */
     @GET("/musicBoard/list.do")
-    Call<PlayTeamBean> getPlayTeamList(@Query("start")int start, @Query("pageSize")int pageSize);
+    Call<PlayTeamBean> getPlayTeamList(@Query("start") int start, @Query("pageSize") int pageSize);
 
     /**
      * 获取歌单下的歌曲
+     *
      * @param musicBoardid
      * @param start
      * @param pageSize
      * @return
      */
     @GET("/musicBoard/listItem/list.do")
-    Call<PlayListBean> getPlayList(@Query("musicBoardid")String musicBoardid, @Query("start") int start,
-                                   @Query("pageSize")int pageSize);
+    Call<PlayListBean> getPlayList(@Query("musicBoardid") String musicBoardid, @Query("start") int start,
+                                   @Query("pageSize") int pageSize);
+    @GET("/yy/index.php?r=play/getdata")
+    Call<LrcResponseBean> getSongLrc(@Query("hash") String hash);
 
 //    这是获取新歌的  size弄成240
 //    http://39.107.89.143/newSongs/list.do

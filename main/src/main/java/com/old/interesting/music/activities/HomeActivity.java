@@ -326,7 +326,7 @@ public class HomeActivity extends AppCompatActivity
 
     TextView recentsViewAll, playlistsViewAll;
 
-    public static int themeColor = Color.parseColor("#B24242");
+    public static int themeColor = Color.parseColor("#bc56fb");
     public static float minAudioStrength = 0.40f;
 
     public static TextPaint tp;
@@ -2111,7 +2111,6 @@ public class HomeActivity extends AppCompatActivity
     private void updateStreamingList(String query) {
 
         if (!isLocalVisible) {
-
             mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
             if ((settings.isStreamOnlyOnWifiEnabled() && mWifi.isConnected()) || (!settings.isStreamOnlyOnWifiEnabled())) {
                 new Thread(new CancelCall()).start();
@@ -2120,13 +2119,7 @@ public class HomeActivity extends AppCompatActivity
                     streamRecyclerContainer.setVisibility(View.VISIBLE);
                     startLoadingIndicator();
                     StreamService ss = HttpUtil.getApiService(Config.API_SERACH, new QueryInterceptor());
-                    String encodeStr = "";
-                    try {
-                        encodeStr = URLEncoder.encode(query, "utf-8");
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    }
-                    call = ss.searchSong(encodeStr, 20);
+                    call = ss.searchSong(query, 1);
                     call.enqueue(new Callback<SearchResponseBean>() {
 
                         @Override

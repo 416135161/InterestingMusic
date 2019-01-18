@@ -202,9 +202,11 @@ public class MediaPlayerService extends Service implements PlayerFragment.onPlay
                     metadataBuilder.putString(MediaMetadata.METADATA_KEY_ARTIST, "");
                 }
             }
-            if (((BitmapDrawable) pFragment.selected_track_image.getDrawable()).getBitmap() != null) {
+            if ( pFragment.selected_track_image.getDrawable() != null
+                    && ((BitmapDrawable) pFragment.selected_track_image.getDrawable()).getBitmap() != null) {
                 try {
-                    metadataBuilder.putBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART, ((BitmapDrawable) pFragment.selected_track_image.getDrawable()).getBitmap());
+                    metadataBuilder.putBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART, ((BitmapDrawable) pFragment.selected_track_image.getDrawable()).getBitmap
+                            ());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -212,10 +214,12 @@ public class MediaPlayerService extends Service implements PlayerFragment.onPlay
 
             m_objMediaSession.setMetadata(metadataBuilder.build());
             PlaybackState.Builder stateBuilder = new PlaybackState.Builder();
-            stateBuilder.setActions(PlaybackState.ACTION_PLAY | PlaybackState.ACTION_PLAY_PAUSE | PlaybackState.ACTION_PAUSE | PlaybackState.ACTION_SKIP_TO_NEXT | PlaybackState.ACTION_SKIP_TO_PREVIOUS);
+            stateBuilder.setActions(PlaybackState.ACTION_PLAY | PlaybackState.ACTION_PLAY_PAUSE | PlaybackState.ACTION_PAUSE | PlaybackState
+                    .ACTION_SKIP_TO_NEXT | PlaybackState.ACTION_SKIP_TO_PREVIOUS);
             try {
                 if (pFragment.mMediaPlayer != null) {
-                    stateBuilder.setState(!pFragment.mMediaPlayer.isPlaying() ? PlaybackState.STATE_PAUSED : PlaybackState.STATE_PLAYING, PlaybackState.PLAYBACK_POSITION_UNKNOWN, 1.0f);
+                    stateBuilder.setState(!pFragment.mMediaPlayer.isPlaying() ? PlaybackState.STATE_PAUSED : PlaybackState.STATE_PLAYING, PlaybackState
+                            .PLAYBACK_POSITION_UNKNOWN, 1.0f);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -250,17 +254,20 @@ public class MediaPlayerService extends Service implements PlayerFragment.onPlay
             }
             if (pFragment.selected_track_image != null && pFragment.selected_track_image.getDrawable() != null) {
                 if (((BitmapDrawable) pFragment.selected_track_image.getDrawable()).getBitmap() != null) {
-                    metadataBuilder.putBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART, ((BitmapDrawable) pFragment.selected_track_image.getDrawable()).getBitmap());
+                    metadataBuilder.putBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART, ((BitmapDrawable) pFragment.selected_track_image.getDrawable()).getBitmap
+                            ());
                 }
             }
 
 
             m_objMediaSession.setMetadata(metadataBuilder.build());
             PlaybackState.Builder stateBuilder = new PlaybackState.Builder();
-            stateBuilder.setActions(PlaybackState.ACTION_PLAY | PlaybackState.ACTION_PLAY_PAUSE | PlaybackState.ACTION_PAUSE | PlaybackState.ACTION_SKIP_TO_NEXT | PlaybackState.ACTION_SKIP_TO_PREVIOUS);
+            stateBuilder.setActions(PlaybackState.ACTION_PLAY | PlaybackState.ACTION_PLAY_PAUSE | PlaybackState.ACTION_PAUSE | PlaybackState
+                    .ACTION_SKIP_TO_NEXT | PlaybackState.ACTION_SKIP_TO_PREVIOUS);
             try {
                 if (pFragment.mMediaPlayer != null) {
-                    stateBuilder.setState(!pFragment.mMediaPlayer.isPlaying() ? PlaybackState.STATE_PAUSED : PlaybackState.STATE_PLAYING, PlaybackState.PLAYBACK_POSITION_UNKNOWN, 1.0f);
+                    stateBuilder.setState(!pFragment.mMediaPlayer.isPlaying() ? PlaybackState.STATE_PAUSED : PlaybackState.STATE_PLAYING, PlaybackState
+                            .PLAYBACK_POSITION_UNKNOWN, 1.0f);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
