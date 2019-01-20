@@ -66,12 +66,14 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import newui.data.util.CloudDataUtil;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class PlayerFragment extends Fragment implements
-        AudioPlayerBroadcastReceiver.onCallbackListener, Lyrics.Callback {
+        AudioPlayerBroadcastReceiver.onCallbackListener {
 
     public SnappyRecyclerView snappyRecyclerView;
     CustomAdapter customAdapter;
@@ -144,20 +146,6 @@ public class PlayerFragment extends Fragment implements
     public PlayerFragmentCallbackListener mCallback;
     public onPlayPauseListener mCallback7;
 
-    @Override
-    public void onLyricsDownloaded(Lyrics lyrics) {
-        if (lyrics.getTrack().equals(selected_track_title.getText().toString()) && lyrics.getArtist().equals(selected_track_artist.getText().toString())) {
-            currentLyrics = lyrics;
-            lyricsLoadingIndicator.setVisibility(View.GONE);
-            if (currentLyrics.getFlag() == Lyrics.POSITIVE_RESULT) {
-                lyricsContent.setText(Html.fromHtml(currentLyrics.getText()));
-                lyricsStatus.setVisibility(View.GONE);
-            } else {
-                lyricsStatus.setText("No Lyrics Found!");
-                lyricsStatus.setVisibility(View.VISIBLE);
-            }
-        }
-    }
 
     public interface PlayerFragmentCallbackListener {
         void onComplete();
@@ -203,9 +191,8 @@ public class PlayerFragment extends Fragment implements
     public DownloadThread downloadThread;
     public RelativeLayout lyricsContainer;
     public ImageView lyricsIcon;
-    public TextView lyricsContent;
     public boolean isLyricsVisisble = false;
-    public Lyrics currentLyrics = null;
+
 
     public boolean isStart = true;
 
@@ -383,13 +370,11 @@ public class PlayerFragment extends Fragment implements
             @Override
             public void onPrepared(MediaPlayer mp) {
 
-                currentLyrics = null;
                 if (downloadThread != null) {
                     downloadThread.interrupt();
                 }
                 if (isLyricsVisisble) {
                     isLyricsVisisble = false;
-                    lyricsContent.setText("");
                     lyricsContainer.setVisibility(View.GONE);
                     lyricsIcon.setAlpha(0.5f);
                     mVisualizerView.setVisibility(View.VISIBLE);
@@ -548,6 +533,17 @@ public class PlayerFragment extends Fragment implements
         return mMediaPlayer;
     }
 
+    private void showLrc(){
+        lyricsLoadingIndicator.setVisibility(View.GONE);
+        if (homeActivity.streamSelected) {
+            initLrc(track.getLrc());
+            lyricsStatus.setVisibility(View.GONE);
+        } else {
+            lyricsStatus.setText("No Lyrics Found!");
+            lyricsStatus.setVisibility(View.VISIBLE);
+        }
+    }
+
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -559,7 +555,9 @@ public class PlayerFragment extends Fragment implements
         mLrcView.setOnPlayIndicatorLineListener(new LrcView.OnPlayIndicatorLineListener() {
             @Override
             public void onPlay(long time, String content) {
-                mMediaPlayer.seekTo((int) time);
+                if (isPrepared && !isTracking && getActivity() != null){
+                    mMediaPlayer.seekTo((int) time);
+                }
             }
         });
         snappyRecyclerView = (SnappyRecyclerView) view.findViewById(R.id.visualizer_recycler);
@@ -577,7 +575,6 @@ public class PlayerFragment extends Fragment implements
 
         lyricsContainer = (RelativeLayout) view.findViewById(R.id.lyrics_container);
         lyricsIcon = (ImageView) view.findViewById(R.id.lyrics_icon);
-        lyricsContent = (TextView) view.findViewById(R.id.lyrics_content);
         lyricsLoadingIndicator = (AVLoadingIndicatorView) view.findViewById(R.id.lyrics_loading_indicator);
         lyricsStatus = (TextView) view.findViewById(R.id.lyrics_status_text);
 
@@ -591,22 +588,17 @@ public class PlayerFragment extends Fragment implements
                     lyricsLoadingIndicator.setVisibility(View.VISIBLE);
                     lyricsStatus.setText("Searching Lyrics");
                     lyricsStatus.setVisibility(View.VISIBLE);
-                    if (currentLyrics == null) {
-                        downloadThread = new DownloadThread(PlayerFragment.this, false, selected_track_artist.getText().toString(), selected_track_title
-                                .getText().toString());
-                        downloadThread.start();
-                    } else {
-                        onLyricsDownloaded(currentLyrics);
-                    }
+                    showLrc();
                 } else {
                     lyricsIcon.setAlpha(0.5f);
-                    lyricsContent.setText("");
                     lyricsContainer.setVisibility(View.GONE);
                     mVisualizerView.setVisibility(View.VISIBLE);
                 }
                 isLyricsVisisble = !isLyricsVisisble;
             }
         });
+
+
 
         spImgAB = (ImageView) view.findViewById(R.id.selected_track_image_sp_AB);
         spImgAB.setOnClickListener(new View.OnClickListener() {
@@ -1051,7 +1043,7 @@ public class PlayerFragment extends Fragment implements
                                     @Override
                                     public void run() {
                                         currTime.setText(temp.first + ":" + temp.second);
-                                    }
+                                   }
                                 });
                                 progressBar.setProgress(mMediaPlayer.getCurrentPosition());
                             } catch (Exception e) {
@@ -1070,6 +1062,9 @@ public class PlayerFragment extends Fragment implements
                     @Override
                     public void run() {
                         currTime.setText(temp.first + ":" + temp.second);
+                        //刷新歌词
+                        mLrcView.updateTime(mMediaPlayer.getCurrentPosition());
+
                     }
                 });
             }
@@ -1137,7 +1132,12 @@ public class PlayerFragment extends Fragment implements
 
     protected void initLrc(String lrc){
         List<Lrc> lrcs = LrcHelper.parseLrcFromString(lrc);
-        mLrcView.setLrcData(lrcs);
+        if(lrcs != null && lrcs.size() > 0){
+            mLrcView.setLrcData(lrcs);
+            mLrcView.resume();
+        }else {
+            mLrcView.setEmptyContent("No data");
+        }
 
     }
 
@@ -1337,12 +1337,15 @@ public class PlayerFragment extends Fragment implements
         progressBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            public void onProgressChanged(SeekBar seekBar, final int progress, boolean fromUser) {
                 temp = getTime(progress);
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         currTime.setText(temp.first + ":" + temp.second);
+                        //刷新歌词
+                        mLrcView.updateTime(progress);
+
                     }
                 });
             }

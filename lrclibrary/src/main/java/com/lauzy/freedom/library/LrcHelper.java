@@ -1,6 +1,7 @@
 package com.lauzy.freedom.library;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -52,6 +53,9 @@ public class LrcHelper {
     }
 
     public static List<Lrc> parseLrcFromString(String file) {
+        if(TextUtils.isEmpty(file)){
+            return null;
+        }
         return parseInputStream(new ByteArrayInputStream(file.getBytes()));
     }
 

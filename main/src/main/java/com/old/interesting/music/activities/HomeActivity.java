@@ -142,8 +142,6 @@ import com.lantouzi.wheelview.WheelView;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -291,13 +289,13 @@ public class HomeActivity extends AppCompatActivity
 
     RecyclerView soundcloudRecyclerView;
     RecyclerView localsongsRecyclerView;
-    RecyclerView playlistsRecycler;
+    RecyclerView hotListRecycler;
     RecyclerView recentsRecycler;
 
     RelativeLayout localRecyclerContainer;
     RelativeLayout recentsRecyclerContainer;
     RelativeLayout streamRecyclerContainer;
-    RelativeLayout playlistRecyclerContainer;
+    RelativeLayout hotlistRecyclerContainer;
 
     RelativeLayout localBanner;
     ImageView favBanner;
@@ -314,7 +312,7 @@ public class HomeActivity extends AppCompatActivity
     TextView localNothingText;
     TextView streamNothingText;
     TextView recentsNothingText;
-    TextView playlistNothingText;
+    TextView hotlistNothingText;
 
     public static int screen_width;
     public static int screen_height;
@@ -324,7 +322,7 @@ public class HomeActivity extends AppCompatActivity
     ImageView[] imgView = new ImageView[10];
     public CustomLinearGradient customLinearGradient;
 
-    TextView recentsViewAll, playlistsViewAll;
+    TextView recentsViewAll, hotListViewAll;
 
     public static int themeColor = Color.parseColor("#bc56fb");
     public static float minAudioStrength = 0.40f;
@@ -460,11 +458,13 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        playlistsViewAll = (TextView) findViewById(R.id.playlists_view_all);
-        playlistsViewAll.setOnClickListener(new View.OnClickListener() {
+        hotListViewAll = (TextView) findViewById(R.id.hotLists_view_all);
+        hotListViewAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showFragment("allPlaylists");
+//                showFragment("allPlaylists");
+                Toast.makeText(HomeActivity.this, "It’s not open now, please look forward !", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -703,11 +703,11 @@ public class HomeActivity extends AppCompatActivity
         localRecyclerContainer = (RelativeLayout) findViewById(R.id.localRecyclerContainer);
         recentsRecyclerContainer = (RelativeLayout) findViewById(R.id.recentsRecyclerContainer);
         streamRecyclerContainer = (RelativeLayout) findViewById(R.id.streamRecyclerContainer);
-        playlistRecyclerContainer = (RelativeLayout) findViewById(R.id.playlistRecyclerContainer);
+        hotlistRecyclerContainer = (RelativeLayout) findViewById(R.id.hotListRecyclerContainer);
 
         if (Config.tf4 != null) {
             try {
-                ((TextView) findViewById(R.id.playListRecyclerLabel)).setTypeface(Config.tf4);
+                ((TextView) findViewById(R.id.hotListRecyclerLabel)).setTypeface(Config.tf4);
                 ((TextView) findViewById(R.id.recentsRecyclerLabel)).setTypeface(Config.tf4);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -717,7 +717,7 @@ public class HomeActivity extends AppCompatActivity
         localNothingText = (TextView) findViewById(R.id.localNothingText);
         streamNothingText = (TextView) findViewById(R.id.streamNothingText);
         recentsNothingText = (TextView) findViewById(R.id.recentsNothingText);
-        playlistNothingText = (TextView) findViewById(R.id.playlistNothingText);
+        hotlistNothingText = (TextView) findViewById(R.id.hotListNothingText);
 
         localViewAll = (TextView) findViewById(R.id.localViewAll);
         localViewAll.setOnClickListener(new View.OnClickListener() {
@@ -1190,7 +1190,17 @@ public class HomeActivity extends AppCompatActivity
                                     localSelected = false;
                                     queueCall = false;
                                     isReloaded = false;
-                                    onTrackSelected(position);
+                                    HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
+                                        @Override
+                                        public void onSongGetOk() {
+                                            onTrackSelected(position);
+                                        }
+
+                                        @Override
+                                        public void onSongGetFail() {
+                                            Toast.makeText(HomeActivity.this, "Can't get song player url!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
                             } else {
                                 onQueueItemClicked(pos);
@@ -1217,16 +1227,16 @@ public class HomeActivity extends AppCompatActivity
                     });
 
                     pAdapter = new PlayListsHorizontalAdapter(allPlaylists.getPlaylists(), ctx);
-                    playlistsRecycler = (RecyclerView) findViewById(R.id.playlist_home);
-                    playlistsRecycler.setNestedScrollingEnabled(false);
+                    hotListRecycler = (RecyclerView) findViewById(R.id.hot_list_home);
+                    hotListRecycler.setNestedScrollingEnabled(false);
                     LinearLayoutManager mLayoutManager2 = new LinearLayoutManager(ctx, LinearLayoutManager.HORIZONTAL, false);
-                    playlistsRecycler.setLayoutManager(mLayoutManager2);
-                    playlistsRecycler.setItemAnimator(new DefaultItemAnimator());
+                    hotListRecycler.setLayoutManager(mLayoutManager2);
+                    hotListRecycler.setItemAnimator(new DefaultItemAnimator());
                     AlphaInAnimationAdapter alphaAdapter2 = new AlphaInAnimationAdapter(pAdapter);
                     alphaAdapter2.setFirstOnly(false);
-                    playlistsRecycler.setAdapter(alphaAdapter2);
+                    hotListRecycler.setAdapter(alphaAdapter2);
 
-                    playlistsRecycler.addOnItemTouchListener(new ClickItemTouchListener(playlistsRecycler) {
+                    hotListRecycler.addOnItemTouchListener(new ClickItemTouchListener(hotListRecycler) {
                         @Override
                         public boolean onClick(RecyclerView parent, View view, final int position, long id) {
                             tempPlaylist = allPlaylists.getPlaylists().get(position);
@@ -1417,11 +1427,11 @@ public class HomeActivity extends AppCompatActivity
                     }
 
                     if (allPlaylists.getPlaylists().size() == 0) {
-                        playlistsRecycler.setVisibility(GONE);
-                        playlistNothingText.setVisibility(View.VISIBLE);
+                        hotListRecycler.setVisibility(GONE);
+                        hotlistNothingText.setVisibility(View.VISIBLE);
                     } else {
-                        playlistsRecycler.setVisibility(View.VISIBLE);
-                        playlistNothingText.setVisibility(View.INVISIBLE);
+                        hotListRecycler.setVisibility(View.VISIBLE);
+                        hotlistNothingText.setVisibility(View.INVISIBLE);
                     }
 
                 }
@@ -1952,22 +1962,22 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-//        CommonUtils.hideKeyboard(this);
-//        updateLocalList(query.trim());
-//        updateStreamingList(query.trim());
-//        updateAlbumList(query.trim());
-//        updateArtistList(query.trim());
-//        updateRecentlyAddedLocalList(query.trim());
+        CommonUtils.hideKeyboard(this);
+        updateLocalList(query.trim());
+        updateStreamingList(query.trim());
+        updateAlbumList(query.trim());
+        updateArtistList(query.trim());
+        updateRecentlyAddedLocalList(query.trim());
         return true;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        updateLocalList(newText.trim());
-        updateStreamingList(newText.trim());
-        updateAlbumList(newText.trim());
-        updateArtistList(newText.trim());
-        updateRecentlyAddedLocalList(newText.trim());
+//        updateLocalList(newText.trim());
+//        updateStreamingList(newText.trim());
+//        updateAlbumList(newText.trim());
+//        updateArtistList(newText.trim());
+//        updateRecentlyAddedLocalList(newText.trim());
         return true;
     }
 
@@ -3020,7 +3030,7 @@ public class HomeActivity extends AppCompatActivity
      */
 
     @Override
-    public void onFavouriteItemClicked(int position) {
+    public void onFavouriteItemClicked(final int position) {
         UnifiedTrack ut = favouriteTracks.getFavourite().get(position);
         if (ut.getType()) {
             LocalTrack track = ut.getLocalTrack();
@@ -3063,7 +3073,18 @@ public class HomeActivity extends AppCompatActivity
             localSelected = false;
             queueCall = false;
             isReloaded = false;
-            onTrackSelected(position);
+            HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
+                @Override
+                public void onSongGetOk() {
+                    onTrackSelected(position);
+                }
+
+                @Override
+                public void onSongGetFail() {
+                    Toast.makeText(HomeActivity.this, "Can't get song player url!", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
     }
 
@@ -3123,7 +3144,17 @@ public class HomeActivity extends AppCompatActivity
                     localSelected = false;
                     queueCall = false;
                     isReloaded = false;
-                    onTrackSelected(position);
+                    HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
+                        @Override
+                        public void onSongGetOk() {
+                            onTrackSelected(position);
+                        }
+
+                        @Override
+                        public void onSongGetFail() {
+                            Toast.makeText(HomeActivity.this, "Can't get song player url!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         }, 500);
@@ -3667,8 +3698,8 @@ public class HomeActivity extends AppCompatActivity
                         if (pAdapter != null) {
                             pAdapter.notifyDataSetChanged();
                             if (allPlaylists.getPlaylists().size() > 0) {
-                                playlistsRecycler.setVisibility(View.VISIBLE);
-                                playlistNothingText.setVisibility(View.INVISIBLE);
+                                hotListRecycler.setVisibility(View.VISIBLE);
+                                hotlistNothingText.setVisibility(View.INVISIBLE);
                             }
                         }
                         AllPlaylistsFragment plFrag = (AllPlaylistsFragment) fragMan.findFragmentByTag("allPlaylists");
@@ -3770,8 +3801,8 @@ public class HomeActivity extends AppCompatActivity
                     }
                     if (!isRepeat) {
                         temp.addSong(track);
-                        playlistsRecycler.setVisibility(View.VISIBLE);
-                        playlistNothingText.setVisibility(View.INVISIBLE);
+                        hotListRecycler.setVisibility(View.VISIBLE);
+                        hotlistNothingText.setVisibility(View.INVISIBLE);
                         pAdapter.notifyDataSetChanged();
                         Toast.makeText(ctx, "Added to Playlist : " + temp.getPlaylistName(), Toast.LENGTH_SHORT).show();
                         new SavePlaylists().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -3808,8 +3839,8 @@ public class HomeActivity extends AppCompatActivity
                         l.add(track);
                         Playlist pl = new Playlist(l, text.getText().toString().trim());
                         allPlaylists.addPlaylist(pl);
-                        playlistsRecycler.setVisibility(View.VISIBLE);
-                        playlistNothingText.setVisibility(View.INVISIBLE);
+                        hotListRecycler.setVisibility(View.VISIBLE);
+                        hotlistNothingText.setVisibility(View.INVISIBLE);
                         pAdapter.notifyDataSetChanged();
                         dialog.dismiss();
                         new SavePlaylists().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -3853,8 +3884,8 @@ public class HomeActivity extends AppCompatActivity
                             pl.getSongList().add(queue.getQueue().get(i));
                         }
                         allPlaylists.addPlaylist(pl);
-                        playlistsRecycler.setVisibility(View.VISIBLE);
-                        playlistNothingText.setVisibility(View.INVISIBLE);
+                        hotListRecycler.setVisibility(View.VISIBLE);
+                        hotlistNothingText.setVisibility(View.INVISIBLE);
                         pAdapter.notifyDataSetChanged();
                         new SavePlaylists().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         Toast.makeText(HomeActivity.this, "Queue saved!", Toast.LENGTH_SHORT).show();

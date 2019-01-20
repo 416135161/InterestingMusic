@@ -25,6 +25,8 @@ public class Track {
 
     private String SingerName;
 
+    private String lrc;
+
     public String getTitle() {
         return mTitle;
     }
@@ -79,5 +81,13 @@ public class Track {
 
     public void setSingerName(String singerName) {
         SingerName = singerName;
+    }
+
+    public String getLrc() {
+        return lrc;
+    }
+
+    public void setLrc(String lrc) {
+        this.lrc = lrc;
     }
 }

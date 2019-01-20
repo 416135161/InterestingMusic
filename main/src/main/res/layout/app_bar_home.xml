@@ -214,7 +214,7 @@
                 android:background="#565656"/>
 
             <RelativeLayout
-                android:id="@+id/playlistRecyclerContainer"
+                android:id="@+id/hotListRecyclerContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/recentsRecyclerContainer"
@@ -224,22 +224,22 @@
 
 
                 <TextView
-                    android:id="@+id/playListRecyclerLabel"
+                    android:id="@+id/hotListRecyclerLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
-                    android:text="Playlists"
+                    android:text="HotTracks"
                     android:textColor="#FFF"
                     android:textSize="16dp"
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/playlistNothingText"
+                    android:id="@+id/hotListNothingText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/playListRecyclerLabel"
+                    android:layout_below="@+id/hotListRecyclerLabel"
                     android:layout_centerInParent="true"
                     android:layout_marginBottom="25dp"
                     android:layout_marginTop="25dp"
@@ -250,10 +250,10 @@
 
 
                 <TextView
-                    android:id="@+id/playlists_view_all"
+                    android:id="@+id/hotLists_view_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/playListRecyclerLabel"
+                    android:layout_alignBaseline="@+id/hotListRecyclerLabel"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="15dp"
                     android:text="VIEW ALL"
@@ -261,17 +261,17 @@
                     android:textSize="13sp"/>
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/playlist_home"
+                    android:id="@+id/hot_list_home"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/playListRecyclerLabel"
+                    android:layout_below="@+id/hotListRecyclerLabel"
                     android:padding="5dp"/>
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_below="@+id/playlistRecyclerContainer"
+                android:layout_below="@+id/hotListRecyclerContainer"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="#565656"/>
@@ -280,7 +280,7 @@
                 android:id="@+id/bannerContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/playlistRecyclerContainer"
+                android:layout_below="@id/hotListRecyclerContainer"
                 android:padding="5dp">
 
                 <RelativeLayout

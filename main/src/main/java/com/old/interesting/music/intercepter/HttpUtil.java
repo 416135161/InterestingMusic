@@ -38,6 +38,7 @@ public final class HttpUtil {
                     track.setmArtworkURL(data.getImg());
                     track.setmStreamURL(data.getPlay_url());
                     track.setmDuration(data.getTimelength());
+                    track.setLrc(data.getLyrics());
                     if(callBack != null){
                         callBack.onSongGetOk();
                     }

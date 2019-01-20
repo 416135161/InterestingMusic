@@ -20,10 +20,13 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.old.interesting.music.Config;
 import com.old.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
 import com.old.interesting.music.custombottomsheets.CustomGeneralBottomSheetDialog;
+import com.old.interesting.music.intercepter.HttpUtil;
+import com.old.interesting.music.interfaces.GetSongCallBack;
 import com.old.interesting.music.itemtouchhelpers.SimpleItemTouchHelperCallback;
 import com.old.interesting.music.activities.HomeActivity;
 import com.old.interesting.music.models.LocalTrack;
@@ -239,7 +242,18 @@ public class RecentsFragment extends Fragment implements
                         HomeActivity.localSelected = false;
                         HomeActivity.queueCall = false;
                         HomeActivity.isReloaded = false;
-                        mCallback.onRecentItemClicked(false);
+                        HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
+                            @Override
+                            public void onSongGetOk() {
+                                mCallback.onRecentItemClicked(false);
+                            }
+
+                            @Override
+                            public void onSongGetFail() {
+                                Toast.makeText(getActivity(), "Can't get song player url!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
                     }
                 } else {
                     mCallback.onRecentFromQueue(pos);
