@@ -2129,7 +2129,7 @@ public class HomeActivity extends AppCompatActivity
                     streamRecyclerContainer.setVisibility(View.VISIBLE);
                     startLoadingIndicator();
                     StreamService ss = HttpUtil.getApiService(Config.API_SERACH, new QueryInterceptor());
-                    call = ss.searchSong(query, 1);
+                    call = ss.searchSong(query, 10);
                     call.enqueue(new Callback<SearchResponseBean>() {
 
                         @Override
