@@ -43,7 +43,7 @@ public class PlayTeamListActivity extends BaseActivity {
         mAdapter = new PlayTeamAdapter(this, new ArrayList<PlayTeamResult>(), new CommonViewHolder.onItemCommonClickListener() {
             @Override
             public void onItemClickListener(int position) {
-                PlayListAct.musicBoardid = mAdapter.getDataList().get(position).getSpecialid();
+                PlayListAct.musicBoardid = mAdapter.getDataList().get(position).getId() + "";
                 Intent intent = new Intent();
                 intent.setClass(PlayTeamListActivity.this, PlayListAct.class);
                 PlayTeamListActivity.this.startActivity(intent);

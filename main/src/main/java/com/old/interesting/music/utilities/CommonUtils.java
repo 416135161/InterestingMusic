@@ -2,14 +2,19 @@ package com.old.interesting.music.utilities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.old.interesting.music.activities.HomeActivity;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by Harjot on 18-Jan-17.
@@ -64,6 +69,25 @@ public class CommonUtils {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
+
+    public static String getMetaData(@NonNull Context context,@NonNull String key) {
+        ApplicationInfo appInfo = null;
+        try {
+            appInfo = context.getApplicationContext()
+                    .getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            if (appInfo != null && appInfo.metaData != null) {
+                String serverName = appInfo.metaData.getString(key);
+                return serverName;
+            } else {
+                Log.e("music lark","需要在AndroidManifest.xml中配置WebviewUrl meta数据");
+                return "";
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 
 
 }

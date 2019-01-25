@@ -2,10 +2,10 @@ package com.old.interesting.music.fragments.ViewPlaylistFragment;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,17 +13,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.old.interesting.music.R;
+import com.old.interesting.music.activities.HomeActivity;
+import com.old.interesting.music.intercepter.GetPicUtil;
 import com.old.interesting.music.itemtouchhelpers.ItemTouchHelperAdapter;
 import com.old.interesting.music.itemtouchhelpers.ItemTouchHelperViewHolder;
-import com.old.interesting.music.activities.HomeActivity;
-import com.old.interesting.music.models.LocalTrack;
-import com.old.interesting.music.models.Track;
-import com.old.interesting.music.models.UnifiedTrack;
-import com.old.interesting.music.R;
-import com.old.interesting.music.imageLoader.ImageLoader;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import newui.data.playListResponse.PlayListResult;
 
 /**
  * Created by Harjot on 20-May-16.
@@ -31,9 +30,8 @@ import java.util.List;
 public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdapter.MyViewHolder>
         implements ItemTouchHelperAdapter {
 
-    private List<UnifiedTrack> songList;
+    private List<PlayListResult> songList;
     private Context ctx;
-    ImageLoader imgLoader;
     HomeActivity homeActivity;
 
     public interface OnDragStartListener {
@@ -52,47 +50,23 @@ public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdap
     public onPlaylistEmptyListener mCallback;
     public OnMoveRemoveListener mCallback2;
 
-    public PlaylistTrackAdapter(List<UnifiedTrack> songList, ViewPlaylistFragment fragContext, Context ctx) {
-        this.songList = songList;
+    public PlaylistTrackAdapter(ViewPlaylistFragment fragContext, Context ctx) {
         mDragStartListener = fragContext;
         mCallback2 = fragContext;
 
         mCallback = (onPlaylistEmptyListener) ctx;
         this.ctx = ctx;
         homeActivity = (HomeActivity) ctx;
-        imgLoader = new ImageLoader(ctx);
     }
 
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
-        UnifiedTrack prev = songList.remove(fromPosition);
-        songList.add(toPosition, prev);
-        notifyItemMoved(fromPosition, toPosition);
-        if (homeActivity.pAdapter != null)
-            homeActivity.pAdapter.notifyDataSetChanged();
-
-        homeActivity.updateAllPlaylistFragment();
-        mCallback2.updateViewPlaylistFragment();
-
-        new HomeActivity.SavePlaylists().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     @Override
     public void onItemDismiss(int position) {
         songList.remove(position);
         notifyItemRemoved(position);
-        if (songList.size() == 0) {
-            ((HomeActivity) ctx).onBackPressed();
-            homeActivity.allPlaylists.getPlaylists().remove(homeActivity.tempPlaylistNumber);
-            mCallback.onPlaylistEmpty();
-        } else if (homeActivity.pAdapter != null) {
-            homeActivity.pAdapter.notifyDataSetChanged();
-            mCallback2.updateViewPlaylistFragment();
-        }
-
-        homeActivity.updateAllPlaylistFragment();
-
-        new HomeActivity.SavePlaylists().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder
@@ -139,23 +113,31 @@ public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdap
 
     @Override
     public void onBindViewHolder(final PlaylistTrackAdapter.MyViewHolder holder, int position) {
-        UnifiedTrack ut = songList.get(position);
-        if (ut.getType()) {
-            LocalTrack lt = ut.getLocalTrack();
-            imgLoader.DisplayImage(lt.getPath(), holder.art);
-            holder.title.setText(lt.getTitle());
-            holder.artist.setText(lt.getArtist());
-        } else {
-            Track t = ut.getStreamTrack();
-            Picasso.with(ctx)
-                    .load(t.getArtworkURL())
-                    .resize(100, 100)
-                    .error(R.drawable.ic_default)
-                    .placeholder(R.drawable.ic_default)
-                    .into(holder.art);
-            holder.title.setText(t.getTitle());
-            holder.artist.setText("");
+        final PlayListResult item = songList.get(position);
+        if (TextUtils.isEmpty(item.getImgUrl())) {
+            new GetPicUtil(item.getHash(), new GetPicUtil.GetPicCallBack() {
+                @Override
+                public void onPicOk(String url) {
+                    item.setImgUrl(url);
+                    notifyDataSetChanged();
+                }
+
+                @Override
+                public void onPicFail() {
+
+                }
+            }).getSongFromCloud();
+
         }
+        Picasso.with(ctx)
+                .load(item.getImgUrl())
+                .resize(100, 100)
+                .error(R.drawable.ic_default)
+                .placeholder(R.drawable.ic_default)
+                .into(holder.art);
+        holder.title.setText(item.getFilename());
+        holder.artist.setText("");
+
 
         holder.holderImg.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -170,7 +152,22 @@ public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdap
 
     @Override
     public int getItemCount() {
-        return songList.size();
+        if (songList == null) {
+            return 0;
+        } else {
+            return songList.size();
+        }
     }
 
+    public PlayListResult getItem(int position) {
+        if (songList == null || songList.size() == 0) {
+            return null;
+        } else {
+            return songList.get(position);
+        }
+    }
+
+    public void setSongList(List<PlayListResult> songList) {
+        this.songList = songList;
+    }
 }

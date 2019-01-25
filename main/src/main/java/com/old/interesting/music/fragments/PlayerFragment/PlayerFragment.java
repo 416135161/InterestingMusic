@@ -203,100 +203,6 @@ public class PlayerFragment extends Fragment implements
         // Required empty public constructor
     }
 
-    public void setupVisualizerFxAndUI() {
-
-        try {
-            mVisualizer = new Visualizer(mMediaPlayer.getAudioSessionId());
-            mEqualizer = new Equalizer(0, mMediaPlayer.getAudioSessionId());
-            mEqualizer.setEnabled(true);
-
-            try {
-                bassBoost = new BassBoost(0, mMediaPlayer.getAudioSessionId());
-                bassBoost.setEnabled(false);
-                BassBoost.Settings bassBoostSettingTemp = bassBoost.getProperties();
-                BassBoost.Settings bassBoostSetting = new BassBoost.Settings(bassBoostSettingTemp.toString());
-                bassBoostSetting.strength = (1000 / 19);
-                bassBoost.setProperties(bassBoostSetting);
-                mMediaPlayer.setAuxEffectSendLevel(1.0f);
-
-                presetReverb = new PresetReverb(0, mMediaPlayer.getAudioSessionId());
-                presetReverb.setPreset(PresetReverb.PRESET_NONE);
-                presetReverb.setEnabled(false);
-                mMediaPlayer.setAuxEffectSendLevel(1.0f);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        if (homeActivity.isEqualizerEnabled) {
-            try {
-                bassBoost.setEnabled(true);
-                BassBoost.Settings bassBoostSettingTemp = bassBoost.getProperties();
-                BassBoost.Settings bassBoostSetting = new BassBoost.Settings(bassBoostSettingTemp.toString());
-                if (homeActivity.bassStrength == -1) {
-                    bassBoostSetting.strength = (1000 / 19);
-                } else {
-                    bassBoostSetting.strength = homeActivity.bassStrength;
-                }
-                bassBoost.setProperties(bassBoostSetting);
-                mMediaPlayer.setAuxEffectSendLevel(1.0f);
-
-                if (homeActivity.reverbPreset == -1) {
-                    presetReverb.setPreset(PresetReverb.PRESET_NONE);
-                } else {
-                    presetReverb.setPreset(homeActivity.reverbPreset);
-                }
-                presetReverb.setEnabled(true);
-                mMediaPlayer.setAuxEffectSendLevel(1.0f);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        if (homeActivity.isEqualizerEnabled && homeActivity.isEqualizerReloaded) {
-            try {
-                homeActivity.isEqualizerEnabled = true;
-                int pos = homeActivity.presetPos;
-                if (pos != 0) {
-                    mEqualizer.usePreset((short) (pos - 1));
-                } else {
-                    for (short i = 0; i < 5; i++) {
-                        mEqualizer.setBandLevel(i, (short) homeActivity.seekbarpos[i]);
-                    }
-                }
-                if (homeActivity.bassStrength != -1 && homeActivity.reverbPreset != -1) {
-                    bassBoost.setEnabled(true);
-                    bassBoost.setStrength(homeActivity.bassStrength);
-                    presetReverb.setEnabled(true);
-                    presetReverb.setPreset(homeActivity.reverbPreset);
-                }
-                mMediaPlayer.setAuxEffectSendLevel(1.0f);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-
-        try {
-            mVisualizer.setCaptureSize(Visualizer.getCaptureSizeRange()[1]);
-            mVisualizer.setDataCaptureListener(
-                    new Visualizer.OnDataCaptureListener() {
-                        public void onWaveFormDataCapture(Visualizer visualizer,
-                                                          byte[] bytes, int samplingRate) {
-                        }
-
-                        public void onFftDataCapture(Visualizer visualizer,
-                                                     byte[] bytes, int samplingRate) {
-                            homeActivity.updateVisualizer(bytes);
-                        }
-                    }, Visualizer.getMaxCaptureRate() / 2, false, true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void togglePlayPause() {
         if (mMediaPlayer.isPlaying()) {
             mMediaPlayer.pause();
@@ -315,7 +221,6 @@ public class PlayerFragment extends Fragment implements
                 mCallback7.onPlayPause();
         } else {
             if (!completed) {
-                setupVisualizerFxAndUI();
                 if (mVisualizer != null)
                     mVisualizer.setEnabled(true);
                 if (homeActivity.isPlayerVisible) {
@@ -333,7 +238,7 @@ public class PlayerFragment extends Fragment implements
                     mCallback7.onPlayPause();
             } else {
                 mMediaPlayer.seekTo(0);
-                setupVisualizerFxAndUI();
+
                 if (mVisualizer != null)
                     mVisualizer.setEnabled(true);
                 mMediaPlayer.start();
@@ -377,7 +282,7 @@ public class PlayerFragment extends Fragment implements
                     isLyricsVisisble = false;
                     lyricsContainer.setVisibility(View.GONE);
                     lyricsIcon.setAlpha(0.5f);
-                    mVisualizerView.setVisibility(View.VISIBLE);
+                    mVisualizerView.setVisibility(View.INVISIBLE);
                 }
                 completed = false;
                 pauseClicked = false;
@@ -592,7 +497,7 @@ public class PlayerFragment extends Fragment implements
                 } else {
                     lyricsIcon.setAlpha(0.5f);
                     lyricsContainer.setVisibility(View.GONE);
-                    mVisualizerView.setVisibility(View.VISIBLE);
+                    mVisualizerView.setVisibility(View.INVISIBLE);
                 }
                 isLyricsVisisble = !isLyricsVisisble;
             }

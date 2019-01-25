@@ -64,13 +64,7 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
     private void searchCloudTrack(String query) {
         startLoadingIndicator();
         StreamService ss = HttpUtil.getApiService(Config.API_SERACH, new QueryInterceptor());
-        String encodeStr = "";
-        try {
-            encodeStr = URLEncoder.encode(query, "utf-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        Call<SearchResponseBean> call = ss.searchSong(query, 20);
+        Call<SearchResponseBean> call = ss.searchSong(query, Config.SEARCH_COUNT);
         call.enqueue(new Callback<SearchResponseBean>() {
 
             @Override

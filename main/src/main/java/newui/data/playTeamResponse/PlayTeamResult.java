@@ -14,7 +14,7 @@ public class PlayTeamResult {
     private String imgurl;
     private String playcount;
     private String publish_time;
-    private String specialid;
+    private int specialid;
     private int id;
     private String specialname;
     private String cid;
@@ -43,11 +43,11 @@ public class PlayTeamResult {
         return publish_time;
     }
 
-    public void setSpecialid(String specialid) {
+    public void setSpecialid(int specialid) {
         this.specialid = specialid;
     }
 
-    public String getSpecialid() {
+    public int getSpecialid() {
         return specialid;
     }
 

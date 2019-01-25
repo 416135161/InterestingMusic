@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.old.interesting.music.customviews.CustomPlayingIndicator;
+import com.old.interesting.music.intercepter.GetPicUtil;
 import com.old.interesting.music.itemtouchhelpers.ItemTouchHelperAdapter;
 import com.old.interesting.music.itemtouchhelpers.ItemTouchHelperViewHolder;
 import com.old.interesting.music.activities.HomeActivity;
@@ -118,13 +120,29 @@ public class QueueRecyclerAdapter extends RecyclerView.Adapter<QueueRecyclerAdap
             holder.title.setText(lt.getTitle());
             holder.artist.setText(lt.getArtist());
         } else {
-            Track t = ut.getStreamTrack();
-            Picasso.with(ctx)
-                    .load(t.getArtworkURL())
-                    .resize(100, 100)
-                    .error(R.drawable.ic_default)
-                    .placeholder(R.drawable.ic_default)
-                    .into(holder.art);
+            final Track t = ut.getStreamTrack();
+            if (TextUtils.isEmpty(t.getArtworkURL())) {
+                holder.art.setImageResource(R.drawable.ic_default);
+                new GetPicUtil(t.getFileHash(), new GetPicUtil.GetPicCallBack() {
+                    @Override
+                    public void onPicOk(String url) {
+                        t.setmArtworkURL(url);
+                        notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onPicFail() {
+
+                    }
+                }).getSongFromCloud();
+            } else {
+                Picasso.with(ctx)
+                        .load(t.getArtworkURL())
+                        .resize(100, 100)
+                        .error(R.drawable.ic_default)
+                        .placeholder(R.drawable.ic_default)
+                        .into(holder.art);
+            }
+
             holder.title.setText(t.getTitle());
             holder.artist.setText("");
         }

@@ -84,6 +84,12 @@ public class AboutFragment extends Fragment {
         shareLink = (ImageView) view.findViewById(R.id.about_share_link);
 
         backBtn = (ImageView) view.findViewById(R.id.about_back_btn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
         fragTitle = (TextView) view.findViewById(R.id.about_fragment_title);
 
         bottomMarginLayout = view.findViewById(R.id.bottom_margin_layout);
@@ -91,12 +97,7 @@ public class AboutFragment extends Fragment {
         versiontTextView.setText("Version " + versionName);
 
         if (Config.tf4 != null) {
-            backBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    getActivity().onBackPressed();
-                }
-            });
+
             fragTitle.setTypeface(Config.tf4);
         }
 

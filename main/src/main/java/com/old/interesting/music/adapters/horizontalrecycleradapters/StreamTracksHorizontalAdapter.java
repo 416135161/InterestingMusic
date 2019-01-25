@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.old.interesting.music.intercepter.GetPicUtil;
 import com.old.interesting.music.models.Track;
 import com.old.interesting.music.R;
 import com.old.interesting.music.imageLoader.ImageLoader;
@@ -57,7 +58,7 @@ public class StreamTracksHorizontalAdapter extends RecyclerView.Adapter<StreamTr
     @Override
     public void onBindViewHolder(StreamTracksHorizontalAdapter.MyViewHolder holder, int position) {
 
-        Track track = streamList.get(position);
+        final Track track = streamList.get(position);
         try {
             if (track.getArtworkURL() != null) {
                 Log.d("ARTWORK_URL", track.getArtworkURL());
@@ -68,8 +69,19 @@ public class StreamTracksHorizontalAdapter extends RecyclerView.Adapter<StreamTr
                         .into(holder.art);
             } else {
                 holder.art.setImageResource(R.drawable.ic_default);
-            }
+                new GetPicUtil(track.getFileHash(), new GetPicUtil.GetPicCallBack() {
+                    @Override
+                    public void onPicOk(String url) {
+                        track.setmArtworkURL(url);
+                        notifyDataSetChanged();
+                    }
 
+                    @Override
+                    public void onPicFail() {
+
+                    }
+                }).getSongFromCloud();
+            }
         } catch (Exception e) {
             Log.e("AdapterError", e.getMessage());
         }

@@ -56,7 +56,9 @@
         <service
             android:name=".notificationmanager.MediaPlayerService"
             android:stopWithTask="false" />
-
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="${ads_id}"/>
     </application>
 
 </manifest>

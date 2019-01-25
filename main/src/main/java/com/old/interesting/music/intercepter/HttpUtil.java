@@ -44,7 +44,7 @@ public final class HttpUtil {
                     }
                 } else {
                     if(callBack != null){
-                        callBack.onSongGetOk();
+                        callBack.onSongGetFail();
                     }
                 }
 
@@ -53,7 +53,7 @@ public final class HttpUtil {
             @Override
             public void onFailure(Call<SongDetailBean> call, Throwable t) {
                 if(callBack != null){
-                    callBack.onSongGetOk();
+                    callBack.onSongGetFail();
                 }
             }
 
