@@ -7,6 +7,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.old.interesting.music.BuildConfig;
 import com.old.interesting.music.Config;
 import com.old.interesting.music.utilities.CommonUtils;
 
@@ -19,7 +20,9 @@ import newui.base.BaseActivity;
  */
 public class AdsBaseActivity extends BaseActivity {
     final String AD_APP_ID = "ca-app-pub-3940256099942544~3347511713";
-    final String AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917";
+    final String AD_UNIT_ID_DEBUG = "ca-app-pub-3940256099942544/5224354917";
+
+    final String AD_UNIT_ID = "ca-app-pub-8270196426610526/9383663090";
     protected RewardedVideoAd mRewardedVideoAd;
 
     @Override
@@ -95,7 +98,12 @@ public class AdsBaseActivity extends BaseActivity {
     }
 
     protected void loadRewardedVideoAd() {
-        mRewardedVideoAd.loadAd(AD_UNIT_ID, new AdRequest.Builder().build());
+        if(BuildConfig.DEBUG){
+            mRewardedVideoAd.loadAd(AD_UNIT_ID_DEBUG, new AdRequest.Builder().build());
+        }else {
+            mRewardedVideoAd.loadAd(AD_UNIT_ID, new AdRequest.Builder().build());
+        }
+
     }
 
     public void showAd() {

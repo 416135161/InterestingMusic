@@ -300,7 +300,7 @@ public class PlayerFragment extends Fragment implements
                 togglePlayPause();
                 bufferingIndicator.setVisibility(View.GONE);
                 mainTrackController.setVisibility(View.VISIBLE);
-                equalizerIcon.setVisibility(View.VISIBLE);
+                equalizerIcon.setVisibility(View.INVISIBLE);
 
                 snappyRecyclerView.setCurrentPosition(HomeActivity.queueCurrentIndex);
                 snappyRecyclerView.setTransparency();

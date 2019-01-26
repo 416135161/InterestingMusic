@@ -73,8 +73,8 @@ public class SplashActivity extends AppCompatActivity {
     public void requestPermissions() {
         String[] permissions = {
                 Manifest.permission.INTERNET,
-                Manifest.permission.RECORD_AUDIO,
-                Manifest.permission.MODIFY_AUDIO_SETTINGS,
+//                Manifest.permission.RECORD_AUDIO,
+//                Manifest.permission.MODIFY_AUDIO_SETTINGS,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.READ_PHONE_STATE,
