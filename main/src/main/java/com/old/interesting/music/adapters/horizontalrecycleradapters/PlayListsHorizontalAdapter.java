@@ -18,6 +18,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import newui.data.playTeamResponse.PlayTeamResult;
 
@@ -30,6 +31,7 @@ public class PlayListsHorizontalAdapter extends RecyclerView.Adapter<PlayListsHo
 
 
     List<PlayTeamResult> playlists;
+    Random random = new Random();
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -37,6 +39,7 @@ public class PlayListsHorizontalAdapter extends RecyclerView.Adapter<PlayListsHo
         ImageView img[] = new ImageView[4];
         TextView playlistName, playlistSize;
         RelativeLayout bottomHolder;
+
 
         public MyViewHolder(View view) {
             super(view);
@@ -68,7 +71,7 @@ public class PlayListsHorizontalAdapter extends RecyclerView.Adapter<PlayListsHo
         PlayTeamResult pl = playlists.get(position);
         if (playlists.size() >= 4) {
             for (int i = 0; i < 4; i++) {
-                int num = (int) ((Math.random() * getItemCount()));
+                int num = random.nextInt(getItemCount());
                 Picasso.with(ctx).load(playlists.get(num).getImgurl()).resize(100, 100).into(holder.img[i]);
             }
         }

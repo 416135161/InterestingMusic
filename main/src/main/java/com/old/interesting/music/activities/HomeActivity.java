@@ -125,6 +125,7 @@ import com.old.interesting.music.notificationmanager.Constants;
 import com.old.interesting.music.notificationmanager.MediaPlayerService;
 import com.old.interesting.music.utilities.CommonUtils;
 import com.old.interesting.music.utilities.MediaCacheUtils;
+import com.old.interesting.music.utilities.SpHelper;
 import com.old.interesting.music.utilities.comparators.AlbumComparator;
 import com.old.interesting.music.utilities.comparators.ArtistComparator;
 import com.old.interesting.music.utilities.comparators.LocalMusicComparator;
@@ -1826,7 +1827,11 @@ public class HomeActivity extends AdsBaseActivity
                     new SaveSettings().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                     setTitle("Music Lark");
                 } else if (!isPlayerTransitioning) {
-                    startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME));
+                    if (!SpHelper.getDefault(this).getBoolean(SpHelper.KEY_STAR)) {
+                        showStarDialog();
+                    } else {
+                        startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME));
+                    }
                 }
             }
         }
@@ -2832,7 +2837,7 @@ public class HomeActivity extends AdsBaseActivity
 
     @Override
     public void playlistAddToQueue(List<UnifiedTrack> tracks) {
-      for (UnifiedTrack ut : tracks) {
+        for (UnifiedTrack ut : tracks) {
             HomeActivity.queue.addToQueue(ut);
         }
         if (playerFragment != null && playerFragment.snappyRecyclerView != null) {

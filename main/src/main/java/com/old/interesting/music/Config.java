@@ -11,7 +11,7 @@ public final class Config {
 
     private Config() {
     }
-    final public static int COUNT = 2;
+    final public static int COUNT = 3;
     public static int SEARCH_COUNT  = 20;
     public static int ALL_PLAY_TEAM_PAGE = 200;
 

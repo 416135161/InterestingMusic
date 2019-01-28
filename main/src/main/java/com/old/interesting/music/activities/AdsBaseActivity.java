@@ -1,6 +1,12 @@
 package com.old.interesting.music.activities;
 
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
@@ -9,7 +15,9 @@ import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.old.interesting.music.BuildConfig;
 import com.old.interesting.music.Config;
+import com.old.interesting.music.R;
 import com.old.interesting.music.utilities.CommonUtils;
+import com.old.interesting.music.utilities.SpHelper;
 
 import newui.base.BaseActivity;
 
@@ -117,6 +125,45 @@ public class AdsBaseActivity extends BaseActivity {
     }
 
 
-    private int count = 5;
+    private int count = 0;
+
+    protected void showStarDialog(){
+
+
+        new  AlertDialog.Builder(this)
+                .setTitle("Please rate the app" )
+                .setIcon(R.drawable.ic_star)
+                .setView(getLayoutInflater().inflate(R.layout.dlg_star, null))
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SpHelper.getDefault(AdsBaseActivity.this).putBoolean(SpHelper.KEY_STAR, true);
+                        jumpToPlay();
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME));
+                    }
+                })
+                .show();
+    }
+
+    private void jumpToPlay(){
+        Uri uri = Uri.parse("market://details?id=" + this.getPackageName());
+        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        try {
+            startActivity(goToMarket);
+        } catch (ActivityNotFoundException e) {
+            Log.e("AboutFragment.java: " + Thread.currentThread().getStackTrace()[2].getLineNumber(), e.getMessage());
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://play.google.com/store/apps/details?id=" + this.getPackageName())));
+        }
+    }
+
 
 }

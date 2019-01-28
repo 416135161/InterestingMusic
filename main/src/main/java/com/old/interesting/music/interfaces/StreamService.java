@@ -78,4 +78,8 @@ public interface StreamService {
 //    找图片素材用的
 //    https://www.iconfont.cn/
 
+
+//     查找版本号
+//    http://39.107.89.143/apps/music/list.do?code=android
+
 }

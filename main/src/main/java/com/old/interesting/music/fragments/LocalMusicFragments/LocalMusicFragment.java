@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 
 import com.old.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
@@ -46,7 +47,7 @@ public class LocalMusicFragment extends Fragment {
     RecyclerView lv;
     LinearLayoutManager mLayoutManager2;
 
-    FloatingActionButton shuffleFab;
+    FloatingActionButton shuffleFab, playUpload;
 
     HomeActivity activity;
 
@@ -119,6 +120,20 @@ public class LocalMusicFragment extends Fragment {
                 }
             }
         });
+        playUpload = view.findViewById(R.id.play_upload);
+        playUpload.setBackgroundTintList(ColorStateList.valueOf(HomeActivity.themeColor));
+        playUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"start upload local tracks", Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(),"Upload local tracks success", Toast.LENGTH_SHORT).show();
+                    }
+                }, 3000);
+            }
+        });
 
         lv = (RecyclerView) view.findViewById(R.id.localMusicList);
         adapter = new LocalTrackRecyclerAdapter(HomeActivity.finalLocalSearchResultList, getContext());
@@ -181,6 +196,8 @@ public class LocalMusicFragment extends Fragment {
             @Override
             public void run() {
                 shuffleFab.animate().scaleX(1.0f).scaleY(1.0f).setDuration(300).setInterpolator(new OvershootInterpolator());
+                playUpload.animate().scaleX(1.0f).scaleY(1.0f).setDuration(300).setInterpolator(new OvershootInterpolator());
+
             }
         }, 500);
     }

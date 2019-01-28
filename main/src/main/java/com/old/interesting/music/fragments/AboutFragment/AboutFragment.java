@@ -145,12 +145,12 @@ public class AboutFragment extends Fragment {
         shareLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.share_application_text) +
-                        " " + getResources().getString(R.string.music_dna_short_link));
-                sendIntent.setType("text/plain");
-                startActivity(sendIntent);
+//                Intent sendIntent = new Intent();
+//                sendIntent.setAction(Intent.ACTION_SEND);
+//                sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.share_application_text) +
+//                        " " + getResources().getString(R.string.music_dna_short_link));
+//                sendIntent.setType("text/plain");
+//                startActivity(sendIntent);
             }
         });
     }
