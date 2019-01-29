@@ -71,14 +71,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:src="@drawable/ic_error_white_48dp" />
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_refresh_btn" />
 
         <TextView
             android:id="@+id/noPlaylistContentText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
             android:layout_weight="5"
             android:gravity="top|center_horizontal"
             android:text="No Playlists"
@@ -111,5 +111,21 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorDark"
         android:clickable="true" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progress"
+        android:visibility="invisible"
+        />
+    <ImageView
+        android:id="@+id/view_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_refresh_btn"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        />
 
 </RelativeLayout>

@@ -159,7 +159,7 @@ public class AdsBaseActivity extends BaseActivity {
         try {
             startActivity(goToMarket);
         } catch (ActivityNotFoundException e) {
-            Log.e("AboutFragment.java: " + Thread.currentThread().getStackTrace()[2].getLineNumber(), e.getMessage());
+            Log.e("to play star: " + Thread.currentThread().getStackTrace()[2].getLineNumber(), e.getMessage());
             startActivity(new Intent(Intent.ACTION_VIEW,
                     Uri.parse("http://play.google.com/store/apps/details?id=" + this.getPackageName())));
         }

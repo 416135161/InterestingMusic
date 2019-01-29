@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.old.interesting.music.Config;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import newui.base.BaseFragment;
+import newui.data.action.ActionBrowPlayTeam;
 import newui.data.action.ActionPlayList;
 import newui.data.playListResponse.PlayListResult;
 import newui.data.playTeamResponse.PlayTeamResult;
@@ -64,7 +66,8 @@ public class ViewPlaylistFragment extends BaseFragment implements
 
     playlistCallbackListener mCallback;
     public static PlayTeamResult playTeamResult;
-
+    ProgressBar mProgressBar;
+    ImageView mRefreshIv;
 
     @Override
     public void onDragStarted(RecyclerView.ViewHolder viewHolder) {
@@ -93,8 +96,11 @@ public class ViewPlaylistFragment extends BaseFragment implements
 
 
         } else {
+            mRefreshIv.setVisibility(View.VISIBLE);
             playAll.setVisibility(View.GONE);
         }
+
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -229,8 +235,21 @@ public class ViewPlaylistFragment extends BaseFragment implements
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(plAdapter);
         mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(playlistRecyler);
-        CloudDataUtil.getPlayList(playTeamResult.getId() + "", 0, 200);
+        mProgressBar = view.findViewById(R.id.progress);
+        mRefreshIv = view.findViewById(R.id.view_refresh);
+        mRefreshIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getData();
+            }
+        });
+        getData();
+    }
 
+    private void getData(){
+        CloudDataUtil.getPlayList(playTeamResult.getId() + "", 0, 200);
+        mRefreshIv.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override

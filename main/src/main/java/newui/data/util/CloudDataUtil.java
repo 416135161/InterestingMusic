@@ -40,14 +40,17 @@ public final class CloudDataUtil {
 
                     }
                 } else {
-
+                    onFailure(call, null);
                 }
-
             }
 
             @Override
             public void onFailure(Call<PlayTeamBean> call, Throwable t) {
-
+                if (type == ActionBrowPlayTeam.TYPE_TEAM_LIST) {
+                    EventBus.getDefault().post(new ActionListPlayTeam(null));
+                } else if (type == ActionBrowPlayTeam.TYPE_BROW) {
+                    EventBus.getDefault().post(new ActionBrowPlayTeam(null));
+                }
             }
 
         });

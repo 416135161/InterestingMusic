@@ -14,7 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.old.interesting.music.Config;
 import com.old.interesting.music.R;
@@ -23,7 +25,7 @@ import com.old.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
 import com.old.interesting.music.fragments.ViewPlaylistFragment.ViewPlaylistFragment;
 import com.old.interesting.music.utilities.CommonUtils;
 
-;import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import newui.base.BaseFragment;
@@ -31,6 +33,8 @@ import newui.data.action.ActionBrowPlayTeam;
 import newui.data.action.ActionListPlayTeam;
 import newui.data.playTeamResponse.PlayTeamBean;
 import newui.data.util.CloudDataUtil;
+
+;
 
 
 /**
@@ -58,6 +62,9 @@ public class AllPlaylistsFragment extends BaseFragment {
     ImageView[] imgView = new ImageView[10];
 
     ImageView playlistFragIcon;
+
+    ProgressBar mProgressBar;
+    ImageView mRefreshIv;
 
     public interface allPlaylistCallbackListener {
         void onPlaylistSelected(int pos);
@@ -157,8 +164,24 @@ public class AllPlaylistsFragment extends BaseFragment {
 
             }
         });
-        CloudDataUtil.getPlayTeamList(0, Config.ALL_PLAY_TEAM_PAGE, ActionBrowPlayTeam.TYPE_TEAM_LIST);
+        mProgressBar = view.findViewById(R.id.progress);
+        mRefreshIv = view.findViewById(R.id.view_refresh);
+        noPlaylistContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getData();
+            }
+        });
+        getData();
+
     }
+
+    private void getData(){
+        CloudDataUtil.getPlayTeamList(0, Config.ALL_PLAY_TEAM_PAGE, ActionBrowPlayTeam.TYPE_TEAM_LIST);
+        mProgressBar.setVisibility(View.VISIBLE);
+        noPlaylistContent.setVisibility(View.GONE);
+    }
+
 
     @Override
     public void onResume() {
@@ -169,14 +192,17 @@ public class AllPlaylistsFragment extends BaseFragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventPosting(ActionListPlayTeam event) {
         PlayTeamBean playTeamBean = event.playTeamBean;
-        if (playTeamBean.getResult() != null && !playTeamBean.getResult().isEmpty()) {
+        if (playTeamBean != null && playTeamBean.getResult() != null && !playTeamBean.getResult().isEmpty()) {
             allPlaylistRecycler.setVisibility(View.VISIBLE);
             noPlaylistContent.setVisibility(View.INVISIBLE);
             vpAdapter.setPlaylists(playTeamBean.getResult());
             vpAdapter.notifyDataSetChanged();
+            mProgressBar.setVisibility(View.INVISIBLE);
         } else {
             allPlaylistRecycler.setVisibility(View.INVISIBLE);
             noPlaylistContent.setVisibility(View.VISIBLE);
+            mProgressBar.setVisibility(View.INVISIBLE);
+            Toast.makeText(this.getContext(), "please check net state", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -131,6 +131,7 @@ import com.old.interesting.music.utilities.comparators.ArtistComparator;
 import com.old.interesting.music.utilities.comparators.LocalMusicComparator;
 import com.old.interesting.music.visualizers.VisualizerView;
 import com.lantouzi.wheelview.WheelView;
+import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -413,7 +414,7 @@ public class HomeActivity extends AdsBaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        ctx = this;
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -469,7 +470,7 @@ public class HomeActivity extends AdsBaseActivity
         });
 
         copyrightText = (TextView) findViewById(R.id.copyright_text);
-        copyrightText.setText("Music Lark v" + versionName);
+        copyrightText.setText("FM music v" + versionName);
 
         if (Config.tf4 != null) {
             try {
@@ -480,7 +481,6 @@ public class HomeActivity extends AdsBaseActivity
         }
 
         imgLoader = new ImageLoader(this);
-        ctx = this;
 
         initializeHeaderImages();
 
@@ -728,7 +728,7 @@ public class HomeActivity extends AdsBaseActivity
         hotlistNothingText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CloudDataUtil.getPlayTeamList(0, 20, ActionBrowPlayTeam.TYPE_BROW);
+                getPlayTeamList();
             }
         });
 
@@ -1061,7 +1061,13 @@ public class HomeActivity extends AdsBaseActivity
 
             }
         });
-        CloudDataUtil.getPlayTeamList(0, 20, ActionBrowPlayTeam.TYPE_BROW);
+        getPlayTeamList();
+    }
+
+    private void getPlayTeamList() {
+        hotlistNothingText.setVisibility(View.INVISIBLE);
+        findViewById(R.id.progress).setVisibility(View.VISIBLE);
+        CloudDataUtil.getPlayTeamList(0, Config.BROW_PLAY_TEAM_PAGE, ActionBrowPlayTeam.TYPE_BROW);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -1071,6 +1077,7 @@ public class HomeActivity extends AdsBaseActivity
         } else {
             setHotData(null);
         }
+        findViewById(R.id.progress).setVisibility(View.INVISIBLE);
     }
 
     private void setHotData(List<PlayTeamResult> list) {
@@ -1189,10 +1196,12 @@ public class HomeActivity extends AdsBaseActivity
                     if (queue != null && queue.getQueue().size() != 0) {
                         UnifiedTrack utHome = queue.getQueue().get(queueCurrentIndex);
                         if (utHome.getType()) {
-                            imgLoader.DisplayImage(utHome.getLocalTrack().getPath(), spImgHome);
+                            Picasso.with(ctx).load(utHome.getLocalTrack().getPath())
+                                    .placeholder(R.drawable.ic_default).resize(100, 100).into(spImgHome);
                             spTitleHome.setText(utHome.getLocalTrack().getTitle());
                         } else {
-                            imgLoader.DisplayImage(utHome.getStreamTrack().getArtworkURL(), spImgHome);
+                            Picasso.with(ctx).load(utHome.getStreamTrack().getArtworkURL())
+                                    .placeholder(R.drawable.ic_default).resize(100, 100).into(spImgHome);
                             spTitleHome.setText(utHome.getStreamTrack().getTitle());
                         }
                     } else {
@@ -1781,51 +1790,51 @@ public class HomeActivity extends AdsBaseActivity
             } else {
                 if (isLocalVisible) {
                     hideFragment("local");
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (isQueueVisible) {
                     hideFragment("queue");
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (isStreamVisible) {
                     hideFragment("stream");
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (isPlaylistVisible) {
                     hideFragment("playlist");
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (isNewPlaylistVisible) {
                     hideFragment("newPlaylist");
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (isEqualizerVisible) {
                     finalSelectedTracks.clear();
                     hideFragment("equalizer");
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (isFavouriteVisible) {
                     hideFragment("favourite");
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (isAllPlaylistVisible) {
                     hideFragment("allPlaylists");
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (isFolderContentVisible) {
                     hideFragment("folderContent");
                     setTitle("Folders");
                 } else if (isAllFolderVisible) {
                     hideFragment("allFolders");
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (isAllSavedDnaVisisble) {
                     hideFragment("allSavedDNAs");
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (isSavedDNAVisible) {
                     hideFragment("savedDNA");
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (isRecentVisible) {
                     hideFragment("recent");
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (isAboutVisible) {
                     hideFragment("About");
                     setTitle("Settings");
                 } else if (isSettingsVisible) {
                     hideFragment("settings");
                     new SaveSettings().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-                    setTitle("Music Lark");
+                    setTitle("FM music");
                 } else if (!isPlayerTransitioning) {
                     if (!SpHelper.getDefault(this).getBoolean(SpHelper.KEY_STAR)) {
                         showStarDialog();
@@ -2779,7 +2788,7 @@ public class HomeActivity extends AdsBaseActivity
     public void onPlaylistPlayAll() {
         onQueueItemClicked(0);
         hideFragment("playlist");
-        setTitle("Music Lark");
+        setTitle("FM music");
     }
 
     @Override
@@ -3788,7 +3797,7 @@ public class HomeActivity extends AdsBaseActivity
     public void hideFragment(String type) {
         if (type.equals("local")) {
             isLocalVisible = false;
-            setTitle("Music Lark");
+            setTitle("FM music");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("local");
@@ -3809,7 +3818,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("stream")) {
             isStreamVisible = false;
-            setTitle("Music Lark");
+            setTitle("FM music");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("stream");
@@ -3839,7 +3848,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("favourite")) {
             isFavouriteVisible = false;
-            setTitle("Music Lark");
+            setTitle("FM music");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("favourite");
@@ -3860,7 +3869,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("allPlaylists")) {
             isAllPlaylistVisible = false;
-            setTitle("Music Lark");
+            setTitle("FM music");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("allPlaylists");
@@ -3880,7 +3889,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("allFolders")) {
             isAllFolderVisible = false;
-            setTitle("Music Lark");
+            setTitle("FM music");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("allFolders");
@@ -3891,7 +3900,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("allSavedDNAs")) {
             isAllSavedDnaVisisble = false;
-            setTitle("Music Lark");
+            setTitle("FM music");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("allSavedDNAs");
@@ -3920,7 +3929,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("recent")) {
             isRecentVisible = false;
-            setTitle("Music Lark");
+            setTitle("FM music");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("recent");
@@ -3931,7 +3940,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("settings")) {
             isSettingsVisible = false;
-            setTitle("Music Lark");
+            setTitle("FM music");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("settings");
@@ -3981,7 +3990,7 @@ public class HomeActivity extends AdsBaseActivity
 
         navigationView.setCheckedItem(R.id.nav_home);
 
-        setTitle("Music Lark");
+        setTitle("FM music");
 
     }
 
@@ -4443,9 +4452,9 @@ public class HomeActivity extends AdsBaseActivity
             for (int i = 0; i < numRecents; i++) {
                 ut = recentlyPlayed.getRecentlyPlayed().get(i);
                 if (ut.getType())
-                    imgLoader.DisplayImage(ut.getLocalTrack().getPath(), imgView[i]);
+                    Picasso.with(ctx).load(ut.getLocalTrack().getPath()).resize(100, 100).into(imgView[i]);
                 else
-                    imgLoader.DisplayImage(ut.getStreamTrack().getArtworkURL(), imgView[i]);
+                    Picasso.with(ctx).load(ut.getStreamTrack().getArtworkURL()).resize(100, 100).into(imgView[i]);
             }
             for (int i = numRecents; i < Math.min(numRecents + numSongs, 10); i++) {
                 imgLoader.DisplayImage(localTrackList.get(i - numRecents).getPath(), imgView[i]);
@@ -4460,9 +4469,9 @@ public class HomeActivity extends AdsBaseActivity
             for (int i = 0; i < 10; i++) {
                 ut = recentlyPlayed.getRecentlyPlayed().get(i);
                 if (ut.getType())
-                    imgLoader.DisplayImage(ut.getLocalTrack().getPath(), imgView[i]);
+                    Picasso.with(ctx).load(ut.getLocalTrack().getPath()).resize(100, 100).into(imgView[i]);
                 else
-                    imgLoader.DisplayImage(ut.getStreamTrack().getArtworkURL(), imgView[i]);
+                    Picasso.with(ctx).load(ut.getStreamTrack().getArtworkURL()).resize(100, 100).into(imgView[i]);
             }
         }
     }

@@ -11,9 +11,10 @@ public final class Config {
 
     private Config() {
     }
-    final public static int COUNT = 3;
+    final public static int COUNT = 2;
     public static int SEARCH_COUNT  = 20;
     public static int ALL_PLAY_TEAM_PAGE = 200;
+    public static int BROW_PLAY_TEAM_PAGE = 30;
 
     public static Typeface tf3;
     public static Typeface tf4;
