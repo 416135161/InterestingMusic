@@ -2,6 +2,7 @@ package com.old.interesting.music.fragments.StreamFragment;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.old.interesting.music.intercepter.GetPicUtil;
 import com.old.interesting.music.models.Track;
 import com.old.interesting.music.R;
 import com.squareup.picasso.Picasso;
@@ -46,18 +48,34 @@ public class StreamTrackListAdapter extends RecyclerView.Adapter<StreamTrackList
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Track track = tracks.get(position);
+        final Track track = tracks.get(position);
         holder.title.setText(track.getTitle());
-        try {
-            Picasso.with(context)
-                    .load(track.getArtworkURL())
-                    .resize(100, 100)
-                    .error(R.drawable.ic_default)
-                    .placeholder(R.drawable.ic_default)
-                    .into(holder.art);
-            Log.d("URL", track.getArtworkURL());
-        } catch (Exception e) {
-            Log.e("AdapterError", e.getMessage());
+        if (!TextUtils.isEmpty(track.getArtworkURL())) {
+            try {
+                Picasso.with(context)
+                        .load(track.getArtworkURL())
+                        .resize(100, 100)
+                        .error(R.drawable.ic_default)
+                        .placeholder(R.drawable.ic_default)
+                        .into(holder.art);
+                Log.d("URL", track.getArtworkURL());
+            } catch (Exception e) {
+                Log.e("AdapterError", e.getMessage());
+            }
+        } else {
+            holder.art.setImageResource(R.drawable.ic_default);
+            new GetPicUtil(track.getFileHash(), new GetPicUtil.GetPicCallBack() {
+                @Override
+                public void onPicOk(String url) {
+                    track.setmArtworkURL(url);
+                    notifyDataSetChanged();
+                }
+
+                @Override
+                public void onPicFail() {
+
+                }
+            }).getSongFromCloud();
         }
     }
 

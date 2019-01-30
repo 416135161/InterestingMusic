@@ -2005,7 +2005,7 @@ public class HomeActivity extends AdsBaseActivity
         /*Update the Local List*/
 
         if (!isLocalVisible)
-            localRecyclerContainer.setVisibility(View.VISIBLE);
+            localRecyclerContainer.setVisibility(View.GONE);
 
         finalLocalSearchResultList.clear();
         for (int i = 0; i < localTrackList.size(); i++) {
@@ -2054,7 +2054,7 @@ public class HomeActivity extends AdsBaseActivity
         /*Update the Local List*/
 
         if (!isLocalVisible)
-            localRecyclerContainer.setVisibility(View.VISIBLE);
+            localRecyclerContainer.setVisibility(View.GONE);
 
         finalRecentlyAddedTrackSearchResultList.clear();
         for (int i = 0; i < recentlyAddedTrackList.size(); i++) {
