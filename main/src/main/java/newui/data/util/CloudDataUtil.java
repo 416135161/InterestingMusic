@@ -84,27 +84,5 @@ public final class CloudDataUtil {
         });
     }
 
-    public static void getSongLrc(String hash) {
-        StreamService ss = HttpUtil.getApiService(Config.API_GET_LRC, null);
-        Call<LrcResponseBean> call = ss.getSongLrc(hash);
-        call.enqueue(new Callback<LrcResponseBean>() {
 
-            @Override
-            public void onResponse(Call<LrcResponseBean> call, Response<LrcResponseBean> response) {
-                if (response.isSuccessful() && response.body() != null
-                        && response.body().getData() != null) {
-                } else {
-                    onFailure(null, new Exception("is nothing"));
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<LrcResponseBean> call, Throwable t) {
-
-
-            }
-
-        });
-    }
 }

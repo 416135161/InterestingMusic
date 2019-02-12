@@ -61,8 +61,7 @@ public interface StreamService {
     @GET("/musicBoard/listItem/list.do")
     Call<PlayListBean> getPlayList(@Query("musicBoardid") String musicBoardid, @Query("start") int start,
                                    @Query("pageSize") int pageSize);
-    @GET("/yy/index.php?r=play/getdata")
-    Call<LrcResponseBean> getSongLrc(@Query("hash") String hash);
+
 
 //    这是获取新歌的  size弄成240
 //    http://39.107.89.143/newSongs/list.do
