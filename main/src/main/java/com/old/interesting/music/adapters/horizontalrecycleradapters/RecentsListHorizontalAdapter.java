@@ -69,7 +69,6 @@ public class RecentsListHorizontalAdapter extends RecyclerView.Adapter<RecentsLi
             Track t = ut.getStreamTrack();
             Picasso.with(ctx)
                     .load(t.getArtworkURL())
-                    .resize(100, 100)
                     .error(R.drawable.ic_default)
                     .placeholder(R.drawable.ic_default)
                     .into(holder.art);

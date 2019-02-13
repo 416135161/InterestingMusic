@@ -131,7 +131,6 @@ public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdap
         }
         Picasso.with(ctx)
                 .load(item.getImgUrl())
-                .resize(100, 100)
                 .error(R.drawable.ic_default)
                 .placeholder(R.drawable.ic_default)
                 .into(holder.art);

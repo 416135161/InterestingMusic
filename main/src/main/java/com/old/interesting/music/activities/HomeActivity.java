@@ -65,7 +65,9 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.old.interesting.music.Config;
 import com.old.interesting.music.R;
+import com.old.interesting.music.adapters.horizontalrecycleradapters.BillTrackHorizontalAdapter;
 import com.old.interesting.music.adapters.horizontalrecycleradapters.LocalTracksHorizontalAdapter;
+import com.old.interesting.music.adapters.horizontalrecycleradapters.NewTracksHorizontalAdapter;
 import com.old.interesting.music.adapters.horizontalrecycleradapters.PlayListsHorizontalAdapter;
 import com.old.interesting.music.adapters.horizontalrecycleradapters.RecentsListHorizontalAdapter;
 import com.old.interesting.music.adapters.horizontalrecycleradapters.StreamTracksHorizontalAdapter;
@@ -143,10 +145,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Callable;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
+import newui.data.action.ActionBillSongs;
 import newui.data.action.ActionBrowPlayTeam;
+import newui.data.action.ActionNewSongs;
 import newui.data.playTeamResponse.PlayTeamResult;
 import newui.data.util.CloudDataUtil;
 import retrofit2.Call;
@@ -281,6 +286,9 @@ public class HomeActivity extends AdsBaseActivity
     public PlayListsHorizontalAdapter hotAdapter;
     public RecentsListHorizontalAdapter rAdapter;
 
+    public BillTrackHorizontalAdapter billAdapter;
+    public NewTracksHorizontalAdapter newAdapter;
+
     NavigationView navigationView;
 
     Call<SearchResponseBean> call;
@@ -292,6 +300,9 @@ public class HomeActivity extends AdsBaseActivity
     RecyclerView localsongsRecyclerView;
     RecyclerView hotListRecycler;
     RecyclerView recentsRecycler;
+    RecyclerView billRecyclerView;
+    RecyclerView newRecyclerView;
+
 
     RelativeLayout localRecyclerContainer;
     RelativeLayout recentsRecyclerContainer;
@@ -308,12 +319,12 @@ public class HomeActivity extends AdsBaseActivity
 
     ImageView navImageView;
 
-    TextView localViewAll, streamViewAll;
+    TextView localViewAll, streamViewAll, newViewAll, billViewAll;
 
     TextView localNothingText;
     TextView streamNothingText;
     TextView recentsNothingText;
-    TextView hotlistNothingText;
+    TextView hotlistNothingText, newNothingText, billNothingText;
 
     public static int screen_width;
     public static int screen_height;
@@ -731,6 +742,8 @@ public class HomeActivity extends AdsBaseActivity
                 getPlayTeamList();
             }
         });
+        billNothingText = findViewById(R.id.billListNothingText);
+        newNothingText = findViewById(R.id.newListNothingText);
 
         localViewAll = (TextView) findViewById(R.id.localViewAll);
         localViewAll.setOnClickListener(new View.OnClickListener() {
@@ -746,6 +759,8 @@ public class HomeActivity extends AdsBaseActivity
                 showFragment("stream");
             }
         });
+        billViewAll = findViewById(R.id.billLists_view_all);
+        newViewAll = findViewById(R.id.newLists_view_all);
 
         progress = new Dialog(ctx);
         progress.setCancelable(false);
@@ -755,6 +770,7 @@ public class HomeActivity extends AdsBaseActivity
         progress.show();
         new loadSavedData().execute();
         initHotTracks();
+        initNewAndBillView();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1064,6 +1080,70 @@ public class HomeActivity extends AdsBaseActivity
         getPlayTeamList();
     }
 
+    private void initNewAndBillView(){
+        newAdapter = new NewTracksHorizontalAdapter(null, ctx);
+        newRecyclerView = findViewById(R.id.new_list_home);
+        newRecyclerView.setNestedScrollingEnabled(false);
+        LinearLayoutManager mLayoutManager2 = new LinearLayoutManager(ctx, LinearLayoutManager.HORIZONTAL, false);
+        newRecyclerView.setLayoutManager(mLayoutManager2);
+        newRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        AlphaInAnimationAdapter alphaAdapter2 = new AlphaInAnimationAdapter(newAdapter);
+        alphaAdapter2.setFirstOnly(false);
+        newRecyclerView.setAdapter(alphaAdapter2);
+
+        newRecyclerView.addOnItemTouchListener(new ClickItemTouchListener(newRecyclerView) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, final int position, long id) {
+//                ViewPlaylistFragment.setPlayTeamResult(hotAdapter.getItem(position));
+//                showFragment("playlist");
+                return true;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, final int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
+
+
+        billAdapter = new BillTrackHorizontalAdapter(null, ctx);
+        billRecyclerView = findViewById(R.id.bill_list_home);
+        billRecyclerView.setNestedScrollingEnabled(false);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(ctx, LinearLayoutManager.HORIZONTAL, false);
+        billRecyclerView.setLayoutManager(mLayoutManager);
+        billRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(billAdapter);
+        alphaAdapter.setFirstOnly(false);
+        billRecyclerView.setAdapter(alphaAdapter);
+
+        billRecyclerView.addOnItemTouchListener(new ClickItemTouchListener(billRecyclerView) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, final int position, long id) {
+//                ViewPlaylistFragment.setPlayTeamResult(hotAdapter.getItem(position));
+//                showFragment("playlist");
+                return true;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, final int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
+
+        CloudDataUtil.getNewSongs();
+        CloudDataUtil.getBillSongs();
+    }
+
     private void getPlayTeamList() {
         hotlistNothingText.setVisibility(View.INVISIBLE);
         findViewById(R.id.progress).setVisibility(View.VISIBLE);
@@ -1078,6 +1158,28 @@ public class HomeActivity extends AdsBaseActivity
             setHotData(null);
         }
         findViewById(R.id.progress).setVisibility(View.INVISIBLE);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventPosting(ActionNewSongs event) {
+        if (event != null && event.trackList != null ) {
+            newAdapter.setPlaylists(event.trackList);
+            newAdapter.notifyDataSetChanged();
+        } else {
+
+        }
+        findViewById(R.id.new_progress).setVisibility(View.INVISIBLE);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventPosting(ActionBillSongs event) {
+        if (event != null && event.trackList != null) {
+            billAdapter.setPlaylists(event.trackList);
+            billAdapter.notifyDataSetChanged();
+        } else {
+
+        }
+        findViewById(R.id.bill_progress).setVisibility(View.INVISIBLE);
     }
 
     private void setHotData(List<PlayTeamResult> list) {

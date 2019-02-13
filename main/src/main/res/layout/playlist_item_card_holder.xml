@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="115dp"
-    android:layout_height="154dp"
-    android:layout_margin="7dp"
-    android:background="@drawable/custom_ripple"
-    android:clickable="true"
-    android:focusable="true"
-    android:longClickable="true">
+                android:layout_width="115dp"
+                android:layout_height="154dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_margin="7dp"
+                android:background="@drawable/custom_ripple"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="true">
 
     <RelativeLayout
         android:id="@+id/custom_image_holder"
@@ -15,13 +16,16 @@
         android:layout_height="115dp"
         android:layout_gravity="top">
 
-        <ImageView
+        <com.itheima.roundedimageview.RoundedImageView
             android:id="@+id/image1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:background="#151515"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            app:riv_border_color="#333333"
+            app:riv_border_width="0dip"
+            app:riv_corner_radius="6dp"
+            app:riv_oval="false"/>
 
     </RelativeLayout>
 

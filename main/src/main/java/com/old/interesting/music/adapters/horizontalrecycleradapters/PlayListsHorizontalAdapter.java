@@ -55,7 +55,7 @@ public class PlayListsHorizontalAdapter extends RecyclerView.Adapter<PlayListsHo
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         PlayTeamResult pl = playlists.get(position);
-        Picasso.with(ctx).load(playlists.get(position).getImgurl()).resize(100, 100).into(holder.img1);
+        Picasso.with(ctx).load(playlists.get(position).getImgurl()).into(holder.img1);
 
         holder.playlistName.setText(pl.getSpecialname());
         holder.playlistSize.setText((int) ((Math.random() * 9 + 1) * 10)+ "k count");

@@ -52,7 +52,7 @@ public class ViewAllPlaylistsRecyclerAdapter extends RecyclerView.Adapter<ViewAl
     public void onBindViewHolder(MyViewHolder holder, int position) {
         PlayTeamResult p = playlists.get(position);
         holder.playListName.setText(p.getSpecialname());
-        Picasso.with(ctx).load(p.getImgurl()).resize(100, 100).into(holder.img);
+        Picasso.with(ctx).load(p.getImgurl()).into(holder.img);
     }
 
     @Override
