@@ -83,5 +83,7 @@ public class NewTracksHorizontalAdapter extends RecyclerView.Adapter<NewTracksHo
         this.playlists = playlists;
     }
 
-
+    public List<Track> getPlaylists() {
+        return playlists;
+    }
 }

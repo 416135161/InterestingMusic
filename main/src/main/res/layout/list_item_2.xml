@@ -9,15 +9,19 @@
     android:foreground="?android:attr/selectableItemBackground"
     android:longClickable="true">
 
-    <ImageView
+    <com.itheima.roundedimageview.RoundedImageView
         android:id="@+id/img_2"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="10dp"
         android:background="#222"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        app:riv_border_color="#333333"
+        app:riv_border_width="0dip"
+        app:riv_corner_radius="6dp"
+        app:riv_oval="false"/>
 
     <LinearLayout
         android:id="@+id/row_item_holder_2"

@@ -26,7 +26,7 @@
             android:scaleType="centerCrop"
             app:riv_border_color="#333333"
             app:riv_border_width="0dip"
-            app:riv_corner_radius="10dip"
+            app:riv_corner_radius="6dp"
             app:riv_oval="false"/>
 
         <TextView

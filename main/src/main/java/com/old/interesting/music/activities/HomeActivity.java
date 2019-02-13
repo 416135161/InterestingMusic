@@ -756,11 +756,26 @@ public class HomeActivity extends AdsBaseActivity
         streamViewAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                StreamMusicFragment.trackList = streamingTrackList;
                 showFragment("stream");
             }
         });
         billViewAll = findViewById(R.id.billLists_view_all);
+        billViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StreamMusicFragment.trackList = billAdapter.getPlaylists();
+                showFragment("stream");
+            }
+        });
         newViewAll = findViewById(R.id.newLists_view_all);
+        newViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StreamMusicFragment.trackList = newAdapter.getPlaylists();
+                showFragment("stream");
+            }
+        });
 
         progress = new Dialog(ctx);
         progress.setCancelable(false);
@@ -1094,8 +1109,37 @@ public class HomeActivity extends AdsBaseActivity
         newRecyclerView.addOnItemTouchListener(new ClickItemTouchListener(newRecyclerView) {
             @Override
             public boolean onClick(RecyclerView parent, View view, final int position, long id) {
-//                ViewPlaylistFragment.setPlayTeamResult(hotAdapter.getItem(position));
-//                showFragment("playlist");
+                Track track = newAdapter.getItem(position);
+                if (queue.getQueue().size() == 0) {
+                    queueCurrentIndex = 0;
+                    queue.getQueue().add(new UnifiedTrack(false, null, track));
+                } else if (queueCurrentIndex == queue.getQueue().size() - 1) {
+                    queueCurrentIndex++;
+                    queue.getQueue().add(new UnifiedTrack(false, null, track));
+                } else if (isReloaded) {
+                    isReloaded = false;
+                    queueCurrentIndex = queue.getQueue().size();
+                    queue.getQueue().add(new UnifiedTrack(false, null, track));
+                } else {
+                    queue.getQueue().add(++queueCurrentIndex, new UnifiedTrack(false, null, track));
+                }
+                selectedTrack = track;
+                streamSelected = true;
+                localSelected = false;
+                queueCall = false;
+                isReloaded = false;
+                HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
+                    @Override
+                    public void onSongGetOk() {
+                        onTrackSelected(position);
+                    }
+
+                    @Override
+                    public void onSongGetFail() {
+                        Toast.makeText(HomeActivity.this, "Can't get song player url!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 return true;
             }
 
@@ -1124,8 +1168,37 @@ public class HomeActivity extends AdsBaseActivity
         billRecyclerView.addOnItemTouchListener(new ClickItemTouchListener(billRecyclerView) {
             @Override
             public boolean onClick(RecyclerView parent, View view, final int position, long id) {
-//                ViewPlaylistFragment.setPlayTeamResult(hotAdapter.getItem(position));
-//                showFragment("playlist");
+                Track track = billAdapter.getItem(position);
+                if (queue.getQueue().size() == 0) {
+                    queueCurrentIndex = 0;
+                    queue.getQueue().add(new UnifiedTrack(false, null, track));
+                } else if (queueCurrentIndex == queue.getQueue().size() - 1) {
+                    queueCurrentIndex++;
+                    queue.getQueue().add(new UnifiedTrack(false, null, track));
+                } else if (isReloaded) {
+                    isReloaded = false;
+                    queueCurrentIndex = queue.getQueue().size();
+                    queue.getQueue().add(new UnifiedTrack(false, null, track));
+                } else {
+                    queue.getQueue().add(++queueCurrentIndex, new UnifiedTrack(false, null, track));
+                }
+                selectedTrack = track;
+                streamSelected = true;
+                localSelected = false;
+                queueCall = false;
+                isReloaded = false;
+                HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
+                    @Override
+                    public void onSongGetOk() {
+                        onTrackSelected(position);
+                    }
+
+                    @Override
+                    public void onSongGetFail() {
+                        Toast.makeText(HomeActivity.this, "Can't get song player url!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 return true;
             }
 

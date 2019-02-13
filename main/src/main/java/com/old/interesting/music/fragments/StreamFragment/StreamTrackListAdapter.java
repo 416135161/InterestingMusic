@@ -54,7 +54,6 @@ public class StreamTrackListAdapter extends RecyclerView.Adapter<StreamTrackList
             try {
                 Picasso.with(context)
                         .load(track.getArtworkURL())
-                        .resize(100, 100)
                         .error(R.drawable.ic_default)
                         .placeholder(R.drawable.ic_default)
                         .into(holder.art);
@@ -89,5 +88,11 @@ public class StreamTrackListAdapter extends RecyclerView.Adapter<StreamTrackList
         super();
         context = ctx;
         this.tracks = tracks;
+    }
+
+    public Track getData(int position) {
+        if (tracks != null && tracks.size() > position) {
+            return tracks.get(position);
+        } else return null;
     }
 }

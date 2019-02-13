@@ -19,8 +19,7 @@
         android:layout_marginLeft="5dp"
         android:scaleType="fitXY"
         android:src="@drawable/handle" />
-
-    <ImageView
+    <com.itheima.roundedimageview.RoundedImageView
         android:id="@+id/img"
         android:layout_width="56dp"
         android:layout_height="56dp"
@@ -29,7 +28,11 @@
         android:layout_marginBottom="10dp"
         android:layout_toRightOf="@+id/holderImage"
         android:background="#222"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        app:riv_border_color="#333333"
+        app:riv_border_width="0dip"
+        app:riv_corner_radius="6dp"
+        app:riv_oval="false"/>
 
     <LinearLayout
         android:layout_width="match_parent"

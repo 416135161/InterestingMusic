@@ -83,5 +83,7 @@ public class BillTrackHorizontalAdapter extends RecyclerView.Adapter<BillTrackHo
         this.playlists = playlists;
     }
 
-
+    public List<Track> getPlaylists() {
+        return playlists;
+    }
 }

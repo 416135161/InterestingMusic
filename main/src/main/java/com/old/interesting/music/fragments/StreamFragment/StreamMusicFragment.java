@@ -20,6 +20,7 @@ import com.old.interesting.music.MusicDNAApplication;
 import com.old.interesting.music.R;
 import com.old.interesting.music.utilities.CommonUtils;
 
+import java.util.List;
 
 
 /**
@@ -28,6 +29,8 @@ import com.old.interesting.music.utilities.CommonUtils;
 public class StreamMusicFragment extends Fragment {
 
     public static StreamTrackListAdapter adapter;
+
+    public static List<Track> trackList;
     OnTrackSelectedListener mCallback;
     Context ctx;
 
@@ -74,7 +77,11 @@ public class StreamMusicFragment extends Fragment {
 
         lv = (RecyclerView) view.findViewById(R.id.trackList);
 
-        adapter = new StreamTrackListAdapter(getContext(), HomeActivity.streamingTrackList);
+        if (trackList == null) {
+            adapter = new StreamTrackListAdapter(getContext(), HomeActivity.streamingTrackList);
+        } else {
+            adapter = new StreamTrackListAdapter(getContext(), trackList);
+        }
         LinearLayoutManager mLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         lv.setLayoutManager(mLayoutManager2);
         lv.setItemAnimator(new DefaultItemAnimator());
@@ -83,7 +90,7 @@ public class StreamMusicFragment extends Fragment {
         lv.addOnItemTouchListener(new ClickItemTouchListener(lv) {
             @Override
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
-                Track track = HomeActivity.streamingTrackList.get(position);
+                Track track = adapter.getData(position);
                 if (HomeActivity.queue.getQueue().size() == 0) {
                     HomeActivity.queueCurrentIndex = 0;
                     HomeActivity.queue.getQueue().add(new UnifiedTrack(false, null, track));
@@ -110,7 +117,7 @@ public class StreamMusicFragment extends Fragment {
             public boolean onLongClick(RecyclerView parent, View view, final int position, long id) {
                 CustomGeneralBottomSheetDialog generalBottomSheetDialog = new CustomGeneralBottomSheetDialog();
                 generalBottomSheetDialog.setPosition(position);
-                generalBottomSheetDialog.setTrack(new UnifiedTrack(false, null, HomeActivity.streamingTrackList.get(position)));
+                generalBottomSheetDialog.setTrack(new UnifiedTrack(false, null, adapter.getData(position)));
                 generalBottomSheetDialog.setFragment("Stream");
                 generalBottomSheetDialog.show(getActivity().getSupportFragmentManager(), "general_bottom_sheet_dialog");
                 return true;
@@ -121,6 +128,15 @@ public class StreamMusicFragment extends Fragment {
 
             }
         });
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (adapter != null){
+            adapter.notifyDataSetChanged();
+        }
 
     }
 
