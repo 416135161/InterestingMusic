@@ -6,7 +6,7 @@ import android.graphics.Color;
  * Created by Harjot on 02-Aug-16.
  */
 public class Settings {
-    public static final int DEF_THEME_COLOR = Color.parseColor("#ff5379");
+    public static final int DEF_THEME_COLOR = Color.parseColor("#5223ea");
     public static boolean DEF_ALBUM_ART_BG = true;
     public static boolean DEF_STREAM_ONLY_ON_WIFI = false;
     public static float DEF_DNA_DENSITY = 60f;

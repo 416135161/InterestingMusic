@@ -336,7 +336,7 @@ public class HomeActivity extends AdsBaseActivity
 
     TextView recentsViewAll, hotListViewAll;
 
-    public static int themeColor = Color.parseColor("#bc56fb");
+    public static int themeColor = Color.parseColor("#5223ea");
     public static float minAudioStrength = 0.40f;
 
     public static TextPaint tp;
@@ -1303,8 +1303,6 @@ public class HomeActivity extends AdsBaseActivity
                     themeColor = settings.getThemeColor();
                     minAudioStrength = settings.getMinAudioStrength();
 
-
-                    navigationView.setItemIconTintList(ColorStateList.valueOf(themeColor));
                     collapsingToolbar.setContentScrimColor(themeColor);
                     customLinearGradient.setStartColor(themeColor);
                     customLinearGradient.invalidate();
@@ -3389,7 +3387,7 @@ public class HomeActivity extends AdsBaseActivity
 
     @Override
     public void onColorChanged() {
-        navigationView.setItemIconTintList(ColorStateList.valueOf(themeColor));
+
     }
 
     @Override

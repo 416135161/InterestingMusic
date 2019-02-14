@@ -3,13 +3,14 @@
     <!--<color name="colorPrimary">#94207e</color>-->
     <!--<color name="colorPrimaryDark">#94207e</color>-->
     <!--<color name="colorAccent">#ff94207e</color>-->
-    <color name="colorPrimary">#ff5379</color>
-    <color name="colorPrimaryDark">#ff5379</color>
-    <color name="colorAccent">#ff5379</color>
+    <!--<color name="colorPrimary">#ff5379</color>-->
+    <!--<color name="colorPrimaryDark">#ff5379</color>-->
+    <!--<color name="colorAccent">#ff5379</color>-->
 
-    <!--<color name="colorPrimary">#000000</color>-->
-    <!--<color name="colorPrimaryDark">#000000</color>-->
-    <!--<color name="colorAccent">#FFFFFF</color>-->
-    <color name="colorDark">#111111</color>
+    <color name="colorPrimary">#5223ea</color>
+    <color name="colorPrimaryDark">#5223ea</color>
+    <color name="colorAccent">#5223ea</color>
+    <color name="colorDark">#172332</color>
+    <!--<color name="colorDark">#111111</color>-->
     <color name="colorListItem">#111111</color>
 </resources>
