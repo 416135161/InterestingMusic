@@ -12,5 +12,5 @@
     <color name="colorAccent">#5223ea</color>
     <color name="colorDark">#172332</color>
     <!--<color name="colorDark">#111111</color>-->
-    <color name="colorListItem">#111111</color>
+    <color name="colorListItem">#172332</color>
 </resources>

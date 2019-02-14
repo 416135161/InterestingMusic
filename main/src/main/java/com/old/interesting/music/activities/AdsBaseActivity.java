@@ -37,6 +37,7 @@ public class AdsBaseActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initAds();
+        Config.PLAY_ADS_COUNT = 0;
     }
 
     @Override
@@ -119,8 +120,12 @@ public class AdsBaseActivity extends BaseActivity {
         if (count % Config.COUNT != 0) {
             return;
         }
+        if(Config.PLAY_ADS_COUNT == Config.MAX_PLAY_COUNT){
+            return;
+        }
         if (mRewardedVideoAd != null && mRewardedVideoAd.isLoaded()) {
             mRewardedVideoAd.show();
+            Config.PLAY_ADS_COUNT++;
         }
     }
 

@@ -11,8 +11,10 @@ public final class Config {
 
     private Config() {
     }
-    final public static int COUNT = 2;
-    public static int SEARCH_COUNT  = 20;
+    final public static int COUNT = 3;
+    public static int PLAY_ADS_COUNT = 0;
+    public static int MAX_PLAY_COUNT = 3;
+    public static int SEARCH_COUNT  = 25;
     public static int ALL_PLAY_TEAM_PAGE = 200;
     public static int BROW_PLAY_TEAM_PAGE = 30;
 

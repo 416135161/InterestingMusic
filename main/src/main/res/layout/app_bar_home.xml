@@ -418,7 +418,7 @@
             android:layout_below="@+id/localRecyclerContainer"
             android:layout_marginLeft="-6dp"
             android:layout_marginRight="-6dp"
-            android:background="#222"
+            android:background="@color/colorDark"
             android:translationZ="6dp"
             android:visibility="gone">
 
@@ -471,7 +471,6 @@
                 android:textColor="#DDD"
                 android:textSize="13dp"
                 android:visibility="invisible"/>
-
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/trackList_home"
