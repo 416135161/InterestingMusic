@@ -38,7 +38,7 @@ public final class CloudDataUtil {
     //获取歌单
     public static void getPlayTeamList(int start, int pageSize, final int type) {
         StreamService ss = HttpUtil.getApiService(Config.API_LIN_HOST, null);
-        Call<PlayTeamBean> call = ss.getPlayTeamList(start, pageSize);
+        Call<PlayTeamBean> call = ss.getPlayTeamList(start, pageSize, Config.FROM_US);
         call.enqueue(new Callback<PlayTeamBean>() {
 
             @Override
@@ -100,7 +100,7 @@ public final class CloudDataUtil {
     //获取新歌
     public static void getNewSongs() {
         StreamService ss = HttpUtil.getApiService(Config.API_LIN_HOST, null);
-        Call<NewSongsResponse> call = ss.getNewSongs();
+        Call<NewSongsResponse> call = ss.getNewSongs(Config.FROM_US);
         call.enqueue(new Callback<NewSongsResponse>() {
 
             @Override

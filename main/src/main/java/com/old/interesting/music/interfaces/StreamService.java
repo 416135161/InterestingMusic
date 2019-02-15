@@ -1,5 +1,6 @@
 package com.old.interesting.music.interfaces;
 
+import com.old.interesting.music.Config;
 import com.old.interesting.music.models.searchResponse.SearchResponseBean;
 import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 
@@ -20,8 +21,8 @@ public interface StreamService {
      *
      * @return
      */
-    @GET("/newSongs/list.do")
-    Call<NewSongsResponse> getNewSongs();
+    @GET("/newSongs/list.do" )
+    Call<NewSongsResponse> getNewSongs(@Query("from") String from);
 
     /**
      * 这是获取排行榜数据的
@@ -57,7 +58,7 @@ public interface StreamService {
      * @return
      */
     @GET("/musicBoard/list.do")
-    Call<PlayTeamBean> getPlayTeamList(@Query("start") int start, @Query("pageSize") int pageSize);
+    Call<PlayTeamBean> getPlayTeamList(@Query("start") int start, @Query("pageSize") int pageSize, @Query("from") String from);
 
     /**
      * 获取歌单下的歌曲
