@@ -372,9 +372,8 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="10"
                     android:text="SoundCloud"
                     android:textColor="#fdffff"
                     android:textSize="16dp"
@@ -382,10 +381,10 @@
 
                 <TextView
                     android:id="@+id/streamViewAll"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="2"
+                    android:gravity="right|center_vertical"
+                    android:layout_weight="1"
                     android:text="VIEW ALL"
                     android:textColor="#FF5778A6"
                     android:textSize="13sp"

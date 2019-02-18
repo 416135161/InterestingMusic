@@ -740,7 +740,24 @@ public class HomeActivity extends AdsBaseActivity
             }
         });
         billNothingText = findViewById(R.id.billListNothingText);
+        billNothingText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.bill_progress).setVisibility(View.VISIBLE);
+                v.setVisibility(View.INVISIBLE);
+                CloudDataUtil.getNewSongs();
+
+            }
+        });
         newNothingText = findViewById(R.id.newListNothingText);
+        newNothingText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.new_progress).setVisibility(View.VISIBLE);
+                v.setVisibility(View.INVISIBLE);
+                CloudDataUtil.getBillSongs();
+            }
+        });
 
         localViewAll = (TextView) findViewById(R.id.localViewAll);
         localViewAll.setOnClickListener(new View.OnClickListener() {
@@ -1233,8 +1250,9 @@ public class HomeActivity extends AdsBaseActivity
         if (event != null && event.trackList != null ) {
             newAdapter.setPlaylists(event.trackList);
             newAdapter.notifyDataSetChanged();
+            newNothingText.setVisibility(GONE);
         } else {
-
+            newNothingText.setVisibility(View.VISIBLE);
         }
         findViewById(R.id.new_progress).setVisibility(View.INVISIBLE);
     }
@@ -1244,8 +1262,9 @@ public class HomeActivity extends AdsBaseActivity
         if (event != null && event.trackList != null) {
             billAdapter.setPlaylists(event.trackList);
             billAdapter.notifyDataSetChanged();
+            billNothingText.setVisibility(View.GONE);
         } else {
-
+            billNothingText.setVisibility(View.VISIBLE);
         }
         findViewById(R.id.bill_progress).setVisibility(View.INVISIBLE);
     }
