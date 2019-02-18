@@ -310,8 +310,8 @@ public class HomeActivity extends AdsBaseActivity
     RelativeLayout hotlistRecyclerContainer;
 
     RelativeLayout localBanner;
-    ImageView favBanner;
-    ImageView recentBanner;
+    TextView favBanner;
+    TextView recentBanner;
     ImageView folderBanner;
     ImageView savedDNABanner;
 
@@ -331,12 +331,11 @@ public class HomeActivity extends AdsBaseActivity
 
     Toolbar toolbar;
     public CollapsingToolbarLayout collapsingToolbar;
-    ImageView[] imgView = new ImageView[10];
     public CustomLinearGradient customLinearGradient;
 
     TextView recentsViewAll, hotListViewAll;
 
-    public static int themeColor = Color.parseColor("#5223ea");
+    public static int themeColor = Color.parseColor("#5200ee");
     public static float minAudioStrength = 0.40f;
 
     public static TextPaint tp;
@@ -493,8 +492,6 @@ public class HomeActivity extends AdsBaseActivity
 
         imgLoader = new ImageLoader(this);
 
-        initializeHeaderImages();
-
         hasSoftNavbar = CommonUtils.hasNavBar(this);
         statusBarHeightinDp = CommonUtils.getStatusBarHeight(this);
         navBarHeightSizeinDp = hasSoftNavbar ? CommonUtils.getNavBarHeight(this) : 0;
@@ -629,8 +626,8 @@ public class HomeActivity extends AdsBaseActivity
         main = this;
 
         localBanner = (RelativeLayout) findViewById(R.id.localBanner);
-        favBanner = (ImageView) findViewById(R.id.favBanner);
-        recentBanner = (ImageView) findViewById(R.id.recentBanner);
+        favBanner = findViewById(R.id.favBanner);
+        recentBanner =  findViewById(R.id.recentBanner);
         folderBanner = (ImageView) findViewById(R.id.folderBanner);
         savedDNABanner = (ImageView) findViewById(R.id.savedDNABanner);
 
@@ -926,7 +923,6 @@ public class HomeActivity extends AdsBaseActivity
             continuePlayingList.add(recentlyPlayed.getRecentlyPlayed().get(i));
         }
         rAdapter.notifyDataSetChanged();
-        refreshHeaderImages();
 
         RecentsFragment rFrag = (RecentsFragment) fragMan.findFragmentByTag("recent");
         if (rFrag != null && rFrag.rtAdpater != null) {
@@ -1054,7 +1050,6 @@ public class HomeActivity extends AdsBaseActivity
             continuePlayingList.add(recentlyPlayed.getRecentlyPlayed().get(i));
         }
         rAdapter.notifyDataSetChanged();
-        refreshHeaderImages();
 
         RecentsFragment rFrag = (RecentsFragment) fragMan.findFragmentByTag("recent");
         if (rFrag != null && rFrag.rtAdpater != null) {
@@ -1364,7 +1359,6 @@ public class HomeActivity extends AdsBaseActivity
                     new SaveVersionCode().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
                     getLocalSongs();
-                    refreshHeaderImages();
 
                     if (queue != null && queue.getQueue().size() != 0) {
                         UnifiedTrack utHome = queue.getQueue().get(queueCurrentIndex);
@@ -4587,65 +4581,4 @@ public class HomeActivity extends AdsBaseActivity
         }
     }
 
-    public void initializeHeaderImages() {
-        imgView[0] = (ImageView) findViewById(R.id.home_header_img_1);
-        imgView[1] = (ImageView) findViewById(R.id.home_header_img_2);
-        imgView[2] = (ImageView) findViewById(R.id.home_header_img_3);
-        imgView[3] = (ImageView) findViewById(R.id.home_header_img_4);
-        imgView[4] = (ImageView) findViewById(R.id.home_header_img_5);
-        imgView[5] = (ImageView) findViewById(R.id.home_header_img_6);
-        imgView[6] = (ImageView) findViewById(R.id.home_header_img_7);
-        imgView[7] = (ImageView) findViewById(R.id.home_header_img_8);
-        imgView[8] = (ImageView) findViewById(R.id.home_header_img_9);
-        imgView[9] = (ImageView) findViewById(R.id.home_header_img_10);
-    }
-
-    public void refreshHeaderImages() {
-        int numSongs = localTrackList.size();
-        int numRecents = recentlyPlayed.getRecentlyPlayed().size();
-        if (numRecents == 0) {
-            if (numSongs == 0) {
-                for (int i = 0; i < 10; i++) {
-                    imgLoader.DisplayImage(null, imgView[i]);
-                }
-            } else if (numSongs < 10) {
-                for (int i = 0; i < numSongs; i++) {
-                    imgLoader.DisplayImage(localTrackList.get(i).getPath(), imgView[i]);
-                }
-                for (int i = numSongs; i < 10; i++) {
-                    imgLoader.DisplayImage(null, imgView[i]);
-                }
-            } else {
-                for (int i = 0; i < 10; i++) {
-                    imgLoader.DisplayImage(localTrackList.get(i).getPath(), imgView[i]);
-                }
-            }
-        } else if (numRecents < 10) {
-            UnifiedTrack ut;
-            for (int i = 0; i < numRecents; i++) {
-                ut = recentlyPlayed.getRecentlyPlayed().get(i);
-                if (ut.getType())
-                    Picasso.with(ctx).load(ut.getLocalTrack().getPath()).resize(100, 100).into(imgView[i]);
-                else
-                    Picasso.with(ctx).load(ut.getStreamTrack().getArtworkURL()).resize(100, 100).into(imgView[i]);
-            }
-            for (int i = numRecents; i < Math.min(numRecents + numSongs, 10); i++) {
-                imgLoader.DisplayImage(localTrackList.get(i - numRecents).getPath(), imgView[i]);
-            }
-            if (numRecents + numSongs < 10) {
-                for (int i = numRecents + numSongs; i < 10; i++) {
-                    imgLoader.DisplayImage(null, imgView[i]);
-                }
-            }
-        } else {
-            UnifiedTrack ut;
-            for (int i = 0; i < 10; i++) {
-                ut = recentlyPlayed.getRecentlyPlayed().get(i);
-                if (ut.getType())
-                    Picasso.with(ctx).load(ut.getLocalTrack().getPath()).resize(100, 100).into(imgView[i]);
-                else
-                    Picasso.with(ctx).load(ut.getStreamTrack().getArtworkURL()).resize(100, 100).into(imgView[i]);
-            }
-        }
-    }
 }

@@ -60,7 +60,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
             android:text="VIEW ALL"
-            android:textColor="#fdffff"
+            android:textColor="#FF5778A6"
             android:textSize="13sp"/>
 
         <android.support.v7.widget.RecyclerView
@@ -124,7 +124,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
             android:text="VIEW ALL"
-            android:textColor="#fdffff"
+            android:textColor="#FF5778A6"
             android:textSize="13sp"/>
 
         <android.support.v7.widget.RecyclerView

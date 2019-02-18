@@ -7,10 +7,10 @@
     <!--<color name="colorPrimaryDark">#ff5379</color>-->
     <!--<color name="colorAccent">#ff5379</color>-->
 
-    <color name="colorPrimary">#5223ea</color>
-    <color name="colorPrimaryDark">#5223ea</color>
-    <color name="colorAccent">#5223ea</color>
-    <color name="colorDark">#172332</color>
+    <color name="colorPrimary">#5200ee</color>
+    <color name="colorPrimaryDark">#5200ee</color>
+    <color name="colorAccent">#5200ee</color>
+    <color name="colorDark">#182332</color>
     <!--<color name="colorDark">#111111</color>-->
-    <color name="colorListItem">#172332</color>
+    <color name="colorListItem">#182332</color>
 </resources>

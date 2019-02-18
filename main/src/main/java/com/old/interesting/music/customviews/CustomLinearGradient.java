@@ -18,7 +18,7 @@ import com.old.interesting.music.activities.HomeActivity;
 public class CustomLinearGradient extends View {
 
     Paint paint;
-    int startColor, midColor, endColor;
+    int startColor, endColor;
     int alpha;
 
     public CustomLinearGradient(Context context) {
@@ -38,10 +38,9 @@ public class CustomLinearGradient extends View {
 
     void init() {
         paint = new Paint();
-        alpha = 140;
+        alpha = 0;
         startColor = Color.argb(alpha, Color.red(HomeActivity.themeColor), Color.green(HomeActivity.themeColor), Color.blue(HomeActivity.themeColor));
-        midColor = Color.parseColor("#88111111");
-        endColor = Color.parseColor("#FF111111");
+        endColor = Color.parseColor("#FF182231");
     }
 
     public void setAlpha(int alpha) {
@@ -60,8 +59,8 @@ public class CustomLinearGradient extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         startColor = Color.argb(alpha, Color.red(HomeActivity.themeColor), Color.green(HomeActivity.themeColor), Color.blue(HomeActivity.themeColor));
-        midColor = Color.parseColor("#88111111");
-        endColor = Color.parseColor("#FF111111");
+
+        endColor = Color.parseColor("#FF182231");
 //        paint.setShader(new LinearGradient(0, 0, 0, getHeight(), new int[]{startColor, midColor, endColor}, new float[]{0.0f, 0.35f, 1.0f}, Shader.TileMode.MIRROR));
         paint.setShader(new LinearGradient(0, 0, 0, getHeight(), startColor, endColor, Shader.TileMode.CLAMP));
         canvas.drawPaint(paint);

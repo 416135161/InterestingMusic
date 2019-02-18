@@ -74,7 +74,6 @@ public class RecentsTrackAdapter extends RecyclerView.Adapter<RecentsTrackAdapte
                 HomeActivity.continuePlayingList.add(HomeActivity.recentlyPlayed.getRecentlyPlayed().get(i));
             }
             homeActivity.rAdapter.notifyDataSetChanged();
-            homeActivity.refreshHeaderImages();
         }
 
         mCallback.updateRecentsFragment();
