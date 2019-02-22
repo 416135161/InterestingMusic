@@ -480,7 +480,7 @@ public class HomeActivity extends AdsBaseActivity
         });
 
         copyrightText = (TextView) findViewById(R.id.copyright_text);
-        copyrightText.setText("FM music v" + versionName);
+        copyrightText.setText("Pandora v" + versionName);
 
         if (Config.tf4 != null) {
             try {
@@ -1976,51 +1976,51 @@ public class HomeActivity extends AdsBaseActivity
             } else {
                 if (isLocalVisible) {
                     hideFragment("local");
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (isQueueVisible) {
                     hideFragment("queue");
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (isStreamVisible) {
                     hideFragment("stream");
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (isPlaylistVisible) {
                     hideFragment("playlist");
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (isNewPlaylistVisible) {
                     hideFragment("newPlaylist");
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (isEqualizerVisible) {
                     finalSelectedTracks.clear();
                     hideFragment("equalizer");
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (isFavouriteVisible) {
                     hideFragment("favourite");
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (isAllPlaylistVisible) {
                     hideFragment("allPlaylists");
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (isFolderContentVisible) {
                     hideFragment("folderContent");
                     setTitle("Folders");
                 } else if (isAllFolderVisible) {
                     hideFragment("allFolders");
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (isAllSavedDnaVisisble) {
                     hideFragment("allSavedDNAs");
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (isSavedDNAVisible) {
                     hideFragment("savedDNA");
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (isRecentVisible) {
                     hideFragment("recent");
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (isAboutVisible) {
                     hideFragment("About");
                     setTitle("Settings");
                 } else if (isSettingsVisible) {
                     hideFragment("settings");
                     new SaveSettings().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-                    setTitle("FM music");
+                    setTitle("Pandora");
                 } else if (!isPlayerTransitioning) {
                     if (!SpHelper.getDefault(this).getBoolean(SpHelper.KEY_STAR)) {
                         showStarDialog();
@@ -2974,7 +2974,7 @@ public class HomeActivity extends AdsBaseActivity
     public void onPlaylistPlayAll() {
         onQueueItemClicked(0);
         hideFragment("playlist");
-        setTitle("FM music");
+        setTitle("Pandora");
     }
 
     @Override
@@ -3983,7 +3983,7 @@ public class HomeActivity extends AdsBaseActivity
     public void hideFragment(String type) {
         if (type.equals("local")) {
             isLocalVisible = false;
-            setTitle("FM music");
+            setTitle("Pandora");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("local");
@@ -4004,7 +4004,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("stream")) {
             isStreamVisible = false;
-            setTitle("FM music");
+            setTitle("Pandora");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("stream");
@@ -4034,7 +4034,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("favourite")) {
             isFavouriteVisible = false;
-            setTitle("FM music");
+            setTitle("Pandora");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("favourite");
@@ -4055,7 +4055,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("allPlaylists")) {
             isAllPlaylistVisible = false;
-            setTitle("FM music");
+            setTitle("Pandora");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("allPlaylists");
@@ -4075,7 +4075,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("allFolders")) {
             isAllFolderVisible = false;
-            setTitle("FM music");
+            setTitle("Pandora");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("allFolders");
@@ -4086,7 +4086,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("allSavedDNAs")) {
             isAllSavedDnaVisisble = false;
-            setTitle("FM music");
+            setTitle("Pandora");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("allSavedDNAs");
@@ -4115,7 +4115,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("recent")) {
             isRecentVisible = false;
-            setTitle("FM music");
+            setTitle("Pandora");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("recent");
@@ -4126,7 +4126,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("settings")) {
             isSettingsVisible = false;
-            setTitle("FM music");
+            setTitle("Pandora");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("settings");
@@ -4176,7 +4176,7 @@ public class HomeActivity extends AdsBaseActivity
 
         navigationView.setCheckedItem(R.id.nav_home);
 
-        setTitle("FM music");
+        setTitle("Pandora");
 
     }
 
