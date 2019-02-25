@@ -28,7 +28,7 @@
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FM Music"
+            android:text="Pandora"
             android:textColor="#FFFFFFFF"
             android:textSize="28sp"
 

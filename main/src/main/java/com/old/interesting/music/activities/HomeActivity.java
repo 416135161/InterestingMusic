@@ -745,8 +745,7 @@ public class HomeActivity extends AdsBaseActivity
             public void onClick(View v) {
                 findViewById(R.id.bill_progress).setVisibility(View.VISIBLE);
                 v.setVisibility(View.INVISIBLE);
-                CloudDataUtil.getNewSongs();
-
+                CloudDataUtil.getBillSongs();
             }
         });
         newNothingText = findViewById(R.id.newListNothingText);
@@ -755,7 +754,7 @@ public class HomeActivity extends AdsBaseActivity
             public void onClick(View v) {
                 findViewById(R.id.new_progress).setVisibility(View.VISIBLE);
                 v.setVisibility(View.INVISIBLE);
-                CloudDataUtil.getBillSongs();
+                CloudDataUtil.getNewSongs();
             }
         });
 
@@ -1247,7 +1246,7 @@ public class HomeActivity extends AdsBaseActivity
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventPosting(ActionNewSongs event) {
-        if (event != null && event.trackList != null ) {
+        if (event != null && event.trackList != null && event.trackList.size() > 0) {
             newAdapter.setPlaylists(event.trackList);
             newAdapter.notifyDataSetChanged();
             newNothingText.setVisibility(GONE);
