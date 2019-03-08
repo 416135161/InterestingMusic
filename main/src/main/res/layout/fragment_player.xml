@@ -112,7 +112,7 @@
         <com.old.interesting.music.customviews.CustomProgressBar
             android:id="@+id/customProgress"
             android:layout_width="match_parent"
-            android:layout_height="4dp"
+            android:layout_height="2dp"
             android:visibility="invisible"/>
     </FrameLayout>
 
@@ -255,6 +255,7 @@
             app:lrcCurrentTextColor="#ffffffff"
             app:lrcNormalTextColor="#53ffffff"
             app:lrcTextSize="16sp"
+            android:background="#20ffffff"
             />
 
     </RelativeLayout>

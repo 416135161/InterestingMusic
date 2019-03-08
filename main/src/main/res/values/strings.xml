@@ -15,4 +15,32 @@
     <string name="music_dna_short_link">http://bit.ly/musicDnaApp</string>
     <string name="license_text">MusicDNA and related material are distributed under \'Attribution-NonCommercial-ShareAlike 4.0 International license\'</string>
     <string name="license_link">https://github.com/harjot-oberai/MusicDNA/blob/master/LICENSE.md</string>
+
+
+
+    <string name="text_recent">Recent</string>
+    <string name="text_all">VIEW ALL</string>
+    <string name="text_new_song">NewTracks</string>
+    <string name="text_refresh">Refresh</string>
+    <string name="text_hot_song">HotTracks</string>
+    <string name="text_album">Album</string>
+    <string name="text_local_songs">Local Songs</string>
+    <string name="text_favourite">Favourite</string>
+    <string name="text_nothing">Nothing to Show !</string>
+    <string name="text_about">About Us</string>
+    <string name="text_home">Home</string>
+    <string name="text_local_music">Local Music</string>
+    <string name="text_play_lists">PlayLists</string>
+    <string name="text_recently_play">Recently Played</string>
+    <string name="text_favourites">Favourites</string>
+    <string name="text_no_recent_song">No Recent Songs</string>
+    <string name="text_all_albums">ALL ALBUMS</string>
+    <string name="text_play_list">PLAYLIST</string>
+    <string name="text_queue">QUEUE</string>
+    <string name="text_clear">CLEAR</string>
+    <string name="text_full_screen">Full Screen</string>
+    <string name="text_please_rate">Please rate the app</string>
+    <string name="text_sure">Ensure</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_can_not_get_song_tip">"Can't get the selected track!"</string>
 </resources>

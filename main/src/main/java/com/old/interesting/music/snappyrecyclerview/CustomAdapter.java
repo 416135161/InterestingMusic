@@ -46,7 +46,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         UnifiedTrack ut = queue.get(position);
-        holder.albumArt.setAlpha(0.35f);
+        holder.albumArt.setAlpha(0.8f);
         if (ut.getType()) {
             Bitmap bmp = getBitmap(ut.getLocalTrack().getPath());
             if (bmp != null) {

@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="PLAYLIST"
+                android:text="@string/text_play_list"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp" />
 

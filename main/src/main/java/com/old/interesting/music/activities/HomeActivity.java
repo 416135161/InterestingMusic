@@ -822,7 +822,7 @@ public class HomeActivity extends AdsBaseActivity
             @Override
             public void onSongGetFail() {
                 stopLoadingIndicator();
-                Toast.makeText(HomeActivity.this, "Can't get the selected track!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, R.string.text_can_not_get_song_tip, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -1147,7 +1147,7 @@ public class HomeActivity extends AdsBaseActivity
 
                     @Override
                     public void onSongGetFail() {
-                        Toast.makeText(HomeActivity.this, "Can't get song player url!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomeActivity.this, R.string.text_can_not_get_song_tip, Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -1206,7 +1206,7 @@ public class HomeActivity extends AdsBaseActivity
 
                     @Override
                     public void onSongGetFail() {
-                        Toast.makeText(HomeActivity.this, "Can't get song player url!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomeActivity.this, R.string.text_can_not_get_song_tip, Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -1476,7 +1476,7 @@ public class HomeActivity extends AdsBaseActivity
 
                                         @Override
                                         public void onSongGetFail() {
-                                            Toast.makeText(HomeActivity.this, "Can't get song player url!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(HomeActivity.this, R.string.text_can_not_get_song_tip, Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }
@@ -1586,7 +1586,7 @@ public class HomeActivity extends AdsBaseActivity
 
                                 @Override
                                 public void onSongGetFail() {
-                                    Toast.makeText(HomeActivity.this, "Can't get song player url!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(HomeActivity.this, R.string.text_can_not_get_song_tip, Toast.LENGTH_SHORT).show();
                                 }
                             });
 

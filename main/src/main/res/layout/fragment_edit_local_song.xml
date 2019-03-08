@@ -96,7 +96,7 @@
                 android:id="@+id/edit_song_album"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Album"
+                android:hint="@string/text_album"
                 android:textColor="#FFF" />
         </android.support.design.widget.TextInputLayout>
 

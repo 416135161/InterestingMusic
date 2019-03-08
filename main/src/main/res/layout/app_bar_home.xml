@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
-                    android:text="Recent"
+                    android:text="@string/text_recent"
                     android:textColor="#fdffff"
                     android:textSize="14sp"
                     android:textStyle="bold"/>
@@ -95,9 +95,9 @@
                     android:layout_marginBottom="25dp"
                     android:layout_marginTop="25dp"
                     android:drawableTop="@drawable/nothing"
-                    android:text="Nothing to Show !"
+                    android:text="@string/text_nothing"
                     android:textColor="#888"
-                    android:textSize="13dp"
+                    android:textSize="12sp"
                     android:visibility="invisible"/>
 
                 <TextView
@@ -107,7 +107,7 @@
                     android:layout_alignBaseline="@+id/recentsRecyclerLabel"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="15dp"
-                    android:text="VIEW ALL"
+                    android:text="@string/text_all"
                     android:textColor="#FF5778A6"
                     android:textSize="12sp"/>
 
@@ -150,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="15dp"
-                    android:text="Album"
+                    android:text="@string/text_album"
                     android:textColor="#fdffff"
                     android:textSize="14sp"
                     android:textStyle="bold"/>
@@ -164,7 +164,7 @@
                     android:layout_marginBottom="25dp"
                     android:layout_marginTop="25dp"
                     android:drawableTop="@drawable/icon_refresh"
-                    android:text="Refresh"
+                    android:text="@string/text_refresh"
                     android:textColor="#888"
                     android:textSize="13sp"
                     android:visibility="visible"/>
@@ -186,7 +186,7 @@
                     android:layout_alignBaseline="@+id/hotListRecyclerLabel"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="15dp"
-                    android:text="VIEW ALL"
+                    android:text="@string/text_all"
                     android:textColor="#FF5778A6"
                     android:textSize="12sp"/>
 
@@ -247,7 +247,7 @@
                             android:id="@+id/local_banner_alt_showcase"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Local Songs"
+                            android:text="@string/text_local_songs"
                             android:textStyle="bold"
                             android:textColor="#FFFFFFFF"
                             android:textSize="20sp"
@@ -271,7 +271,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/fav_card"
                         android:gravity="center"
-                        android:text="Favourite"
+                        android:text="@string/text_favourite"
                         android:textColor="#FFFFFFFF"
                         android:textStyle="bold"
                         android:textSize="20sp"/>
@@ -284,7 +284,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/recents_card"
                         android:gravity="center"
-                        android:text="Recent"
+                        android:text="@string/text_recent"
                         android:textColor="#FFFFFFFF"
                         android:textStyle="bold"
                         android:textSize="20sp"/>
@@ -388,7 +388,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
                     android:layout_weight="1"
-                    android:text="VIEW ALL"
+                    android:text="@string/text_all"
                     android:textColor="#FF5778A6"
                     android:textSize="12sp"
                     android:textStyle="normal"/>
@@ -404,9 +404,9 @@
                 android:layout_marginBottom="25dp"
                 android:layout_marginTop="25dp"
                 android:drawableTop="@drawable/nothing"
-                android:text="Nothing to Show !"
+                android:text="@string/text_nothing"
                 android:textColor="#a0FFFFFF"
-                android:textSize="13dp"
+                android:textSize="12sp"
                 android:visibility="invisible"/>
 
             <android.support.v7.widget.RecyclerView

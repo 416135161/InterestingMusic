@@ -760,7 +760,7 @@ public class PlayerFragment extends Fragment implements
 
             }
             if (track.getArtworkURL() != null) {
-                Picasso.with(getActivity()).load(track.getArtworkURL()).resize(100, 100).into(selected_track_image);
+                Picasso.with(getActivity()).load(track.getArtworkURL()).into(selected_track_image);
             } else {
                 selected_track_image.setImageResource(R.drawable.ic_default);
             }
@@ -779,7 +779,9 @@ public class PlayerFragment extends Fragment implements
 
             }
             try {
-                imgLoader.DisplayImage(localTrack.getPath(), selected_track_image);
+                Picasso.with(ctx)
+                        .load(localTrack.getPath())
+                        .into(selected_track_image);
             } catch (Exception e) {
 
             }
@@ -1131,7 +1133,7 @@ public class PlayerFragment extends Fragment implements
         if (homeActivity.streamSelected) {
             durationInMilliSec = track.getDuration();
             if (track.getArtworkURL() != null) {
-                Picasso.with(getActivity()).load(track.getArtworkURL()).resize(100, 100).into(selected_track_image);
+                Picasso.with(getActivity()).load(track.getArtworkURL()).into(selected_track_image);
             } else {
                 selected_track_image.setImageResource(R.drawable.ic_default);
             }
@@ -1149,7 +1151,9 @@ public class PlayerFragment extends Fragment implements
 
             }
             try {
-                imgLoader.DisplayImage(localTrack.getPath(), selected_track_image);
+                Picasso.with(ctx)
+                        .load(localTrack.getPath())
+                        .into(selected_track_image);
             } catch (Exception e) {
 
             }

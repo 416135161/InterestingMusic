@@ -136,17 +136,17 @@ public class AdsBaseActivity extends BaseActivity {
 
 
         new  AlertDialog.Builder(this)
-                .setTitle("Please rate the app" )
+                .setTitle(getString(R.string.text_please_rate) )
                 .setIcon(R.drawable.ic_star)
                 .setView(getLayoutInflater().inflate(R.layout.dlg_star, null))
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.text_sure), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         SpHelper.getDefault(AdsBaseActivity.this).putBoolean(SpHelper.KEY_STAR, true);
                         jumpToPlay();
                     }
                 })
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.text_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME));
