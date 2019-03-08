@@ -2053,10 +2053,10 @@ public class HomeActivity extends AdsBaseActivity
 //            showFragment("settings");
 //            return true;
 //        }
-        if (id == R.id.action_sleep) {
-            showSleepDialog();
-            return true;
-        }
+//        if (id == R.id.action_sleep) {
+//            showSleepDialog();
+//            return true;
+//        }
         return super.onOptionsItemSelected(item);
     }
 

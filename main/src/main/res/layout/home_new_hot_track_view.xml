@@ -25,7 +25,7 @@
             android:layout_marginLeft="15dp"
             android:text="NewTracks"
             android:textColor="#fdffff"
-            android:textSize="16dp"
+            android:textSize="14sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -39,7 +39,7 @@
             android:drawableTop="@drawable/icon_refresh"
             android:text="Refresh"
             android:textColor="#888"
-            android:textSize="13dp"
+            android:textSize="13sp"
             android:visibility="visible"/>
 
         <ProgressBar
@@ -61,7 +61,7 @@
             android:layout_marginRight="15dp"
             android:text="VIEW ALL"
             android:textColor="#FF5778A6"
-            android:textSize="13sp"/>
+            android:textSize="12sp"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/new_list_home"
@@ -78,7 +78,7 @@
         android:layout_below="@+id/recentsRecyclerContainer"
         android:layout_marginLeft="-6dp"
         android:layout_marginRight="-6dp"
-        android:layout_marginTop="-8dp">
+        android:layout_marginTop="0dp">
 
 
         <TextView
@@ -89,7 +89,7 @@
             android:layout_marginLeft="15dp"
             android:text="HotTracks"
             android:textColor="#fdffff"
-            android:textSize="16dp"
+            android:textSize="14sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -103,7 +103,7 @@
             android:drawableTop="@drawable/icon_refresh"
             android:text="Refresh"
             android:textColor="#888"
-            android:textSize="13dp"
+            android:textSize="13sp"
             android:visibility="visible"/>
 
         <ProgressBar
@@ -125,7 +125,7 @@
             android:layout_marginRight="15dp"
             android:text="VIEW ALL"
             android:textColor="#FF5778A6"
-            android:textSize="13sp"/>
+            android:textSize="12sp"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/bill_list_home"

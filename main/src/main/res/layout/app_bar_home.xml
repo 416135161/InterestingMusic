@@ -83,7 +83,7 @@
                     android:layout_marginTop="10dp"
                     android:text="Recent"
                     android:textColor="#fdffff"
-                    android:textSize="16dp"
+                    android:textSize="14sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -109,7 +109,7 @@
                     android:layout_marginRight="15dp"
                     android:text="VIEW ALL"
                     android:textColor="#FF5778A6"
-                    android:textSize="13sp"/>
+                    android:textSize="12sp"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recentsMusicList_home"
@@ -141,7 +141,7 @@
                 android:layout_below="@+id/new_bill_view"
                 android:layout_marginLeft="-6dp"
                 android:layout_marginRight="-6dp"
-                android:layout_marginTop="-8dp">
+                android:layout_marginTop="0dp">
 
 
                 <TextView
@@ -152,7 +152,7 @@
                     android:layout_marginLeft="15dp"
                     android:text="Album"
                     android:textColor="#fdffff"
-                    android:textSize="16dp"
+                    android:textSize="14sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -166,7 +166,7 @@
                     android:drawableTop="@drawable/icon_refresh"
                     android:text="Refresh"
                     android:textColor="#888"
-                    android:textSize="13dp"
+                    android:textSize="13sp"
                     android:visibility="visible"/>
 
                 <ProgressBar
@@ -188,7 +188,7 @@
                     android:layout_marginRight="15dp"
                     android:text="VIEW ALL"
                     android:textColor="#FF5778A6"
-                    android:textSize="13sp"/>
+                    android:textSize="12sp"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/hot_list_home"
@@ -248,8 +248,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Local Songs"
+                            android:textStyle="bold"
                             android:textColor="#FFFFFFFF"
-                            android:textSize="26.67sp"
+                            android:textSize="20sp"
                             />
                     </LinearLayout>
                 </RelativeLayout>
@@ -272,7 +273,8 @@
                         android:gravity="center"
                         android:text="Favourite"
                         android:textColor="#FFFFFFFF"
-                        android:textSize="27sp"/>
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:id="@+id/recentBanner"
@@ -284,7 +286,8 @@
                         android:gravity="center"
                         android:text="Recent"
                         android:textColor="#FFFFFFFF"
-                        android:textSize="27sp"/>
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -376,7 +379,7 @@
                     android:layout_height="wrap_content"
                     android:text="SoundCloud"
                     android:textColor="#fdffff"
-                    android:textSize="16dp"
+                    android:textSize="14sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -387,7 +390,7 @@
                     android:layout_weight="1"
                     android:text="VIEW ALL"
                     android:textColor="#FF5778A6"
-                    android:textSize="13sp"
+                    android:textSize="12sp"
                     android:textStyle="normal"/>
             </LinearLayout>
 

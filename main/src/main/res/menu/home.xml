@@ -11,12 +11,12 @@
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always"/>
 
-    <item
-        android:id="@+id/action_sleep"
-        android:orderInCategory="200"
-        android:title="Sleep Timer"
-        android:icon="@drawable/icon_timer"
-        app:showAsAction="always"/>
+    <!--<item-->
+        <!--android:id="@+id/action_sleep"-->
+        <!--android:orderInCategory="200"-->
+        <!--android:title="Sleep Timer"-->
+        <!--android:icon="@drawable/icon_timer"-->
+        <!--app:showAsAction="always"/>-->
 
     <!--<item-->
         <!--android:id="@+id/action_settings"-->
