@@ -16,6 +16,30 @@
     <string name="license_text">MusicDNA and related material are distributed under \'Attribution-NonCommercial-ShareAlike 4.0 International license\'</string>
     <string name="license_link">https://github.com/harjot-oberai/MusicDNA/blob/master/LICENSE.md</string>
 
-
+    <string name="text_recent">最近では</string>
+    <string name="text_all">すべて見る</string>
+    <string name="text_new_song">新しい歌</string>
+    <string name="text_refresh">リフレシュ</string>
+    <string name="text_hot_song">ホットソング</string>
+    <string name="text_album">アルバム</string>
+    <string name="text_local_songs">地元の歌</string>
+    <string name="text_favourite">好きな</string>
+    <string name="text_nothing">内容なし!</string>
+    <string name="text_about">私達について</string>
+    <string name="text_home">ホームページ</string>
+    <string name="text_local_music">地元の歌</string>
+    <string name="text_play_lists">プレイリスト</string>
+    <string name="text_recently_play">最近プレイした</string>
+    <string name="text_favourites">好きな</string>
+    <string name="text_no_recent_song">最近放送されている曲はありません</string>
+    <string name="text_all_albums">すべてのアルバム</string>
+    <string name="text_play_list">プレイリスト</string>
+    <string name="text_queue">キュー</string>
+    <string name="text_clear">削除</string>
+    <string name="text_full_screen">全画面</string>
+    <string name="text_please_rate">アプリを評価してください</string>
+    <string name="text_sure">確定する</string>
+    <string name="text_cancel">取り消す</string>
+    <string name="text_can_not_get_song_tip">"選んだ歌が見つからない!"</string>
 
 </resources>

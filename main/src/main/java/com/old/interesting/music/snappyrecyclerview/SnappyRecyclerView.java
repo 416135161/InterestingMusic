@@ -162,7 +162,7 @@ public class SnappyRecyclerView extends RecyclerView {
             if (homeActivity.settings.isAlbumArtBackgroundEnabled()) {
                 if (viewHolder != null && viewHolder.albumArt != null)
                     viewHolder.albumArt.animate()
-                            .alpha(0.70f);
+                            .alpha(0.60f);
             } else {
                 if (viewHolder != null && viewHolder.albumArt != null)
                     viewHolder.albumArt.animate()

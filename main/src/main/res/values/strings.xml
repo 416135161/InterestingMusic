@@ -16,8 +16,6 @@
     <string name="license_text">MusicDNA and related material are distributed under \'Attribution-NonCommercial-ShareAlike 4.0 International license\'</string>
     <string name="license_link">https://github.com/harjot-oberai/MusicDNA/blob/master/LICENSE.md</string>
 
-
-
     <string name="text_recent">Recent</string>
     <string name="text_all">VIEW ALL</string>
     <string name="text_new_song">NewTracks</string>
@@ -43,4 +41,6 @@
     <string name="text_sure">Ensure</string>
     <string name="text_cancel">Cancel</string>
     <string name="text_can_not_get_song_tip">"Can't get the selected track!"</string>
+
+
 </resources>

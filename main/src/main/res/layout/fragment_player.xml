@@ -255,7 +255,6 @@
             app:lrcCurrentTextColor="#ffffffff"
             app:lrcNormalTextColor="#53ffffff"
             app:lrcTextSize="16sp"
-            android:background="#20ffffff"
             />
 
     </RelativeLayout>
