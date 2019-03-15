@@ -7,6 +7,11 @@ import com.old.interesting.music.models.Track;
 import com.old.interesting.music.models.songDetailResponse.Data;
 import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 
+import org.greenrobot.eventbus.EventBus;
+
+import newui.data.action.ActionBrowPlayTeam;
+import newui.data.action.ActionStartLoading;
+import newui.data.action.ActionStopLoading;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -27,12 +32,14 @@ public final class HttpUtil {
     }
 
     public static void getSongFromCloud(final Track track, final GetSongCallBack callBack) {
+        EventBus.getDefault().post(new ActionStartLoading());
         StreamService ss = HttpUtil.getApiService(Config.API_GET_SONG, null);
         Call<SongDetailBean> call = ss.getSongDetail(track.getFileHash());
         call.enqueue(new Callback<SongDetailBean>() {
 
             @Override
             public void onResponse(Call<SongDetailBean> call, Response<SongDetailBean> response) {
+                EventBus.getDefault().post(new ActionStopLoading());
                 if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
                     Data data = response.body().getData();
                     track.setmArtworkURL(data.getImg());
@@ -52,6 +59,7 @@ public final class HttpUtil {
 
             @Override
             public void onFailure(Call<SongDetailBean> call, Throwable t) {
+                EventBus.getDefault().post(new ActionStopLoading());
                 if(callBack != null){
                     callBack.onSongGetFail();
                 }

@@ -75,6 +75,7 @@ import com.old.interesting.music.clickitemtouchlistener.ClickItemTouchListener;
 import com.old.interesting.music.custombottomsheets.CustomGeneralBottomSheetDialog;
 import com.old.interesting.music.custombottomsheets.CustomLocalBottomSheetDialog;
 import com.old.interesting.music.customviews.CustomLinearGradient;
+import com.old.interesting.music.dlg.LoadingDlg;
 import com.old.interesting.music.fragments.AboutFragment.AboutFragment;
 import com.old.interesting.music.fragments.AllFoldersFragment.FolderFragment;
 import com.old.interesting.music.fragments.AllPlaylistsFragment.AllPlaylistsFragment;
@@ -152,6 +153,8 @@ import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
 import newui.data.action.ActionBillSongs;
 import newui.data.action.ActionBrowPlayTeam;
 import newui.data.action.ActionNewSongs;
+import newui.data.action.ActionStartLoading;
+import newui.data.action.ActionStopLoading;
 import newui.data.playTeamResponse.PlayTeamResult;
 import newui.data.util.CloudDataUtil;
 import retrofit2.Call;
@@ -1266,6 +1269,20 @@ public class HomeActivity extends AdsBaseActivity
             billNothingText.setVisibility(View.VISIBLE);
         }
         findViewById(R.id.bill_progress).setVisibility(View.INVISIBLE);
+    }
+    LoadingDlg loadingDlg;
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventPosting(ActionStartLoading event) {
+        loadingDlg = new LoadingDlg();
+        loadingDlg.show(getFragmentManager(), "");
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventPosting(ActionStopLoading event) {
+        if(loadingDlg != null ){
+            loadingDlg.dismiss();
+        }
     }
 
     private void setHotData(List<PlayTeamResult> list) {

@@ -1,0 +1,17 @@
+//搜索接口
+http://mobilecdn.kugou.com/api/v3/search/song?format=json&page=1&showtype=1&pagesize=30&keyword=%E4%BB%BB%E8%B4%A4%E9%BD%90
+//获取歌曲详情
+http://www.kugou.com/yy/index.php?r=play/getdata&hash=CB7EE97F4CC11C4EA7A1FA4B516A5D97
+//日本新歌榜
+//获取新歌榜期数 rankid =（31312 日本新歌）（31310 欧美新歌）（4681 美国热歌榜）（4673 日本热歌榜）
+http://mobilecdn.kugou.com/api/v3/rank/vol?plat=0&ranktype=1&rankid=31312&with_res_tag=1
+http://mobilecdn.kugou.com/api/v3/rank/song?rankid=31312&volid=35912&area_code=1&version=9156&ranktype=1&plat=0&page=1&pagesize=100&with_res_tag=1
+
+
+//专辑
+//获取专辑信息（id=27 英语  id=29日语）
+http://mobilecdn.kugou.com/api/v3/tag/info?&apiver=2&id=27
+//获取专辑列表 （tagid从上面接口获取special_tag_id）
+http://mobilecdn.kugou.com/api/v3/tag/specialList?tagid=21&plat=0&sort=2&ugc=1&id=29&page=1&pagesize=30
+//获取专辑下的歌曲列表（specialid从上面接口获取specialid）
+http://mobilecdn.kugou.com/api/v3/special/song?with_cover=1&plat=0&specialid=622977&page=1&pagesize=-1&area_code=1&version=9156&with_res_tag=1
