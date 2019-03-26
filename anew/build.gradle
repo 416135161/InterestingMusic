@@ -8,8 +8,8 @@ android {
         applicationId "com.interesting.music"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 240
-        versionName "2.4.0"
+        versionCode 241
+        versionName "2.4.1"
         renderscriptTargetApi 23
         renderscriptSupportModeEnabled true
     }

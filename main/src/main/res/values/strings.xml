@@ -19,7 +19,7 @@
     <string name="text_recent">Recent</string>
     <string name="text_all">VIEW ALL</string>
     <string name="text_new_song">NewTracks</string>
-    <string name="text_refresh">Refresh</string>
+    <string name="text_refresh">Retry</string>
     <string name="text_hot_song">HotTracks</string>
     <string name="text_album">Album</string>
     <string name="text_local_songs">Local Songs</string>

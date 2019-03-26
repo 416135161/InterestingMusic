@@ -11,8 +11,8 @@
 
     <com.itheima.roundedimageview.RoundedImageView
         android:id="@+id/img_2"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="10dp"
@@ -27,6 +27,7 @@
         android:id="@+id/row_item_holder_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="14dp"
         android:layout_marginRight="10dp"
@@ -39,10 +40,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="2"
             android:text="Title"
             android:textColor="#FFF"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/url_2"
@@ -51,7 +52,7 @@
             android:layout_marginTop="3dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Artist"
+            android:text=""
             android:textColor="#EEE"
             android:textSize="11dp" />
     </LinearLayout>
