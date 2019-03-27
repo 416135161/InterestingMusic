@@ -895,21 +895,51 @@ public class HomeActivity extends AdsBaseActivity
                 showPlayer();
         } else {
             PlayerFragment frag = playerFragment;
-            playerFragment.localIsPlaying = false;
-            playerFragment.track = selectedTrack;
-            int flag = 0;
-            for (int i = 0; i < favouriteTracks.getFavourite().size(); i++) {
-                UnifiedTrack ut = favouriteTracks.getFavourite().get(i);
-                if (!ut.getType() && ut.getStreamTrack().getTitle().equals(selectedTrack.getTitle())) {
-                    flag = 1;
-                    isFavourite = true;
-                    break;
+            if(frag ==null){
+                android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+                PlayerFragment newFragment = new PlayerFragment();
+                playerFragment = newFragment;
+                playerFragment.localIsPlaying = false;
+                playerFragment.track = selectedTrack;
+                int flag = 0;
+                for (int i = 0; i < favouriteTracks.getFavourite().size(); i++) {
+                    UnifiedTrack ut = favouriteTracks.getFavourite().get(i);
+                    if (!ut.getType() && ut.getStreamTrack().getTitle().equals(selectedTrack.getTitle())) {
+                        flag = 1;
+                        isFavourite = true;
+                        break;
+                    }
                 }
+                if (flag == 0) {
+                    isFavourite = false;
+                }
+                fm.beginTransaction()
+                        .setCustomAnimations(R.anim.slide_up,
+                                R.anim.slide_down,
+                                R.anim.slide_up,
+                                R.anim.slide_down)
+                        .add(R.id.player_frag_container, newFragment, "player")
+                        .show(newFragment)
+                        .addToBackStack(null)
+                        .commitAllowingStateLoss();
+            }else {
+                playerFragment.localIsPlaying = false;
+                playerFragment.track = selectedTrack;
+                int flag = 0;
+                for (int i = 0; i < favouriteTracks.getFavourite().size(); i++) {
+                    UnifiedTrack ut = favouriteTracks.getFavourite().get(i);
+                    if (!ut.getType() && ut.getStreamTrack().getTitle().equals(selectedTrack.getTitle())) {
+                        flag = 1;
+                        isFavourite = true;
+                        break;
+                    }
+                }
+                if (flag == 0) {
+                    isFavourite = false;
+                }
+                frag.refresh();
             }
-            if (flag == 0) {
-                isFavourite = false;
-            }
-            frag.refresh();
+
         }
 
         if (playerFragment != null && playerFragment.snappyRecyclerView != null) {
@@ -1959,7 +1989,7 @@ public class HomeActivity extends AdsBaseActivity
             showPlayer2();
         } else if (isQueueVisible) {
             showPlayer3();
-        } else if (isPlayerVisible && !isPlayerTransitioning && playerFragment.smallPlayer != null) {
+        } else if (isPlayerVisible && !isPlayerTransitioning && playerFragment !=null && playerFragment.smallPlayer != null) {
             hidePlayer();
 //            showTabs();
             isPlayerVisible = false;
@@ -2701,8 +2731,9 @@ public class HomeActivity extends AdsBaseActivity
 
             // Remove the notification
             notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.cancel(1);
-
+            if(notificationManager !=null){
+                notificationManager.cancel(1);
+            }
             // Finish the activity
             finish();
             return;
@@ -2718,6 +2749,10 @@ public class HomeActivity extends AdsBaseActivity
 
         PlayerFragment plFrag = playerFragment;
 
+        if(plFrag == null){
+            finish();
+            return;
+        }
         if (repeatOnceEnabled && !nextControllerClicked) {
 
             /*

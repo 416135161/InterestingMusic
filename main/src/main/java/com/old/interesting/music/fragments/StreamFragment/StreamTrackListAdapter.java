@@ -91,7 +91,7 @@ public class StreamTrackListAdapter extends RecyclerView.Adapter<StreamTrackList
     }
 
     public Track getData(int position) {
-        if (tracks != null && tracks.size() > position) {
+        if (position >= 0 && tracks != null && tracks.size() > position) {
             return tracks.get(position);
         } else return null;
     }

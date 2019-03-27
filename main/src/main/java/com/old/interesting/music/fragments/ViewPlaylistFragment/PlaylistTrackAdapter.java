@@ -159,7 +159,7 @@ public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdap
     }
 
     public PlayListResult getItem(int position) {
-        if (songList == null || songList.size() == 0) {
+        if (songList == null || songList.size() == 0 || position >= songList.size()) {
             return null;
         } else {
             return songList.get(position);

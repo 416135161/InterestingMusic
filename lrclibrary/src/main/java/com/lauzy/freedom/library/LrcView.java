@@ -16,6 +16,7 @@ import android.support.v4.view.ViewCompat;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
@@ -24,6 +25,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.OverScroller;
+
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.List;
@@ -333,6 +336,9 @@ public class LrcView extends View {
 
     private float getTextHeight(int linePosition) {
         String text = mLrcData.get(linePosition).getText();
+        if (TextUtils.isEmpty(text)) {
+            text = "  ";
+        }
         StaticLayout staticLayout = mStaticLayoutHashMap.get(text);
         if (staticLayout == null) {
             mTextPaint.setTextSize(mLrcTextSize);
