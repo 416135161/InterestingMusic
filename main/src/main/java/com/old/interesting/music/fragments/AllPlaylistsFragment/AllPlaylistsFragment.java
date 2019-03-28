@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -49,7 +50,7 @@ public class AllPlaylistsFragment extends BaseFragment {
 
     allPlaylistCallbackListener mCallback;
 
-    LinearLayoutManager mLayoutManager2;
+    GridLayoutManager mLayoutManager2;
 
     FloatingActionButton addPlaylistFAB;
 
@@ -140,7 +141,7 @@ public class AllPlaylistsFragment extends BaseFragment {
 
 
         vpAdapter = new ViewAllPlaylistsRecyclerAdapter(getContext());
-        mLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        mLayoutManager2 = new GridLayoutManager(getContext(), 3);
         allPlaylistRecycler.setLayoutManager(mLayoutManager2);
         allPlaylistRecycler.setItemAnimator(new DefaultItemAnimator());
         allPlaylistRecycler.setAdapter(vpAdapter);
@@ -176,7 +177,7 @@ public class AllPlaylistsFragment extends BaseFragment {
 
     }
 
-    private void getData(){
+    private void getData() {
         CloudDataUtil.getPlayTeamList(0, Config.ALL_PLAY_TEAM_PAGE, ActionBrowPlayTeam.TYPE_TEAM_LIST);
         mProgressBar.setVisibility(View.VISIBLE);
         noPlaylistContent.setVisibility(View.GONE);

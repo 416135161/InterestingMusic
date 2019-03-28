@@ -22,6 +22,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.util.Pair;
@@ -57,6 +58,8 @@ import com.old.interesting.music.utilities.DownloadThread;
 import com.old.interesting.music.visualizers.VisualizerView;
 import com.squareup.picasso.Picasso;
 import com.wang.avi.AVLoadingIndicatorView;
+
+import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -765,10 +768,17 @@ public class PlayerFragment extends Fragment implements
                 selected_track_image.setImageResource(R.drawable.ic_default);
             }
             try {
-                spTitleAB.setText(track.getTitle());
-                selected_track_title.setText(track.getTitle());
-                selected_track_artist.setText("");
-                spArtistAB.setText("");
+                if(!TextUtils.isEmpty(track.getTitle()) && track.getTitle().contains("-")){
+                    spTitleAB.setText(track.getTitle().split("-")[1]);
+                    selected_track_title.setText(track.getTitle().split("-")[1]);
+                    selected_track_artist.setText(track.getTitle().split("-")[0]);
+                    spArtistAB.setText(track.getTitle().split("-")[0]);
+                }else {
+                    spTitleAB.setText(track.getTitle());
+                    selected_track_title.setText(track.getTitle());
+                    selected_track_artist.setText("");
+                    spArtistAB.setText("");
+                }
             } catch (Exception e) {
             }
 
@@ -1138,10 +1148,18 @@ public class PlayerFragment extends Fragment implements
                 selected_track_image.setImageResource(R.drawable.ic_default);
             }
             try {
-                spTitleAB.setText(track.getTitle());
-                selected_track_title.setText(track.getTitle());
-                selected_track_artist.setText("");
-                spArtistAB.setText("");
+                if(!TextUtils.isEmpty(track.getTitle()) && track.getTitle().contains("-")){
+                    spTitleAB.setText(track.getTitle().split("-")[1]);
+                    selected_track_title.setText(track.getTitle().split("-")[1]);
+                    selected_track_artist.setText(track.getTitle().split("-")[0]);
+                    spArtistAB.setText(track.getTitle().split("-")[0]);
+                }else {
+                    spTitleAB.setText(track.getTitle());
+                    selected_track_title.setText(track.getTitle());
+                    selected_track_artist.setText("");
+                    spArtistAB.setText("");
+                }
+
             } catch (Exception e) {
             }
         } else {

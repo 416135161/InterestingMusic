@@ -10,13 +10,10 @@
     <RelativeLayout
         android:id="@+id/all_playlist_header"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
+        android:background="@color/colorAccent"
         >
-
-        <com.old.interesting.music.customviews.CustomLinearGradient
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
         <RelativeLayout
             android:id="@+id/all_playlist_action_container"
@@ -52,7 +49,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_margin_layout"
-        android:layout_below="@+id/all_playlist_header" />
+        android:layout_below="@+id/all_playlist_header"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"/>
 
     <LinearLayout
         android:id="@+id/noPlaylistContent"

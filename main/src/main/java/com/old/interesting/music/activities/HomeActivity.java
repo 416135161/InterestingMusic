@@ -1426,6 +1426,9 @@ public class HomeActivity extends AdsBaseActivity
                     getLocalSongs();
 
                     if (queue != null && queue.getQueue().size() != 0) {
+                        if(queueCurrentIndex >= queue.getQueue().size() || queueCurrentIndex < 0){
+                            queueCurrentIndex = 0;
+                        }
                         UnifiedTrack utHome = queue.getQueue().get(queueCurrentIndex);
                         if (utHome.getType()) {
                             Picasso.with(ctx).load(utHome.getLocalTrack().getPath())
@@ -2005,11 +2008,11 @@ public class HomeActivity extends AdsBaseActivity
             searchView.setQuery("", true);
             searchView.setIconified(true);
             new Thread(new CancelCall()).start();
-            if (localRecyclerContainer.getVisibility() == View.VISIBLE || streamRecyclerContainer.getVisibility() == View.VISIBLE) {
+            if (streamRecyclerContainer.getVisibility() == View.VISIBLE) {
                 localRecyclerContainer.setVisibility(GONE);
                 streamRecyclerContainer.setVisibility(GONE);
             }
-        } else if (localRecyclerContainer.getVisibility() == View.VISIBLE || streamRecyclerContainer.getVisibility() == View.VISIBLE) {
+        } else if (streamRecyclerContainer.getVisibility() == View.VISIBLE) {
             localRecyclerContainer.setVisibility(GONE);
             streamRecyclerContainer.setVisibility(GONE);
         } else {
@@ -2475,15 +2478,12 @@ public class HomeActivity extends AdsBaseActivity
         }
 
         playerContainer.setVisibility(View.VISIBLE);
-        if (playerFragment != null) {
+        if (playerFragment != null && playerContainer != null) {
             playerContainer.animate()
                     .translationY(playerContainer.getHeight() - playerFragment.smallPlayer.getHeight())
                     .setDuration(300);
         } else {
-            playerContainer.animate()
-                    .translationY(playerContainer.getHeight() - playerFragment.smallPlayer.getHeight())
-                    .setDuration(300)
-                    .setStartDelay(500);
+
         }
 
         if (playerFragment != null) {

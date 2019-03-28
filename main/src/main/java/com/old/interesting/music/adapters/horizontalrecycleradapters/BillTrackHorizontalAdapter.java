@@ -2,6 +2,7 @@ package com.old.interesting.music.adapters.horizontalrecycleradapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,8 +58,12 @@ public class BillTrackHorizontalAdapter extends RecyclerView.Adapter<BillTrackHo
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Track pl = playlists.get(position);
         Picasso.with(ctx).load(playlists.get(position).getArtworkURL()).into(holder.img1);
+        if(!TextUtils.isEmpty(pl.getTitle()) && pl.getTitle().contains("-")){
+            holder.playlistName.setText(pl.getTitle().split("-")[1]);
+        }else {
+            holder.playlistName.setText(pl.getTitle());
+        }
 
-        holder.playlistName.setText(pl.getTitle());
         holder.playlistSize.setText((int) ((Math.random() * 9 + 1) * 10) + "k count");
     }
 

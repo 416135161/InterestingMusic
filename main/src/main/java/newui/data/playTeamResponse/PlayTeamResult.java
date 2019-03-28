@@ -3,6 +3,10 @@
  */
 package newui.data.playTeamResponse;
 
+import android.text.TextUtils;
+
+import org.w3c.dom.Text;
+
 /**
  * Auto-generated: 2019-01-12 9:52:38
  *
@@ -64,6 +68,9 @@ public class PlayTeamResult {
     }
 
     public String getSpecialname() {
+        if (!TextUtils.isEmpty(specialname) && specialname.contains("-")) {
+            return specialname.split("-")[0];
+        }
         return specialname;
     }
 

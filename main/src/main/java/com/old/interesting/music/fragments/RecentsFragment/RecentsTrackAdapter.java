@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -135,8 +136,14 @@ public class RecentsTrackAdapter extends RecyclerView.Adapter<RecentsTrackAdapte
                     .error(R.drawable.ic_default)
                     .placeholder(R.drawable.ic_default)
                     .into(holder.art);
-            holder.title.setText(t.getTitle());
-            holder.artist.setText("");
+            if (!TextUtils.isEmpty(t.getTitle()) && t.getTitle().contains("-")) {
+                holder.title.setText(t.getTitle().split("-")[1]);
+                holder.artist.setText(t.getTitle().split("-")[0]);
+            } else {
+                holder.title.setText(t.getTitle());
+                holder.artist.setText("");
+            }
+
         }
     }
 

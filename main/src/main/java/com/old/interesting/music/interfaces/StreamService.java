@@ -30,7 +30,7 @@ public interface StreamService {
      * @return
      */
     @GET("/billBoard/list.do")
-    Call<BillSongsResponse> getBillSongs();
+    Call<BillSongsResponse> getBillSongs(@Query("from") String from);
 
     /**
      * 酷狗搜歌

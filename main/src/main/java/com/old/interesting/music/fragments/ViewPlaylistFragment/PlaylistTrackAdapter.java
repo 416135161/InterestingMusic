@@ -134,8 +134,12 @@ public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdap
                 .error(R.drawable.ic_default)
                 .placeholder(R.drawable.ic_default)
                 .into(holder.art);
-        holder.title.setText(item.getFilename());
-        holder.artist.setText("");
+        if(!TextUtils.isEmpty(item.getFilename()) && item.getFilename().contains("-")){
+            String[] names= item.getFilename().split("-");
+            holder.title.setText(names[1]);
+            holder.artist.setText(names[0]);
+        }
+
 
 
         holder.holderImg.setOnTouchListener(new View.OnTouchListener() {

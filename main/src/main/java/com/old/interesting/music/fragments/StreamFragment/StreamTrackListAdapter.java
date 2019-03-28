@@ -49,7 +49,14 @@ public class StreamTrackListAdapter extends RecyclerView.Adapter<StreamTrackList
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final Track track = tracks.get(position);
-        holder.title.setText(track.getTitle());
+        if(!TextUtils.isEmpty(track.getTitle())&& track.getTitle().contains("-")){
+            String[] names = track.getTitle().split("-");
+            holder.title.setText(names[1]);
+            holder.artist.setText(names[0]);
+        }else {
+            holder.title.setText(track.getTitle());
+        }
+
         if (!TextUtils.isEmpty(track.getArtworkURL())) {
             try {
                 Picasso.with(context)

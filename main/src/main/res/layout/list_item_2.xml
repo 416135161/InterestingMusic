@@ -31,7 +31,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="14dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/img_2"
         android:orientation="vertical">
 
@@ -54,7 +54,7 @@
             android:maxLines="1"
             android:text=""
             android:textColor="#EEE"
-            android:textSize="11dp" />
+            android:textSize="11sp" />
     </LinearLayout>
 
     <View

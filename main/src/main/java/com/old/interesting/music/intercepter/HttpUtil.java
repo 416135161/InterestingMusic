@@ -32,6 +32,9 @@ public final class HttpUtil {
     }
 
     public static void getSongFromCloud(final Track track, final GetSongCallBack callBack) {
+        if(track == null){
+            return;
+        }
         EventBus.getDefault().post(new ActionStartLoading());
         StreamService ss = HttpUtil.getApiService(Config.API_GET_SONG, null);
         Call<SongDetailBean> call = ss.getSongDetail(track.getFileHash());

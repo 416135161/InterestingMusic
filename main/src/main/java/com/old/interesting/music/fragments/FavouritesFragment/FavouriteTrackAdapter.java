@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -110,8 +111,13 @@ public class FavouriteTrackAdapter extends RecyclerView.Adapter<FavouriteTrackAd
                     .error(R.drawable.ic_default)
                     .placeholder(R.drawable.ic_default)
                     .into(holder.art);
-            holder.title.setText(t.getTitle());
-            holder.artist.setText("");
+            if(!TextUtils.isEmpty(t.getTitle()) && t.getTitle().contains("-")){
+                holder.title.setText(t.getTitle().split("-")[1]);
+                holder.artist.setText(t.getTitle().split("-")[0]);
+            }else {
+                holder.title.setText(t.getTitle());
+                holder.artist.setText("");
+            }
         }
 
         holder.holderImg.setOnTouchListener(new View.OnTouchListener() {

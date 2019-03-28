@@ -145,7 +145,7 @@ public final class CloudDataUtil {
     //获取新歌
     public static void getBillSongs() {
         StreamService ss = HttpUtil.getApiService(Config.API_LIN_HOST, null);
-        Call<BillSongsResponse> call = ss.getBillSongs();
+        Call<BillSongsResponse> call = ss.getBillSongs(Config.FROM_US);
         call.enqueue(new Callback<BillSongsResponse>() {
 
             @Override
