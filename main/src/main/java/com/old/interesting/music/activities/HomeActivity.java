@@ -2687,7 +2687,7 @@ public class HomeActivity extends AdsBaseActivity
                         if (playerFragment != null && playerFragment.snappyRecyclerView != null) {
                             playerFragment.snappyRecyclerView.setTransparency();
                         }
-                        if (!playerFragment.isLyricsVisisble) {
+                        if (playerFragment != null && !playerFragment.isLyricsVisisble) {
                             playerFragment.mVisualizerView.setVisibility(View.INVISIBLE);
                         }
                     }
