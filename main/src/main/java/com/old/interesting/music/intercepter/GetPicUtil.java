@@ -2,7 +2,6 @@ package com.old.interesting.music.intercepter;
 
 import com.old.interesting.music.Config;
 import com.old.interesting.music.interfaces.StreamService;
-import com.old.interesting.music.models.songDetailResponse.Data;
 import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 
 import retrofit2.Call;
@@ -25,16 +24,16 @@ public class GetPicUtil {
     }
 
     public void getSongFromCloud() {
-        StreamService ss = HttpUtil.getApiService(Config.API_GET_SONG, null);
+        StreamService ss = HttpUtil.getApiService(Config.API_HOST, null);
         Call<SongDetailBean> call = ss.getSongDetail(hash);
         call.enqueue(new Callback<SongDetailBean>() {
 
             @Override
             public void onResponse(Call<SongDetailBean> call, Response<SongDetailBean> response) {
-                if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
-                    Data data = response.body().getData();
+                if (response.isSuccessful() && response.body() != null ) {
+                    SongDetailBean data = response.body();
                     if (callBack != null) {
-                        callBack.onPicOk(data.getImg());
+                        callBack.onPicOk(data.getImgUrl());
                     }
                 } else {
                     if (callBack != null) {

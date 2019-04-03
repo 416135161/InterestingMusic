@@ -86,7 +86,7 @@ public class StreamTracksHorizontalAdapter extends RecyclerView.Adapter<StreamTr
             Log.e("AdapterError", e.getMessage());
         }
         holder.title.setText(track.getTitle());
-        holder.artist.setText("");
+        holder.artist.setText(track.getSingerName());
     }
 
     @Override

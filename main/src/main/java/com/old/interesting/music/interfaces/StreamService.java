@@ -4,6 +4,9 @@ import com.old.interesting.music.Config;
 import com.old.interesting.music.models.searchResponse.SearchResponseBean;
 import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import newui.data.billResponse.BillSongsResponse;
 import newui.data.newSongs.NewSongsResponse;
 import newui.data.playListResponse.PlayListBean;
@@ -21,16 +24,16 @@ public interface StreamService {
      *
      * @return
      */
-    @GET("/newSongs/list.do" )
-    Call<NewSongsResponse> getNewSongs(@Query("from") String from);
+    @GET("/music/new")
+    Call<ArrayList<SongDetailBean>> getNewSongs(@Query("from") String from);
 
     /**
      * 这是获取排行榜数据的
      *
      * @return
      */
-    @GET("/billBoard/list.do")
-    Call<BillSongsResponse> getBillSongs(@Query("from") String from);
+    @GET("/music/hot")
+    Call<ArrayList<SongDetailBean>> getBillSongs(@Query("from") String from);
 
     /**
      * 酷狗搜歌
@@ -38,8 +41,8 @@ public interface StreamService {
      * @param keyword
      * @return
      */
-    @GET("/api/v3/search/song?format=json&page=1&showtype=1")
-    Call<SearchResponseBean> searchSong(@Query("keyword") String keyword, @Query("pagesize") int pagesize);
+    @GET("/music/search")
+    Call<ArrayList<SongDetailBean>> searchSong(@Query("keyword") String keyword, @Query("pageSize") int pageSize);
 
     /**
      * 获取歌曲播放地址
@@ -47,30 +50,26 @@ public interface StreamService {
      * @param hash
      * @return
      */
-    @GET("/yy/index.php?r=play/getdata")
+    @GET("/music/detail")
     Call<SongDetailBean> getSongDetail(@Query("hash") String hash);
 
     /**
      * 获取歌单
      *
-     * @param start
      * @param pageSize
      * @return
      */
-    @GET("/musicBoard/list.do")
-    Call<PlayTeamBean> getPlayTeamList(@Query("start") int start, @Query("pageSize") int pageSize, @Query("from") String from);
+    @GET("/music/albums")
+    Call<ArrayList<PlayTeamBean>> getPlayTeamList(@Query("pageSize") int pageSize, @Query("from") String from);
 
     /**
      * 获取歌单下的歌曲
      *
-     * @param musicBoardid
-     * @param start
-     * @param pageSize
+     * @param id
      * @return
      */
-    @GET("/musicBoard/listItem/list.do")
-    Call<PlayListBean> getPlayList(@Query("musicBoardid") String musicBoardid, @Query("start") int start,
-                                   @Query("pageSize") int pageSize);
+    @GET("/music/album/songs")
+    Call<ArrayList<SongDetailBean>> getPlayList(@Query("id") String id);
 
 
 //    这是获取新歌的  size弄成240

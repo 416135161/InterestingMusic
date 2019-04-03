@@ -56,16 +56,16 @@ public class PlayTeamListActivity extends BaseActivity {
         });
         mRecycleView.setAdapter(mAdapter);
         startLoadingIndicator();
-        CloudDataUtil.getPlayTeamList(mStartIndex, PAGE_SIZE, ActionBrowPlayTeam.TYPE_TEAM_LIST);
+        CloudDataUtil.getPlayTeamList(PAGE_SIZE, ActionBrowPlayTeam.TYPE_TEAM_LIST);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventReceive(ActionListPlayTeam event) {
 
-        PlayTeamBean playTeamBean = event.playTeamBean;
-        if (playTeamBean.getResult() != null && !playTeamBean.getResult().isEmpty()) {
-            mStartIndex += playTeamBean.getResult().size();
-            mAdapter.addData(playTeamBean.getResult());
+        ArrayList<PlayTeamBean> teamList = event.playTeamBean;
+        if (teamList != null && !teamList.isEmpty()) {
+            mStartIndex += teamList.size();
+
         }
     }
 }

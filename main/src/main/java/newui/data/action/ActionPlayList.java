@@ -1,8 +1,12 @@
 package newui.data.action;
 
+import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import newui.data.playListResponse.PlayListResult;
+import newui.data.playTeamResponse.PlayTeamBean;
 
 /**
  * Created by sjning
@@ -10,9 +14,9 @@ import newui.data.playListResponse.PlayListResult;
  * description:
  */
 public class ActionPlayList extends ActionBase{
-    public List<PlayListResult> result;
+    public ArrayList<SongDetailBean> result;
 
-    public ActionPlayList(List<PlayListResult> result) {
+    public ActionPlayList(ArrayList<SongDetailBean> result) {
         this.result = result;
     }
 }

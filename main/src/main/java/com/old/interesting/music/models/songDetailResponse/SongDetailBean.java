@@ -1,6 +1,6 @@
 /**
-  * Copyright 2019 bejson.com 
-  */
+ * Copyright 2019 bejson.com
+ */
 package com.old.interesting.music.models.songDetailResponse;
 
 /**
@@ -11,28 +11,75 @@ package com.old.interesting.music.models.songDetailResponse;
  */
 public class SongDetailBean {
 
-    private int status;
-    private int err_code;
-    private Data data;
-    public void setStatus(int status) {
-         this.status = status;
-     }
-     public int getStatus() {
-         return status;
-     }
+    private String songName;
 
-    public void setErr_code(int err_code) {
-         this.err_code = err_code;
-     }
-     public int getErr_code() {
-         return err_code;
-     }
+    public int duration;
 
-    public void setData(Data data) {
-         this.data = data;
-     }
-     public Data getData() {
-         return data;
-     }
+    private String playUrl;
+
+    private String imgUrl;
+
+    private String hash;
+
+    private String singerName;
+
+    private String lrc;
+
+
+    public String getSongName() {
+        return songName;
+    }
+
+    public void setSongName(String songName) {
+        this.songName = songName;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public String getPlayUrl() {
+        return playUrl;
+    }
+
+    public void setPlayUrl(String playUrl) {
+        this.playUrl = playUrl;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    public String getSingerName() {
+        return singerName;
+    }
+
+    public void setSingerName(String singerName) {
+        this.singerName = singerName;
+    }
+
+    public String getLrc() {
+        return lrc;
+    }
+
+    public void setLrc(String lrc) {
+        this.lrc = lrc;
+    }
 
 }

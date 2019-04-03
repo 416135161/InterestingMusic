@@ -15,11 +15,13 @@ import com.old.interesting.music.intercepter.TransformUtil;
 import com.old.interesting.music.interfaces.StreamService;
 import com.old.interesting.music.models.Track;
 import com.old.interesting.music.models.searchResponse.SearchResponseBean;
+import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 import com.old.interesting.music.utilities.CommonUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
 
 import newui.adapter.SearchListAdapter;
 import newui.base.BaseActivity;
@@ -62,26 +64,6 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
     }
 
     private void searchCloudTrack(String query) {
-        startLoadingIndicator();
-        StreamService ss = HttpUtil.getApiService(Config.API_SERACH, new QueryInterceptor());
-        Call<SearchResponseBean> call = ss.searchSong(query, Config.SEARCH_COUNT);
-        call.enqueue(new Callback<SearchResponseBean>() {
 
-            @Override
-            public void onResponse(Call<SearchResponseBean> call, Response<SearchResponseBean> response) {
-                if (response.isSuccessful()) {
-                    mAdapter.setDataList(TransformUtil.searchResponse2Track(response.body()));
-                }
-                stopLoadingIndicator();
-                Log.d("RETRO", response.body() + "");
-            }
-
-            @Override
-            public void onFailure(Call<SearchResponseBean> call, Throwable t) {
-                Log.d("RETRO1", t.getMessage());
-                stopLoadingIndicator();
-            }
-
-        });
     }
 }

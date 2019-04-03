@@ -11,8 +11,10 @@ import android.widget.TextView;
 import com.old.interesting.music.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import newui.data.playTeamResponse.PlayTeamBean;
 import newui.data.playTeamResponse.PlayTeamResult;
 
 ;
@@ -22,7 +24,7 @@ import newui.data.playTeamResponse.PlayTeamResult;
  */
 public class ViewAllPlaylistsRecyclerAdapter extends RecyclerView.Adapter<ViewAllPlaylistsRecyclerAdapter.MyViewHolder> {
 
-    List<PlayTeamResult> playlists;
+    List<PlayTeamBean> playlists;
     Context ctx;
 
     public ViewAllPlaylistsRecyclerAdapter(Context ctx) {
@@ -50,9 +52,9 @@ public class ViewAllPlaylistsRecyclerAdapter extends RecyclerView.Adapter<ViewAl
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        PlayTeamResult p = playlists.get(position);
-        holder.playListName.setText(p.getSpecialname());
-        Picasso.with(ctx).load(p.getImgurl()).into(holder.img);
+        PlayTeamBean p = playlists.get(position);
+        holder.playListName.setText(p.getName());
+        Picasso.with(ctx).load(p.getImgUrl()).into(holder.img);
     }
 
     @Override
@@ -64,11 +66,11 @@ public class ViewAllPlaylistsRecyclerAdapter extends RecyclerView.Adapter<ViewAl
         }
     }
 
-    public void setPlaylists(List<PlayTeamResult> playlists) {
+    public void setPlaylists(List<PlayTeamBean> playlists) {
         this.playlists = playlists;
     }
 
-    public PlayTeamResult getItem(int position){
+    public PlayTeamBean getItem(int position){
         if(position < getItemCount()){
             return playlists.get(position);
         }else {

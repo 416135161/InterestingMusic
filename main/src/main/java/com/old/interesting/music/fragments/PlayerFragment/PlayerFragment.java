@@ -776,8 +776,8 @@ public class PlayerFragment extends Fragment implements
                 }else {
                     spTitleAB.setText(track.getTitle());
                     selected_track_title.setText(track.getTitle());
-                    selected_track_artist.setText("");
-                    spArtistAB.setText("");
+                    selected_track_artist.setText(track.getSingerName());
+                    spArtistAB.setText(track.getSingerName());
                 }
             } catch (Exception e) {
             }
@@ -1156,8 +1156,8 @@ public class PlayerFragment extends Fragment implements
                 }else {
                     spTitleAB.setText(track.getTitle());
                     selected_track_title.setText(track.getTitle());
-                    selected_track_artist.setText("");
-                    spArtistAB.setText("");
+                    selected_track_artist.setText(track.getSingerName());
+                    spArtistAB.setText(track.getSingerName());
                 }
 
             } catch (Exception e) {

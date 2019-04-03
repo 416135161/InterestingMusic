@@ -242,18 +242,7 @@ public class RecentsFragment extends Fragment implements
                         HomeActivity.localSelected = false;
                         HomeActivity.queueCall = false;
                         HomeActivity.isReloaded = false;
-                        HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
-                            @Override
-                            public void onSongGetOk() {
-                                mCallback.onRecentItemClicked(false);
-                            }
-
-                            @Override
-                            public void onSongGetFail() {
-                                Toast.makeText(getActivity(), "Can't get song player url!", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
+                        mCallback.onRecentItemClicked(false);
                     }
                 } else {
                     mCallback.onRecentFromQueue(pos);
