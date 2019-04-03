@@ -12,7 +12,6 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -123,7 +122,7 @@ import com.old.interesting.music.models.SavedDNA;
 import com.old.interesting.music.models.Settings;
 import com.old.interesting.music.models.Track;
 import com.old.interesting.music.models.UnifiedTrack;
-import com.old.interesting.music.models.searchResponse.SearchResponseBean;
+import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 import com.old.interesting.music.notificationmanager.Constants;
 import com.old.interesting.music.notificationmanager.MediaPlayerService;
 import com.old.interesting.music.utilities.CommonUtils;
@@ -146,7 +145,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.Callable;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
@@ -155,7 +153,7 @@ import newui.data.action.ActionBrowPlayTeam;
 import newui.data.action.ActionNewSongs;
 import newui.data.action.ActionStartLoading;
 import newui.data.action.ActionStopLoading;
-import newui.data.playTeamResponse.PlayTeamResult;
+import newui.data.playTeamResponse.PlayTeamBean;
 import newui.data.util.CloudDataUtil;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -294,7 +292,7 @@ public class HomeActivity extends AdsBaseActivity
 
     NavigationView navigationView;
 
-    Call<SearchResponseBean> call;
+    Call<ArrayList<SongDetailBean>> call;
 
     SearchView searchView;
     MenuItem searchItem;
@@ -630,7 +628,7 @@ public class HomeActivity extends AdsBaseActivity
 
         localBanner = (RelativeLayout) findViewById(R.id.localBanner);
         favBanner = findViewById(R.id.favBanner);
-        recentBanner =  findViewById(R.id.recentBanner);
+        recentBanner = findViewById(R.id.recentBanner);
         folderBanner = (ImageView) findViewById(R.id.folderBanner);
         savedDNABanner = (ImageView) findViewById(R.id.savedDNABanner);
 
@@ -895,7 +893,7 @@ public class HomeActivity extends AdsBaseActivity
                 showPlayer();
         } else {
             PlayerFragment frag = playerFragment;
-            if(frag ==null){
+            if (frag == null) {
                 android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
                 PlayerFragment newFragment = new PlayerFragment();
                 playerFragment = newFragment;
@@ -922,7 +920,7 @@ public class HomeActivity extends AdsBaseActivity
                         .show(newFragment)
                         .addToBackStack(null)
                         .commitAllowingStateLoss();
-            }else {
+            } else {
                 playerFragment.localIsPlaying = false;
                 playerFragment.track = selectedTrack;
                 int flag = 0;
@@ -1139,7 +1137,7 @@ public class HomeActivity extends AdsBaseActivity
         getPlayTeamList();
     }
 
-    private void initNewAndBillView(){
+    private void initNewAndBillView() {
         newAdapter = new NewTracksHorizontalAdapter(null, ctx);
         newRecyclerView = findViewById(R.id.new_list_home);
         newRecyclerView.setNestedScrollingEnabled(false);
@@ -1172,18 +1170,7 @@ public class HomeActivity extends AdsBaseActivity
                 localSelected = false;
                 queueCall = false;
                 isReloaded = false;
-                HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
-                    @Override
-                    public void onSongGetOk() {
-                        onTrackSelected(position);
-                    }
-
-                    @Override
-                    public void onSongGetFail() {
-                        Toast.makeText(HomeActivity.this, R.string.text_can_not_get_song_tip, Toast.LENGTH_SHORT).show();
-                    }
-                });
-
+                onTrackSelected(position);
                 return true;
             }
 
@@ -1231,18 +1218,7 @@ public class HomeActivity extends AdsBaseActivity
                 localSelected = false;
                 queueCall = false;
                 isReloaded = false;
-                HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
-                    @Override
-                    public void onSongGetOk() {
-                        onTrackSelected(position);
-                    }
-
-                    @Override
-                    public void onSongGetFail() {
-                        Toast.makeText(HomeActivity.this, R.string.text_can_not_get_song_tip, Toast.LENGTH_SHORT).show();
-                    }
-                });
-
+                onTrackSelected(position);
                 return true;
             }
 
@@ -1264,13 +1240,13 @@ public class HomeActivity extends AdsBaseActivity
     private void getPlayTeamList() {
         hotlistNothingText.setVisibility(View.INVISIBLE);
         findViewById(R.id.progress).setVisibility(View.VISIBLE);
-        CloudDataUtil.getPlayTeamList(0, Config.BROW_PLAY_TEAM_PAGE, ActionBrowPlayTeam.TYPE_BROW);
+        CloudDataUtil.getPlayTeamList(Config.BROW_PLAY_TEAM_PAGE, ActionBrowPlayTeam.TYPE_BROW);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventPosting(ActionBrowPlayTeam event) {
-        if (event != null && event.playTeamBean != null && event.playTeamBean.getResult() != null) {
-            setHotData(event.playTeamBean.getResult());
+        if (event != null && event.teamList != null && !event.teamList.isEmpty()) {
+            setHotData(event.teamList);
         } else {
             setHotData(null);
         }
@@ -1300,6 +1276,7 @@ public class HomeActivity extends AdsBaseActivity
         }
         findViewById(R.id.bill_progress).setVisibility(View.INVISIBLE);
     }
+
     LoadingDlg loadingDlg;
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -1310,12 +1287,12 @@ public class HomeActivity extends AdsBaseActivity
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventPosting(ActionStopLoading event) {
-        if(loadingDlg != null ){
+        if (loadingDlg != null) {
             loadingDlg.dismiss();
         }
     }
 
-    private void setHotData(List<PlayTeamResult> list) {
+    private void setHotData(List<PlayTeamBean> list) {
         if (list == null || list.size() == 0) {
             hotListRecycler.setVisibility(GONE);
             hotlistNothingText.setVisibility(View.VISIBLE);
@@ -1426,7 +1403,7 @@ public class HomeActivity extends AdsBaseActivity
                     getLocalSongs();
 
                     if (queue != null && queue.getQueue().size() != 0) {
-                        if(queueCurrentIndex >= queue.getQueue().size() || queueCurrentIndex < 0){
+                        if (queueCurrentIndex >= queue.getQueue().size() || queueCurrentIndex < 0) {
                             queueCurrentIndex = 0;
                         }
                         UnifiedTrack utHome = queue.getQueue().get(queueCurrentIndex);
@@ -1518,17 +1495,7 @@ public class HomeActivity extends AdsBaseActivity
                                     localSelected = false;
                                     queueCall = false;
                                     isReloaded = false;
-                                    HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
-                                        @Override
-                                        public void onSongGetOk() {
-                                            onTrackSelected(position);
-                                        }
-
-                                        @Override
-                                        public void onSongGetFail() {
-                                            Toast.makeText(HomeActivity.this, R.string.text_can_not_get_song_tip, Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+                                    onTrackSelected(position);
                                 }
                             } else {
                                 onQueueItemClicked(pos);
@@ -1628,18 +1595,7 @@ public class HomeActivity extends AdsBaseActivity
                             localSelected = false;
                             queueCall = false;
                             isReloaded = false;
-                            HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
-                                @Override
-                                public void onSongGetOk() {
-                                    onTrackSelected(position);
-                                }
-
-                                @Override
-                                public void onSongGetFail() {
-                                    Toast.makeText(HomeActivity.this, R.string.text_can_not_get_song_tip, Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
+                            onTrackSelected(position);
                             return true;
                         }
 
@@ -1992,7 +1948,7 @@ public class HomeActivity extends AdsBaseActivity
             showPlayer2();
         } else if (isQueueVisible) {
             showPlayer3();
-        } else if (isPlayerVisible && !isPlayerTransitioning && playerFragment !=null && playerFragment.smallPlayer != null) {
+        } else if (isPlayerVisible && !isPlayerTransitioning && playerFragment != null && playerFragment.smallPlayer != null) {
             hidePlayer();
 //            showTabs();
             isPlayerVisible = false;
@@ -2374,12 +2330,12 @@ public class HomeActivity extends AdsBaseActivity
                 if (!query.equals("")) {
                     streamRecyclerContainer.setVisibility(View.VISIBLE);
                     startLoadingIndicator();
-                    StreamService ss = HttpUtil.getApiService(Config.API_SERACH, new QueryInterceptor());
+                    StreamService ss = HttpUtil.getApiService(Config.API_HOST, new QueryInterceptor());
                     call = ss.searchSong(query, Config.SEARCH_COUNT);
-                    call.enqueue(new Callback<SearchResponseBean>() {
+                    call.enqueue(new Callback<ArrayList<SongDetailBean>>() {
 
                         @Override
-                        public void onResponse(Call<SearchResponseBean> call, Response<SearchResponseBean> response) {
+                        public void onResponse(Call<ArrayList<SongDetailBean>> call, Response<ArrayList<SongDetailBean>> response) {
                             if (response.isSuccessful()) {
                                 stopLoadingIndicator();
                                 streamingTrackList = TransformUtil.searchResponse2Track(response.body());
@@ -2408,7 +2364,7 @@ public class HomeActivity extends AdsBaseActivity
                         }
 
                         @Override
-                        public void onFailure(Call<SearchResponseBean> call, Throwable t) {
+                        public void onFailure(Call<ArrayList<SongDetailBean>> call, Throwable t) {
                             Log.d("RETRO1", t.getMessage());
                             stopLoadingIndicator();
                         }
@@ -2731,7 +2687,7 @@ public class HomeActivity extends AdsBaseActivity
 
             // Remove the notification
             notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            if(notificationManager !=null){
+            if (notificationManager != null) {
                 notificationManager.cancel(1);
             }
             // Finish the activity
@@ -2749,7 +2705,7 @@ public class HomeActivity extends AdsBaseActivity
 
         PlayerFragment plFrag = playerFragment;
 
-        if(plFrag == null){
+        if (plFrag == null) {
             finish();
             return;
         }
@@ -3211,17 +3167,8 @@ public class HomeActivity extends AdsBaseActivity
                     localSelected = false;
                     queueCall = false;
                     isReloaded = false;
-                    HttpUtil.getSongFromCloud(track, new GetSongCallBack() {
-                        @Override
-                        public void onSongGetOk() {
-                            onTrackSelected(position);
-                        }
+                    onTrackSelected(position);
 
-                        @Override
-                        public void onSongGetFail() {
-                            Toast.makeText(HomeActivity.this, "Can't get song player url!", Toast.LENGTH_SHORT).show();
-                        }
-                    });
                 }
             }
         }, 500);

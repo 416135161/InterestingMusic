@@ -1,5 +1,7 @@
 package newui.data.action;
 
+import java.util.ArrayList;
+
 import newui.data.playTeamResponse.PlayTeamBean;
 
 /**
@@ -8,17 +10,17 @@ import newui.data.playTeamResponse.PlayTeamBean;
  * description:
  */
 public class ActionListPlayTeam {
-    public PlayTeamBean playTeamBean;
+    public ArrayList<PlayTeamBean> playTeamBean;
 
-    public ActionListPlayTeam(PlayTeamBean playTeamBean) {
+    public ActionListPlayTeam(ArrayList<PlayTeamBean> playTeamBean) {
         this.playTeamBean = playTeamBean;
     }
 
-    public PlayTeamBean getPlayTeamBean() {
+    public ArrayList<PlayTeamBean> getPlayTeamBean() {
         return playTeamBean;
     }
 
-    public void setPlayTeamBean(PlayTeamBean playTeamBean) {
+    public void setPlayTeamBean(ArrayList<PlayTeamBean> playTeamBean) {
         this.playTeamBean = playTeamBean;
     }
 }

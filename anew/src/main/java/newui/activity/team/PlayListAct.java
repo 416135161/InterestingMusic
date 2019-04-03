@@ -53,16 +53,12 @@ public class PlayListAct extends BaseActivity {
         });
         mRecycleView.setAdapter(mAdapter);
         startLoadingIndicator();
-        CloudDataUtil.getPlayList(musicBoardid, mStartIndex, PAGE_SIZE);
+        CloudDataUtil.getPlayList(musicBoardid);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventReceive(ActionPlayList event) {
         stopLoadingIndicator();
-        List<PlayListResult> playListResults = event.result;
-        if (playListResults != null && !playListResults.isEmpty()) {
-            mStartIndex += playListResults.size();
-            mAdapter.addData(playListResults);
-        }
+
     }
 }

@@ -13,32 +13,32 @@ import java.util.List;
  */
 public class PlayTeamBean {
 
-    private List<PlayTeamResult> result;
-    private boolean success;
-    private int rowCount;
+    private String imgUrl;
+    private String name;
+    private int id;
 
-    public void setResult(List<PlayTeamResult> result) {
-        this.result = result;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public List<PlayTeamResult> getResult() {
-        return result;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
+    public String getName() {
+        return name;
     }
 
-    public boolean getSuccess() {
-        return success;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setRowCount(int rowCount) {
-        this.rowCount = rowCount;
+    public int getId() {
+        return id;
     }
 
-    public int getRowCount() {
-        return rowCount;
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

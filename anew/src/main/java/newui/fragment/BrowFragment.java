@@ -66,7 +66,7 @@ public class BrowFragment extends BaseFragment implements View.OnClickListener {
         mIvSearch.setVisibility(View.VISIBLE);
         mTvPlayList.setOnClickListener(this);
 
-        CloudDataUtil.getPlayTeamList(0, 3, ActionBrowPlayTeam.TYPE_BROW);
+        CloudDataUtil.getPlayTeamList(3, ActionBrowPlayTeam.TYPE_BROW);
     }
 
 
@@ -88,23 +88,7 @@ public class BrowFragment extends BaseFragment implements View.OnClickListener {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventPosting(ActionBrowPlayTeam event) {
-        PlayTeamBean playTeamBean = event.playTeamBean;
-        if (playTeamBean.getResult() != null && !playTeamBean.getResult().isEmpty()) {
-            int count = 0;
-            for (PlayTeamResult item : playTeamBean.getResult()) {
-                LinearLayout viewItem = (LinearLayout) getLayoutInflater().inflate(R.layout.brow_paly_list_item, null);
-                RoundedImageView imageView = viewItem.findViewById(R.id.iv_logo);
-                TextView tvName = viewItem.findViewById(R.id.tv_name);
-                TextView tvCount = viewItem.findViewById(R.id.tv_count);
-                Picasso.with(this.getContext()).load(item.getImgurl()).placeholder(R.drawable.ic_default).into(imageView);
-                tvName.setText(item.getSpecialname());
-                mLLPlayList.addView(viewItem);
-                count++;
-                if (count == 3) {
-                    break;
-                }
-            }
-        }
+
     }
 
 }

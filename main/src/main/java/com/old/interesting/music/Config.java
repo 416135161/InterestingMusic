@@ -27,12 +27,12 @@ public final class Config {
 
     public static final String GENIUS = "genius";
 
-    public static final String API_SERACH = "http://mobilecdn.kugou.com";
-    public static final String API_GET_SONG = "http://www.kugou.com";
+    //测试
+//    public static final String API_HOST = "http://101.200.200.156:8080";
+    //生产
+    public static final String API_HOST = "http://39.98.242.57:8080";
 
-    public static final String API_LIN_HOST = "http://39.107.89.143";
-
-    public static String FROM_US = "us";
+    public static String FROM_US = "0";
 
     /**
      * 如果当前语言是日语，则URL不加参数
@@ -42,7 +42,7 @@ public final class Config {
         // 获取当前系统语言
         String lang = locale.getLanguage();
         if (TextUtils.equals(lang, "ja")) {
-            FROM_US = null;
+            FROM_US = "1";
         }
     }
 

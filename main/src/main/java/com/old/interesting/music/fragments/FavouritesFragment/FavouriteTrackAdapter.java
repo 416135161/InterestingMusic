@@ -116,7 +116,7 @@ public class FavouriteTrackAdapter extends RecyclerView.Adapter<FavouriteTrackAd
                 holder.artist.setText(t.getTitle().split("-")[0]);
             }else {
                 holder.title.setText(t.getTitle());
-                holder.artist.setText("");
+                holder.artist.setText(t.getSingerName());
             }
         }
 

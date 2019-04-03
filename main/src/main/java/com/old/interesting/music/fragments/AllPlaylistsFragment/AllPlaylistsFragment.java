@@ -29,6 +29,8 @@ import com.old.interesting.music.utilities.CommonUtils;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
+
 import newui.base.BaseFragment;
 import newui.data.action.ActionBrowPlayTeam;
 import newui.data.action.ActionListPlayTeam;
@@ -178,7 +180,7 @@ public class AllPlaylistsFragment extends BaseFragment {
     }
 
     private void getData() {
-        CloudDataUtil.getPlayTeamList(0, Config.ALL_PLAY_TEAM_PAGE, ActionBrowPlayTeam.TYPE_TEAM_LIST);
+        CloudDataUtil.getPlayTeamList( Config.ALL_PLAY_TEAM_PAGE, ActionBrowPlayTeam.TYPE_TEAM_LIST);
         mProgressBar.setVisibility(View.VISIBLE);
         noPlaylistContent.setVisibility(View.GONE);
     }
@@ -192,11 +194,11 @@ public class AllPlaylistsFragment extends BaseFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventPosting(ActionListPlayTeam event) {
-        PlayTeamBean playTeamBean = event.playTeamBean;
-        if (playTeamBean != null && playTeamBean.getResult() != null && !playTeamBean.getResult().isEmpty()) {
+        ArrayList<PlayTeamBean> teamList = event.playTeamBean;
+        if (teamList != null  && !teamList.isEmpty()) {
             allPlaylistRecycler.setVisibility(View.VISIBLE);
             noPlaylistContent.setVisibility(View.INVISIBLE);
-            vpAdapter.setPlaylists(playTeamBean.getResult());
+            vpAdapter.setPlaylists(teamList);
             vpAdapter.notifyDataSetChanged();
             mProgressBar.setVisibility(View.INVISIBLE);
         } else {

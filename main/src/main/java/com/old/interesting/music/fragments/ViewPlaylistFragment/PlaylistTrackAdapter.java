@@ -18,11 +18,14 @@ import com.old.interesting.music.activities.HomeActivity;
 import com.old.interesting.music.intercepter.GetPicUtil;
 import com.old.interesting.music.itemtouchhelpers.ItemTouchHelperAdapter;
 import com.old.interesting.music.itemtouchhelpers.ItemTouchHelperViewHolder;
+import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import newui.data.playListResponse.PlayListResult;
+import newui.data.playTeamResponse.PlayTeamBean;
 
 /**
  * Created by Harjot on 20-May-16.
@@ -30,7 +33,7 @@ import newui.data.playListResponse.PlayListResult;
 public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdapter.MyViewHolder>
         implements ItemTouchHelperAdapter {
 
-    private List<PlayListResult> songList;
+    private List<SongDetailBean> songList;
     private Context ctx;
     HomeActivity homeActivity;
 
@@ -113,9 +116,9 @@ public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdap
 
     @Override
     public void onBindViewHolder(final PlaylistTrackAdapter.MyViewHolder holder, int position) {
-        final PlayListResult item = songList.get(position);
+        final SongDetailBean item = songList.get(position);
         if (TextUtils.isEmpty(item.getImgUrl())) {
-            new GetPicUtil(item.getHash(), new GetPicUtil.GetPicCallBack() {
+            new GetPicUtil(item.getImgUrl(), new GetPicUtil.GetPicCallBack() {
                 @Override
                 public void onPicOk(String url) {
                     item.setImgUrl(url);
@@ -134,11 +137,10 @@ public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdap
                 .error(R.drawable.ic_default)
                 .placeholder(R.drawable.ic_default)
                 .into(holder.art);
-        if(!TextUtils.isEmpty(item.getFilename()) && item.getFilename().contains("-")){
-            String[] names= item.getFilename().split("-");
-            holder.title.setText(names[1]);
-            holder.artist.setText(names[0]);
-        }
+
+            holder.title.setText(item.getSongName());
+            holder.artist.setText(item.getSingerName());
+
 
 
 
@@ -162,7 +164,7 @@ public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdap
         }
     }
 
-    public PlayListResult getItem(int position) {
+    public SongDetailBean getItem(int position) {
         if (songList == null || songList.size() == 0 || position >= songList.size()) {
             return null;
         } else {
@@ -170,7 +172,7 @@ public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdap
         }
     }
 
-    public void setSongList(List<PlayListResult> songList) {
+    public void setSongList(List<SongDetailBean> songList) {
         this.songList = songList;
     }
 }

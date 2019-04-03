@@ -27,6 +27,7 @@ import com.old.interesting.music.imageLoader.ImageLoader;
 import com.old.interesting.music.itemtouchhelpers.SimpleItemTouchHelperCallback;
 import com.old.interesting.music.models.Track;
 import com.old.interesting.music.models.UnifiedTrack;
+import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 import com.old.interesting.music.utilities.CommonUtils;
 import com.squareup.picasso.Picasso;
 
@@ -40,6 +41,7 @@ import newui.base.BaseFragment;
 import newui.data.action.ActionBrowPlayTeam;
 import newui.data.action.ActionPlayList;
 import newui.data.playListResponse.PlayListResult;
+import newui.data.playTeamResponse.PlayTeamBean;
 import newui.data.playTeamResponse.PlayTeamResult;
 import newui.data.util.CloudDataUtil;
 
@@ -65,7 +67,7 @@ public class ViewPlaylistFragment extends BaseFragment implements
     View bottomMarginLayout;
 
     playlistCallbackListener mCallback;
-    public static PlayTeamResult playTeamResult;
+    public static PlayTeamBean playTeamResult;
     ProgressBar mProgressBar;
     ImageView mRefreshIv;
 
@@ -86,7 +88,7 @@ public class ViewPlaylistFragment extends BaseFragment implements
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventReceive(ActionPlayList event) {
-        List<PlayListResult> playListResults = event.result;
+        ArrayList<SongDetailBean> playListResults = event.result;
         if (playListResults != null && !playListResults.isEmpty()) {
             plAdapter.setSongList(playListResults);
             plAdapter.notifyDataSetChanged();
@@ -115,7 +117,7 @@ public class ViewPlaylistFragment extends BaseFragment implements
     }
 
 
-            @Override
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -159,7 +161,7 @@ public class ViewPlaylistFragment extends BaseFragment implements
                 List<UnifiedTrack> trackList = new ArrayList<>();
                 for (int i = 0; i < size; i++) {
                     Track track = new Track();
-                    track.setmTitle(plAdapter.getItem(i).getFilename());
+                    track.setmTitle(plAdapter.getItem(i).getSongName());
                     track.setFileHash(plAdapter.getItem(i).getHash());
                     track.setSingerName("");
                     UnifiedTrack unifiedTrack = new UnifiedTrack(false, null, track);
@@ -172,7 +174,7 @@ public class ViewPlaylistFragment extends BaseFragment implements
         backdrop = (ImageView) view.findViewById(R.id.playlist_backdrop);
 
         Picasso.with(getContext())
-                .load(playTeamResult.getImgurl())
+                .load(playTeamResult.getImgUrl())
                 .resize(100, 100)
                 .error(R.drawable.ic_default)
                 .placeholder(R.drawable.ic_default)
@@ -192,7 +194,7 @@ public class ViewPlaylistFragment extends BaseFragment implements
                     return false;
                 }
                 Track track = new Track();
-                track.setmTitle(plAdapter.getItem(position).getFilename());
+                track.setmTitle(plAdapter.getItem(position).getSongName());
                 track.setFileHash(plAdapter.getItem(position).getHash());
                 track.setSingerName("");
                 UnifiedTrack unifiedTrack = new UnifiedTrack(false, null, track);
@@ -221,7 +223,7 @@ public class ViewPlaylistFragment extends BaseFragment implements
                 HomeActivity.queue.getQueue().clear();
                 for (int i = 0; i < size; i++) {
                     Track track = new Track();
-                    track.setmTitle(plAdapter.getItem(i).getFilename());
+                    track.setmTitle(plAdapter.getItem(i).getSongName());
                     track.setFileHash(plAdapter.getItem(i).getHash());
                     track.setSingerName("");
                     UnifiedTrack unifiedTrack = new UnifiedTrack(false, null, track);
@@ -246,8 +248,8 @@ public class ViewPlaylistFragment extends BaseFragment implements
         getData();
     }
 
-    private void getData(){
-        CloudDataUtil.getPlayList(playTeamResult.getId() + "", 0, 200);
+    private void getData() {
+        CloudDataUtil.getPlayList(playTeamResult.getId() + "");
         mRefreshIv.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
     }
@@ -264,7 +266,7 @@ public class ViewPlaylistFragment extends BaseFragment implements
         }, 500);
     }
 
-    public static void setPlayTeamResult(PlayTeamResult data) {
+    public static void setPlayTeamResult(PlayTeamBean data) {
         playTeamResult = data;
     }
 

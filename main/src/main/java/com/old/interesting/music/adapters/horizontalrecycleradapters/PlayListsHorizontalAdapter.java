@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import newui.data.playTeamResponse.PlayTeamBean;
 import newui.data.playTeamResponse.PlayTeamResult;
 
 /**
@@ -22,7 +23,7 @@ import newui.data.playTeamResponse.PlayTeamResult;
 public class PlayListsHorizontalAdapter extends RecyclerView.Adapter<PlayListsHorizontalAdapter.MyViewHolder> {
 
     Context ctx;
-    List<PlayTeamResult> playlists;
+    List<PlayTeamBean> playlists;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView img1 ;
@@ -39,7 +40,7 @@ public class PlayListsHorizontalAdapter extends RecyclerView.Adapter<PlayListsHo
         }
     }
 
-    public PlayListsHorizontalAdapter(List<PlayTeamResult> playlists, Context ctx) {
+    public PlayListsHorizontalAdapter(List<PlayTeamBean> playlists, Context ctx) {
         this.playlists = playlists;
         this.ctx = ctx;
     }
@@ -54,10 +55,10 @@ public class PlayListsHorizontalAdapter extends RecyclerView.Adapter<PlayListsHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        PlayTeamResult pl = playlists.get(position);
-        Picasso.with(ctx).load(playlists.get(position).getImgurl()).into(holder.img1);
+        PlayTeamBean pl = playlists.get(position);
+        Picasso.with(ctx).load(playlists.get(position).getImgUrl()).into(holder.img1);
 
-        holder.playlistName.setText(pl.getSpecialname());
+        holder.playlistName.setText(pl.getName());
         holder.playlistSize.setText((int) ((Math.random() * 9 + 1) * 10)+ "k count");
     }
 
@@ -70,7 +71,7 @@ public class PlayListsHorizontalAdapter extends RecyclerView.Adapter<PlayListsHo
         }
     }
 
-    public PlayTeamResult getItem(int position) {
+    public PlayTeamBean getItem(int position) {
         if (playlists == null || position >= playlists.size()) {
             return null;
         } else {
@@ -78,7 +79,7 @@ public class PlayListsHorizontalAdapter extends RecyclerView.Adapter<PlayListsHo
         }
     }
 
-    public void setPlaylists(List<PlayTeamResult> playlists) {
+    public void setPlaylists(List<PlayTeamBean> playlists) {
         this.playlists = playlists;
     }
 

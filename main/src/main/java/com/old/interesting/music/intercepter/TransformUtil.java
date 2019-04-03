@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.old.interesting.music.models.Track;
 import com.old.interesting.music.models.searchResponse.Info;
 import com.old.interesting.music.models.searchResponse.SearchResponseBean;
+import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,23 +20,18 @@ public final class TransformUtil {
 
     }
 
-    public static List<Track> searchResponse2Track(SearchResponseBean searchResponseBean) {
+    public static List<Track> searchResponse2Track(List<SongDetailBean> searchResponseBean) {
         List<Track> trackList = new ArrayList<>();
-        if (searchResponseBean != null && searchResponseBean.getData() != null &&
-                searchResponseBean.getData().getInfo() != null) {
-            List<Info> songList = searchResponseBean.getData().getInfo();
-            if (songList.size() > 0) {
-                for (Info song : songList) {
-                    if (!TextUtils.isEmpty(song.getHash())) {
-                        Track track = new Track();
-                        track.setmTitle(song.getSongname());
-                        track.setFileHash(song.getHash());
-                        track.setSingerName(song.getSingername());
-                        trackList.add(track);
-                    }
+        if (searchResponseBean != null && searchResponseBean.size() > 0) {
+            for (SongDetailBean song : searchResponseBean) {
+                if (!TextUtils.isEmpty(song.getHash())) {
+                    Track track = new Track();
+                    track.setmTitle(song.getSongName());
+                    track.setFileHash(song.getHash());
+                    track.setSingerName(song.getSingerName());
+                    trackList.add(track);
                 }
             }
-
         }
         return trackList;
     }
