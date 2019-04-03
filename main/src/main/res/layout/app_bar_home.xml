@@ -102,11 +102,11 @@
 
                 <TextView
                     android:id="@+id/recents_view_all"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/recentsRecyclerLabel"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
+                    android:paddingRight="15dp"
                     android:text="@string/text_all"
                     android:textColor="#FF5778A6"
                     android:textSize="12sp"/>
@@ -181,11 +181,11 @@
 
                 <TextView
                     android:id="@+id/hotLists_view_all"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/hotListRecyclerLabel"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
+                    android:paddingRight="15dp"
                     android:text="@string/text_all"
                     android:textColor="#FF5778A6"
                     android:textSize="12sp"/>
@@ -381,7 +381,7 @@
 
                 <TextView
                     android:id="@+id/streamViewAll"
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
                     android:layout_weight="1"

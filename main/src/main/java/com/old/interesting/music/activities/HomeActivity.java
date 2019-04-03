@@ -2778,7 +2778,6 @@ public class HomeActivity extends AdsBaseActivity
                     hasQueueEnded = false;
                     plFrag.progressBar.setProgress(0);
                     plFrag.progressBar.setSecondaryProgress(0);
-                    plFrag.mVisualizer.setEnabled(true);
                     plFrag.mMediaPlayer.seekTo(0);
                     plFrag.mainTrackController.setImageResource(R.drawable.ic_pause_white_48dp);
                     plFrag.isReplayIconVisible = false;
