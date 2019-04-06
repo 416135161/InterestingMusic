@@ -10,6 +10,10 @@ import java.util.List;
  * description:
  */
 public class ActionBillSongs {
+    public static final int TYPE_HOME = 0;
+    public static final int TYPE_LIST = 1;
     public boolean isOK;
     public List<Track> trackList;
+    public int type;
+    public String from;
 }

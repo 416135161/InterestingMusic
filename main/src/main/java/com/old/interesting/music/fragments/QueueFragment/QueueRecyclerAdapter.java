@@ -176,7 +176,6 @@ public class QueueRecyclerAdapter extends RecyclerView.Adapter<QueueRecyclerAdap
         } else if (fromPosition < HomeActivity.queueCurrentIndex && toPosition == HomeActivity.queueCurrentIndex) {
             HomeActivity.queueCurrentIndex--;
         }
-        ((HomeActivity) ctx).updateVisualizerRecycler();
         new HomeActivity.SaveQueue().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
@@ -190,7 +189,6 @@ public class QueueRecyclerAdapter extends RecyclerView.Adapter<QueueRecyclerAdap
             HomeActivity.queueCurrentIndex--;
         }
         notifyItemRemoved(position);
-        ((HomeActivity) ctx).updateVisualizerRecycler();
         new HomeActivity.SaveQueue().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 }

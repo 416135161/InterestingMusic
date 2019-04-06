@@ -1,18 +1,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorDark"
-    android:clickable="true"
-    tools:context="com.old.interesting.music.fragments.AllPlaylistsFragment.AllPlaylistsFragment">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorDark"
+                android:clickable="true"
+                tools:context="com.old.interesting.music.fragments.AllPlaylistsFragment.AllPlaylistsFragment">
 
     <RelativeLayout
         android:id="@+id/all_playlist_header"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="#000000"
         android:gravity="center_vertical"
-        android:background="@color/colorAccent"
         >
 
         <RelativeLayout
@@ -29,7 +29,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:padding="12dp"
-                android:src="@drawable/back2" />
+                android:src="@drawable/back2"/>
 
             <TextView
                 android:id="@+id/all_playlist_fragment_title"
@@ -38,71 +38,31 @@
                 android:layout_centerInParent="true"
                 android:text="@string/text_all_albums"
                 android:textColor="#FFFFFF"
-                android:textSize="25sp" />
+                android:textSize="25sp"/>
 
         </RelativeLayout>
 
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/all_playlists_recycler"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_margin_layout"
-        android:layout_below="@+id/all_playlist_header"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"/>
-
-    <LinearLayout
-        android:id="@+id/noPlaylistContent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorDark"
-        android:orientation="vertical"
-        android:visibility="invisible">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_refresh_btn" />
-
-        <TextView
-            android:id="@+id/noPlaylistContentText"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="5"
-            android:gravity="top|center_horizontal"
-            android:text="No Playlists"
-            android:textColor="#DDDDDD"
-            android:textSize="15dp" />
-
-    </LinearLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/new_playlist_fab"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/all_playlist_header"
+        android:background="#111111"
+        android:elevation="12dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="#FFFFFF"
+        app:tabTextColor="#898989"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_above="@+id/bottom_margin_layout"
-        android:layout_alignParentRight="true"
-        android:layout_margin="16dp"
-        android:clickable="true"
-        android:src="@drawable/ic_plus"
-        android:visibility="invisible"
-        app:backgroundTint="#111111"
-        app:borderWidth="0dp"
-        app:elevation="6dp"
-        app:pressedTranslationZ="9dp"
-        app:rippleColor="#888888"
-        />
+        android:layout_below="@+id/tabs"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <View
         android:id="@+id/bottom_margin_layout"
@@ -110,22 +70,5 @@
         android:layout_height="65dp"
         android:layout_alignParentBottom="true"
         android:background="@color/colorDark"
-        android:clickable="true" />
-
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:id="@+id/progress"
-        android:visibility="invisible"
-        />
-    <ImageView
-        android:id="@+id/view_refresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_refresh_btn"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"
-        />
-
+        android:clickable="true"/>
 </RelativeLayout>

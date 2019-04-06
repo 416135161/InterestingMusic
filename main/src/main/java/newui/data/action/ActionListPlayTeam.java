@@ -10,10 +10,12 @@ import newui.data.playTeamResponse.PlayTeamBean;
  * description:
  */
 public class ActionListPlayTeam {
+    public String from;
     public ArrayList<PlayTeamBean> playTeamBean;
 
-    public ActionListPlayTeam(ArrayList<PlayTeamBean> playTeamBean) {
+    public ActionListPlayTeam(ArrayList<PlayTeamBean> playTeamBean, String from) {
         this.playTeamBean = playTeamBean;
+        this.from = from;
     }
 
     public ArrayList<PlayTeamBean> getPlayTeamBean() {

@@ -80,7 +80,11 @@ public class NewTracksHorizontalAdapter extends RecyclerView.Adapter<NewTracksHo
     }
 
     public void setPlaylists(List<Track> playlists) {
-        this.playlists = playlists;
+        if (playlists != null && playlists.size() > 15) {
+            this.playlists = playlists.subList(0, 15);
+        } else {
+            this.playlists = playlists;
+        }
     }
 
     public List<Track> getPlaylists() {

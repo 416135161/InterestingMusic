@@ -28,9 +28,9 @@ import retrofit2.Response;
  */
 public final class CloudDataUtil {
     //获取歌单
-    public static void getPlayTeamList( int pageSize, final int type) {
+    public static void getPlayTeamList( int pageSize, final int type, final String from) {
         StreamService ss = HttpUtil.getApiService(Config.API_HOST, null);
-        Call<ArrayList<PlayTeamBean>> call = ss.getPlayTeamList(pageSize,Config.FROM_US);
+        Call<ArrayList<PlayTeamBean>> call = ss.getPlayTeamList(pageSize,from);
         call.enqueue(new Callback<ArrayList<PlayTeamBean>>() {
 
             @Override
@@ -38,7 +38,7 @@ public final class CloudDataUtil {
                 if (response.isSuccessful() && response.body() != null
                         &&  !response.body().isEmpty()) {
                     if (type == ActionBrowPlayTeam.TYPE_TEAM_LIST) {
-                        EventBus.getDefault().post(new ActionListPlayTeam(response.body()));
+                        EventBus.getDefault().post(new ActionListPlayTeam(response.body(), from));
                     } else if (type == ActionBrowPlayTeam.TYPE_BROW) {
                         EventBus.getDefault().post(new ActionBrowPlayTeam(response.body()));
 
@@ -51,7 +51,7 @@ public final class CloudDataUtil {
             @Override
             public void onFailure(Call<ArrayList<PlayTeamBean>> call, Throwable t) {
                 if (type == ActionBrowPlayTeam.TYPE_TEAM_LIST) {
-                    EventBus.getDefault().post(new ActionListPlayTeam(null));
+                    EventBus.getDefault().post(new ActionListPlayTeam(null, null));
                 } else if (type == ActionBrowPlayTeam.TYPE_BROW) {
                     EventBus.getDefault().post(new ActionBrowPlayTeam(null));
                 }
@@ -90,9 +90,9 @@ public final class CloudDataUtil {
 
 
     //获取新歌
-    public static void getNewSongs() {
+    public static void getNewSongs(final int type, final String from) {
         StreamService ss = HttpUtil.getApiService(Config.API_HOST, null);
-        Call<ArrayList<SongDetailBean>> call = ss.getNewSongs(Config.FROM_US);
+        Call<ArrayList<SongDetailBean>> call = ss.getNewSongs(from);
         call.enqueue(new Callback<ArrayList<SongDetailBean>>() {
             @Override
             public void onResponse(Call<ArrayList<SongDetailBean>> call, Response<ArrayList<SongDetailBean>> response) {
@@ -110,6 +110,8 @@ public final class CloudDataUtil {
                     ActionNewSongs action = new ActionNewSongs();
                     action.isOK = true;
                     action.trackList = trackList;
+                    action.type = type;
+                    action.from = from;
                     EventBus.getDefault().post(action);
                 } else {
                     onFailure(null, new Exception("is nothing"));
@@ -121,6 +123,8 @@ public final class CloudDataUtil {
             public void onFailure(Call<ArrayList<SongDetailBean>> call, Throwable t) {
                 ActionNewSongs action = new ActionNewSongs();
                 action.isOK = false;
+                action.type = type;
+                action.from = from;
                 EventBus.getDefault().post(action);
 
             }
@@ -129,9 +133,9 @@ public final class CloudDataUtil {
     }
 
     //获取新歌
-    public static void getBillSongs() {
+    public static void getBillSongs(final int type, final String from) {
         StreamService ss = HttpUtil.getApiService(Config.API_HOST, null);
-        Call<ArrayList<SongDetailBean>> call = ss.getBillSongs(Config.FROM_US);
+        Call<ArrayList<SongDetailBean>> call = ss.getBillSongs(from);
         call.enqueue(new Callback<ArrayList<SongDetailBean>>() {
             @Override
             public void onResponse(Call<ArrayList<SongDetailBean>> call, Response<ArrayList<SongDetailBean>> response) {
@@ -149,6 +153,8 @@ public final class CloudDataUtil {
                     ActionBillSongs action = new ActionBillSongs();
                     action.isOK = true;
                     action.trackList = trackList;
+                    action.type = type;
+                    action.from = from;
                     EventBus.getDefault().post(action);
                 } else {
                     onFailure(null, new Exception("is nothing"));
@@ -160,6 +166,8 @@ public final class CloudDataUtil {
             public void onFailure(Call<ArrayList<SongDetailBean>> call, Throwable t) {
                 ActionBillSongs action = new ActionBillSongs();
                 action.isOK = false;
+                action.type = type;
+                action.from = from;
                 EventBus.getDefault().post(action);
 
             }

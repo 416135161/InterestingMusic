@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.itheima.roundedimageview.RoundedImageView;
 import com.newui.interesting.music.R;
+import com.old.interesting.music.Config;
 import com.old.interesting.music.imageLoader.ImageLoader;
 import com.squareup.picasso.Picasso;
 
@@ -66,7 +67,7 @@ public class BrowFragment extends BaseFragment implements View.OnClickListener {
         mIvSearch.setVisibility(View.VISIBLE);
         mTvPlayList.setOnClickListener(this);
 
-        CloudDataUtil.getPlayTeamList(3, ActionBrowPlayTeam.TYPE_BROW);
+        CloudDataUtil.getPlayTeamList(3, ActionBrowPlayTeam.TYPE_BROW, Config.FROM);
     }
 
 

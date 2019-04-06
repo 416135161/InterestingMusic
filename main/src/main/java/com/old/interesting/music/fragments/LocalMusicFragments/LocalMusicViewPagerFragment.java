@@ -117,10 +117,11 @@ public class LocalMusicViewPagerFragment extends Fragment {
             }
         });
 
-        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         tabLayout.setBackgroundColor(Color.parseColor("#111111"));
         tabLayout.setSelectedTabIndicatorColor(HomeActivity.themeColor);
+        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -129,7 +130,6 @@ public class LocalMusicViewPagerFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
         adapter = new MyPageAdapter(getChildFragmentManager());
         adapter.addFragment(new LocalMusicFragment(), "Songs");
         adapter.addFragment(new AlbumFragment(), "Albums");
