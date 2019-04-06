@@ -119,18 +119,17 @@ public class AllPlaylistsFragment extends Fragment {
                     + " must implement OnHeadlineSelectedListener");
         }
         adapter = new MyPageAdapter(getChildFragmentManager());
-        AlbumListFragment usList = new AlbumListFragment();
-        Bundle args = new Bundle();
-        args.putString("from", Config.FROM_US);
-        usList.setArguments(args);
-        adapter.addFragment(usList, "US and Europe");
-
         AlbumListFragment japanList = new AlbumListFragment();
         Bundle args2 = new Bundle();
         args2.putString("from", Config.FROM_JAPAN);
         japanList.setArguments(args2);
         adapter.addFragment(japanList, "Japan");
 
+        AlbumListFragment usList = new AlbumListFragment();
+        Bundle args = new Bundle();
+        args.putString("from", Config.FROM_US);
+        usList.setArguments(args);
+        adapter.addFragment(usList, "US and Europe");
     }
 
 

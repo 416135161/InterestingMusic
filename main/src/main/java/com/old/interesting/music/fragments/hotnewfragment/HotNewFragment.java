@@ -100,17 +100,17 @@ public class HotNewFragment extends Fragment {
                     + " must implement OnHeadlineSelectedListener");
         }
         adapter = new MyPageAdapter(getChildFragmentManager());
-        SongListFragment usList = new SongListFragment();
-        Bundle args = new Bundle();
-        args.putString("from", Config.FROM_US);
-        usList.setArguments(args);
-        adapter.addFragment(usList, "US and Europe");
-
         SongListFragment japanList = new SongListFragment();
         Bundle args2 = new Bundle();
         args2.putString("from", Config.FROM_JAPAN);
         japanList.setArguments(args2);
         adapter.addFragment(japanList, "Japan");
+
+        SongListFragment usList = new SongListFragment();
+        Bundle args = new Bundle();
+        args.putString("from", Config.FROM_US);
+        usList.setArguments(args);
+        adapter.addFragment(usList, "US and Europe");
     }
 
 
