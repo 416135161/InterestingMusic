@@ -26,7 +26,7 @@ public class PlayListsHorizontalAdapter extends RecyclerView.Adapter<PlayListsHo
     List<PlayTeamBean> playlists;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView img1 ;
+        ImageView img1;
         TextView playlistName, playlistSize;
         RelativeLayout bottomHolder;
 
@@ -59,7 +59,7 @@ public class PlayListsHorizontalAdapter extends RecyclerView.Adapter<PlayListsHo
         Picasso.with(ctx).load(playlists.get(position).getImgUrl()).into(holder.img1);
 
         holder.playlistName.setText(pl.getName());
-        holder.playlistSize.setText((int) ((Math.random() * 9 + 1) * 10)+ "k count");
+        holder.playlistSize.setText((int) ((Math.random() * 9 + 1) * 10) + "k count");
     }
 
     @Override
@@ -80,7 +80,12 @@ public class PlayListsHorizontalAdapter extends RecyclerView.Adapter<PlayListsHo
     }
 
     public void setPlaylists(List<PlayTeamBean> playlists) {
-        this.playlists = playlists;
+        if (playlists != null && playlists.size() > 15) {
+            this.playlists = playlists.subList(0, 15);
+        } else {
+            this.playlists = playlists;
+        }
+
     }
 
 

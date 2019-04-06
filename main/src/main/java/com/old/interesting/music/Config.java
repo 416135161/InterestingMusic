@@ -32,7 +32,9 @@ public final class Config {
     //生产
     public static final String API_HOST = "http://39.98.242.57:8080";
 
+    public static String FROM;
     public static String FROM_US = "0";
+    public static String FROM_JAPAN = "1";
 
     /**
      * 如果当前语言是日语，则URL不加参数
@@ -42,7 +44,9 @@ public final class Config {
         // 获取当前系统语言
         String lang = locale.getLanguage();
         if (TextUtils.equals(lang, "ja")) {
-            FROM_US = "1";
+            FROM = FROM_JAPAN;
+        } else {
+            FROM = FROM_US;
         }
     }
 

@@ -58,9 +58,9 @@ public class BillTrackHorizontalAdapter extends RecyclerView.Adapter<BillTrackHo
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Track pl = playlists.get(position);
         Picasso.with(ctx).load(playlists.get(position).getArtworkURL()).into(holder.img1);
-        if(!TextUtils.isEmpty(pl.getTitle()) && pl.getTitle().contains("-")){
+        if (!TextUtils.isEmpty(pl.getTitle()) && pl.getTitle().contains("-")) {
             holder.playlistName.setText(pl.getTitle().split("-")[1]);
-        }else {
+        } else {
             holder.playlistName.setText(pl.getTitle());
         }
 
@@ -85,7 +85,11 @@ public class BillTrackHorizontalAdapter extends RecyclerView.Adapter<BillTrackHo
     }
 
     public void setPlaylists(List<Track> playlists) {
-        this.playlists = playlists;
+        if (playlists != null && playlists.size() > 20) {
+            this.playlists = playlists.subList(0, 20);
+        } else {
+            this.playlists = playlists;
+        }
     }
 
     public List<Track> getPlaylists() {

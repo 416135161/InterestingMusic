@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.newui.interesting.music.R;
+import com.old.interesting.music.Config;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -56,7 +57,7 @@ public class PlayTeamListActivity extends BaseActivity {
         });
         mRecycleView.setAdapter(mAdapter);
         startLoadingIndicator();
-        CloudDataUtil.getPlayTeamList(PAGE_SIZE, ActionBrowPlayTeam.TYPE_TEAM_LIST);
+        CloudDataUtil.getPlayTeamList(PAGE_SIZE, ActionBrowPlayTeam.TYPE_TEAM_LIST, Config.FROM);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

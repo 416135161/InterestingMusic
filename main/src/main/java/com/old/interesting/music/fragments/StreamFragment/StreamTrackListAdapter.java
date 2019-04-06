@@ -81,7 +81,12 @@ public class StreamTrackListAdapter extends RecyclerView.Adapter<StreamTrackList
 
     @Override
     public int getItemCount() {
-        return tracks.size();
+        if (tracks != null) {
+            return tracks.size();
+        } else {
+            return 0;
+        }
+
     }
 
 

@@ -182,7 +182,7 @@ public class FolderContentFragment extends Fragment {
         playAllFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCallback.onFolderContentPlayAll();
+
             }
         });
 

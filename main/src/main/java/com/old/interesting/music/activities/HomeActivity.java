@@ -98,6 +98,7 @@ import com.old.interesting.music.fragments.ViewArtistFragment.ViewArtistFragment
 import com.old.interesting.music.fragments.ViewPlaylistFragment.PlaylistTrackAdapter;
 import com.old.interesting.music.fragments.ViewPlaylistFragment.ViewPlaylistFragment;
 import com.old.interesting.music.fragments.ViewSavedDNAsFragment.ViewSavedDNA;
+import com.old.interesting.music.fragments.hotnewfragment.HotNewFragment;
 import com.old.interesting.music.headsethandler.HeadSetReceiver;
 import com.old.interesting.music.imageLoader.ImageLoader;
 import com.old.interesting.music.intercepter.HttpUtil;
@@ -173,7 +174,6 @@ public class HomeActivity extends AdsBaseActivity
         ViewPlaylistFragment.playlistCallbackListener,
         FavouritesFragment.favouriteFragmentCallback,
         EqualizerFragment.onCheckChangedListener,
-        AllPlaylistsFragment.allPlaylistCallbackListener,
         PlaylistTrackAdapter.onPlaylistEmptyListener,
         FolderFragment.onFolderClickedListener,
         FolderContentFragment.folderCallbackListener,
@@ -377,6 +377,7 @@ public class HomeActivity extends AdsBaseActivity
     public static boolean isNewPlaylistVisible = false;
     public static boolean isAboutVisible = false;
     public static boolean isEditVisible = false;
+    public static boolean isHotNewVisible = false;
 
     public boolean isPlayerTransitioning = false;
 
@@ -746,7 +747,7 @@ public class HomeActivity extends AdsBaseActivity
             public void onClick(View v) {
                 findViewById(R.id.bill_progress).setVisibility(View.VISIBLE);
                 v.setVisibility(View.INVISIBLE);
-                CloudDataUtil.getBillSongs();
+                CloudDataUtil.getBillSongs(ActionBillSongs.TYPE_HOME, Config.FROM);
             }
         });
         newNothingText = findViewById(R.id.newListNothingText);
@@ -755,7 +756,7 @@ public class HomeActivity extends AdsBaseActivity
             public void onClick(View v) {
                 findViewById(R.id.new_progress).setVisibility(View.VISIBLE);
                 v.setVisibility(View.INVISIBLE);
-                CloudDataUtil.getNewSongs();
+                CloudDataUtil.getNewSongs(ActionNewSongs.TYPE_HOME, Config.FROM);
             }
         });
 
@@ -778,16 +779,16 @@ public class HomeActivity extends AdsBaseActivity
         billViewAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StreamMusicFragment.trackList = billAdapter.getPlaylists();
-                showFragment("stream");
+                HotNewFragment.TYPE = HotNewFragment.TYPE_HOT;
+                showFragment("HotNew");
             }
         });
         newViewAll = findViewById(R.id.newLists_view_all);
         newViewAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StreamMusicFragment.trackList = newAdapter.getPlaylists();
-                showFragment("stream");
+                HotNewFragment.TYPE = HotNewFragment.TYPE_NEW;
+                showFragment("HotNew");
             }
         });
 
@@ -926,7 +927,7 @@ public class HomeActivity extends AdsBaseActivity
                 int flag = 0;
                 for (int i = 0; i < favouriteTracks.getFavourite().size(); i++) {
                     UnifiedTrack ut = favouriteTracks.getFavourite().get(i);
-                    if (!ut.getType() && ut.getStreamTrack().getTitle().equals(selectedTrack.getTitle())) {
+                    if (!ut.getType() && ut.getStreamTrack() != null && ut.getStreamTrack().getTitle().equals(selectedTrack.getTitle())) {
                         flag = 1;
                         isFavourite = true;
                         break;
@@ -1233,48 +1234,52 @@ public class HomeActivity extends AdsBaseActivity
             }
         });
 
-        CloudDataUtil.getNewSongs();
-        CloudDataUtil.getBillSongs();
+        CloudDataUtil.getNewSongs(ActionNewSongs.TYPE_HOME, Config.FROM);
+        CloudDataUtil.getBillSongs(ActionBillSongs.TYPE_HOME, Config.FROM);
     }
 
     private void getPlayTeamList() {
         hotlistNothingText.setVisibility(View.INVISIBLE);
         findViewById(R.id.progress).setVisibility(View.VISIBLE);
-        CloudDataUtil.getPlayTeamList(Config.BROW_PLAY_TEAM_PAGE, ActionBrowPlayTeam.TYPE_BROW);
+        CloudDataUtil.getPlayTeamList(Config.BROW_PLAY_TEAM_PAGE, ActionBrowPlayTeam.TYPE_BROW, Config.FROM);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventPosting(ActionBrowPlayTeam event) {
         if (event != null && event.teamList != null && !event.teamList.isEmpty()) {
-            setHotData(event.teamList);
+            setAlbumsData(event.teamList);
         } else {
-            setHotData(null);
+            setAlbumsData(null);
         }
         findViewById(R.id.progress).setVisibility(View.INVISIBLE);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventPosting(ActionNewSongs event) {
-        if (event != null && event.trackList != null && event.trackList.size() > 0) {
-            newAdapter.setPlaylists(event.trackList);
-            newAdapter.notifyDataSetChanged();
-            newNothingText.setVisibility(GONE);
-        } else {
-            newNothingText.setVisibility(View.VISIBLE);
+        if (event.type == ActionNewSongs.TYPE_HOME && event.from == Config.FROM) {
+            if (event != null && event.trackList != null && event.trackList.size() > 0) {
+                newAdapter.setPlaylists(event.trackList);
+                newAdapter.notifyDataSetChanged();
+                newNothingText.setVisibility(GONE);
+            } else {
+                newNothingText.setVisibility(View.VISIBLE);
+            }
+            findViewById(R.id.new_progress).setVisibility(View.INVISIBLE);
         }
-        findViewById(R.id.new_progress).setVisibility(View.INVISIBLE);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventPosting(ActionBillSongs event) {
-        if (event != null && event.trackList != null) {
-            billAdapter.setPlaylists(event.trackList);
-            billAdapter.notifyDataSetChanged();
-            billNothingText.setVisibility(View.GONE);
-        } else {
-            billNothingText.setVisibility(View.VISIBLE);
+        if (event.type == ActionBillSongs.TYPE_HOME && event.from == Config.FROM) {
+            if (event != null && event.trackList != null) {
+                billAdapter.setPlaylists(event.trackList);
+                billAdapter.notifyDataSetChanged();
+                billNothingText.setVisibility(View.GONE);
+            } else {
+                billNothingText.setVisibility(View.VISIBLE);
+            }
+            findViewById(R.id.bill_progress).setVisibility(View.INVISIBLE);
         }
-        findViewById(R.id.bill_progress).setVisibility(View.INVISIBLE);
     }
 
     LoadingDlg loadingDlg;
@@ -1292,7 +1297,7 @@ public class HomeActivity extends AdsBaseActivity
         }
     }
 
-    private void setHotData(List<PlayTeamBean> list) {
+    private void setAlbumsData(List<PlayTeamBean> list) {
         if (list == null || list.size() == 0) {
             hotListRecycler.setVisibility(GONE);
             hotlistNothingText.setVisibility(View.VISIBLE);
@@ -1601,6 +1606,9 @@ public class HomeActivity extends AdsBaseActivity
 
                         @Override
                         public boolean onLongClick(RecyclerView parent, View view, final int position, long id) {
+                            if (position >= streamingTrackList.size()) {
+                                return false;
+                            }
                             CustomGeneralBottomSheetDialog generalBottomSheetDialog = new CustomGeneralBottomSheetDialog();
                             generalBottomSheetDialog.setPosition(position);
                             generalBottomSheetDialog.setTrack(new UnifiedTrack(false, null, streamingTrackList.get(position)));
@@ -2022,6 +2030,9 @@ public class HomeActivity extends AdsBaseActivity
                 } else if (isAboutVisible) {
                     hideFragment("About");
                     setTitle("Settings");
+                } else if (isHotNewVisible) {
+                    hideFragment("HotNew");
+                    setTitle("Pandora");
                 } else if (isSettingsVisible) {
                     hideFragment("settings");
                     new SaveSettings().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -2719,8 +2730,6 @@ public class HomeActivity extends AdsBaseActivity
             plFrag.progressBar.setProgress(0);
             plFrag.progressBar.setSecondaryProgress(0);
 
-            // Get Visualizer and Visualizer View to initial state
-            plFrag.mVisualizer.setEnabled(true);
             VisualizerView.w = screen_width;
             VisualizerView.h = screen_height;
             VisualizerView.conf = Bitmap.Config.ARGB_8888;
@@ -3186,31 +3195,6 @@ public class HomeActivity extends AdsBaseActivity
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    /*
-     *  AllPlaylistsFragment callbacks START
-     */
-
-    @Override
-    public void onPlaylistSelected(int pos) {
-        tempPlaylist = allPlaylists.getPlaylists().get(pos);
-        tempPlaylistNumber = pos;
-        showFragment("playlist");
-    }
-
-    @Override
-    public void onPlaylistMenuPLayAll() {
-        onPlaylistPlayAll();
-    }
-
-    @Override
-    public void onPlaylistRename() {
-        renamePlaylistDialog(allPlaylists.getPlaylists().get(renamePlaylistNumber).getPlaylistName());
-    }
-
-    @Override
-    public void newPlaylistListener() {
-        showFragment("newPlaylist");
-    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -3238,7 +3222,7 @@ public class HomeActivity extends AdsBaseActivity
             queue.getQueue().add(new UnifiedTrack(true, tempFolderContent.get(i), null));
         }
         queueCurrentIndex = 0;
-        onPlaylistMenuPLayAll();
+
     }
 
     @Override
@@ -3689,7 +3673,6 @@ public class HomeActivity extends AdsBaseActivity
     }
 
     public void showFragment(String type) {
-
         if (!type.equals("viewAlbum") && !type.equals("folderContent") && !type.equals("viewArtist") && !type.equals("playlist") && !type.equals
                 ("newPlaylist") && !type.equals("About") && !type.equals("Edit"))
             hideAllFrags();
@@ -3974,6 +3957,22 @@ public class HomeActivity extends AdsBaseActivity
                     .show(newFragment)
                     .addToBackStack(null)
                     .commitAllowingStateLoss();
+        } else if (type.equals("HotNew") && !isHotNewVisible) {
+            isHotNewVisible = true;
+            android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+            HotNewFragment hotNewFragment = (HotNewFragment) fm.findFragmentByTag("HotNew");
+            if (hotNewFragment == null) {
+                hotNewFragment = new HotNewFragment();
+            }
+            fm.beginTransaction()
+                    .setCustomAnimations(R.anim.slide_left,
+                            R.anim.slide_right,
+                            R.anim.slide_left,
+                            R.anim.slide_right)
+                    .add(R.id.content_frag, hotNewFragment, "HotNew")
+                    .show(hotNewFragment)
+                    .addToBackStack(null)
+                    .commitAllowingStateLoss();
         }
     }
 
@@ -4150,6 +4149,15 @@ public class HomeActivity extends AdsBaseActivity
                         .remove(frag)
                         .commitAllowingStateLoss();
             }
+        } else if (type.equals("HotNew")) {
+            isHotNewVisible = false;
+            android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+            android.support.v4.app.Fragment frag = fm.findFragmentByTag("HotNew");
+            if (frag != null) {
+                fm.beginTransaction()
+                        .remove(frag)
+                        .commitAllowingStateLoss();
+            }
         }
     }
 
@@ -4170,6 +4178,7 @@ public class HomeActivity extends AdsBaseActivity
         hideFragment("recent");
         hideFragment("settings");
         hideFragment("About");
+        hideFragment("HotNew");
 
         navigationView.setCheckedItem(R.id.nav_home);
 
@@ -4580,21 +4589,6 @@ public class HomeActivity extends AdsBaseActivity
 
         dialog.show();
 
-    }
-
-    public void updateVisualizerRecycler() {
-        if (playerFragment != null && playerFragment.snappyRecyclerView != null) {
-            playerFragment.snappyRecyclerView.getAdapter().notifyDataSetChanged();
-            playerFragment.snappyRecyclerView.scrollToPosition(queueCurrentIndex);
-            playerFragment.snappyRecyclerView.setTransparency();
-        }
-    }
-
-    public void updateAllPlaylistFragment() {
-        AllPlaylistsFragment playListFragment = (AllPlaylistsFragment) fragMan.findFragmentByTag("allPlaylists");
-        if (playListFragment != null && playListFragment.allPlaylistRecycler != null) {
-            playListFragment.allPlaylistRecycler.getAdapter().notifyDataSetChanged();
-        }
     }
 
 }

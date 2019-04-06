@@ -28,7 +28,7 @@ import java.util.List;
  */
 public class StreamMusicFragment extends Fragment {
 
-    public static StreamTrackListAdapter adapter;
+    private StreamTrackListAdapter adapter;
 
     public static List<Track> trackList;
     OnTrackSelectedListener mCallback;
@@ -76,12 +76,7 @@ public class StreamMusicFragment extends Fragment {
             bottomMarginLayout.getLayoutParams().height = CommonUtils.dpTopx(65, getContext());
 
         lv = (RecyclerView) view.findViewById(R.id.trackList);
-
-        if (trackList == null) {
-            adapter = new StreamTrackListAdapter(getContext(), HomeActivity.streamingTrackList);
-        } else {
-            adapter = new StreamTrackListAdapter(getContext(), trackList);
-        }
+        adapter = new StreamTrackListAdapter(getContext(), trackList);
         LinearLayoutManager mLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         lv.setLayoutManager(mLayoutManager2);
         lv.setItemAnimator(new DefaultItemAnimator());
