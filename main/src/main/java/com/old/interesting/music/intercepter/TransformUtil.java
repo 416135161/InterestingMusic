@@ -9,6 +9,8 @@ import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by sjning
@@ -24,7 +26,8 @@ public final class TransformUtil {
         List<Track> trackList = new ArrayList<>();
         if (searchResponseBean != null && searchResponseBean.size() > 0) {
             for (SongDetailBean song : searchResponseBean) {
-                if (!TextUtils.isEmpty(song.getHash())) {
+                if (!TextUtils.isEmpty(song.getHash()) && !isContainChinese(song.getSongName())
+                        && !isContainChinese(song.getSingerName())) {
                     Track track = new Track();
                     track.setmTitle(song.getSongName());
                     track.setFileHash(song.getHash());
@@ -34,5 +37,14 @@ public final class TransformUtil {
             }
         }
         return trackList;
+    }
+
+    public static boolean isContainChinese(String str) {
+        Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
+        Matcher m = p.matcher(str);
+        if (m.find()) {
+            return true;
+        }
+        return false;
     }
 }
