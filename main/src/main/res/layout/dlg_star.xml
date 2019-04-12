@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:numStars="5"
+        android:rating="5"
         android:paddingTop="5dp"/>
 
 </LinearLayout>

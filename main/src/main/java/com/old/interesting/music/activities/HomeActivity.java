@@ -1452,7 +1452,8 @@ public class HomeActivity extends AdsBaseActivity
                                     pos = i;
                                     break;
                                 }
-                                if (!ut1.getType() && !ut.getType() && ut1.getStreamTrack().getTitle().equals(ut.getStreamTrack().getTitle())) {
+                                if (!ut1.getType() && !ut.getType() && ut1.getStreamTrack() != null && ut.getStreamTrack() != null
+                                        && ut1.getStreamTrack().getTitle().equals(ut.getStreamTrack().getTitle())) {
                                     isRepeat = true;
                                     pos = i;
                                     break;
@@ -1581,6 +1582,9 @@ public class HomeActivity extends AdsBaseActivity
                     soundcloudRecyclerView.addOnItemTouchListener(new ClickItemTouchListener(soundcloudRecyclerView) {
                         @Override
                         public boolean onClick(RecyclerView parent, View view, final int position, long id) {
+                            if (position >= streamingTrackList.size()) {
+                                return true;
+                            }
                             Track track = streamingTrackList.get(position);
                             if (queue.getQueue().size() == 0) {
                                 queueCurrentIndex = 0;
