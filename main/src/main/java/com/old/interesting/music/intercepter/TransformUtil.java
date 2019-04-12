@@ -26,8 +26,7 @@ public final class TransformUtil {
         List<Track> trackList = new ArrayList<>();
         if (searchResponseBean != null && searchResponseBean.size() > 0) {
             for (SongDetailBean song : searchResponseBean) {
-                if (!TextUtils.isEmpty(song.getHash()) && !isContainChinese(song.getSongName())
-                        && !isContainChinese(song.getSingerName())) {
+                if (!TextUtils.isEmpty(song.getHash())) {
                     Track track = new Track();
                     track.setmTitle(song.getSongName());
                     track.setFileHash(song.getHash());
