@@ -41,5 +41,7 @@
     <string name="text_sure">確定する</string>
     <string name="text_cancel">取り消す</string>
     <string name="text_can_not_get_song_tip">"選んだ歌が見つからない!"</string>
+    <string name="text_title_us">ヨーロッパとアメリカ</string>
+    <string name="text_title_japan">日本</string>
 
 </resources>
