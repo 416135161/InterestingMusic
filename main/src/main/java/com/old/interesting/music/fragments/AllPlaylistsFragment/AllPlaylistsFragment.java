@@ -123,13 +123,13 @@ public class AllPlaylistsFragment extends Fragment {
         Bundle args2 = new Bundle();
         args2.putString("from", Config.FROM_JAPAN);
         japanList.setArguments(args2);
-        adapter.addFragment(japanList, "Japan");
+        adapter.addFragment(japanList, getString(R.string.text_title_japan));
 
         AlbumListFragment usList = new AlbumListFragment();
         Bundle args = new Bundle();
         args.putString("from", Config.FROM_US);
         usList.setArguments(args);
-        adapter.addFragment(usList, "US and Europe");
+        adapter.addFragment(usList, getString(R.string.text_title_us));
     }
 
 
