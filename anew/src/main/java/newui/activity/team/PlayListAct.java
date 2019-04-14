@@ -53,7 +53,7 @@ public class PlayListAct extends BaseActivity {
         });
         mRecycleView.setAdapter(mAdapter);
         startLoadingIndicator();
-        CloudDataUtil.getPlayList(musicBoardid);
+        CloudDataUtil.getPlayList(musicBoardid, "1");
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

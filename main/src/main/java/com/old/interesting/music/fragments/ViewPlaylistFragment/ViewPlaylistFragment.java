@@ -68,6 +68,7 @@ public class ViewPlaylistFragment extends BaseFragment implements
 
     playlistCallbackListener mCallback;
     public static PlayTeamBean playTeamResult;
+    public static String from;
     ProgressBar mProgressBar;
     ImageView mRefreshIv;
 
@@ -249,7 +250,7 @@ public class ViewPlaylistFragment extends BaseFragment implements
     }
 
     private void getData() {
-        CloudDataUtil.getPlayList(playTeamResult.getId() + "");
+        CloudDataUtil.getPlayList(playTeamResult.getId() + "", from);
         mRefreshIv.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
     }
@@ -268,6 +269,10 @@ public class ViewPlaylistFragment extends BaseFragment implements
 
     public static void setPlayTeamResult(PlayTeamBean data) {
         playTeamResult = data;
+    }
+
+    public static void setFrom(String from) {
+        ViewPlaylistFragment.from = from;
     }
 
     public interface playlistCallbackListener {

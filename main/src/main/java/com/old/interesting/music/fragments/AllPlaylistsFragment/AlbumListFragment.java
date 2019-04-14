@@ -91,6 +91,7 @@ public class AlbumListFragment extends BaseFragment {
             @Override
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 ViewPlaylistFragment.setPlayTeamResult(vpAdapter.getItem(position));
+                ViewPlaylistFragment.setFrom(from);
                 homeActivity.showFragment("playlist");
                 return true;
             }

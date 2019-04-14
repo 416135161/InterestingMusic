@@ -71,6 +71,23 @@ public interface StreamService {
     @GET("/music/album/songs")
     Call<ArrayList<SongDetailBean>> getPlayList(@Query("id") String id);
 
+    /**
+     * 获取欧洲歌单
+     *
+     * @param pageSize
+     * @return
+     */
+    @GET("/music/europe/albums")
+    Call<ArrayList<PlayTeamBean>> getEuropePlayTeamList(@Query("pageSize") int pageSize, @Query("from") String from);
+
+    /**
+     * 获取欧洲歌单下的歌曲
+     *
+     * @param id
+     * @return
+     */
+    @GET("/music/europe/album/songs")
+    Call<ArrayList<SongDetailBean>> getEuropePlayList(@Query("id") String id);
 
 //    这是获取新歌的  size弄成240
 //    http://39.107.89.143/newSongs/list.do
@@ -82,10 +99,8 @@ public interface StreamService {
     // 获取歌单下的歌曲
 //    http://39.107.89.143/musicBoard/listItem/list.do?musicBoardid=XXX&start=0&pageSize=20
 
-
 //    找图片素材用的
 //    https://www.iconfont.cn/
-
 
 //     查找版本号
 //    http://39.107.89.143/apps/music/list.do?code=android

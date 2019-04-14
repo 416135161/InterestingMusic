@@ -1,5 +1,7 @@
 package newui.data.util;
 
+import android.text.TextUtils;
+
 import com.old.interesting.music.Config;
 import com.old.interesting.music.intercepter.HttpUtil;
 import com.old.interesting.music.interfaces.StreamService;
@@ -7,6 +9,7 @@ import com.old.interesting.music.models.Track;
 import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 
 import org.greenrobot.eventbus.EventBus;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,15 +31,20 @@ import retrofit2.Response;
  */
 public final class CloudDataUtil {
     //获取歌单
-    public static void getPlayTeamList( int pageSize, final int type, final String from) {
+    public static void getPlayTeamList(int pageSize, final int type, final String from) {
         StreamService ss = HttpUtil.getApiService(Config.API_HOST, null);
-        Call<ArrayList<PlayTeamBean>> call = ss.getPlayTeamList(pageSize,from);
+        Call<ArrayList<PlayTeamBean>> call;
+        if (TextUtils.equals(from, Config.FROM_US) || TextUtils.equals(from, Config.FROM_JAPAN)) {
+            call = ss.getPlayTeamList(pageSize, from);
+        } else {
+            call = ss.getEuropePlayTeamList(pageSize, from);
+        }
         call.enqueue(new Callback<ArrayList<PlayTeamBean>>() {
 
             @Override
             public void onResponse(Call<ArrayList<PlayTeamBean>> call, Response<ArrayList<PlayTeamBean>> response) {
                 if (response.isSuccessful() && response.body() != null
-                        &&  !response.body().isEmpty()) {
+                        && !response.body().isEmpty()) {
                     if (type == ActionBrowPlayTeam.TYPE_TEAM_LIST) {
                         EventBus.getDefault().post(new ActionListPlayTeam(response.body(), from));
                     } else if (type == ActionBrowPlayTeam.TYPE_BROW) {
@@ -61,15 +69,21 @@ public final class CloudDataUtil {
     }
 
     //获取歌单下的歌曲
-    public static void getPlayList(String id) {
+    public static void getPlayList(String id, String from) {
         StreamService ss = HttpUtil.getApiService(Config.API_HOST, null);
-        Call<ArrayList<SongDetailBean>> call = ss.getPlayList(id);
+        Call<ArrayList<SongDetailBean>> call;
+        if (TextUtils.equals(from, Config.FROM_US) || TextUtils.equals(from, Config.FROM_JAPAN)){
+            call = ss.getPlayList(id);
+        }else {
+            call = ss.getEuropePlayList(id);
+        }
+
         call.enqueue(new Callback<ArrayList<SongDetailBean>>() {
 
             @Override
             public void onResponse(Call<ArrayList<SongDetailBean>> call, Response<ArrayList<SongDetailBean>> response) {
                 if (response.isSuccessful() && response.body() != null
-                         && !response.body().isEmpty()) {
+                        && !response.body().isEmpty()) {
                     EventBus.getDefault().post(new ActionPlayList(response.body()));
                 } else {
                     onFailure(null, new Exception("is nothing"));
