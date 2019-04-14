@@ -35,6 +35,11 @@ public final class Config {
     public static String FROM;
     public static String FROM_US = "0";
     public static String FROM_JAPAN = "1";
+    /**
+     * 欧美资源分类
+     */
+    public static final int EUROP_POP = 1051;
+    public static final int EUROP_COUNTRY = 1065;
 
     /**
      * 如果当前语言是日语，则URL不加参数

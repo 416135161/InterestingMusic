@@ -125,6 +125,18 @@ public class AllPlaylistsFragment extends Fragment {
         usList.setArguments(args);
         adapter.addFragment(usList, getString(R.string.text_title_us));
 
+        AlbumListFragment popList = new AlbumListFragment();
+        Bundle argsPop = new Bundle();
+        argsPop.putString("from", Config.EUROP_POP + "");
+        popList.setArguments(argsPop);
+        adapter.addFragment(popList, getString(R.string.text_title_pop));
+
+//        AlbumListFragment countryList = new AlbumListFragment();
+//        Bundle argsCountry = new Bundle();
+//        argsCountry.putString("from", Config.EUROP_COUNTRY + "");
+//        countryList.setArguments(argsCountry);
+//        adapter.addFragment(countryList, getString(R.string.text_title_country));
+
         AlbumListFragment japanList = new AlbumListFragment();
         Bundle args2 = new Bundle();
         args2.putString("from", Config.FROM_JAPAN);
