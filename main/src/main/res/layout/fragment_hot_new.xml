@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/all_playlist_header"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="#000000"
         android:gravity="center_vertical"
         >
@@ -49,19 +49,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/all_playlist_header"
-        android:background="#111111"
+        android:background="#222222"
         android:elevation="12dp"
         app:tabGravity="fill"
         app:tabMode="fixed"
         app:tabSelectedTextColor="#FFFFFF"
         app:tabTextColor="#898989"/>
 
+    <FrameLayout
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabs"
+        >
+    </FrameLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_margin_layout"
-        android:layout_below="@+id/tabs"
+        android:layout_below="@+id/adView"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <View
@@ -71,4 +79,5 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorDark"
         android:clickable="true"/>
+
 </RelativeLayout>
