@@ -11,9 +11,15 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.old.interesting.music.BuildConfig;
 import com.old.interesting.music.Config;
 import com.old.interesting.music.R;
 import com.old.interesting.music.activities.HomeActivity;
@@ -79,6 +85,8 @@ public class HotNewFragment extends Fragment {
         }else if(TYPE == TYPE_NEW){
             tvTitle.setText(R.string.text_new_song);
         }
+
+        loadAds(view);
     }
 
     @Override
@@ -142,6 +150,26 @@ public class HotNewFragment extends Fragment {
             return mFragmentTitleList.get(position);
         }
 
+    }
+    private static boolean IS_SHOW_ADS = true;
+    private void loadAds(View view){
+        IS_SHOW_ADS = !IS_SHOW_ADS;
+        if(!IS_SHOW_ADS){
+            return;
+        }
+        MobileAds.initialize(getContext(),
+                CommonUtils.getMetaData(getContext(), "ads_id"));
+        AdView adView = new AdView(this.getContext());
+        adView.setAdSize(AdSize.SMART_BANNER);
+        if(BuildConfig.DEBUG){
+            adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+        }else {
+            adView.setAdUnitId("ca-app-pub-8270196426610526/5528095757");
+        }
+        FrameLayout frameLayout = view.findViewById(R.id.adView);
+        frameLayout.addView(adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
 }
