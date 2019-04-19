@@ -16,6 +16,7 @@ import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.old.interesting.music.BuildConfig;
 import com.old.interesting.music.Config;
 import com.old.interesting.music.R;
+import com.old.interesting.music.fragments.PlayerFragment.PlayerFragment;
 import com.old.interesting.music.utilities.CommonUtils;
 import com.old.interesting.music.utilities.SpHelper;
 
@@ -133,8 +134,6 @@ public class AdsBaseActivity extends BaseActivity {
     private int count = 0;
 
     protected void showStarDialog(){
-
-
         new  AlertDialog.Builder(this)
                 .setTitle(getString(R.string.text_please_rate) )
                 .setIcon(R.drawable.ic_star)
@@ -149,10 +148,18 @@ public class AdsBaseActivity extends BaseActivity {
                 .setNegativeButton(R.string.text_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME));
+                        doFinish();
                     }
                 })
                 .show();
+    }
+
+    protected void doFinish(){
+        if(PlayerFragment.mMediaPlayer != null && PlayerFragment.mMediaPlayer.isPlaying()){
+            startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME));
+        }else {
+            finish();
+        }
     }
 
     private void jumpToPlay(){
