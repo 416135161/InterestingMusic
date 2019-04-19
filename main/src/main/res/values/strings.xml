@@ -45,5 +45,7 @@
     <string name="text_title_japan">Japan</string>
     <string name="text_title_pop">POP</string>
     <string name="text_title_country">COUNTRY</string>
+    <string name="text_title_rock">ROCK</string>
+    <string name="text_title_electronic">ELECTRONIC</string>
 
 </resources>
