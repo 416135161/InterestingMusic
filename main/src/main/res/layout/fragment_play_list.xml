@@ -52,7 +52,7 @@
         android:background="#111111"
         android:elevation="12dp"
         app:tabGravity="fill"
-        app:tabMode="fixed"
+        app:tabMode="scrollable"
         app:tabSelectedTextColor="#FFFFFF"
         app:tabTextColor="#898989"/>
 

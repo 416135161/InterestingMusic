@@ -137,6 +137,18 @@ public class AllPlaylistsFragment extends Fragment {
         popList.setArguments(argsPop);
         adapter.addFragment(popList, getString(R.string.text_title_pop));
 
+        AlbumListFragment rockList = new AlbumListFragment();
+        Bundle argsRock = new Bundle();
+        argsRock.putString("from", Config.EUROP_ROCK + "");
+        rockList.setArguments(argsRock);
+        adapter.addFragment(rockList, getString(R.string.text_title_rock));
+
+        AlbumListFragment electronicList = new AlbumListFragment();
+        Bundle argsElectronic = new Bundle();
+        argsElectronic.putString("from", Config.EUROP_ELECTRONIC + "");
+        electronicList.setArguments(argsRock);
+        adapter.addFragment(electronicList, getString(R.string.text_title_electronic));
+
         AlbumListFragment countryList = new AlbumListFragment();
         Bundle argsCountry = new Bundle();
         argsCountry.putString("from", Config.EUROP_COUNTRY + "");
