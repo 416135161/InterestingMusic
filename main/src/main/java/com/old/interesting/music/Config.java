@@ -40,6 +40,8 @@ public final class Config {
      */
     public static final int EUROP_POP = 1051;
     public static final int EUROP_COUNTRY = 1065;
+    public static final int EUROP_ELECTRONIC = 1053;
+    public static final int EUROP_ROCK = 1055;
 
     /**
      * 如果当前语言是日语，则URL不加参数

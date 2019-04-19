@@ -45,5 +45,7 @@
     <string name="text_title_japan">日本</string>
     <string name="text_title_pop">人気の</string>
     <string name="text_title_country">カントリーミュージック</string>
+    <string name="text_title_rock">ロック</string>
+    <string name="text_title_electronic">電気音響</string>
 
 </resources>
