@@ -146,7 +146,7 @@ public class AllPlaylistsFragment extends Fragment {
         AlbumListFragment electronicList = new AlbumListFragment();
         Bundle argsElectronic = new Bundle();
         argsElectronic.putString("from", Config.EUROP_ELECTRONIC + "");
-        electronicList.setArguments(argsRock);
+        electronicList.setArguments(argsElectronic);
         adapter.addFragment(electronicList, getString(R.string.text_title_electronic));
 
         AlbumListFragment countryList = new AlbumListFragment();

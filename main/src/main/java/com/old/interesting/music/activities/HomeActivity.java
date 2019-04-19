@@ -256,7 +256,7 @@ public class HomeActivity extends AdsBaseActivity
     public PlayerFragment playerFragment;
 
     public static boolean shuffleEnabled = false;
-    public static boolean repeatEnabled = false;
+    public static boolean repeatEnabled = true;
     public static boolean repeatOnceEnabled = false;
 
     public static boolean nextControllerClicked = false;
@@ -2045,7 +2045,7 @@ public class HomeActivity extends AdsBaseActivity
                     if (!SpHelper.getDefault(this).getBoolean(SpHelper.KEY_STAR)) {
                         showStarDialog();
                     } else {
-                        startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME));
+                        doFinish();
                     }
                 }
             }
