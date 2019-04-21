@@ -136,7 +136,6 @@ public class AdsBaseActivity extends BaseActivity {
     protected void showStarDialog(){
         new  AlertDialog.Builder(this)
                 .setTitle(getString(R.string.text_please_rate) )
-                .setIcon(R.drawable.ic_star)
                 .setView(getLayoutInflater().inflate(R.layout.dlg_star, null))
                 .setPositiveButton(getString(R.string.text_sure), new DialogInterface.OnClickListener() {
                     @Override
