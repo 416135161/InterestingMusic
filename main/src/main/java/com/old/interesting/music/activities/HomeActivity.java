@@ -1121,6 +1121,7 @@ public class HomeActivity extends AdsBaseActivity
             @Override
             public boolean onClick(RecyclerView parent, View view, final int position, long id) {
                 ViewPlaylistFragment.setPlayTeamResult(hotAdapter.getItem(position));
+                ViewPlaylistFragment.setFrom(Config.FROM);
                 showFragment("playlist");
                 return true;
             }
