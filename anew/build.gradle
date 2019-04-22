@@ -8,8 +8,8 @@ android {
         applicationId "com.interesting.cloud.music"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 260
-        versionName "2.6.0"
+        versionCode 261
+        versionName "2.6.1"
         renderscriptTargetApi 23
         renderscriptSupportModeEnabled true
     }
