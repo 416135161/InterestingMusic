@@ -46,7 +46,6 @@ public final class CloudDataUtil {
                 if (response.isSuccessful() && response.body() != null
                         && !response.body().isEmpty()) {
                     ArrayList<PlayTeamBean> list = response.body();
-                    SortUtil.shuffle(list);
                     if (type == ActionBrowPlayTeam.TYPE_TEAM_LIST) {
                         EventBus.getDefault().post(new ActionListPlayTeam(list, from));
                     } else if (type == ActionBrowPlayTeam.TYPE_BROW) {
@@ -87,7 +86,6 @@ public final class CloudDataUtil {
                 if (response.isSuccessful() && response.body() != null
                         && !response.body().isEmpty()) {
                     ArrayList<SongDetailBean> list = response.body();
-                    SortUtil.shuffle(list);
                     EventBus.getDefault().post(new ActionPlayList(list));
                 } else {
                     onFailure(null, new Exception("is nothing"));
@@ -171,7 +169,6 @@ public final class CloudDataUtil {
                     }
                     ActionBillSongs action = new ActionBillSongs();
                     action.isOK = true;
-                    SortUtil.shuffle(trackList);
                     action.trackList = trackList;
                     action.type = type;
                     action.from = from;

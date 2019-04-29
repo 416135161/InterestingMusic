@@ -322,7 +322,7 @@
                 android:layout_height="80dp"
                 android:layout_below="@+id/bannerContainer"
                 android:gravity="center"
-                android:text="Magic Music"
+                android:text="Pandano"
                 android:textAlignment="gravity"
                 android:textColor="#888"
                 android:textSize="16sp"/>

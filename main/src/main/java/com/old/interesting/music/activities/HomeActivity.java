@@ -482,7 +482,7 @@ public class HomeActivity extends AdsBaseActivity
         });
 
         copyrightText = (TextView) findViewById(R.id.copyright_text);
-        copyrightText.setText("Magic Music v" + versionName);
+        copyrightText.setText("Pandano v" + versionName);
 
         if (Config.tf4 != null) {
             try {
@@ -1994,54 +1994,54 @@ public class HomeActivity extends AdsBaseActivity
             } else {
                 if (isLocalVisible) {
                     hideFragment("local");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isQueueVisible) {
                     hideFragment("queue");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isStreamVisible) {
                     hideFragment("stream");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isPlaylistVisible) {
                     hideFragment("playlist");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isNewPlaylistVisible) {
                     hideFragment("newPlaylist");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isEqualizerVisible) {
                     finalSelectedTracks.clear();
                     hideFragment("equalizer");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isFavouriteVisible) {
                     hideFragment("favourite");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isAllPlaylistVisible) {
                     hideFragment("allPlaylists");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isFolderContentVisible) {
                     hideFragment("folderContent");
                     setTitle("Folders");
                 } else if (isAllFolderVisible) {
                     hideFragment("allFolders");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isAllSavedDnaVisisble) {
                     hideFragment("allSavedDNAs");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isSavedDNAVisible) {
                     hideFragment("savedDNA");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isRecentVisible) {
                     hideFragment("recent");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isAboutVisible) {
                     hideFragment("About");
                     setTitle("Settings");
                 } else if (isHotNewVisible) {
                     hideFragment("HotNew");
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (isSettingsVisible) {
                     hideFragment("settings");
                     new SaveSettings().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-                    setTitle("Magic Music");
+                    setTitle("Pandano");
                 } else if (!isPlayerTransitioning) {
                     if (!SpHelper.getDefault(this).getBoolean(SpHelper.KEY_STAR)) {
                         showStarDialog();
@@ -2994,7 +2994,7 @@ public class HomeActivity extends AdsBaseActivity
     public void onPlaylistPlayAll() {
         onQueueItemClicked(0);
         hideFragment("playlist");
-        setTitle("Magic Music");
+        setTitle("Pandano");
     }
 
     @Override
@@ -3984,7 +3984,7 @@ public class HomeActivity extends AdsBaseActivity
     public void hideFragment(String type) {
         if (type.equals("local")) {
             isLocalVisible = false;
-            setTitle("Magic Music");
+            setTitle("Pandano");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("local");
@@ -4005,7 +4005,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("stream")) {
             isStreamVisible = false;
-            setTitle("Magic Music");
+            setTitle("Pandano");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("stream");
@@ -4035,7 +4035,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("favourite")) {
             isFavouriteVisible = false;
-            setTitle("Magic Music");
+            setTitle("Pandano");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("favourite");
@@ -4056,7 +4056,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("allPlaylists")) {
             isAllPlaylistVisible = false;
-            setTitle("Magic Music");
+            setTitle("Pandano");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("allPlaylists");
@@ -4076,7 +4076,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("allFolders")) {
             isAllFolderVisible = false;
-            setTitle("Magic Music");
+            setTitle("Pandano");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("allFolders");
@@ -4087,7 +4087,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("allSavedDNAs")) {
             isAllSavedDnaVisisble = false;
-            setTitle("Magic Music");
+            setTitle("Pandano");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("allSavedDNAs");
@@ -4116,7 +4116,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("recent")) {
             isRecentVisible = false;
-            setTitle("Magic Music");
+            setTitle("Pandano");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("recent");
@@ -4127,7 +4127,7 @@ public class HomeActivity extends AdsBaseActivity
             }
         } else if (type.equals("settings")) {
             isSettingsVisible = false;
-            setTitle("Magic Music");
+            setTitle("Pandano");
             navigationView.setCheckedItem(R.id.nav_home);
             android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             android.support.v4.app.Fragment frag = fm.findFragmentByTag("settings");
@@ -4187,7 +4187,7 @@ public class HomeActivity extends AdsBaseActivity
 
         navigationView.setCheckedItem(R.id.nav_home);
 
-        setTitle("Magic Music");
+        setTitle("Pandano");
 
     }
 

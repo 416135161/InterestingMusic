@@ -157,7 +157,7 @@ public class AboutFragment extends Fragment {
 
     public void displayOpenSourceLicenses(){
         final AlertDialog alertDialog = new AlertDialog.Builder(this.getContext()).create();
-        alertDialog.setTitle("Magic Music");
+        alertDialog.setTitle("Pandano");
         alertDialog.setMessage(getResources().getString(R.string.license_text));
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                 new DialogInterface.OnClickListener() {

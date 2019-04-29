@@ -64,7 +64,7 @@
                 android:layout_below="@id/about_mdg_logo"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="12dp"
-                android:text="Magic Music"
+                android:text="Pandano"
                 android:textAlignment="center"
                 android:textColor="#fff"
                 android:textSize="18sp"/>
