@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/all_playlist_header"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:background="@color/colorAccent"
         android:gravity="center_vertical"
         >
