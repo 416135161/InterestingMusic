@@ -127,7 +127,6 @@ public final class CloudDataUtil {
                     }
                     ActionNewSongs action = new ActionNewSongs();
                     action.isOK = true;
-                    SortUtil.shuffle(trackList);
                     action.trackList = trackList;
                     action.type = type;
                     action.from = from;
@@ -151,7 +150,7 @@ public final class CloudDataUtil {
         });
     }
 
-    //获取新歌
+    //获取热歌
     public static void getBillSongs(final int type, final String from) {
         StreamService ss = HttpUtil.getApiService(Config.API_HOST, null);
         Call<ArrayList<SongDetailBean>> call = ss.getBillSongs(from);

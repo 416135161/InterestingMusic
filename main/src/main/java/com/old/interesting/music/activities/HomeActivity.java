@@ -156,6 +156,7 @@ import newui.data.action.ActionStartLoading;
 import newui.data.action.ActionStopLoading;
 import newui.data.playTeamResponse.PlayTeamBean;
 import newui.data.util.CloudDataUtil;
+import newui.data.util.SortUtil;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -1259,6 +1260,7 @@ public class HomeActivity extends AdsBaseActivity
     public void onEventPosting(ActionNewSongs event) {
         if (event.type == ActionNewSongs.TYPE_HOME && event.from == Config.FROM) {
             if (event != null && event.trackList != null && event.trackList.size() > 0) {
+                SortUtil.shuffle(event.trackList);
                 newAdapter.setPlaylists(event.trackList);
                 newAdapter.notifyDataSetChanged();
                 newNothingText.setVisibility(GONE);
