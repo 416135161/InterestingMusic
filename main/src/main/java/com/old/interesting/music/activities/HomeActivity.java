@@ -163,7 +163,7 @@ import retrofit2.Response;
 
 import static android.view.View.GONE;
 
-public class HomeActivity extends AdsBaseActivity
+public class HomeActivity extends AdsInserterActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         SearchView.OnQueryTextListener,
         PlayerFragment.PlayerFragmentCallbackListener,
@@ -477,6 +477,7 @@ public class HomeActivity extends AdsBaseActivity
             @Override
             public void onClick(View v) {
                 showFragment("allPlaylists");
+                showAd();
 //                Toast.makeText(HomeActivity.this, "It’s not open now, please look forward !", Toast.LENGTH_SHORT).show();
 
             }
@@ -782,6 +783,7 @@ public class HomeActivity extends AdsBaseActivity
             public void onClick(View v) {
                 HotNewFragment.TYPE = HotNewFragment.TYPE_HOT;
                 showFragment("HotNew");
+                showAd();
             }
         });
         newViewAll = findViewById(R.id.newLists_view_all);
@@ -790,6 +792,7 @@ public class HomeActivity extends AdsBaseActivity
             public void onClick(View v) {
                 HotNewFragment.TYPE = HotNewFragment.TYPE_NEW;
                 showFragment("HotNew");
+                showAd();
             }
         });
 
@@ -1124,6 +1127,7 @@ public class HomeActivity extends AdsBaseActivity
                 ViewPlaylistFragment.setPlayTeamResult(hotAdapter.getItem(position));
                 ViewPlaylistFragment.setFrom(Config.FROM);
                 showFragment("playlist");
+                showAd();
                 return true;
             }
 

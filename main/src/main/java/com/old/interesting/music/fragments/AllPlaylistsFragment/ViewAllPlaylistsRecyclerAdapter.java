@@ -54,7 +54,8 @@ public class ViewAllPlaylistsRecyclerAdapter extends RecyclerView.Adapter<ViewAl
     public void onBindViewHolder(MyViewHolder holder, int position) {
         PlayTeamBean p = playlists.get(position);
         holder.playListName.setText(p.getName());
-        Picasso.with(ctx).load(p.getImgUrl()).into(holder.img);
+        Picasso.with(ctx).load(p.getImgUrl()).error(R.drawable.ic_default)
+                .placeholder(R.drawable.ic_default).into(holder.img);
     }
 
     @Override
