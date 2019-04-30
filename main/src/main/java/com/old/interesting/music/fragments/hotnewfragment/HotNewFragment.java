@@ -86,7 +86,7 @@ public class HotNewFragment extends Fragment {
             tvTitle.setText(R.string.text_new_song);
         }
 
-        loadAds(view);
+//        loadAds(view);
     }
 
     @Override

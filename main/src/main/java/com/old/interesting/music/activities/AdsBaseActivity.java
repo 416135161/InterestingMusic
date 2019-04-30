@@ -124,6 +124,10 @@ public class AdsBaseActivity extends BaseActivity {
         if(Config.PLAY_ADS_COUNT == Config.MAX_PLAY_COUNT){
             return;
         }
+        showRewardAd();
+    }
+
+    private void showRewardAd(){
         if (mRewardedVideoAd != null && mRewardedVideoAd.isLoaded()) {
             mRewardedVideoAd.show();
             Config.PLAY_ADS_COUNT++;
@@ -131,7 +135,7 @@ public class AdsBaseActivity extends BaseActivity {
     }
 
 
-    private int count = 0;
+    protected int count = 1;
 
     protected void showStarDialog(){
         new  AlertDialog.Builder(this)
