@@ -6,22 +6,15 @@
                 android:background="@drawable/splash_bg"
                 tools:context="newui.activity.SplashActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_centerInParent="true"
-        >
+
 
         <ImageView
             android:id="@+id/splash_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_above="@+id/text"
-            android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_launcher"
+            android:layout_centerInParent="true"
             />
 
         <TextView
@@ -29,9 +22,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Free Music"
+            android:layout_below="@id/splash_img"
+            android:layout_centerHorizontal="true"
             android:textColor="#FFFFFFFF"
+            android:layout_marginTop="10dp"
             android:textSize="28sp"
 
             />
-    </LinearLayout>
+
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,8 @@ import com.newui.interesting.music.R;
 
 import com.old.interesting.music.Config;
 import com.old.interesting.music.activities.HomeActivity;
+
+import newui.animations.PulseAnimation;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -65,9 +68,19 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void startHomeActivity() {
-        Intent i = new Intent(SplashActivity.this, HomeActivity.class);
-        startActivity(i);
-        finish();
+        PulseAnimation.create().with(findViewById(R.id.splash_img))
+                .setDuration(300)
+                .setRepeatCount(4)
+                .setRepeatMode(PulseAnimation.REVERSE)
+                .start();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(SplashActivity.this, HomeActivity.class);
+                startActivity(i);
+                finish();
+            }
+        }, 1500);
     }
 
     public void requestPermissions() {
