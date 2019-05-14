@@ -30,13 +30,12 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-//        try {
-//            Config.tf4 = Typeface.createFromAsset(getAssets(), "fonts/Intro_Cond_Light.otf");
-//            Config.tf3 = Typeface.createFromAsset(getAssets(), "fonts/Gidole-Regular.ttf");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+       try {
+           Config.tf4 = Typeface.createFromAsset(getAssets(), "fonts/Intro_Cond_Light.otf");
+           Config.tf3 = Typeface.createFromAsset(getAssets(), "fonts/Gidole-Regular.ttf");
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
 
         if (Build.VERSION.SDK_INT >= 23) {
             requestPermissions();
