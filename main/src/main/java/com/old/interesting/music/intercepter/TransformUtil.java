@@ -5,7 +5,9 @@ import android.text.TextUtils;
 import com.old.interesting.music.models.Track;
 import com.old.interesting.music.models.searchResponse.Info;
 import com.old.interesting.music.models.searchResponse.SearchResponseBean;
+import com.old.interesting.music.models.songDetailResponse.Data;
 import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
+import com.old.interesting.music.models.songDetailResponse.SongDetailKuGou;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,5 +47,21 @@ public final class TransformUtil {
             return true;
         }
         return false;
+    }
+
+    public synchronized static SongDetailBean detailResponse2Song(SongDetailKuGou songDetailBean) {
+
+        SongDetailBean song = new SongDetailBean();
+        if (songDetailBean != null && songDetailBean.getData() != null) {
+            Data data = songDetailBean.getData();
+            song.setSongName(data.getSong_name());
+            song.setHash(data.getHash());
+            song.setSingerName(data.getAuthor_name());
+            song.setDuration(data.getTimelength() / 1000);
+            song.setPlayUrl(data.getPlay_url());
+            song.setLrc(data.getLyrics());
+            song.setImgUrl(data.getImg());
+        }
+        return song;
     }
 }
