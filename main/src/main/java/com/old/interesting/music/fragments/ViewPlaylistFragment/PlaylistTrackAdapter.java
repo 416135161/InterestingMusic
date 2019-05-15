@@ -118,18 +118,18 @@ public class PlaylistTrackAdapter extends RecyclerView.Adapter<PlaylistTrackAdap
     public void onBindViewHolder(final PlaylistTrackAdapter.MyViewHolder holder, int position) {
         final SongDetailBean item = songList.get(position);
         if (TextUtils.isEmpty(item.getImgUrl())) {
-            new GetPicUtil(item.getImgUrl(), new GetPicUtil.GetPicCallBack() {
-                @Override
-                public void onPicOk(String url) {
-                    item.setImgUrl(url);
-                    notifyDataSetChanged();
-                }
-
-                @Override
-                public void onPicFail() {
-
-                }
-            }).getSongFromCloud();
+//            new GetPicUtil(item.getHash(), new GetPicUtil.GetPicCallBack() {
+//                @Override
+//                public void onPicOk(String url) {
+//                    item.setImgUrl(url);
+//                    notifyDataSetChanged();
+//                }
+//
+//                @Override
+//                public void onPicFail() {
+//
+//                }
+//            }).getSongFromCloud();
 
         }
         Picasso.with(ctx)

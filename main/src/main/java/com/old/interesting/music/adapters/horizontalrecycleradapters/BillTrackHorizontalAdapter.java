@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.old.interesting.music.R;
+import com.old.interesting.music.intercepter.GetPicUtil;
 import com.old.interesting.music.models.Track;
 import com.squareup.picasso.Picasso;
 
@@ -56,15 +57,31 @@ public class BillTrackHorizontalAdapter extends RecyclerView.Adapter<BillTrackHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Track pl = playlists.get(position);
-        Picasso.with(ctx).load(playlists.get(position).getArtworkURL()).into(holder.img1);
+        final Track pl = playlists.get(position);
+
         if (!TextUtils.isEmpty(pl.getTitle()) && pl.getTitle().contains("-")) {
             holder.playlistName.setText(pl.getTitle().split("-")[1]);
         } else {
             holder.playlistName.setText(pl.getTitle());
         }
-
         holder.playlistSize.setText((int) ((Math.random() * 9 + 1) * 10) + "k count");
+        if (TextUtils.isEmpty(pl.getArtworkURL())) {
+            new GetPicUtil(pl.getFileHash(), new GetPicUtil.GetPicCallBack() {
+                @Override
+                public void onPicOk(String url) {
+                    pl.setmArtworkURL(url);
+                    notifyDataSetChanged();
+                }
+
+                @Override
+                public void onPicFail() {
+
+                }
+            }).getSongFromCloud();
+
+        }
+        Picasso.with(ctx).load(playlists.get(position).getArtworkURL())
+                .placeholder(R.drawable.ic_default).into(holder.img1);
     }
 
     @Override

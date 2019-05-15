@@ -26,9 +26,11 @@ public final class Config {
     public static Typeface tf4;
 
     public static final String GENIUS = "genius";
-
-    //测试
+    public static String HOST_GET_SONG = "http://www.kugou.com";
+    //测试172.25.161.188
+//    public static final String API_HOST = "http://172.25.161.188:8080";
 //    public static final String API_HOST = "http://101.200.200.156:8080";
+    //生产
     //生产
     public static final String API_HOST = "http://39.98.242.57:8080";
 

@@ -66,18 +66,18 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.MyView
             }
         } else {
             holder.art.setImageResource(R.drawable.ic_default);
-            new GetPicUtil(track.getFileHash(), new GetPicUtil.GetPicCallBack() {
-                @Override
-                public void onPicOk(String url) {
-                    track.setmArtworkURL(url);
-                    notifyDataSetChanged();
-                }
-
-                @Override
-                public void onPicFail() {
-
-                }
-            }).getSongFromCloud();
+//            new GetPicUtil(track.getFileHash(), new GetPicUtil.GetPicCallBack() {
+//                @Override
+//                public void onPicOk(String url) {
+//                    track.setmArtworkURL(url);
+//                    notifyDataSetChanged();
+//                }
+//
+//                @Override
+//                public void onPicFail() {
+//
+//                }
+//            }).getSongFromCloud();
         }
     }
 
