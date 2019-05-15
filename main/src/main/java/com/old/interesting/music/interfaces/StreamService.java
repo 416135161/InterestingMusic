@@ -3,6 +3,7 @@ package com.old.interesting.music.interfaces;
 import com.old.interesting.music.Config;
 import com.old.interesting.music.models.searchResponse.SearchResponseBean;
 import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
+import com.old.interesting.music.models.songDetailResponse.SongDetailKuGou;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,9 +51,16 @@ public interface StreamService {
      * @param hash
      * @return
      */
+    @GET("/yy/index.php?r=play/getdata")
+    Call<SongDetailKuGou> getSongDetailKuGou(@Query("hash") String hash);
+    /**
+     * 获取歌曲播放地址
+     *
+     * @param hash
+     * @return
+     */
     @GET("/music/detail")
     Call<SongDetailBean> getSongDetail(@Query("hash") String hash);
-
     /**
      * 获取歌单
      *

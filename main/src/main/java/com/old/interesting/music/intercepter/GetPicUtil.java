@@ -3,6 +3,7 @@ package com.old.interesting.music.intercepter;
 import com.old.interesting.music.Config;
 import com.old.interesting.music.interfaces.StreamService;
 import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
+import com.old.interesting.music.models.songDetailResponse.SongDetailKuGou;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,14 +25,14 @@ public class GetPicUtil {
     }
 
     public void getSongFromCloud() {
-        StreamService ss = HttpUtil.getApiService(Config.API_HOST, null);
-        Call<SongDetailBean> call = ss.getSongDetail(hash);
-        call.enqueue(new Callback<SongDetailBean>() {
+        StreamService ss = HttpUtil.getApiService(Config.HOST_GET_SONG, new DetailIntercepter());
+        Call<SongDetailKuGou> call = ss.getSongDetailKuGou(hash);
+        call.enqueue(new Callback<SongDetailKuGou>() {
 
             @Override
-            public void onResponse(Call<SongDetailBean> call, Response<SongDetailBean> response) {
+            public void onResponse(Call<SongDetailKuGou> call, Response<SongDetailKuGou> response) {
                 if (response.isSuccessful() && response.body() != null ) {
-                    SongDetailBean data = response.body();
+                    SongDetailBean data = TransformUtil.detailResponse2Song(response.body());
                     if (callBack != null) {
                         callBack.onPicOk(data.getImgUrl());
                     }
@@ -44,7 +45,7 @@ public class GetPicUtil {
             }
 
             @Override
-            public void onFailure(Call<SongDetailBean> call, Throwable t) {
+            public void onFailure(Call<SongDetailKuGou> call, Throwable t) {
                 if (callBack != null) {
                     callBack.onPicFail();
                 }
