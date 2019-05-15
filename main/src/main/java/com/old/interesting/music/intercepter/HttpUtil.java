@@ -5,6 +5,7 @@ import com.old.interesting.music.interfaces.GetSongCallBack;
 import com.old.interesting.music.interfaces.StreamService;
 import com.old.interesting.music.models.Track;
 import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
+import com.old.interesting.music.models.songDetailResponse.SongDetailKuGou;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -34,15 +35,15 @@ public final class HttpUtil {
             return;
         }
         EventBus.getDefault().post(new ActionStartLoading());
-        StreamService ss = HttpUtil.getApiService(Config.API_HOST, null);
-        Call<SongDetailBean> call = ss.getSongDetail(track.getFileHash());
-        call.enqueue(new Callback<SongDetailBean>() {
+        StreamService ss = HttpUtil.getApiService(Config.HOST_GET_SONG, new DetailIntercepter());
+        Call<SongDetailKuGou> call = ss.getSongDetailKuGou(track.getFileHash());
+        call.enqueue(new Callback<SongDetailKuGou>() {
 
             @Override
-            public void onResponse(Call<SongDetailBean> call, Response<SongDetailBean> response) {
+            public void onResponse(Call<SongDetailKuGou> call, Response<SongDetailKuGou> response) {
                 EventBus.getDefault().post(new ActionStopLoading());
                 if (response.isSuccessful() && response.body() != null ) {
-                    SongDetailBean data = response.body();
+                    SongDetailBean data = TransformUtil.detailResponse2Song(response.body());
                     track.setmArtworkURL(data.getImgUrl());
                     track.setmStreamURL(data.getPlayUrl());
                     track.setmDuration(data.getDuration() * 1000);
@@ -59,7 +60,7 @@ public final class HttpUtil {
             }
 
             @Override
-            public void onFailure(Call<SongDetailBean> call, Throwable t) {
+            public void onFailure(Call<SongDetailKuGou> call, Throwable t) {
                 EventBus.getDefault().post(new ActionStopLoading());
                 if(callBack != null){
                     callBack.onSongGetFail();
