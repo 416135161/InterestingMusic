@@ -56,7 +56,7 @@ public class BillTrackHorizontalAdapter extends RecyclerView.Adapter<BillTrackHo
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         final Track pl = playlists.get(position);
 
         if (!TextUtils.isEmpty(pl.getTitle()) && pl.getTitle().contains("-")) {
@@ -70,7 +70,7 @@ public class BillTrackHorizontalAdapter extends RecyclerView.Adapter<BillTrackHo
                 @Override
                 public void onPicOk(String url) {
                     pl.setmArtworkURL(url);
-                    notifyDataSetChanged();
+                    notifyItemChanged(position);
                 }
 
                 @Override

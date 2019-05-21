@@ -190,4 +190,21 @@ public final class CloudDataUtil {
 
         });
     }
+
+
+    //保存图片到远程服务器
+    public static void saveSongImg(String hash, String img) {
+        StreamService ss = HttpUtil.getApiService(Config.API_HOST, null);
+        Call<Boolean> call = ss.saveSongImg(hash, img);
+        call.enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+            }
+
+        });
+    }
 }

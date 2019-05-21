@@ -56,7 +56,7 @@ public class NewTracksHorizontalAdapter extends RecyclerView.Adapter<NewTracksHo
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         final Track pl = playlists.get(position);
         holder.playlistName.setText(pl.getTitle());
         holder.playlistSize.setText((int) ((Math.random() * 9 + 1) * 10) + "k count");
@@ -65,7 +65,7 @@ public class NewTracksHorizontalAdapter extends RecyclerView.Adapter<NewTracksHo
                 @Override
                 public void onPicOk(String url) {
                     pl.setmArtworkURL(url);
-                    notifyDataSetChanged();
+                    notifyItemChanged(position);
                 }
 
                 @Override

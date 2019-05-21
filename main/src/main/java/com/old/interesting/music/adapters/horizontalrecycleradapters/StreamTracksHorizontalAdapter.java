@@ -57,7 +57,7 @@ public class StreamTracksHorizontalAdapter extends RecyclerView.Adapter<StreamTr
     }
 
     @Override
-    public void onBindViewHolder(final StreamTracksHorizontalAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(final StreamTracksHorizontalAdapter.MyViewHolder holder, final int position) {
 
         final Track track = streamList.get(position);
         try {
@@ -70,22 +70,18 @@ public class StreamTracksHorizontalAdapter extends RecyclerView.Adapter<StreamTr
                         .into(holder.art);
             } else {
                 holder.art.setImageResource(R.drawable.ic_default);
-//                new GetPicUtil(track.getFileHash(), new GetPicUtil.GetPicCallBack() {
-//                    @Override
-//                    public void onPicOk(String url) {
-//                        track.setmArtworkURL(url);
-//                        Picasso.with(ctx)
-//                                .load(track.getArtworkURL())
-//                                .error(R.drawable.ic_default)
-//                                .placeholder(R.drawable.ic_default)
-//                                .into(holder.art);
-//                    }
-//
-//                    @Override
-//                    public void onPicFail() {
-//
-//                    }
-//                }).getSongFromCloud();
+                new GetPicUtil(track.getFileHash(), new GetPicUtil.GetPicCallBack() {
+                    @Override
+                    public void onPicOk(String url) {
+                        track.setmArtworkURL(url);
+                        notifyItemChanged(position);
+                    }
+
+                    @Override
+                    public void onPicFail() {
+
+                    }
+                }).getSongFromCloud();
             }
         } catch (Exception e) {
             Log.e("AdapterError", e.getMessage());

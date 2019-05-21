@@ -123,17 +123,17 @@ public class QueueRecyclerAdapter extends RecyclerView.Adapter<QueueRecyclerAdap
             final Track t = ut.getStreamTrack();
             if (TextUtils.isEmpty(t.getArtworkURL())) {
                 holder.art.setImageResource(R.drawable.ic_default);
-                new GetPicUtil(t.getFileHash(), new GetPicUtil.GetPicCallBack() {
-                    @Override
-                    public void onPicOk(String url) {
-                        t.setmArtworkURL(url);
-                        notifyDataSetChanged();
-                    }
-                    @Override
-                    public void onPicFail() {
-
-                    }
-                }).getSongFromCloud();
+//                new GetPicUtil(t.getFileHash(), new GetPicUtil.GetPicCallBack() {
+//                    @Override
+//                    public void onPicOk(String url) {
+//                        t.setmArtworkURL(url);
+//                        notifyDataSetChanged();
+//                    }
+//                    @Override
+//                    public void onPicFail() {
+//
+//                    }
+//                }).getSongFromCloud();
             } else {
                 Picasso.with(ctx)
                         .load(t.getArtworkURL())
