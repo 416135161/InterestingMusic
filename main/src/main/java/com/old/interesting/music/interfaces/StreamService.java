@@ -97,6 +97,14 @@ public interface StreamService {
     @GET("/music/europe/album/songs")
     Call<ArrayList<SongDetailBean>> getEuropePlayList(@Query("id") String id);
 
+    /**
+     * 保存歌曲的图片
+     *
+     * @return
+     */
+    @GET("/music/save/img")
+    Call<Boolean> saveSongImg(@Query("hash") String hash, @Query("img")String img);
+
 //    这是获取新歌的  size弄成240
 //    http://39.107.89.143/newSongs/list.do
 

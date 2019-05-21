@@ -1,10 +1,16 @@
 package com.old.interesting.music.intercepter;
 
+import android.util.Log;
+
 import com.old.interesting.music.Config;
 import com.old.interesting.music.interfaces.StreamService;
 import com.old.interesting.music.models.songDetailResponse.SongDetailBean;
 import com.old.interesting.music.models.songDetailResponse.SongDetailKuGou;
 
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+import newui.data.util.CloudDataUtil;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,7 +24,6 @@ public class GetPicUtil {
     private String hash;
     private GetPicCallBack callBack;
 
-
     public GetPicUtil(String hash, GetPicCallBack callBack) {
         this.hash = hash;
         this.callBack = callBack;
@@ -31,8 +36,10 @@ public class GetPicUtil {
 
             @Override
             public void onResponse(Call<SongDetailKuGou> call, Response<SongDetailKuGou> response) {
-                if (response.isSuccessful() && response.body() != null ) {
+                if (response.isSuccessful() && response.body() != null) {
                     SongDetailBean data = TransformUtil.detailResponse2Song(response.body());
+                    CloudDataUtil.saveSongImg(data.getHash(), data.getImgUrl());
+
                     if (callBack != null) {
                         callBack.onPicOk(data.getImgUrl());
                     }
@@ -54,9 +61,12 @@ public class GetPicUtil {
         });
     }
 
+
+
     public interface GetPicCallBack {
         void onPicOk(String url);
 
         void onPicFail();
     }
+
 }
