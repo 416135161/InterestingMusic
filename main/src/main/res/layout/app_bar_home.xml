@@ -127,22 +127,14 @@
                 android:layout_marginRight="0dp"
                 android:background="#565656"/>
 
-            <include
-                layout="@layout/home_new_hot_track_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/recentsRecyclerContainer"
-                />
+
 
             <RelativeLayout
                 android:id="@+id/hotListRecyclerContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/new_bill_view"
-                android:layout_marginLeft="-6dp"
-                android:layout_marginRight="-6dp"
-                android:layout_marginTop="0dp">
-
+                android:layout_below="@+id/recentsRecyclerContainer"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:id="@+id/hotListRecyclerLabel"
@@ -197,11 +189,16 @@
                     android:layout_below="@+id/hotListRecyclerLabel"
                     android:padding="5dp"/>
             </RelativeLayout>
-
+            <include
+                layout="@layout/home_new_hot_track_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hotListRecyclerContainer"
+                />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_below="@+id/hotListRecyclerContainer"
+                android:layout_below="@id/new_bill_view"
                 android:layout_marginLeft="0dp"
                 android:layout_marginRight="0dp"
                 android:background="#565656"/>
@@ -210,7 +207,7 @@
                 android:id="@+id/bannerContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/hotListRecyclerContainer"
+                android:layout_below="@id/new_bill_view"
                 android:padding="5dp">
 
                 <RelativeLayout

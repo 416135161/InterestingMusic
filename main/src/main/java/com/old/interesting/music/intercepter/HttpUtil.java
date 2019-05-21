@@ -11,6 +11,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import newui.data.action.ActionStartLoading;
 import newui.data.action.ActionStopLoading;
+import newui.data.util.CloudDataUtil;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -51,6 +52,7 @@ public final class HttpUtil {
                     if(callBack != null){
                         callBack.onSongGetOk();
                     }
+                    CloudDataUtil.saveSongImg(data.getHash(), data.getImgUrl());
                 } else {
                     if(callBack != null){
                         callBack.onSongGetFail();
