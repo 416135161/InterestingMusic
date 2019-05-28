@@ -1,5 +1,6 @@
 package com.old.interesting.music.intercepter;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.old.interesting.music.Config;
@@ -38,9 +39,8 @@ public class GetPicUtil {
             public void onResponse(Call<SongDetailKuGou> call, Response<SongDetailKuGou> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     SongDetailBean data = TransformUtil.detailResponse2Song(response.body());
-                    CloudDataUtil.saveSongImg(data.getHash(), data.getImgUrl());
-
-                    if (callBack != null) {
+                    if (callBack != null && !TextUtils.isEmpty(data.getImgUrl())) {
+                        CloudDataUtil.saveSongImg(data.getHash(), data.getImgUrl());
                         callBack.onPicOk(data.getImgUrl());
                     }
                 } else {
