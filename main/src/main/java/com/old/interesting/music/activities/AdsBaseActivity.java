@@ -28,10 +28,9 @@ import newui.base.BaseActivity;
  * description:
  */
 public class AdsBaseActivity extends BaseActivity {
-    final String AD_APP_ID = "ca-app-pub-3940256099942544~3347511713";
     final String AD_UNIT_ID_DEBUG = "ca-app-pub-3940256099942544/5224354917";
 
-    final String AD_UNIT_ID = "ca-app-pub-8270196426610526/5522630430";
+    final String AD_UNIT_ID = "ca-app-pub-7203590267874431/5624153859";
     protected RewardedVideoAd mRewardedVideoAd;
 
     @Override
